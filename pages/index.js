@@ -6,6 +6,10 @@ import fetch from "node-fetch";
 import Alumni from "../components/Alumni";
 import Work from "../components/Work";
 
+import HeaderImageBox from "../components/HeaderImageBox";
+import { HomeData } from "../lib/HomeData";
+import banner from "../assets/img/home-banner-mobile.jpg";
+
 export async function getStaticProps() {
   // Instead of the file system,
   // fetch post data from an external API endpoint
@@ -26,6 +30,8 @@ export async function getStaticProps() {
   );
   const work = await workData.json();
 
+  //   const homeData = await HomeData;
+
   return { props: { data, alumni, work } };
 }
 
@@ -35,6 +41,13 @@ const Home = ({ data, alumni, work }) => {
       <Head>
         <title>Home Page </title>
       </Head>
+      <HeaderImageBox
+        type={"home"}
+        title={HomeData.header.title}
+        desc={HomeData.header.description}
+        btnText={"Get to know WMDD"}
+        img={HomeData.header.img}
+      />
       <div className="front-page">
         <div className="intro">
           <div className="intro-desc">
