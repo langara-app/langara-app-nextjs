@@ -30,12 +30,12 @@ export async function getStaticProps() {
   );
   const work = await workData.json();
 
-  //   const homeData = await HomeData;
+  const homeData = await HomeData;
 
-  return { props: { data, alumni, work } };
+  return { props: { data, alumni, work, homeData } };
 }
 
-const Home = ({ data, alumni, work }) => {
+const Home = ({ data, alumni, work, homeData }) => {
   return (
     <>
       <Head>
@@ -43,10 +43,10 @@ const Home = ({ data, alumni, work }) => {
       </Head>
       <HeaderImageBox
         type={"home"}
-        title={HomeData.header.title}
-        desc={HomeData.header.description}
+        title={homeData.header.title}
+        desc={homeData.header.description}
         btnText={"Get to know WMDD"}
-        img={HomeData.header.img}
+        img={homeData.header.img}
       />
       <div className="front-page">
         <div className="intro">

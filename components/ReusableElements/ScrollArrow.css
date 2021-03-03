@@ -1,0 +1,29 @@
+.arrow-container {
+  position: absolute;
+  bottom: -1rem;
+  left: 2rem;
+  text-align: center;
+  margin: 8% 0;
+  -moz-animation: bounce 2s infinite linear;
+  -webkit-animation: bounce 2s infinite linear;
+  animation: bounce 2s infinite linear;
+  font-size: 2.5rem;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-20px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  75% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
