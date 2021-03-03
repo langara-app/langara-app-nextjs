@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const AboutUs = () => {
-    return (
-        <div>
-            WMDD At Glance About Us Page
-        </div>
-    )
-}
+  return <div>WMDD At Glance About Us Page</div>;
+};
 
-export AboutUs
+export default AboutUs;
