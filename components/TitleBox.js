@@ -1,0 +1,36 @@
+import React from "react";
+import styled from "styled-components";
+
+const TitleBox = ({ title, desc, subtitle }) => {
+
+  return (
+    <Wrapper>
+        <Title>{title}</Title>
+        <Subtitle>{subtitle}</Subtitle>
+        <Paragraph>{desc}</Paragraph>
+    </Wrapper>
+  );
+};
+
+export default TitleBox;
+
+// Create a Title component that'll render an <h1> tag with some styles
+const Title = styled.h1`
+  font-size: 1.5em;
+  text-align: center;
+`;
+
+const Subtitle = styled.h2`
+  font-size: 1.25em;
+  text-align: center;
+`;
+
+const Paragraph = styled.p`
+  font-size: 1em;
+  text-align: center;
+`;
+
+// Create a Wrapper component that'll render a <section> tag with some styles
+const Wrapper = styled.section`
+  padding: 3.5em;
+`;
