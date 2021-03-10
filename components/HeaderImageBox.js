@@ -1,19 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+// import Link from "next/link";
+
 import Button from "./ReusableElements/Button";
 import ScrollArrow from "./ReusableElements/ScrollArrow";
 
+import { Link } from "react-scroll";
+
 const HeaderImageBox = ({ type, title, desc, btnText, img }) => {
-  const scrollDown = () => {
-    let pageHeight = window.innerHeight;
-    window.scrollBy(0, pageHeight);
-  };
+  const [scrollTo, setScrollTo] = useState("home");
+
+  useEffect(() => {
+    setScrollTo(type);
+  }, [type]);
+
   return (
     <HeaderContainer img={img}>
       <h1>{title}</h1>
       <HeaderP>{desc}</HeaderP>
       <Button text={btnText} margin={0.5} />
-      <ScrollArrow onClick={scrollDown} />
+      <Link
+        activeClass="active"
+        to={scrollTo}
+        spy={true}
+        smooth={true}
+        duration={500}
+      >
+        <ScrollArrow />
+      </Link>
     </HeaderContainer>
   );
 };
