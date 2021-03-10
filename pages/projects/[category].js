@@ -1,5 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
+import Footer from "../../components/Footer";
 
 export async function getStaticProps({ params }) {
   // fetching project category data (Mobile App, Data Visualization App, Hybrid Mobile App)
@@ -14,9 +15,13 @@ export async function getStaticProps({ params }) {
 }
 
 const Category = ({ category }) => {
-//   const { query } = useRouter();
+  //   const { query } = useRouter();
 
-  return <div></div>;
+  return (
+    <div>
+      <Footer />
+    </div>
+  );
 };
 
 export default [category];
