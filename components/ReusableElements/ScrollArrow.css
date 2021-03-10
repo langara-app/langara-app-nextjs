@@ -8,6 +8,7 @@
   -webkit-animation: bounce 2s infinite linear;
   animation: bounce 2s infinite linear;
   font-size: 2.5rem;
+  z-index: 3;
 }
 
 @keyframes bounce {

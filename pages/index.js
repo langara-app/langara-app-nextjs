@@ -7,6 +7,7 @@ import Alumni from "../components/Alumni";
 import Work from "../components/Work";
 
 import styled from "styled-components";
+import { Element } from "react-scroll";
 
 import HeaderImageBox from "../components/HeaderImageBox";
 import Summary from "../components/Summary";
@@ -57,12 +58,14 @@ const Home = ({ data, alumni, work, homeData }) => {
         btnText={"Get to know WMDD"}
         img={homeData.header.img}
       />
-      <SectionContainer>
-        <Title>{homeData.summary.title}</Title>
-        {HomeData.summary.contents.map((content, index) => (
-          <Summary key={index} description={content.title} />
-        ))}
-      </SectionContainer>
+      <Element name="home" className="element">
+        <SectionContainer>
+          <Title>{homeData.summary.title}</Title>
+          {HomeData.summary.contents.map((content, index) => (
+            <Summary key={index} description={content.title} />
+          ))}
+        </SectionContainer>
+      </Element>
 
       <SectionContainer>
         <Title>{homeData.projects.title}</Title>

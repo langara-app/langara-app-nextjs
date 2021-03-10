@@ -14,7 +14,7 @@ const AlumniIntro = (props) => {
       <div>
         <img src={profile_image} style={{ display: "block", width: "100%" }} />
       </div>
-      <PersonalInfo>{alumni_name}</PersonalInfo>
+      <PersonalInfo size={"big"}>{alumni_name}</PersonalInfo>
       <PersonalInfo>Stream chosen - {stream}</PersonalInfo>
       <PersonalInfo>{graduation_year}</PersonalInfo>
       <p>{comment}</p>
