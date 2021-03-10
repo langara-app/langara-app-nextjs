@@ -12,7 +12,7 @@ const HeaderImageBox = ({ type, title, desc, btnText, img }) => {
     <HeaderContainer img={img}>
       <h1>{title}</h1>
       <HeaderP>{desc}</HeaderP>
-      <Button text={btnText} />
+      <Button text={btnText} margin={0.5} />
       <ScrollArrow onClick={scrollDown} />
     </HeaderContainer>
   );

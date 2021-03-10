@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-const Button = ({ text }) => {
-  return <BtnElement>{text}</BtnElement>;
+const Button = ({ text, margin }) => {
+  return <BtnElement margin={margin}>{text}</BtnElement>;
 };
 
 const BtnElement = styled.button`
@@ -15,7 +15,7 @@ const BtnElement = styled.button`
   font-size: 1rem;
   cursor: pointer;
   width: 80%;
-  margin: 0.5rem auto;
+  margin: ${({ margin }) => margin}rem auto;
 `;
 
 export default Button;
