@@ -4,7 +4,7 @@ import style from "styled-components";
 import { BiDownArrowCircle } from "react-icons/bi";
 import Link from "next/link";
 
-const ScrollArrow = ({ onClick }) => {
+const ScrollArrow = () => {
   return (
     <div className="arrow-container">
       <BiDownArrowCircle />

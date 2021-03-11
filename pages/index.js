@@ -6,7 +6,17 @@ import fetch from "node-fetch";
 import Alumni from "../components/Alumni";
 import Work from "../components/Work";
 
+import styled from "styled-components";
+import { Element } from "react-scroll";
+
 import HeaderImageBox from "../components/HeaderImageBox";
+import Summary from "../components/Summary";
+import SimpleSlider from "../components/SimpleSlider";
+import AlumniIntro from "../components/AlumniIntro";
+import Footer from "../components/Footer";
+
+import Button from "../components/ReusableElements/Button";
+
 import { HomeData } from "../lib/HomeData";
 import banner from "../assets/img/home-banner-mobile.jpg";
 
@@ -21,7 +31,7 @@ export async function getStaticProps() {
   const data = await res.json();
 
   const alumniData = await fetch(
-    "https://api.langara-app.ca/wp-json/wp/v2/alumni"
+    "https://api.langara-app.ca/wp-json/acf/v3/alumni"
   );
   const alumni = await alumniData.json();
 
@@ -48,59 +58,56 @@ const Home = ({ data, alumni, work, homeData }) => {
         btnText={"Get to know WMDD"}
         img={homeData.header.img}
       />
-      <div className="front-page">
-        <div className="intro">
-          <div className="intro-desc">
-            <h1>{data.acf.title_intro}</h1>
-            <p
-              dangerouslySetInnerHTML={{
-                __html: data.acf.description_intro,
-              }}
-            ></p>
-            <Link className="button" href="/posts">
-              {data.acf.link_text_front_top}
-            </Link>
-          </div>
-        </div>
+      <Element name="home" className="element">
+        <SectionContainer>
+          <Title>{homeData.summary.title}</Title>
+          {HomeData.summary.contents.map((content, index) => (
+            <Summary key={index} description={content.title} />
+          ))}
+        </SectionContainer>
+      </Element>
 
-        <div>
-          <div className="intro-movie-wrap">
-            {/* <img src={background} alt="hp-bg" /> */}
-            <div className="intro-movie">
-              <iframe src={data.acf.intro_movie} title="intro-movie"></iframe>
-            </div>
-          </div>
+      <SectionContainer>
+        <Title>{homeData.projects.title}</Title>
+        <SectionDescription>{homeData.projects.description}</SectionDescription>
+        <SimpleSlider />
+        <Button text={"See More"} margin={2} />
+      </SectionContainer>
 
-          {/* <StudentWorkTopIntro {...cf} />
+      <SectionContainer>
+        <Title>{homeData.alumni.title}</Title>
+        <SectionDescription>{homeData.alumni.description}</SectionDescription>
+        {alumni.map((alumna, index) =>
+          alumna.acf.alumni_name === "Harmanpreet Kaur" ? (
+            <AlumniIntro key={index} {...alumna.acf} />
+          ) : null
+        )}
+        <Button text={"See More"} margin={2} />
+      </SectionContainer>
 
-            <AlumniSuccess /> */}
-          <Work data={work} />
-          <Alumni data={alumni} />
+      <SectionContainer>
+        <Title>{homeData.lastMessage.title}</Title>
+        <SectionDescription>
+          {homeData.lastMessage.description}
+        </SectionDescription>
 
-          <div
-            className="top-apply bcg-img"
-            style={{ background: `url(${data.acf.apply_now_image})` }}
-          >
-            <h1>{data.acf.bottom_message_title}</h1>
-            <p
-              dangerouslySetInnerHTML={{
-                __html: data.acf.bottom_message,
-              }}
-            ></p>
-            <h2>
-              <a
-                href={data.acf.apply_now_link}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {data.acf.apply_now_button}
-              </a>
-            </h2>
-          </div>
-        </div>
-      </div>
+        <Button text={"See More"} margin={2} />
+      </SectionContainer>
+      <Footer />
     </>
   );
 };
+
+const SectionContainer = styled.div`
+  margin: 0 2rem 5rem;
+`;
+const Title = styled.h2`
+  text-align: center;
+  margin-bottom: 2rem;
+`;
+const SectionDescription = styled.p`
+  margin: 2rem 0;
+  text-align: center;
+`;
 
 export default Home;

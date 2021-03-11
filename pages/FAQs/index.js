@@ -1,14 +1,13 @@
 import React from "react";
-
 import Footer from "../../components/Footer";
 
-const AboutThisSite = () => {
+const FAQ = () => {
   return (
     <div>
-      About this site page.
+      FAQ page
       <Footer />
     </div>
   );
 };
 
-export default AboutThisSite;
+export default FAQ;
