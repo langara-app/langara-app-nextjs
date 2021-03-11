@@ -1,0 +1,40 @@
+.joinWMDD_content {
+    text-align: center;
+    background-color: #C2E5E0;
+    padding: 20% 0;
+}
+.joinWMDD_title,
+.joinWMDD_desc {
+    color: #675D51;
+}
+.joinWMDD_title {
+    font-size: 32px;
+    margin-top: 0;
+    /* padding: 10% 0; */
+}
+.joinWMDD_desc {
+    font-weight: 300;
+    font-size: 13px;
+    margin: 0 20%;
+    padding-bottom: 20px;
+    
+}
+.joinWMDD_button {
+    margin-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media only screen and (min-width: 1000px)  {
+    .joinWMDD_title {
+        font-size: 45px;
+    }
+    .joinWMDD_content {
+        padding: 10% 0;
+    }
+    .joinWMDD_desc {
+        font-size: 19px;
+        margin: 0 30%;
+    }
+}
+
