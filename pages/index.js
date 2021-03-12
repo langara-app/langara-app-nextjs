@@ -56,10 +56,9 @@ const Home = ({ data, alumni, work, homeData }) => {
         title={homeData.header.title}
         desc={homeData.header.description}
         btnText={"Get to know WMDD"}
-        img={homeData.header.img}
       />
       <Element name="home" className="element">
-        <SectionContainer>
+        <SectionContainer margin={true}>
           <Title>{homeData.summary.title}</Title>
           {HomeData.summary.contents.map((content, index) => (
             <Summary key={index} description={content.title} />
@@ -67,14 +66,14 @@ const Home = ({ data, alumni, work, homeData }) => {
         </SectionContainer>
       </Element>
 
-      <SectionContainer>
+      <SectionContainer margin={true}>
         <Title>{homeData.projects.title}</Title>
         <SectionDescription>{homeData.projects.description}</SectionDescription>
         <SimpleSlider />
-        <Button text={"See More"} margin={2} />
+        <Button text={"SEE MORE"} margin={2} font={24} size={"big"} />
       </SectionContainer>
 
-      <SectionContainer>
+      <SectionContainer margin={true}>
         <Title>{homeData.alumni.title}</Title>
         <SectionDescription>{homeData.alumni.description}</SectionDescription>
         {alumni.map((alumna, index) =>
@@ -82,16 +81,28 @@ const Home = ({ data, alumni, work, homeData }) => {
             <AlumniIntro key={index} {...alumna.acf} />
           ) : null
         )}
-        <Button text={"See More"} margin={2} />
+        <Button text={"SEE MORE"} margin={2} font={24} size={"big"} />
       </SectionContainer>
 
-      <SectionContainer>
+      <SectionContainer
+        style={{
+          backgroundColor: "#C2E5E0",
+          color: "#675d51",
+          paddingBottom: "1px",
+        }}
+        margin={false}
+      >
         <Title>{homeData.lastMessage.title}</Title>
         <SectionDescription>
           {homeData.lastMessage.description}
         </SectionDescription>
 
-        <Button text={"See More"} margin={2} />
+        <Button
+          text={"See Admission Requirements"}
+          margin={2}
+          font={18}
+          size={"med"}
+        />
       </SectionContainer>
       <Footer />
     </>
@@ -99,7 +110,7 @@ const Home = ({ data, alumni, work, homeData }) => {
 };
 
 const SectionContainer = styled.div`
-  margin: 0 2rem 5rem;
+  margin: ${({ margin }) => (margin ? "0 0rem 5rem" : 0)};
 `;
 const Title = styled.h2`
   text-align: center;
