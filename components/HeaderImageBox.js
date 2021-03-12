@@ -18,7 +18,7 @@ const HeaderImageBox = ({ type, title, desc, btnText, img }) => {
     <HeaderContainer img={img}>
       <h1>{title}</h1>
       <HeaderP>{desc}</HeaderP>
-      <Button text={btnText} margin={0.5} />
+      <Button text={btnText} margin={0.5} font={18} size={"med"} />
       <Link
         activeClass="active"
         to={scrollTo}
@@ -44,7 +44,7 @@ const HeaderContainer = styled.div`
   height: 100vh;
   position: relative;
   padding: 1rem;
-  &::after {
+  /* &::after {
       content: "";
       position: absolute;
       top: 0;
@@ -52,11 +52,12 @@ const HeaderContainer = styled.div`
       height: 100vh;
       width: 100%;
       background: rgba(241, 90, 34, 0.3);
-      display: block;
+      display: block; */
 `;
 
 const HeaderP = styled.p`
-  margin: 3rem 0;
+  margin: 1rem 0;
+  font-weight: 300;
 `;
 
 export default HeaderImageBox;
