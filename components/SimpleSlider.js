@@ -11,6 +11,7 @@ const SimpleSlider = () => {
       slidesPerView={1.5}
       onSlideChange={() => console.log("slide change")}
       onSwiper={(swiper) => console.log(swiper)}
+      dir="rtl"
       navigation
     >
       <SwiperSlide>
