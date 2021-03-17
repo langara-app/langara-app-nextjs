@@ -1,5 +1,4 @@
 import React from "react";
-import Footer from "../../components/Footer";
 import HeaderImageBox from "../../components/HeaderImageBox";
 import AdminBox from "../../components/AdminBox";
 import { AlumniPageData } from "../../lib/AlumniPageData";
@@ -29,8 +28,6 @@ const Alumni = ({ alumni }) => {
         <AlumniSingle data={alumna.acf} />
       ))}
       <AdminBox />
-
-      <Footer />
     </div>
   );
 };
