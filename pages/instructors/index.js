@@ -1,13 +1,7 @@
 import React from "react";
-import Footer from "../../components/Footer";
 
 const Instructors = () => {
-  return (
-    <div>
-      Instructors List page
-      <Footer />
-    </div>
-  );
+  return <div>Instructors List page</div>;
 };
 
 export default Instructors;

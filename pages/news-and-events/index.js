@@ -1,13 +1,7 @@
 import React from "react";
-import Footer from "../../components/Footer";
 
 const NewsEvents = () => {
-  return (
-    <div>
-      News and Events page
-      <Footer />
-    </div>
-  );
+  return <div>News and Events page</div>;
 };
 
 export default NewsEvents;

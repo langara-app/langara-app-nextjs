@@ -10,8 +10,8 @@ import AlumniIntro from "./AlumniIntro";
 const settings = {
   dots: true,
   infinite: true,
-  autoplaySpeed: 10000,
-  speed: 3000,
+  autoplaySpeed: 7000,
+  speed: 1000,
   slidesToShow: 1,
   slidesToScroll: 1,
   arrows: false,

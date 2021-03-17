@@ -14,12 +14,14 @@ import Summary from "../components/Summary";
 import SimpleSlider from "../components/Work/SimpleSlider";
 import AlumniSlider from "../components/Alumni/AlumniSlider";
 import AdminBox from "../components/AdminBox";
-import Footer from "../components/Footer";
 
 import Button from "../components/ReusableElements/Button";
 
 import { HomeData } from "../lib/HomeData";
 import banner from "../assets/img/home-banner-mobile.jpg";
+
+import Fade from "react-reveal/Fade";
+import Slide from "react-reveal/Slide";
 
 export async function getStaticProps() {
   // Instead of the file system,
@@ -60,10 +62,10 @@ const Home = ({ data, alumni, work, homeData }) => {
         page={"home"}
       />
       <Element name="home" className="element">
-        <SectionContainer margin={true}>
+        <SectionContainer margin={true} gradient={true}>
           <Title>{homeData.summary.title}</Title>
           {HomeData.summary.contents.map((content, index) => (
-            <Summary key={index} description={content.title} />
+            <Summary key={index} summaryData={content} />
           ))}
         </SectionContainer>
       </Element>
@@ -73,6 +75,7 @@ const Home = ({ data, alumni, work, homeData }) => {
         <SectionDescription paddingBottom={"4rem"}>
           {homeData.projects.description}
         </SectionDescription>
+
         <SliderContainer>
           <SimpleSlider data={work} />
         </SliderContainer>
@@ -108,21 +111,7 @@ const Home = ({ data, alumni, work, homeData }) => {
         </BtnBcg>
       </SectionContainer>
 
-      {/* <AdmissionContainer>
-        <AdminTitle>{homeData.lastMessage.title}</AdminTitle>
-        <AdminDescription>{homeData.lastMessage.description}</AdminDescription>
-        <Button
-          text={"See Admission Requirements"}
-          margin={0}
-          font={18}
-          size={"med"}
-          color={"#675D51"}
-          bcg={"white"}
-        />
-      </AdmissionContainer> */}
       <AdminBox />
-
-      <Footer />
     </>
   );
 };
