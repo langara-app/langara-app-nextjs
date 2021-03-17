@@ -3,16 +3,17 @@ import styles from "../styles/home/home.module.scss";
 import Link from "next/link";
 import fetch from "node-fetch";
 
-import Alumni from "../components/AlumniSlider";
-import Work from "../components/Work";
+import Alumni from "../components/Alumni/AlumniSlider";
+import Work from "../components/Work/Work";
 
 import styled from "styled-components";
 import { Element } from "react-scroll";
 
 import HeaderImageBox from "../components/HeaderImageBox";
 import Summary from "../components/Summary";
-import SimpleSlider from "../components/SimpleSlider";
-import AlumniSlider from "../components/AlumniSlider";
+import SimpleSlider from "../components/Work/SimpleSlider";
+import AlumniSlider from "../components/Alumni/AlumniSlider";
+import AdminBox from "../components/AdminBox";
 import Footer from "../components/Footer";
 
 import Button from "../components/ReusableElements/Button";
@@ -56,6 +57,7 @@ const Home = ({ data, alumni, work, homeData }) => {
         title={homeData.header.title}
         desc={homeData.header.description}
         btnText={"Get to know WMDD"}
+        page={"home"}
       />
       <Element name="home" className="element">
         <SectionContainer margin={true}>
@@ -106,7 +108,7 @@ const Home = ({ data, alumni, work, homeData }) => {
         </BtnBcg>
       </SectionContainer>
 
-      <AdmissionContainer>
+      {/* <AdmissionContainer>
         <AdminTitle>{homeData.lastMessage.title}</AdminTitle>
         <AdminDescription>{homeData.lastMessage.description}</AdminDescription>
         <Button
@@ -117,7 +119,8 @@ const Home = ({ data, alumni, work, homeData }) => {
           color={"#675D51"}
           bcg={"white"}
         />
-      </AdmissionContainer>
+      </AdmissionContainer> */}
+      <AdminBox />
 
       <Footer />
     </>
