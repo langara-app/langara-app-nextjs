@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Slider from "react-slick";
 
-import AlumniIntro from "../components/AlumniIntro";
+import AlumniIntro from "./AlumniIntro";
 
 // const height = document.getElementById("slidercomponent-id").clientHeight;
 // this.setState({ height });
