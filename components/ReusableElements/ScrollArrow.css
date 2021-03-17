@@ -11,6 +11,7 @@
   animation: bounce 2s infinite linear;
   font-size: 2.5rem;
   z-index: 3;
+  color: #c36448;
 }
 
 @keyframes bounce {
