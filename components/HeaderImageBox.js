@@ -44,6 +44,7 @@ const HeaderContainer = styled.div`
   height: 100vh;
   position: relative;
   padding: 1rem;
+  color: #c36448;
   /* &::after {
       content: "";
       position: absolute;
@@ -58,6 +59,7 @@ const HeaderContainer = styled.div`
 const HeaderP = styled.p`
   margin: 1rem 0;
   font-weight: 300;
+  color: #675d51;
 `;
 
 export default HeaderImageBox;

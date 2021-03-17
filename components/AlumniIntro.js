@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Slider from "react-slick";
 
 const AlumniIntro = (props) => {
   const {
@@ -9,6 +10,7 @@ const AlumniIntro = (props) => {
     stream,
     graduation_year,
   } = props;
+
   return (
     <Container>
       <AlumniImageTopContainer>
@@ -24,8 +26,8 @@ const AlumniIntro = (props) => {
 
 const Container = styled.div`
   position: relative;
-
-  margin: 6rem auto 6rem 2rem;
+  background-color: white;
+  margin: 4rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,7 +39,7 @@ const AlumniImageTopContainer = styled.div`
   left: 50%;
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
-  width: 30%;
+  width: 40%;
 `;
 const AlumniImageTop = styled.img`
   display: block;
