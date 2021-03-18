@@ -1,8 +1,7 @@
 import styles from '../../styles/Instructors.module.css';
 import Head from "next/head";
 import Link from 'next/link'
-import JoinWMDD from '../../components/JoinWMDD';
-import Footer from '../../components/Footer';
+import AdminBox from '../../components/AdminBox';
 import { InstructorData } from '../../lib/InstructorData';
 
 const Instructors = () => {
@@ -39,8 +38,7 @@ const Instructors = () => {
                 { instructorDetails }
           </div>
         </div>
-        <JoinWMDD />
-        <Footer />
+        <AdminBox />
       </div>
     </>
 

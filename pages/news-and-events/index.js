@@ -1,8 +1,5 @@
 import React from "react";
 import styles from "../../styles/NewsEvents.module.css";
-import Footer from "../../components/Footer";
-import { HomeData } from "../../lib/HomeData";
-import JoinWMDD from "../../components/JoinWMDD";
 import AdminBox from "../../components/AdminBox";
 import Link from "next/link";
 import fetch from "node-fetch";
@@ -15,17 +12,13 @@ export async function getStaticProps() {
 
   const news_events = await res.json();
 
-  const homeData = await HomeData;
-  // console.log("home data", homeData)
-
-  return { props: { news_events, homeData } };
+  return { props: { news_events} };
 }
 
-const NewsEvents = ({ news_events, homeData }) => {
+const NewsEvents = ({ news_events }) => {
   const formatDate = () => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     return news_events.map((news) => {
-      console.log(news.date);
       return new Date(news.date).toLocaleDateString(undefined, options);
     });
   };
@@ -38,7 +31,6 @@ const NewsEvents = ({ news_events, homeData }) => {
             <img className={styles.events_image} src={news.acf.article_image} />
           </div>
           <div>
-            {/* <p>{news.date}</p> */}
             <span className="post-date">{formatDate()}</span>
             <Link href={`/news-and-events/${encodeURIComponent(news.slug)}`}>
               <a>
