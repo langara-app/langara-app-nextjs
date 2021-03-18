@@ -1,6 +1,5 @@
 import React from "react";
 import Footer from "../../components/Footer";
-import Link from "next/link";
 
 export async function getServerSideProps(context) {
     const res = await fetch(
@@ -17,7 +16,6 @@ const NewsEventsIndividual = ({ news_events }) => {
   const formatDate = () => {
     const options = { year: "numeric", month: "long", day: "numeric" };
      return news_events.map(news => {
-      console.log(news.date)
       return new Date(news.date).toLocaleDateString(undefined, options);
     })
    
