@@ -31,6 +31,13 @@ const BtnElement = styled.button`
   border: 2px solid ${({ color }) => color};
   background-color: ${({ bcg }) => bcg};
   color: ${({ color }) => color};
+
+  @media only screen and (min-width: 768px) {
+    margin: ${(30 / 1366) * 100}vw 0;
+    margin-right: ${(120 / 1366) * 100}vw;
+    padding: ${(12 / 1366) * 100}vw ${(34 / 1366) * 100}vw;
+    font-size: ${(24 / 1366) * 100}vw;
+  }
 `;
 
 export default Button;

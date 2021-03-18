@@ -1,5 +1,5 @@
 import React from "react";
-import HeaderImageBox from "../../components/HeaderImageBox";
+import OtherHeader from "../../components/Header/OtherHeader";
 import AdminBox from "../../components/AdminBox";
 import { AlumniPageData } from "../../lib/AlumniPageData";
 import AlumniSingle from "../../components/Alumni/AlumniSingle";
@@ -20,7 +20,7 @@ export async function getStaticProps() {
 const Alumni = ({ alumni }) => {
   return (
     <div>
-      <HeaderImageBox
+      <OtherHeader
         title={AlumniPageData.title}
         desc={AlumniPageData.description}
       />

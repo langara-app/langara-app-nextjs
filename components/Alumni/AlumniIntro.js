@@ -16,7 +16,7 @@ const AlumniIntro = (props) => {
       <AlumniImageTopContainer>
         <AlumniImageTop src={profile_image} />
       </AlumniImageTopContainer>
-      <AlumniComment>{comment}</AlumniComment>
+      <AlumniComment>"{comment}"</AlumniComment>
       <PersonalInfo size={"big"}>{alumni_name}</PersonalInfo>
       <PersonalInfo>Stream chosen - {stream}</PersonalInfo>
       <PersonalInfo>{graduation_year}</PersonalInfo>
@@ -31,15 +31,23 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* justify-content: center; */
 `;
 
 const AlumniImageTopContainer = styled.div`
   position: absolute;
-  top: -3rem;
+  top: -${(50 / 375) * 100}vw;
   left: 50%;
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
   width: 40%;
+
+  @media only screen and (min-width: 415px) {
+    top: -${(60 / 375) * 100}vw;
+  }
+  @media only screen and (min-width: 540px) {
+    top: -${(75 / 375) * 100}vw;
+  }
 `;
 const AlumniImageTop = styled.img`
   display: block;
@@ -48,10 +56,11 @@ const AlumniImageTop = styled.img`
 `;
 
 const AlumniComment = styled.p`
-  margin-top: 61px;
+  padding-top: ${(55 / 375) * 100}vw;
   font-weight: 300;
   font-size: 13px;
   color: #707070;
+  text-align: center;
 `;
 
 const PersonalInfo = styled.span`
