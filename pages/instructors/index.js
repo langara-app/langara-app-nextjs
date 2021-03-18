@@ -4,9 +4,17 @@ import Link from 'next/link'
 import JoinWMDD from '../../components/JoinWMDD';
 import Footer from '../../components/Footer';
 import { InstructorData } from '../../lib/InstructorData';
+import { HomeData } from "../../lib/HomeData";
 
+export async function getStaticProps() {
 
-const Instructors = () => {
+  const homeData = await HomeData;
+  // console.log("home data", homeData)
+  
+  return { props: { homeData } };
+}
+
+const Instructors = ({ homeData }) => {
 
   const instructors = InstructorData.instructors;
 
