@@ -1,13 +1,13 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import style from "styled-components";
-import { BiDownArrowCircle } from "react-icons/bi";
+import { ImArrowDown } from "react-icons/Im";
 import Link from "next/link";
 
 const ScrollArrow = () => {
   return (
     <div className="arrow-container">
-      <BiDownArrowCircle />
+      <ImArrowDown />
     </div>
   );
 };

@@ -1,14 +1,7 @@
 import React from "react";
 
-import Footer from "../../components/Footer";
-
 const AboutThisSite = () => {
-  return (
-    <div>
-      About this site page.
-      <Footer />
-    </div>
-  );
+  return <div>About this site page.</div>;
 };
 
 export default AboutThisSite;

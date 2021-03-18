@@ -1,16 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 
-const Button = ({ text, margin, font, size }) => {
+const Button = ({ text, margin, font, size, color, bcg }) => {
   return (
-    <BtnElement margin={margin} font={font} size={size}>
+    <BtnElement margin={margin} font={font} size={size} color={color} bcg={bcg}>
       {text}
     </BtnElement>
   );
 };
 
 const BtnElement = styled.button`
-  color: #665c50;
   text-align: center;
   text-decoration: none;
   display: block;
@@ -29,8 +28,9 @@ const BtnElement = styled.button`
 
   margin: ${({ margin }) => margin}rem auto;
   font-family: Kanit;
-  border: 2px solid #665c50;
-  background-color: white;
+  border: 2px solid ${({ color }) => color};
+  background-color: ${({ bcg }) => bcg};
+  color: ${({ color }) => color};
 `;
 
 export default Button;

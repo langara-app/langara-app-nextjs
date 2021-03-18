@@ -7,7 +7,7 @@ import ScrollArrow from "./ReusableElements/ScrollArrow";
 
 import { Link } from "react-scroll";
 
-const HeaderImageBox = ({ type, title, desc, btnText, img }) => {
+const HeaderImageBox = ({ type, title, desc, btnText, img, page }) => {
   const [scrollTo, setScrollTo] = useState("home");
 
   useEffect(() => {
@@ -18,16 +18,27 @@ const HeaderImageBox = ({ type, title, desc, btnText, img }) => {
     <HeaderContainer img={img}>
       <h1>{title}</h1>
       <HeaderP>{desc}</HeaderP>
-      <Button text={btnText} margin={0.5} font={18} size={"med"} />
-      <Link
-        activeClass="active"
-        to={scrollTo}
-        spy={true}
-        smooth={true}
-        duration={500}
-      >
-        <ScrollArrow />
-      </Link>
+      {btnText ? (
+        <Button
+          text={btnText}
+          margin={0.5}
+          font={18}
+          size={"med"}
+          bcg={"transparent"}
+        />
+      ) : null}
+
+      {page ? (
+        <Link
+          activeClass="active"
+          to={scrollTo}
+          spy={true}
+          smooth={true}
+          duration={500}
+        >
+          <ScrollArrow />
+        </Link>
+      ) : null}
     </HeaderContainer>
   );
 };
@@ -44,6 +55,7 @@ const HeaderContainer = styled.div`
   height: 100vh;
   position: relative;
   padding: 1rem;
+  color: #c36448;
   /* &::after {
       content: "";
       position: absolute;
@@ -58,6 +70,8 @@ const HeaderContainer = styled.div`
 const HeaderP = styled.p`
   margin: 1rem 0;
   font-weight: 300;
+  font-size: 13px;
+  color: #675d51;
 `;
 
 export default HeaderImageBox;

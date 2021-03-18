@@ -3,22 +3,25 @@ import styles from "../styles/home/home.module.scss";
 import Link from "next/link";
 import fetch from "node-fetch";
 
-import Alumni from "../components/Alumni";
-import Work from "../components/Work";
+import Alumni from "../components/Alumni/AlumniSlider";
+import Work from "../components/Work/Work";
 
 import styled from "styled-components";
 import { Element } from "react-scroll";
 
 import HeaderImageBox from "../components/HeaderImageBox";
 import Summary from "../components/Summary";
-import SimpleSlider from "../components/SimpleSlider";
-import AlumniIntro from "../components/AlumniIntro";
-import Footer from "../components/Footer";
+import SimpleSlider from "../components/Work/SimpleSlider";
+import AlumniSlider from "../components/Alumni/AlumniSlider";
+import AdminBox from "../components/AdminBox";
 
 import Button from "../components/ReusableElements/Button";
 
 import { HomeData } from "../lib/HomeData";
 import banner from "../assets/img/home-banner-mobile.jpg";
+
+import Fade from "react-reveal/Fade";
+import Slide from "react-reveal/Slide";
 
 export async function getStaticProps() {
   // Instead of the file system,
@@ -36,7 +39,7 @@ export async function getStaticProps() {
   const alumni = await alumniData.json();
 
   const workData = await fetch(
-    "https://api.langara-app.ca/wp-json/wp/v2/projects?per_page=100"
+    "https://api.langara-app.ca/wp-json/wp/v2/projects?per_page=5"
   );
   const work = await workData.json();
 
@@ -56,69 +59,110 @@ const Home = ({ data, alumni, work, homeData }) => {
         title={homeData.header.title}
         desc={homeData.header.description}
         btnText={"Get to know WMDD"}
+        page={"home"}
       />
       <Element name="home" className="element">
-        <SectionContainer margin={true}>
+        <SectionContainer margin={true} gradient={true}>
           <Title>{homeData.summary.title}</Title>
           {HomeData.summary.contents.map((content, index) => (
-            <Summary key={index} description={content.title} />
+            <Summary key={index} summaryData={content} />
           ))}
         </SectionContainer>
       </Element>
 
-      <SectionContainer margin={true}>
+      <SectionContainer margin={true} overlay={true}>
         <Title>{homeData.projects.title}</Title>
-        <SectionDescription>{homeData.projects.description}</SectionDescription>
-        <SimpleSlider />
-        <Button text={"SEE MORE"} margin={2} font={24} size={"big"} />
-      </SectionContainer>
-
-      <SectionContainer margin={true}>
-        <Title>{homeData.alumni.title}</Title>
-        <SectionDescription>{homeData.alumni.description}</SectionDescription>
-        {alumni.map((alumna, index) =>
-          alumna.acf.alumni_name === "Harmanpreet Kaur" ? (
-            <AlumniIntro key={index} {...alumna.acf} />
-          ) : null
-        )}
-        <Button text={"SEE MORE"} margin={2} font={24} size={"big"} />
-      </SectionContainer>
-
-      <SectionContainer
-        style={{
-          backgroundColor: "#C2E5E0",
-          color: "#675d51",
-          paddingBottom: "1px",
-        }}
-        margin={false}
-      >
-        <Title>{homeData.lastMessage.title}</Title>
-        <SectionDescription>
-          {homeData.lastMessage.description}
+        <SectionDescription paddingBottom={"4rem"}>
+          {homeData.projects.description}
         </SectionDescription>
 
-        <Button
-          text={"See Admission Requirements"}
-          margin={2}
-          font={18}
-          size={"med"}
-        />
+        <SliderContainer>
+          <SimpleSlider data={work} />
+        </SliderContainer>
+        <BtnBcg color={"brown"}>
+          <Button
+            text={"SEE MORE"}
+            margin={2}
+            font={24}
+            size={"big"}
+            color={"white"}
+            bcg={"transparent"}
+          />
+        </BtnBcg>
       </SectionContainer>
-      <Footer />
+
+      <SectionContainer margin={false} overlay={true}>
+        <Title>{homeData.alumni.title}</Title>
+        <SectionDescription paddingBottom={"7rem"}>
+          {homeData.alumni.description}
+        </SectionDescription>
+        <SliderContainer>
+          <AlumniSlider data={alumni} />
+        </SliderContainer>
+        <BtnBcg color={"orange"}>
+          <Button
+            text={"SEE MORE"}
+            margin={2}
+            font={24}
+            size={"big"}
+            color={"white"}
+            bcg={"transparent"}
+          />
+        </BtnBcg>
+      </SectionContainer>
+
+      <AdminBox />
     </>
   );
 };
 
 const SectionContainer = styled.div`
-  margin: ${({ margin }) => (margin ? "0 0rem 5rem" : 0)};
+  margin: ${({ margin }) => (margin ? "0 0rem 2rem" : 0)};
+  position: ${({ overlay }) => (overlay ? "relative" : "static")};
 `;
 const Title = styled.h2`
   text-align: center;
   margin-bottom: 2rem;
 `;
 const SectionDescription = styled.p`
-  margin: 2rem 0;
+  margin: 2rem 3rem ${({ paddingBottom }) => paddingBottom} 3rem;
   text-align: center;
+  font-weight: 300;
+  font-size: 13px;
+`;
+const SliderContainer = styled.div`
+  position: absolute;
+  width: 100vw;
+  bottom: 140px;
+`;
+const BtnBcg = styled.div`
+  background-color: ${({ color }) =>
+    color === "orange" ? "#C36448" : color === "brown" ? "#675D51" : "white"};
+  height: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  /* position: absolute;
+  bottom: 400;
+  right: 0;
+  left: 0; */
+`;
+
+const AdmissionContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem 2rem;
+  background-color: #c2e5e0;
+`;
+const AdminTitle = styled.h2`
+  margin: 0;
+  text-align: center;
+`;
+const AdminDescription = styled.p`
+  text-align: center;
+  font-weight: 300;
+  font-size: 18px;
 `;
 
 export default Home;

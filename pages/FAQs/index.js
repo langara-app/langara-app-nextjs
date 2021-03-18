@@ -1,13 +1,7 @@
 import React from "react";
-import Footer from "../../components/Footer";
 
 const FAQ = () => {
-  return (
-    <div>
-      FAQ page
-      <Footer />
-    </div>
-  );
+  return <div>FAQ page</div>;
 };
 
 export default FAQ;
