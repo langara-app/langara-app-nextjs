@@ -1,0 +1,20 @@
+.news_body {
+    text-align: center;
+}
+.events_image {
+    width: 100%;
+    height: auto;
+}
+
+
+@media only screen and (min-width: 1000px)  {
+    .events_content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        text-align: left;
+    }
+    .events_image {
+        padding: 50px
+    }
+
+}
