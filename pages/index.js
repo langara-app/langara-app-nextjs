@@ -9,18 +9,18 @@ import Work from "../components/Work/Work";
 import styled from "styled-components";
 import { Element } from "react-scroll";
 
-import HeaderImageBox from "../components/HeaderImageBox";
+import HomeHeader from "../components/Header/HomeHeader";
 import Summary from "../components/Summary";
 import SimpleSlider from "../components/Work/SimpleSlider";
 import AlumniSlider from "../components/Alumni/AlumniSlider";
 import AdminBox from "../components/AdminBox";
 
 import Button from "../components/ReusableElements/Button";
+import useWindowWidth from "../components/Hooks/useWindowWidth";
 
 import { HomeData } from "../lib/HomeData";
 import banner from "../assets/img/home-banner-mobile.jpg";
 
-import Fade from "react-reveal/Fade";
 import Slide from "react-reveal/Slide";
 
 export async function getStaticProps() {
@@ -49,12 +49,13 @@ export async function getStaticProps() {
 }
 
 const Home = ({ data, alumni, work, homeData }) => {
+  const width = useWindowWidth();
   return (
     <>
       <Head>
         <title>Home Page </title>
       </Head>
-      <HeaderImageBox
+      <HomeHeader
         type={"home"}
         title={homeData.header.title}
         desc={homeData.header.description}
@@ -64,41 +65,79 @@ const Home = ({ data, alumni, work, homeData }) => {
 
       <Element name="home" className="element">
         <Slide ssrFadeout bottom>
-          <SectionContainer margin={true}>
-            <TitleBcg>
-              <Title type={"summary"}>{homeData.summary.title}</Title>
-            </TitleBcg>
-            {HomeData.summary.contents.map((content, index) => (
-              <Summary key={index} summaryData={content} />
-            ))}
-          </SectionContainer>
+          {width < 768 ? (
+            <SectionContainer margin={true}>
+              <TitleBcg>
+                <Title type={"summary"}>{homeData.summary.title}</Title>
+              </TitleBcg>
+              {HomeData.summary.contents.map((content, index) => (
+                <Summary key={index} summaryData={content} />
+              ))}
+            </SectionContainer>
+          ) : (
+            <SectionContainer margin={true}>
+              {HomeData.summary.contents.map((content, index) => (
+                <Summary
+                  key={index}
+                  summaryData={content}
+                  homeData={homeData}
+                  id={index}
+                />
+              ))}
+            </SectionContainer>
+          )}
         </Slide>
       </Element>
 
-      <SectionContainer margin={true} overlay={true} type={"project"}>
-        <Title>{homeData.projects.title}</Title>
-        <SectionDescription paddingBottom={"4rem"}>
-          {homeData.projects.description}
-        </SectionDescription>
+      {width < 768 ? (
+        <SectionContainer margin={true} overlay={true} type={"project"}>
+          <Title>{homeData.projects.title}</Title>
+          <SectionDescription paddingBottom={64}>
+            {homeData.projects.description}
+          </SectionDescription>
 
-        <SliderContainer>
-          <SimpleSlider data={work} />
-        </SliderContainer>
-        <BtnBcg color={"brown"}>
-          <Button
-            text={"SEE MORE"}
-            margin={2}
-            font={24}
-            size={"big"}
-            color={"white"}
-            bcg={"transparent"}
-          />
-        </BtnBcg>
-      </SectionContainer>
+          <SliderContainer>
+            <SimpleSlider data={work} />
+          </SliderContainer>
+          <BtnBcg color={"brown"}>
+            <Button
+              text={"SEE MORE"}
+              margin={2}
+              font={24}
+              size={"big"}
+              color={"white"}
+              bcg={"transparent"}
+            />
+          </BtnBcg>
+        </SectionContainer>
+      ) : (
+        <SectionContainerProject>
+          <div></div>
+          <SliderContainer>
+            <SimpleSlider data={work} />
+          </SliderContainer>
+          <div>
+            <Title>{homeData.projects.title}</Title>
+            <SectionDescription paddingBottom={64}>
+              {homeData.projects.description}
+            </SectionDescription>
+            <BtnBcg color={"brown"}>
+              <Button
+                text={"SEE MORE"}
+                margin={2}
+                font={24}
+                size={"big"}
+                color={"white"}
+                bcg={"transparent"}
+              />
+            </BtnBcg>
+          </div>
+        </SectionContainerProject>
+      )}
 
       <SectionContainer margin={false} overlay={true} type={"alumni"}>
         <Title>{homeData.alumni.title}</Title>
-        <SectionDescription paddingBottom={"7rem"}>
+        <SectionDescription paddingBottom={112}>
           {homeData.alumni.description}
         </SectionDescription>
         <SliderContainer>
@@ -139,25 +178,41 @@ const TitleBcg = styled.div`
   );
   height: ${(300 / 375) * 100}vw;
   color: white;
+
+  @media only screen and (min-width: 540px) {
+    height: ${(200 / 375) * 100}vw;
+  }
 `;
 const SectionContainer = styled.div`
   margin: ${({ margin }) => (margin ? "0 0rem 0rem" : 0)};
   position: ${({ overlay }) => (overlay ? "relative" : "static")};
   background-color: ${({ type }) =>
     type === "alumni" || type === "project" ? "white" : "#effcfa"};
+
+  @media only screen and (min-width: 768px) {
+    /* display: grid;
+    grid-template-columns: 1fr 1fr */
+  }
+`;
+const SectionContainerProject = styled.div`
+  @media only screen and (min-width: 768px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+  }
 `;
 const Title = styled.h2`
   text-align: center;
   margin-top: 0;
   padding-top: ${({ type }) =>
     type === "summary" ? (120 / 375) * 100 : (47 / 375) * 100}vw;
-  padding-left: ${({ type }) => (type === "summary" ? "5.5rem" : 0)};
-  padding-right: ${({ type }) => (type === "summary" ? "5.5rem" : 0)};
-
+  padding-left: ${({ type }) => (type === "summary" ? "5.5rem" : "35px")};
+  padding-right: ${({ type }) => (type === "summary" ? "5.5rem" : "35px")};
+  line-height: ${({ type }) => (type === "summary" ? 1.5 : 1.1)};
   font-size: 32px;
 `;
 const SectionDescription = styled.p`
-  margin: 2rem 3rem ${({ paddingBottom }) => paddingBottom} 3rem;
+  padding: 2rem 35px ${({ paddingBottom }) => (paddingBottom / 375) * 100}vw;
   text-align: center;
   font-weight: 300;
   font-size: 13px;
@@ -165,8 +220,16 @@ const SectionDescription = styled.p`
 const SliderContainer = styled.div`
   position: absolute;
   width: 100vw;
-  bottom: 140px;
+  bottom: ${(140 / 375) * 100}vw;
 `;
+
+const SliderContainerProject = styled.div`
+  position: absolute;
+  width: 100vw;
+  bottom: ${(140 / 375) * 100}vw;
+  height: ${(479 / 1366) * 100}vw;
+`;
+
 const BtnBcg = styled.div`
   background-color: ${({ color }) =>
     color === "orange" ? "#C36448" : color === "brown" ? "#675D51" : "white"};

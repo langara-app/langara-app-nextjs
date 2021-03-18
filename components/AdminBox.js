@@ -13,7 +13,6 @@ const AdminBox = () => {
         text={"See Admission Requirements"}
         margin={0}
         font={18}
-        size={"med"}
         color={"#675D51"}
         bcg={"white"}
       />
@@ -27,6 +26,8 @@ const AdmissionContainer = styled.div`
   justify-content: center;
   padding: 3rem 2rem;
   background-color: #c2e5e0;
+  padding-top: 70px;
+  padding-bottom: 70px;
 `;
 const AdminTitle = styled.h2`
   margin: 0;
@@ -35,7 +36,8 @@ const AdminTitle = styled.h2`
 const AdminDescription = styled.p`
   text-align: center;
   font-weight: 300;
-  font-size: 18px;
+  font-size: 13px;
+  padding-bottom: 41px;
 `;
 
 export default AdminBox;
