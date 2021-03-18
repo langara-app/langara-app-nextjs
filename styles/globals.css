@@ -5,6 +5,7 @@ body {
   font-family: Kanit, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   color: #675d51;
+  background-color: #effcfa;
 }
 
 a {
@@ -17,7 +18,7 @@ a {
 }
 
 .slick-slide {
-  height: 320px !important;
+  height: calc((325 / 375) * 100) vw !important;
 }
 
 .swiper-container {
