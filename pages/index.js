@@ -61,16 +61,21 @@ const Home = ({ data, alumni, work, homeData }) => {
         btnText={"Get to know WMDD"}
         page={"home"}
       />
+
       <Element name="home" className="element">
-        <SectionContainer margin={true} gradient={true}>
-          <Title>{homeData.summary.title}</Title>
-          {HomeData.summary.contents.map((content, index) => (
-            <Summary key={index} summaryData={content} />
-          ))}
-        </SectionContainer>
+        <Slide ssrFadeout bottom>
+          <SectionContainer margin={true}>
+            <TitleBcg>
+              <Title type={"summary"}>{homeData.summary.title}</Title>
+            </TitleBcg>
+            {HomeData.summary.contents.map((content, index) => (
+              <Summary key={index} summaryData={content} />
+            ))}
+          </SectionContainer>
+        </Slide>
       </Element>
 
-      <SectionContainer margin={true} overlay={true}>
+      <SectionContainer margin={true} overlay={true} type={"project"}>
         <Title>{homeData.projects.title}</Title>
         <SectionDescription paddingBottom={"4rem"}>
           {homeData.projects.description}
@@ -91,7 +96,7 @@ const Home = ({ data, alumni, work, homeData }) => {
         </BtnBcg>
       </SectionContainer>
 
-      <SectionContainer margin={false} overlay={true}>
+      <SectionContainer margin={false} overlay={true} type={"alumni"}>
         <Title>{homeData.alumni.title}</Title>
         <SectionDescription paddingBottom={"7rem"}>
           {homeData.alumni.description}
@@ -116,13 +121,40 @@ const Home = ({ data, alumni, work, homeData }) => {
   );
 };
 
+const TitleBcg = styled.div`
+  background: rgb(103, 93, 81);
+  background: linear-gradient(
+    0deg,
+    rgba(103, 93, 81, 1) 0%,
+    rgba(103, 93, 81, 0.9472163865546218) 10%,
+    rgba(103, 93, 81, 0.9023984593837535) 20%,
+    rgba(103, 93, 81, 0.8463760504201681) 30%,
+    rgba(103, 93, 81, 0.7987570028011204) 40%,
+    rgba(103, 93, 81, 0.7035189075630253) 50%,
+    rgba(103, 93, 81, 0.5494572829131652) 60%,
+    rgba(103, 93, 81, 0.3981967787114846) 70%,
+    rgba(103, 93, 81, 0.30015756302521013) 80%,
+    rgba(103, 93, 81, 0.10127801120448177) 90%,
+    rgba(103, 93, 81, 0) 100%
+  );
+  height: ${(300 / 375) * 100}vw;
+  color: white;
+`;
 const SectionContainer = styled.div`
-  margin: ${({ margin }) => (margin ? "0 0rem 2rem" : 0)};
+  margin: ${({ margin }) => (margin ? "0 0rem 0rem" : 0)};
   position: ${({ overlay }) => (overlay ? "relative" : "static")};
+  background-color: ${({ type }) =>
+    type === "alumni" || type === "project" ? "white" : "#effcfa"};
 `;
 const Title = styled.h2`
   text-align: center;
-  margin-bottom: 2rem;
+  margin-top: 0;
+  padding-top: ${({ type }) =>
+    type === "summary" ? (120 / 375) * 100 : (47 / 375) * 100}vw;
+  padding-left: ${({ type }) => (type === "summary" ? "5.5rem" : 0)};
+  padding-right: ${({ type }) => (type === "summary" ? "5.5rem" : 0)};
+
+  font-size: 32px;
 `;
 const SectionDescription = styled.p`
   margin: 2rem 3rem ${({ paddingBottom }) => paddingBottom} 3rem;
@@ -142,10 +174,6 @@ const BtnBcg = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  /* position: absolute;
-  bottom: 400;
-  right: 0;
-  left: 0; */
 `;
 
 const AdmissionContainer = styled.div`

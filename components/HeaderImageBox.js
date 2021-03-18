@@ -16,7 +16,7 @@ const HeaderImageBox = ({ type, title, desc, btnText, img, page }) => {
 
   return (
     <HeaderContainer img={img}>
-      <h1>{title}</h1>
+      <h1 style={{ textTransform: "uppercase" }}>{title}</h1>
       <HeaderP>{desc}</HeaderP>
       {btnText ? (
         <Button
@@ -47,15 +47,19 @@ const HeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  text-align: center;
   align-items: center;
   background: url(${({ img }) => img});
   background-position: center;
   background-size: cover;
+  background-color: #effcfa;
   height: 100vh;
   position: relative;
-  padding: 1rem;
+  padding-top: ${(115 / 375) * 100}vw;
+  padding-left: 35px;
+  padding-right: 35px;
   color: #c36448;
+  text-align: center;
+
   /* &::after {
       content: "";
       position: absolute;
@@ -69,6 +73,7 @@ const HeaderContainer = styled.div`
 
 const HeaderP = styled.p`
   margin: 1rem 0;
+  margin-bottom: ${(36 / 375) * 100}vw;
   font-weight: 300;
   font-size: 13px;
   color: #675d51;
