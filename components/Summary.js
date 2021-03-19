@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import useWindowWidth from "../components/Hooks/useWindowWidth";
+import Slide from "react-reveal/Slide";
 
 const Summary = ({ summaryData, homeData, id }) => {
   const width = useWindowWidth();
@@ -27,42 +28,44 @@ const Summary = ({ summaryData, homeData, id }) => {
     </SummaryContainer>
   ) : id === 0 ? (
     <SummaryContainerWithTitle>
-      <Title type={"summary"}>{homeData.summary.title}</Title>
+      <Slide ssrFadeout bottom>
+        <Title type={"summary"}>{homeData.summary.title}</Title>
+      </Slide>
       <SummaryContainer color={summaryData.tag} index={id}>
-        <div>
+        <GridDivider>
           <ImageContainer>
             <img
               style={{ display: "block", width: "100%" }}
               src="https://dummyimage.com/600x400/b8b8b8/fff"
             />
           </ImageContainer>
-        </div>
-        <div>
+        </GridDivider>
+        <GridDivider index={id}>
           <SummaryTitle color={summaryData.tag}>
             {summaryData.title}
           </SummaryTitle>
-          <SummaryDescription color={summaryData.tag}>
+          <SummaryDescription color={summaryData.tag} index={id}>
             {summaryData.description}
           </SummaryDescription>
-        </div>
+        </GridDivider>
       </SummaryContainer>
     </SummaryContainerWithTitle>
   ) : (
     <SummaryContainer color={summaryData.tag} index={id}>
-      <div>
+      <GridDivider index={id}>
         <SummaryTitle color={summaryData.tag}>{summaryData.title}</SummaryTitle>
-        <SummaryDescription color={summaryData.tag}>
+        <SummaryDescription color={summaryData.tag} index={id}>
           {summaryData.description}
         </SummaryDescription>
-      </div>
-      <div>
+      </GridDivider>
+      <GridDivider>
         <ImageContainer>
           <img
             style={{ display: "block", width: "100%" }}
             src="https://dummyimage.com/600x400/b8b8b8/fff"
           />
         </ImageContainer>
-      </div>
+      </GridDivider>
     </SummaryContainer>
   );
 };
@@ -71,9 +74,11 @@ const SummaryContainerWithTitle = styled.div`
   @media only screen and (min-width: 768px) {
     background-color: #675d51;
     color: white;
-    height: ${(902 / 1366) * 100}vw;
+    height: ${(902 / 1365) * 100}vw;
+    position: relative;
   }
 `;
+
 const SummaryContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -81,7 +86,7 @@ const SummaryContainer = styled.div`
   background-color: ${({ color }) =>
     color === "design" ? "#675D51" : "#EFFCFA"};
   color: white;
-  padding: 35px;
+  padding: 35px ${(186 / 1366) * 100}vw;
 
   @media only screen and (min-width: 768px) {
     display: grid;
@@ -137,7 +142,12 @@ const SummaryTitle = styled.h3`
     left: unset;
     transform: unset;
     font-size: ${(40 / 1366) * 100}vw;
+    text-align: left;
   }
+`;
+
+const GridDivider = styled.div`
+  align-self: ${({ index }) => (index === 0 ? "flex-end" : "center")};
 `;
 const SummaryDescription = styled.p`
   font-weight: 300;
@@ -146,7 +156,9 @@ const SummaryDescription = styled.p`
   color: ${({ color }) => (color === "design" ? "white" : "#675D51")};
   @media only screen and (min-width: 768px) {
     font-size: ${(19 / 1366) * 100}vw;
-  }
+    text-align: left;
+    margin-bottom: ${({ index }) => (index === 0 ? (159 / 1366) * 100 : 0)}vw
+   
 `;
 const ImageContainer = styled.div`
   width: 30%;

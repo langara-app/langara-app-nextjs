@@ -29,8 +29,14 @@ a {
   justify-content: center !important;
 }
 
+@media only screen and (min-width: 768px) {
+  .slick-list {
+    height: 50vw !important;
+  }
+}
+
 .swiper-container {
-  padding: 2rem !important;
+  padding: 4.7vw !important;
   /* border: 1px solid black; */
 }
 
@@ -58,14 +64,29 @@ a {
 
 @media only screen and (min-width: 768px) {
   .swiper-container {
-    padding: 5.6vw !important;
+    padding: 5.6vw 5.6vw 8.5vw !important;
     /* border: 1px solid black; */
   }
 
   .swiper-button-prev {
     right: 4vw !important;
+    top: 16vw !important;
   }
   .swiper-button-next {
     left: 5.5vw !important;
+    top: 16vw !important;
+  }
+
+  /* Bottom to Top Animation Library Reveal */
+  .react-reveal {
+    position: absolute;
+    top: 10vw;
+    left: 13vw;
+  }
+
+  /* Project Swiper */
+  .slick-list {
+    height: 42vw !important;
+    width: 50vw !important;
   }
 }

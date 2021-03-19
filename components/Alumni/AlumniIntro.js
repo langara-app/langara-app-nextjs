@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import Slider from "react-slick";
+import useWindowWidth from "../Hooks/useWindowWidth";
 
 const AlumniIntro = (props) => {
+  const width = useWindowWidth();
   const {
     profile_image,
     alumni_name,
@@ -11,13 +13,24 @@ const AlumniIntro = (props) => {
     graduation_year,
   } = props;
 
-  return (
+  return width < 768 ? (
     <Container>
       <AlumniImageTopContainer>
         <AlumniImageTop src={profile_image} />
       </AlumniImageTopContainer>
       <AlumniComment>"{comment}"</AlumniComment>
       <PersonalInfo size={"big"}>{alumni_name}</PersonalInfo>
+      <PersonalInfo>Stream chosen - {stream}</PersonalInfo>
+      <PersonalInfo>{graduation_year}</PersonalInfo>
+    </Container>
+  ) : (
+    <Container>
+      <AlumniImageTopContainer>
+        <AlumniImageTop src={profile_image} />
+      </AlumniImageTopContainer>
+
+      <PersonalInfo size={"big"}>{alumni_name}</PersonalInfo>
+      <AlumniComment>"{comment}"</AlumniComment>
       <PersonalInfo>Stream chosen - {stream}</PersonalInfo>
       <PersonalInfo>{graduation_year}</PersonalInfo>
     </Container>
@@ -32,6 +45,10 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   /* justify-content: center; */
+  @media only screen and (min-width: 768px) {
+    margin: 0;
+    padding: ${(149 / 1366) * 100}vw;
+  }
 `;
 
 const AlumniImageTopContainer = styled.div`
@@ -48,6 +65,11 @@ const AlumniImageTopContainer = styled.div`
   @media only screen and (min-width: 540px) {
     top: -${(75 / 375) * 100}vw;
   }
+  @media only screen and (min-width: 768px) {
+    position: static;
+    width: ${(164 / 1366) * 100}vw;
+    -webkit-transform: unset;
+  }
 `;
 const AlumniImageTop = styled.img`
   display: block;
@@ -61,6 +83,10 @@ const AlumniComment = styled.p`
   font-size: 13px;
   color: #707070;
   text-align: center;
+  @media only screen and (min-width: 768px) {
+    padding-top: 0vw;
+    font-size: ${(19 / 1366) * 100}vw;
+  }
 `;
 
 const PersonalInfo = styled.span`
@@ -68,6 +94,10 @@ const PersonalInfo = styled.span`
   font-size: ${({ size }) => (size === "big" ? 18 : 13)}px;
   font-weight: ${({ size }) => (size === "big" ? 600 : 300)};
   color: #707070;
+  @media only screen and (min-width: 768px) {
+    font-size: ${({ size }) =>
+      size === "big" ? (25 / 1366) * 100 : (19 / 1366) * 100}vw;
+  }
 `;
 
 export default AlumniIntro;
