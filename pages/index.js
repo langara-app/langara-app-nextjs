@@ -63,31 +63,30 @@ const Home = ({ data, alumni, work, homeData }) => {
         page={"home"}
       />
 
-      <Element name="home" className="element">
-        <Slide ssrFadeout bottom>
-          {width < 768 ? (
-            <SectionContainer margin={true}>
-              <TitleBcg>
-                <Title type={"summary"}>{homeData.summary.title}</Title>
-              </TitleBcg>
-              {HomeData.summary.contents.map((content, index) => (
-                <Summary key={index} summaryData={content} />
-              ))}
-            </SectionContainer>
-          ) : (
-            <SectionContainer margin={true}>
-              {HomeData.summary.contents.map((content, index) => (
-                <Summary
-                  key={index}
-                  summaryData={content}
-                  homeData={homeData}
-                  id={index}
-                />
-              ))}
-            </SectionContainer>
-          )}
-        </Slide>
-      </Element>
+      {width < 768 ? (
+        <SectionContainer margin={true}>
+          <TitleBcg>
+            <Slide ssrFadeout bottom>
+              <Title type={"summary"}>{homeData.summary.title}</Title>
+            </Slide>
+          </TitleBcg>
+
+          {HomeData.summary.contents.map((content, index) => (
+            <Summary key={index} summaryData={content} />
+          ))}
+        </SectionContainer>
+      ) : (
+        <SectionContainer margin={true}>
+          {HomeData.summary.contents.map((content, index) => (
+            <Summary
+              key={index}
+              summaryData={content}
+              homeData={homeData}
+              id={index}
+            />
+          ))}
+        </SectionContainer>
+      )}
 
       {width < 768 ? (
         <SectionContainer margin={true} overlay={true} type={"project"}>
@@ -113,15 +112,17 @@ const Home = ({ data, alumni, work, homeData }) => {
       ) : (
         <SectionContainerProject>
           <div></div>
-          <SliderContainer>
+          <SliderContainer contents={"project"}>
             <SimpleSlider data={work} />
           </SliderContainer>
           <div>
-            <Title>{homeData.projects.title}</Title>
-            <SectionDescription paddingBottom={64}>
-              {homeData.projects.description}
-            </SectionDescription>
             <BtnBcg color={"brown"}>
+              <TitleContainer>
+                <Title>{homeData.projects.title}</Title>
+                <SectionDescription paddingBottom={64}>
+                  {homeData.projects.description}
+                </SectionDescription>
+              </TitleContainer>
               <Button
                 text={"SEE MORE"}
                 margin={2}
@@ -129,31 +130,56 @@ const Home = ({ data, alumni, work, homeData }) => {
                 size={"big"}
                 color={"white"}
                 bcg={"transparent"}
+                layout={"desktop"}
               />
             </BtnBcg>
           </div>
         </SectionContainerProject>
       )}
 
-      <SectionContainer margin={false} overlay={true} type={"alumni"}>
-        <Title>{homeData.alumni.title}</Title>
-        <SectionDescription paddingBottom={112}>
-          {homeData.alumni.description}
-        </SectionDescription>
-        <SliderContainer>
-          <AlumniSlider data={alumni} />
-        </SliderContainer>
-        <BtnBcg color={"orange"}>
-          <Button
-            text={"SEE MORE"}
-            margin={2}
-            font={24}
-            size={"big"}
-            color={"white"}
-            bcg={"transparent"}
-          />
-        </BtnBcg>
-      </SectionContainer>
+      {width < 768 ? (
+        <SectionContainer margin={false} overlay={true} type={"alumni"}>
+          <Title>{homeData.alumni.title}</Title>
+          <SectionDescription paddingBottom={112}>
+            {homeData.alumni.description}
+          </SectionDescription>
+          <SliderContainer>
+            <AlumniSlider data={alumni} />
+          </SliderContainer>
+          <BtnBcg color={"orange"}>
+            <Button
+              text={"SEE MORE"}
+              margin={2}
+              font={24}
+              size={"big"}
+              color={"white"}
+              bcg={"transparent"}
+              layout={"desktop"}
+            />
+          </BtnBcg>
+        </SectionContainer>
+      ) : (
+        <SectionContainer margin={false} overlay={true} type={"alumni"}>
+          <BtnBcg color={"orange"}>
+            <Title>{homeData.alumni.title}</Title>
+            <SectionDescription paddingBottom={112}>
+              {homeData.alumni.description}
+            </SectionDescription>
+            <Button
+              text={"SEE MORE"}
+              margin={2}
+              font={24}
+              size={"big"}
+              color={"white"}
+              bcg={"transparent"}
+              layout={"desktop"}
+            />
+          </BtnBcg>
+          <SliderContainer contents={"alumni"}>
+            <AlumniSlider data={alumni} />
+          </SliderContainer>
+        </SectionContainer>
+      )}
 
       <AdminBox />
     </>
@@ -190,8 +216,8 @@ const SectionContainer = styled.div`
     type === "alumni" || type === "project" ? "white" : "#effcfa"};
 
   @media only screen and (min-width: 768px) {
-    /* display: grid;
-    grid-template-columns: 1fr 1fr */
+    display: ${({ type }) => (type === "alumni" ? "grid" : "unset")};
+    grid-template-columns: 1fr 1fr;
   }
 `;
 const SectionContainerProject = styled.div`
@@ -199,7 +225,13 @@ const SectionContainerProject = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     position: relative;
+    height: ${(694 / 1366) * 100}vw;
   }
+`;
+
+const TitleContainer = styled.div`
+  color: white;
+  /* margin-left: ${(153 / 1366) * 100}vw; */
 `;
 const Title = styled.h2`
   text-align: center;
@@ -210,25 +242,45 @@ const Title = styled.h2`
   padding-right: ${({ type }) => (type === "summary" ? "5.5rem" : "35px")};
   line-height: ${({ type }) => (type === "summary" ? 1.5 : 1.1)};
   font-size: 32px;
+  @media only screen and (min-width: 768px) {
+    padding: 0;
+    margin: 0;
+    font-size: ${(50 / 1366) * 100}vw;
+    text-align: left;
+    color: white;
+  }
 `;
 const SectionDescription = styled.p`
   padding: 2rem 35px ${({ paddingBottom }) => (paddingBottom / 375) * 100}vw;
   text-align: center;
   font-weight: 300;
   font-size: 13px;
+  @media only screen and (min-width: 768px) {
+    text-align: left;
+    padding: 0;
+    margin-right: ${(119 / 1366) * 100}vw;
+    font-size: ${(19 / 1366) * 100}vw;
+    color: white;
+  }
 `;
 const SliderContainer = styled.div`
   position: absolute;
   width: 100vw;
   bottom: ${(140 / 375) * 100}vw;
+  @media only screen and (min-width: 768px) {
+    bottom: ${(107 / 1366) * 100}vw;
+    position: ${({ contents }) =>
+      contents === "project" ? "absolute" : "static"};
+    width: ${({ contents }) => (contents === "alumni" ? 50 : 100)}vw;
+  }
 `;
 
-const SliderContainerProject = styled.div`
-  position: absolute;
-  width: 100vw;
-  bottom: ${(140 / 375) * 100}vw;
-  height: ${(479 / 1366) * 100}vw;
-`;
+// const SliderContainerProject = styled.div`
+//   position: absolute;
+//   width: 100vw;
+//   bottom: ${(140 / 375) * 100}vw;
+//   height: ${(479 / 1366) * 100}vw;
+// `;
 
 const BtnBcg = styled.div`
   background-color: ${({ color }) =>
@@ -237,6 +289,12 @@ const BtnBcg = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+
+  @media only screen and (min-width: 768px) {
+    height: ${(694 / 1366) * 100}vw;
+    padding-left: ${(153 / 1366) * 100}vw;
+    justify-content: center;
+  }
 `;
 
 const AdmissionContainer = styled.div`

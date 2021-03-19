@@ -1,9 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 
-const Button = ({ text, margin, font, size, color, bcg }) => {
+const Button = ({ text, margin, font, size, color, bcg, layout, section }) => {
   return (
-    <BtnElement margin={margin} font={font} size={size} color={color} bcg={bcg}>
+    <BtnElement
+      margin={margin}
+      font={font}
+      size={size}
+      color={color}
+      bcg={bcg}
+      layout={layout}
+      section={section}
+    >
       {text}
     </BtnElement>
   );
@@ -33,10 +41,23 @@ const BtnElement = styled.button`
   color: ${({ color }) => color};
 
   @media only screen and (min-width: 768px) {
-    margin: ${(30 / 1366) * 100}vw 0;
-    margin-right: ${(120 / 1366) * 100}vw;
-    padding: ${(12 / 1366) * 100}vw ${(34 / 1366) * 100}vw;
-    font-size: ${(24 / 1366) * 100}vw;
+    margin: ${({ layout }) => (layout === "desktop" ? 0 : (30 / 1366) * 100)}vw
+      ${({ section }) => (section === "joinWMDD" ? (500 / 1366) * 100 : 0)}vw;
+
+    margin-right: ${({ layout, section }) =>
+      layout === "desktop"
+        ? (315 / 1366) * 100
+        : section === "joinWMDD"
+        ? (500 / 1366) * 100
+        : (120 / 1366) * 100}vw;
+
+    padding: ${({ layout, section }) =>
+        layout === "desktop" ? (10 / 1366) * 100 : (12 / 1366) * 100}vw
+      ${({ section }) =>
+        section === "joinWMDD" ? (10 / 1366) * 100 : (34 / 1366) * 100}vw;
+
+    font-size: ${({ section }) =>
+      section === "joinWMDD" ? (18 / 1366) * 100 : (24 / 1366) * 100}vw;
   }
 `;
 

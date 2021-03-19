@@ -9,6 +9,7 @@ import SwiperCore, {
 } from "swiper";
 import useWindowWidth from "../Hooks/useWindowWidth";
 import { Swiper, SwiperSlide } from "swiper/react";
+import Image from "next/image";
 
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 
@@ -33,7 +34,11 @@ const SimpleSlider = ({ data }) => {
           {data.map((project) => (
             <SwiperSlide>
               <ImageContainer>
-                <Image src={project.acf.app_picture} />
+                <Image2
+                  src={project.acf.app_picture}
+                  width={1000}
+                  height={1000}
+                />
               </ImageContainer>
             </SwiperSlide>
           ))}
@@ -54,7 +59,11 @@ const SimpleSlider = ({ data }) => {
           {data.map((project) => (
             <SwiperSlide>
               <ImageContainer>
-                <Image src={project.acf.app_picture} />
+                <Image2
+                  src={project.acf.app_picture}
+                  width={1000}
+                  height={1000}
+                />
               </ImageContainer>
             </SwiperSlide>
           ))}
@@ -70,7 +79,7 @@ const SliderContainer = styled.div`
   background-color: white;
 
   @media only screen and (min-width: 768px) {
-    margin-right: 40vw;
+    margin-right: 41vw;
   }
 `;
 
@@ -80,10 +89,10 @@ const ImageContainer = styled.div`
     width: 21vw;
   }
 `;
-const Image = styled.img`
+const Image2 = styled(Image)`
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
 
   /* @media only screen and (min-width: 768px) {
     &&& {
