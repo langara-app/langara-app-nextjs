@@ -31,25 +31,27 @@ const NewsEvents = ({ news_events }) => {
             <img className={styles.events_image} src={news.acf.article_image} />
           </div>
           <div>
+            <p>{news.date}</p>
+            {/* <span></span> */}
             <span className="post-date">{formatDate()}</span>
-            <Link href={`/news-and-events/${encodeURIComponent(news.slug)}`}>
-              <a>
-                <h2>{news.title.rendered}</h2>
-              </a>
+            <Link href={`/news-and-events/${news.slug}`}>
+                <a>
+                    <h2>{news.title.rendered}</h2>
+                </a>
             </Link>
-            <p
-              className="article1"
-              dangerouslySetInnerHTML={{
-                __html: news.acf.section1_article,
-              }}
-            ></p>
+            <p className="article1"
+               dangerouslySetInnerHTML={{
+               __html: news.acf.section1_article,
+              }}>
+            </p>
           </div>
         </div>
       ))}
-
       <AdminBox />
     </div>
   );
 };
 
 export default NewsEvents;
+
+

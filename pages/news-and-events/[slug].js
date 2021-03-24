@@ -1,107 +1,115 @@
-import React from "react";
-import Footer from "../../components/Footer";
+import Image from 'next/image';
 
-export async function getServerSideProps(context) {
-    const res = await fetch(
-        "https://api.langara-app.ca/wp-json/wp/v2/news-and-events"
-        // "https://api.langara-app.ca/wp-json/acf/v3/news-and-events"
-      )
-    
-      const news_events = await res.json();
-      
-      return { props: { news_events } };
-}
-
-const NewsEventsIndividual = ({ news_events }) => {
+const BlogPost = ({ event }) => {
   const formatDate = () => {
     const options = { year: "numeric", month: "long", day: "numeric" };
-     return news_events.map(news => {
-      return new Date(news.date).toLocaleDateString(undefined, options);
-    })
-   
+      return new Date(event.date).toLocaleDateString(undefined, options);
   };
-    return (
-        <div className="news-and-events-single">
+  
+  return (
+    <article>
+      <div className="news-and-events-single">
         <h1>News & Events Details</h1>
-        {
-        news_events.map(news => (        
         <div className="news-event-single">
-          <h2>{news.title.rendered}</h2>
+          <h2>{event.title.rendered}</h2>
           <span className="post-date">{formatDate()}</span>
           <div>
-            <img src={news.acf.article_image} alt="news-img" />
+            <Image 
+              src={event.acf.article_image}
+              alt="Capstone Showcase Banner"
+              width={600}
+              height={300}/>
+            {/* <img src={event.acf.article_image} alt="news-img" /> */}
           </div>
-          {news.acf.section1_title !== "" ? (
-            <h3 className="article1-title">{news.acf.section1_title}</h3>
+          {event.acf.section1_title !== "" ? (
+            <h3 className="article1-title">{event.acf.section1_title}</h3>
           ) : null}
-          {news.acf.section1_article !== "" ? (
+          {event.acf.section1_article !== "" ? (
             <p
               className="article1"
               dangerouslySetInnerHTML={{
-                __html: news.acf.section1_article,
+                __html: event.acf.section1_article,
               }}
             ></p>
           ) : null}
-          {news.acf.section1_link !== "" ? (
-            <a className="article1-link" href={news.acf.section1_link}>
-              {news.acf.section1_link_title}
+          {event.acf.section1_link !== "" ? (
+            <a className="article1-link" href={event.acf.section1_link}>
+              {event.acf.section1_link_title}
             </a>
           ) : null}
-          {news.acf.section2_title !== "" ? (
-            <h3 className="article2-title">{news.acf.section2_title}</h3>
+          {event.acf.section2_title !== "" ? (
+            <h3 className="article2-title">{event.acf.section2_title}</h3>
           ) : null}
-          {news.acf.section2_article !== "" ? (
+          {event.acf.section2_article !== "" ? (
             <p
               className="article2"
               dangerouslySetInnerHTML={{
-                __html: news.acf.section2_article,
+                __html: event.acf.section2_article,
               }}
             ></p>
           ) : null}
-          {news.acf.section2_link !== "" ? (
-            <a className="article2-link" href={news.acf.section2_link}>
-              {news.acf.section1_link_title}
+          {event.acf.section2_link !== "" ? (
+            <a className="article2-link" href={event.acf.section2_link}>
+              {event.acf.section1_link_title}
             </a>
           ) : null}
-          {news.acf.section3_title !== "" ? (
-            <h3 className="article1-title">{news.acf.section3_title}</h3>
+          {event.acf.section3_title !== "" ? (
+            <h3 className="article1-title">{event.acf.section3_title}</h3>
           ) : null}
-          {news.acf.section3_article !== "" ? (
+          {event.acf.section3_article !== "" ? (
             <p
               className="article3"
               dangerouslySetInnerHTML={{
-                __html: news.acf.section3_article,
+                __html: event.acf.section3_article,
               }}
             ></p>
           ) : null}
-          {news.acf.section3_link !== "" ? (
-            <a className="article1-link" href={news.acf.section3_link}>
-              {news.acf.section3_link_title}
+          {event.acf.section3_link !== "" ? (
+            <a className="article1-link" href={event.acf.section3_link}>
+              {event.acf.section3_link_title}
             </a>
           ) : null}
-          {news.acf.section4_title !== "" ? (
-            <h3 className="article1-title">{news.acf.section4_title}</h3>
+          {event.acf.section4_title !== "" ? (
+            <h3 className="article1-title">{event.acf.section4_title}</h3>
           ) : null}
-          {news.acf.section4_article !== "" ? (
+          {event.acf.section4_article !== "" ? (
             <p
               className="article4"
               dangerouslySetInnerHTML={{
-                __html: news.acf.section4_article,
+                __html: event.acf.section4_article,
               }}
             ></p>
           ) : null}
-          {news.acf.section4_link !== "" ? (
-            <a className="article1-link" href={news.acf.section4_link}>
-              {news.acf.section4_link_title}
+          {event.acf.section4_link !== "" ? (
+            <a className="article1-link" href={event.acf.section4_link}>
+              {event.acf.section4_link_title}
             </a>
           ) : null}
         </div>
-        ))
-  }
-        <Footer />
       </div>
-    );
+  </article>
+  )
+};
+export default BlogPost;
+
+export async function getStaticPaths() {
+  const res = await fetch("https://api.langara-app.ca/wp-json/wp/v2/news-and-events")
+  const news_events = await res.json();
+
+  return {
+    paths: news_events.map((event) => ({ params: { slug: event.slug } })),
+    fallback: false,
   };
+}
+
+export async function getStaticProps({ params }) {
+  const res = await fetch("https://api.langara-app.ca/wp-json/wp/v2/news-and-events")
+  const news_events = await res.json();
   
-  export default NewsEventsIndividual;
-  
+  return {
+    props: {
+      event: news_events.find((event) => event.slug === params.slug),
+    },
+  };
+}
+
