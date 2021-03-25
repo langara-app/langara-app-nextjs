@@ -22,8 +22,7 @@
     "sass": "^1.32.6",
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.2.1",
-    "swiper": "^6.5.0",
-    "swr": "^0.5.4"
+    "swiper": "^6.5.0"
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^1.12.0"

@@ -22,7 +22,9 @@ const NewsEvents = ({ news_events }) => {
       <div className={styles.news_body}>
         <h1>News & Events Details</h1>
         {news_events.map((news) => (
-          <div className={styles.events_content}>
+          <div 
+            key={news}
+            className={styles.events_content}>
             <div>
               <Image 
                 src={news.acf.article_image}
@@ -33,11 +35,6 @@ const NewsEvents = ({ news_events }) => {
             <div>
               <span>{new Date(news.date).toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" })}</span>
               <h2 className={styles.title}>{news.title.rendered}</h2>
-              {/* <p className="article1"
-                dangerouslySetInnerHTML={{
-                __html: news.acf.section1_article,
-                }}>
-              </p> */}
               <p className="excerpt"
                 dangerouslySetInnerHTML={{
                 __html: news.acf.excerpt,

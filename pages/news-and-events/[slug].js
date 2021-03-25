@@ -19,7 +19,6 @@ const BlogPost = ({ event }) => {
               alt="Capstone Showcase Banner"
               width={600}
               height={300}/>
-            {/* <img src={event.acf.article_image} alt="news-img" /> */}
           </div>
           {event.acf.section1_title !== "" ? (
             <h3 className="article1-title">{event.acf.section1_title}</h3>
