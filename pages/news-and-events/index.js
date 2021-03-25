@@ -3,7 +3,7 @@ import styles from "../../styles/NewsEvents.module.css";
 import AdminBox from "../../components/AdminBox";
 import Image from 'next/image';
 import Link from "next/link";
-import fetch from "node-fetch";
+// import fetch from "node-fetch";
 
 export async function getStaticProps() {
   // fetch post data from an external API endpoint
@@ -55,5 +55,3 @@ const NewsEvents = ({ news_events }) => {
 };
 
 export default NewsEvents;
-
-

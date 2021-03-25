@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-const BlogPost = ({ event }) => {
+const NewsEventsInvidivual = ({ event }) => {
   const formatDate = () => {
     const options = { year: "numeric", month: "long", day: "numeric" };
       return new Date(event.date).toLocaleDateString(undefined, options);
@@ -89,7 +89,7 @@ const BlogPost = ({ event }) => {
   </article>
   )
 };
-export default BlogPost;
+export default NewsEventsInvidivual;
 
 export async function getStaticPaths() {
   const res = await fetch("https://api.langara-app.ca/wp-json/wp/v2/news-and-events")
