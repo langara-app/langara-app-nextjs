@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "../../styles/NewsEvents.module.css";
 import AdminBox from "../../components/AdminBox";
+import Image from 'next/image';
 import Link from "next/link";
 import fetch from "node-fetch";
 
@@ -16,39 +17,43 @@ export async function getStaticProps() {
 }
 
 const NewsEvents = ({ news_events }) => {
-  const formatDate = () => {
-    const options = { year: "numeric", month: "long", day: "numeric" };
-    return news_events.map((news) => {
-      return new Date(news.date).toLocaleDateString(undefined, options);
-    });
-  };
   return (
-    <div className={styles.news_body}>
-      <h1>News & Events Details</h1>
-      {news_events.map((news) => (
-        <div className={styles.events_content}>
-          <div>
-            <img className={styles.events_image} src={news.acf.article_image} />
+    <div>
+      <div className={styles.news_body}>
+        <h1>News & Events Details</h1>
+        {news_events.map((news) => (
+          <div className={styles.events_content}>
+            <div>
+              <Image 
+                src={news.acf.article_image}
+                alt="Capstone Showcase Banner"
+                width={600}
+                height={300}/>
+            </div>
+            <div>
+              <span>{new Date(news.date).toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" })}</span>
+              <h2 className={styles.title}>{news.title.rendered}</h2>
+              {/* <p className="article1"
+                dangerouslySetInnerHTML={{
+                __html: news.acf.section1_article,
+                }}>
+              </p> */}
+              <p className="excerpt"
+                dangerouslySetInnerHTML={{
+                __html: news.acf.excerpt,
+                }}>
+              </p>
+              <Link href={`/news-and-events/${news.slug}`}>
+                  <a>
+                    <div>read more</div>
+                  </a>
+              </Link>
+            </div>
           </div>
-          <div>
-            <p>{news.date}</p>
-            {/* <span></span> */}
-            <span className="post-date">{formatDate()}</span>
-            <Link href={`/news-and-events/${news.slug}`}>
-                <a>
-                    <h2>{news.title.rendered}</h2>
-                </a>
-            </Link>
-            <p className="article1"
-               dangerouslySetInnerHTML={{
-               __html: news.acf.section1_article,
-              }}>
-            </p>
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
       <AdminBox />
-    </div>
+  </div>
   );
 };
 
