@@ -6,6 +6,7 @@ import "swiper/components/scrollbar/scrollbar.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Head from "next/head";
+import MenuBar from "../components/MenuBar";
 import Footer from "../components/Footer";
 
 function MyApp({ Component, pageProps }) {
@@ -17,6 +18,7 @@ function MyApp({ Component, pageProps }) {
           rel="stylesheet"
         />
       </Head>
+      <MenuBar />
       <Component {...pageProps} />
       <Footer />
     </>

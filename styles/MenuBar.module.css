@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.langara_logo {
+  height: 11vw;
+  width: 23vw;
+}
+
+.menues {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    padding: 18px 74px;
+    margin-bottom: 112px;
+  }
+
+  .langara_logo {
+    height: 41.65px;
+    width: 87.9px;
+  }
+
+  .menuItem {
+    margin-left: 103px;
+    font-weight: 300;
+  }
+}

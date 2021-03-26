@@ -19,7 +19,6 @@ import Button from "../components/ReusableElements/Button";
 import useWindowWidth from "../components/Hooks/useWindowWidth";
 
 import { HomeData } from "../lib/HomeData";
-import banner from "../assets/img/home-banner-mobile.jpg";
 
 import Slide from "react-reveal/Slide";
 
@@ -226,6 +225,7 @@ const SectionContainerProject = styled.div`
     grid-template-columns: 1fr 1fr;
     position: relative;
     height: ${(694 / 1366) * 100}vw;
+    background-color: white;
   }
 `;
 

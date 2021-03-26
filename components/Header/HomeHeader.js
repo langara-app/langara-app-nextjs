@@ -69,7 +69,7 @@ const HeaderContainer = styled.div`
   background-color: #effcfa;
   height: 100vh;
   position: relative;
-  padding-top: ${(140 / 375) * 100}vw;
+  padding-top: ${(50 / 375) * 100}vw;
   padding-left: 35px;
   padding-right: 35px;
   color: #c36448;
@@ -104,7 +104,7 @@ const HeaderLeftWeb = styled.div`
 `;
 
 const HomeTitle = styled.h1`
-  texttransform: uppercase;
+  text-transform: uppercase;
   margin: 0;
 
   @media only screen and (min-width: 768px) {
