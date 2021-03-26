@@ -32,7 +32,8 @@ const Summary = ({ summaryData, homeData, id }) => {
         <Title type={"summary"}>{homeData.summary.title}</Title>
       </Slide>
       <SummaryContainer color={summaryData.tag} index={id}>
-        <GridDivider>
+        <GridDivider></GridDivider>
+        <GridDivider style={{ backgroundColor: "#707070" }}>
           <ImageContainer>
             <img
               style={{ display: "block", width: "100%" }}
@@ -40,7 +41,10 @@ const Summary = ({ summaryData, homeData, id }) => {
             />
           </ImageContainer>
         </GridDivider>
-        <GridDivider index={id}>
+        <GridDivider
+          index={id}
+          style={{ alignSelf: "flex-end", marginRight: "13vw" }}
+        >
           <SummaryTitle color={summaryData.tag}>
             {summaryData.title}
           </SummaryTitle>
@@ -52,13 +56,16 @@ const Summary = ({ summaryData, homeData, id }) => {
     </SummaryContainerWithTitle>
   ) : (
     <SummaryContainer color={summaryData.tag} index={id}>
-      <GridDivider index={id}>
+      <GridDivider
+        index={id}
+        style={{ alignSelf: "center", marginLeft: "11vw", marginRight: "8vw" }}
+      >
         <SummaryTitle color={summaryData.tag}>{summaryData.title}</SummaryTitle>
         <SummaryDescription color={summaryData.tag} index={id}>
           {summaryData.description}
         </SummaryDescription>
       </GridDivider>
-      <GridDivider>
+      <GridDivider style={{ backgroundColor: "#FFF2A8" }}>
         <ImageContainer>
           <img
             style={{ display: "block", width: "100%" }}
@@ -66,6 +73,7 @@ const Summary = ({ summaryData, homeData, id }) => {
           />
         </ImageContainer>
       </GridDivider>
+      <GridDivider></GridDivider>
     </SummaryContainer>
   );
 };
@@ -74,7 +82,7 @@ const SummaryContainerWithTitle = styled.div`
   @media only screen and (min-width: 768px) {
     background-color: #675d51;
     color: white;
-    height: ${(902 / 1365) * 100}vw;
+    padding-bottom: ${(112 / 1365) * 100}vw;
     position: relative;
   }
 `;
@@ -90,9 +98,12 @@ const SummaryContainer = styled.div`
 
   @media only screen and (min-width: 768px) {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: ${({ index }) =>
+      index === 0 ? "1.6fr 3.3fr 5.1fr" : "5.4fr 3.5fr 1.1fr"};
+    grid-column-gap: ${(57 / 1365) * 100}vw;
     align-items: unset;
-    height: ${(902 / 1366) * 100}vw;
+    height: ${(790 / 1366) * 100}vw;
+    padding: 0;
   }
 `;
 const CircleContainer = styled.div`
@@ -127,8 +138,8 @@ const SummaryTitle = styled.h3`
   position: absolute;
   margin: 0;
   padding: 0;
-  top: 50%; /* position the top  edge of the element at the middle of the parent */
-  left: 50%; /* position the left edge of the element at the middle of the parent */
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
   font-weight: 700;
   font-size: 32px;
@@ -147,7 +158,7 @@ const SummaryTitle = styled.h3`
 `;
 
 const GridDivider = styled.div`
-  align-self: ${({ index }) => (index === 0 ? "flex-end" : "center")};
+  /* align-self: ${({ index }) => (index === 0 ? "flex-end" : "center")}; */
 `;
 const SummaryDescription = styled.p`
   font-weight: 300;
@@ -157,9 +168,10 @@ const SummaryDescription = styled.p`
   @media only screen and (min-width: 768px) {
     font-size: ${(19 / 1366) * 100}vw;
     text-align: left;
-    margin-bottom: ${({ index }) => (index === 0 ? (159 / 1366) * 100 : 0)}vw
-   
+    margin-bottom: 0;
+  }
 `;
+
 const ImageContainer = styled.div`
   width: 30%;
   margin-top: 3rem;

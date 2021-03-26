@@ -66,8 +66,6 @@ const HeaderContainer = styled.div`
   justify-content: flex-start;
   align-items: center;
   background: url(${({ img }) => img});
-  /* background-position: center; */
-  /* background-size: cover; */
   background-color: #effcfa;
   height: 100vh;
   position: relative;
@@ -84,6 +82,8 @@ const HeaderContainer = styled.div`
     justify-content: unset;
     align-items: unset;
     padding-top: 0;
+    height: unset;
+    margin-bottom: ${(90 / 1365) * 100}vw;
   }
 
   /* &::after {
