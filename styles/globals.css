@@ -29,16 +29,33 @@ a {
   justify-content: center !important;
 }
 
+.slick-dots li {
+  margin: 0 !important;
+}
+.slick-dots li button:before {
+  font-size: 11px !important;
+}
+.slick-dots li.slick-active button:before {
+  color: white !important;
+}
+
 @media only screen and (min-width: 768px) {
   .slick-list {
     height: 50vw !important;
+  }
+
+  .slick-dots li button:before {
+    font-size: 13px !important;
+  }
+  .slick-dots li.slick-active button:before {
+    color: #675d51 !important;
   }
 }
 
 .swiper-container {
   padding: 4.7vw !important;
   /* border: 1px solid black; */
-  box-shadow: 3px 1px 4px;
+  box-shadow: 10px 3px 10px;
 }
 
 .swiper-button-prev,

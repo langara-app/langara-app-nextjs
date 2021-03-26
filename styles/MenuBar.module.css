@@ -17,8 +17,8 @@
 
 @media only screen and (min-width: 768px) {
   .container {
-    padding: 18px 74px;
-    margin-bottom: 112px;
+    padding: 1.3vw 5.4vw;
+    margin-bottom: 6.8vw;
   }
 
   .langara_logo {
@@ -27,7 +27,7 @@
   }
 
   .menuItem {
-    margin-left: 103px;
+    margin-left: 7.5vw;
     font-weight: 300;
   }
 }

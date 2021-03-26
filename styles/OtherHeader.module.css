@@ -1,0 +1,43 @@
+.containerAlumni {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-position: center;
+  background-size: cover;
+  background-color: #effcfa;
+  height: 100vh;
+  position: relative;
+  padding-top: 37vw;
+  padding-left: 35px;
+  padding-right: 35px;
+  color: #c36448;
+  text-align: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .containerAlumni {
+    display: grid;
+    grid-template-columns: 2.4fr 5.2fr 2.4fr;
+    height: auto;
+    padding: 0;
+    margin-bottom: 9vw;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-position: center;
+  background-size: cover;
+  background-color: #effcfa;
+  height: 100vh;
+  position: relative;
+  padding-top: 37vw;
+  padding-left: 35px;
+  padding-right: 35px;
+  color: #c36448;
+  text-align: center;
+}
