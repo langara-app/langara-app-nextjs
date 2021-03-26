@@ -47,6 +47,10 @@ const Container = styled.div`
   color: white;
   font-size: 13px;
   font-weight: 300;
+  @media only screen and (min-width: 768px) {
+    /* For everything bigger than 768px */
+    height: auto;
+  }
 `;
 const Logo = styled.div`
   margin: 1rem auto;
