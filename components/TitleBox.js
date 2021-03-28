@@ -2,12 +2,11 @@ import React from "react";
 import styled from "styled-components";
 
 const TitleBox = ({ title, desc, subtitle }) => {
-
   return (
     <Wrapper>
-        <Title>{title}</Title>
-        <Subtitle>{subtitle}</Subtitle>
-        <Paragraph>{desc}</Paragraph>
+      <Title>{title}</Title>
+      <Subtitle>{subtitle}</Subtitle>
+      <Paragraph>{desc}</Paragraph>
     </Wrapper>
   );
 };
@@ -18,7 +17,7 @@ export default TitleBox;
 const Title = styled.h1`
   font-size: 1.5em;
   text-align: center;
-  color: #C36448;
+  color: #c36448;
   font-weight: 800;
   font-size: 32px;
 `;
@@ -31,9 +30,9 @@ const Subtitle = styled.h2`
 const Paragraph = styled.p`
   font-size: 1em;
   text-align: left;
-  color: #675D51;
+  color: #675d51;
   line-height: 1.4;
-  font-weight: 300;
+  font-weight: 200;
   font-size: 13px;
   padding: 2rem;
 `;

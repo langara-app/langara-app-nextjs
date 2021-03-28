@@ -5,6 +5,7 @@ import styled from "styled-components";
 import Button from "../ReusableElements/Button";
 import ScrollArrow from "../ReusableElements/ScrollArrow";
 import useWindowWidth from "../Hooks/useWindowWidth";
+import homeImg from "../../assets/home.svg";
 
 import { Link } from "react-scroll";
 
@@ -20,14 +21,23 @@ const HomeHeader = ({ type, title, desc, btnText, img, page }) => {
     <HeaderContainer img={img}>
       <HeaderLeftWeb>
         {width < 768 ? (
-          <HomeTitle>{title}</HomeTitle>
+          <div>
+            <HomeTitle>{title}</HomeTitle>
+            <HeaderP>
+              {desc.description1}
+              {desc.description2}
+            </HeaderP>
+          </div>
         ) : (
-          <HomeTitle>
-            Web & <br /> Mobile APP <br /> Development & <br /> Design
-          </HomeTitle>
+          <div>
+            <HomeTitle>
+              Web & Mobile APP <br /> Development & Design
+            </HomeTitle>
+            <HeaderP>{desc.description1}</HeaderP>
+            <HeaderP>{desc.description2}</HeaderP>
+          </div>
         )}
 
-        <HeaderP>{desc}</HeaderP>
         <ButtonArrowContainer>
           <Button
             text={btnText}
@@ -50,10 +60,7 @@ const HomeHeader = ({ type, title, desc, btnText, img, page }) => {
       </HeaderLeftWeb>
       {width < 768 ? null : (
         <HomeImageContainer>
-          <HomeImage
-            src={"https://dummyimage.com/721x694/000/fff"}
-            alt="WMDD Top Image"
-          />
+          <HomeImage src={homeImg} alt="WMDD Top Image" />
         </HomeImageContainer>
       )}
     </HeaderContainer>
@@ -78,7 +85,7 @@ const HeaderContainer = styled.div`
   @media only screen and (min-width: 768px) {
     /* For everything bigger than 768px */
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.8fr 1fr;
     justify-content: unset;
     align-items: unset;
     padding-top: 0;
@@ -117,7 +124,7 @@ const HomeTitle = styled.h1`
 const HeaderP = styled.p`
   margin: 1rem 0;
   margin-bottom: ${(36 / 375) * 100}vw;
-  font-weight: 300;
+  font-weight: 200;
   font-size: 13px;
   color: #675d51;
 
@@ -126,6 +133,7 @@ const HeaderP = styled.p`
     text-align: left;
     font-size: ${(19 / 1366) * 100}vw;
     margin-bottom: 0;
+    margin-right: ${(190 / 1365) * 100}vw;
   }
 `;
 
@@ -135,6 +143,7 @@ const ButtonArrowContainer = styled.div`
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+    margin-top: ${(55 / 1365) * 100}vw;
   }
 `;
 

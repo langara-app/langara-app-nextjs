@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import useWindowWidth from "../components/Hooks/useWindowWidth";
 import Slide from "react-reveal/Slide";
+import desImg from "../assets/home-designer.svg";
+import devImg from "../assets/home-dev.svg";
 
 const Summary = ({ summaryData, homeData, id }) => {
   const width = useWindowWidth();
@@ -9,7 +11,7 @@ const Summary = ({ summaryData, homeData, id }) => {
   return width < 768 ? (
     <SummaryContainer color={summaryData.tag}>
       <CircleContainer>
-        {summaryData.tag === "design" ? (
+        {summaryData.tag === "development" ? (
           <Circle color={"#596C69"}></Circle>
         ) : (
           <Circle color={"#FFF2A8"}></Circle>
@@ -17,28 +19,28 @@ const Summary = ({ summaryData, homeData, id }) => {
         <SummaryTitle color={summaryData.tag}>{summaryData.title}</SummaryTitle>
       </CircleContainer>
       <SummaryDescription color={summaryData.tag}>
-        {summaryData.description}
+        {summaryData.description1}
+        {summaryData.description2}
+        {summaryData.description3}
       </SummaryDescription>
       <ImageContainer>
-        <img
-          style={{ display: "block", width: "100%" }}
-          src="https://dummyimage.com/600x400/b8b8b8/fff"
-        />
+        {id === 0 ? (
+          <img style={{ display: "block", width: "100%" }} src={desImg} />
+        ) : (
+          <img style={{ display: "block", width: "100%" }} src={devImg} />
+        )}
       </ImageContainer>
     </SummaryContainer>
   ) : id === 0 ? (
     <SummaryContainerWithTitle>
       <Slide ssrFadeout bottom>
-        <Title type={"summary"}>{homeData.summary.title}</Title>
+        <Title type={"summary"}>{summaryData.title}</Title>
       </Slide>
       <SummaryContainer color={summaryData.tag} index={id}>
         <GridDivider></GridDivider>
         <GridDivider style={{ backgroundColor: "#707070" }}>
-          <ImageContainer>
-            <img
-              style={{ display: "block", width: "100%" }}
-              src="https://dummyimage.com/600x400/b8b8b8/fff"
-            />
+          <ImageContainer id={id}>
+            <img style={{ display: "block", width: "100%" }} src={desImg} />
           </ImageContainer>
         </GridDivider>
         <GridDivider
@@ -49,7 +51,13 @@ const Summary = ({ summaryData, homeData, id }) => {
             {summaryData.title}
           </SummaryTitle>
           <SummaryDescription color={summaryData.tag} index={id}>
-            {summaryData.description}
+            {summaryData.description1}
+          </SummaryDescription>
+          <SummaryDescription color={summaryData.tag} index={id}>
+            {summaryData.description2}
+          </SummaryDescription>
+          <SummaryDescription color={summaryData.tag} index={id}>
+            {summaryData.description3}
           </SummaryDescription>
         </GridDivider>
       </SummaryContainer>
@@ -62,15 +70,18 @@ const Summary = ({ summaryData, homeData, id }) => {
       >
         <SummaryTitle color={summaryData.tag}>{summaryData.title}</SummaryTitle>
         <SummaryDescription color={summaryData.tag} index={id}>
-          {summaryData.description}
+          {summaryData.description1}
+        </SummaryDescription>
+        <SummaryDescription color={summaryData.tag} index={id}>
+          {summaryData.description2}
+        </SummaryDescription>
+        <SummaryDescription color={summaryData.tag} index={id}>
+          {summaryData.description3}
         </SummaryDescription>
       </GridDivider>
       <GridDivider style={{ backgroundColor: "#FFF2A8" }}>
-        <ImageContainer>
-          <img
-            style={{ display: "block", width: "100%" }}
-            src="https://dummyimage.com/600x400/b8b8b8/fff"
-          />
+        <ImageContainer id={id}>
+          <img style={{ display: "block", width: "100%" }} src={devImg} />
         </ImageContainer>
       </GridDivider>
       <GridDivider></GridDivider>
@@ -92,7 +103,7 @@ const SummaryContainer = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: ${({ color }) =>
-    color === "design" ? "#675D51" : "#EFFCFA"};
+    color === "development" ? "#675D51" : "#EFFCFA"};
   color: white;
   padding: 35px ${(186 / 1366) * 100}vw;
 
@@ -145,7 +156,7 @@ const SummaryTitle = styled.h3`
   font-size: 32px;
   width: 100%;
   text-align: center;
-  color: ${({ color }) => (color === "design" ? "white" : "#675D51")};
+  color: ${({ color }) => (color === "development" ? "white" : "#C36448")};
 
   @media only screen and (min-width: 768px) {
     position: static;
@@ -159,22 +170,37 @@ const SummaryTitle = styled.h3`
 
 const GridDivider = styled.div`
   /* align-self: ${({ index }) => (index === 0 ? "flex-end" : "center")}; */
+  @media only screen and (min-width: 768px) {
+    position: relative;
+  }
 `;
 const SummaryDescription = styled.p`
-  font-weight: 300;
+  font-weight: 200;
   font-size: 13px;
   text-align: center;
-  color: ${({ color }) => (color === "design" ? "white" : "#675D51")};
+  color: ${({ color }) => (color === "development" ? "white" : "#675D51")};
   @media only screen and (min-width: 768px) {
     font-size: ${(19 / 1366) * 100}vw;
     text-align: left;
     margin-bottom: 0;
+    font-weight: 200;
   }
 `;
 
 const ImageContainer = styled.div`
-  width: 30%;
+  width: ${(197 / 375) * 100}vw;
+  height: auto;
   margin-top: 3rem;
+
+  @media only screen and (min-width: 768px) {
+    width: ${({ id }) =>
+      id === 0 ? (487 / 1365) * 100 : (390 / 1365) * 100}vw;
+    position: absolute;
+    bottom: 0vw;
+    bottom: ${({ id }) =>
+      id === 0 ? (50 / 1365) * 100 : (200 / 1365) * 100}vw;
+    left: ${({ id }) => (id === 0 ? (100 / 1365) * -100 : (20 / 1365) * 100)}vw;
+  }
 `;
 
 export default Summary;

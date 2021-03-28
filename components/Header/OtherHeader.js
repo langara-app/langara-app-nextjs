@@ -82,7 +82,7 @@ const HeaderTitle = styled.h1`
 const HeaderP = styled.p`
   margin: 1rem 0;
   margin-bottom: ${(36 / 375) * 100}vw;
-  font-weight: 300;
+  font-weight: 200;
   font-size: 13px;
   color: #675d51;
 
