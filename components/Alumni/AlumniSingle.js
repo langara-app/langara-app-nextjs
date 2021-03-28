@@ -61,7 +61,7 @@ const DescriptionContainer = styled.div`
 `;
 const Description = styled.p`
   font-size: 13px;
-  font-weight: 300;
+  font-weight: 200;
   text-align: center;
   margin: 0.2rem 0;
 `;

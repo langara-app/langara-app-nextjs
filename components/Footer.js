@@ -79,7 +79,7 @@ const Container = styled.div`
   height: 130vw;
   color: white;
   font-size: 13px;
-  font-weight: 300;
+  font-weight: 200;
   @media only screen and (min-width: 768px) {
     /* For everything bigger than 768px */
 

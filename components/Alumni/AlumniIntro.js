@@ -85,7 +85,7 @@ const AlumniImageTop = styled.img`
 
 const AlumniComment = styled.p`
   padding-top: 20vw;
-  font-weight: 300;
+  font-weight: 200;
   font-size: 13px;
   color: #707070;
   text-align: center;

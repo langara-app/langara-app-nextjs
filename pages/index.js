@@ -57,7 +57,7 @@ const Home = ({ data, alumni, work, homeData }) => {
       <HomeHeader
         type={"home"}
         title={homeData.header.title}
-        desc={homeData.header.description}
+        desc={homeData.header}
         btnText={"Get to know WMDD"}
         page={"home"}
       />
@@ -71,7 +71,7 @@ const Home = ({ data, alumni, work, homeData }) => {
           </TitleBcg>
 
           {HomeData.summary.contents.map((content, index) => (
-            <Summary key={index} summaryData={content} />
+            <Summary key={index} summaryData={content} id={index} />
           ))}
         </SectionContainer>
       ) : (
@@ -253,7 +253,7 @@ const Title = styled.h2`
 const SectionDescription = styled.p`
   padding: 2rem 35px ${({ paddingBottom }) => (paddingBottom / 375) * 100}vw;
   text-align: center;
-  font-weight: 300;
+  font-weight: 200;
   font-size: 13px;
   @media only screen and (min-width: 768px) {
     text-align: left;
@@ -310,7 +310,7 @@ const AdminTitle = styled.h2`
 `;
 const AdminDescription = styled.p`
   text-align: center;
-  font-weight: 300;
+  font-weight: 200;
   font-size: 18px;
 `;
 
