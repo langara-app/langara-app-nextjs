@@ -4,6 +4,9 @@ import styles from "../../styles/OtherHeader.module.css";
 
 import Button from "../ReusableElements/Button";
 
+import facultyLeftImg from "../../assets/faculty1.svg";
+import facultyRightImg from "../../assets/faculty2.svg";
+
 import useWindowWidth from "../Hooks/useWindowWidth";
 
 import { Link } from "react-scroll";
@@ -18,16 +21,16 @@ const OtherHeader = ({ type, title, desc, img, page }) => {
     </div>
   ) : width >= 768 && page === "alumni" ? (
     <div className={styles.containerAlumni}>
-      <div>
-        <img src="hamburger.svg" />
-      </div>
+      <ImageContainer side={"left"}>
+        <img src={facultyLeftImg} />
+      </ImageContainer>
       <div>
         <HeaderTitle>{title}</HeaderTitle>
         <HeaderP>{desc}</HeaderP>
       </div>
-      <div>
-        <img src="hamburger.svg" />
-      </div>
+      <ImageContainer side={"right"}>
+        <img src={facultyRightImg} />
+      </ImageContainer>
     </div>
   ) : (
     <div className={styles.container}>
@@ -91,6 +94,19 @@ const HeaderP = styled.p`
     margin: 0;
     font-size: ${(19 / 1365) * 100}vw;
     padding: 0 ${(100 / 1365) * 100}vw;
+  }
+`;
+
+const ImageContainer = styled.div`
+  width: ${({ side }) =>
+    side === "left" ? (174 / 1365) * 100 : (131 / 1365) * 100}vw;
+  height: ${({ side }) =>
+    side === "left" ? (344 / 1365) * 100 : (346 / 1365) * 100}vw;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
   }
 `;
 
