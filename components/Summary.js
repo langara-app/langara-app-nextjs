@@ -5,7 +5,7 @@ import Slide from "react-reveal/Slide";
 import desImg from "../assets/home-designer.svg";
 import devImg from "../assets/home-dev.svg";
 
-const Summary = ({ summaryData, homeData, id }) => {
+const Summary = ({ summaryHeader, summaryData, homeData, id }) => {
   const width = useWindowWidth();
 
   return width < 768 ? (
@@ -33,9 +33,10 @@ const Summary = ({ summaryData, homeData, id }) => {
     </SummaryContainer>
   ) : id === 0 ? (
     <SummaryContainerWithTitle>
-      <Slide ssrFadeout bottom>
-        <Title type={"summary"}>{summaryData.title}</Title>
-      </Slide>
+      <Title type={"summary"} style={{ zIndex: 3 }}>
+        {summaryHeader.title}
+      </Title>
+
       <SummaryContainer color={summaryData.tag} index={id}>
         <GridDivider></GridDivider>
         <GridDivider style={{ backgroundColor: "#707070" }}>
@@ -142,6 +143,9 @@ const Title = styled.h2`
   @media only screen and (min-width: 768px) {
     padding-top: 0;
     font-size: ${(43 / 1366) * 100}vw;
+    position: absolute;
+    top: ${(147 / 1365) * 100}vw;
+    left: ${(100 / 1365) * 100}vw;
   }
 `;
 

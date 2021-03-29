@@ -43,7 +43,7 @@ const AdminTitle = styled.h2`
 `;
 const AdminDescription = styled.p`
   text-align: center;
-  font-weight: 300;
+  font-weight: 200;
   font-size: 13px;
   padding-bottom: ${(41 / 375) * 100}vw;
   @media only screen and (min-width: 768px) {

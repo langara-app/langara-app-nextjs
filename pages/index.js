@@ -80,6 +80,7 @@ const Home = ({ data, alumni, work, homeData }) => {
             <Summary
               key={index}
               summaryData={content}
+              summaryHeader={HomeData.summary}
               homeData={homeData}
               id={index}
             />

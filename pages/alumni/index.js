@@ -22,7 +22,7 @@ export async function getStaticProps() {
 
 const Alumni = ({ alumni }) => {
   const width = useWindowWidth();
-  console.log(alumni);
+
   return width < 768 ? (
     <div>
       <OtherHeader
