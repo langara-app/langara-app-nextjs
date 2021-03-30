@@ -2,16 +2,19 @@ import React from "react";
 import Link from "next/link";
 import styled from "styled-components";
 
-const ProjectButton = ({ text, type, category, project }) => {
-  console.log("slug", project);
+const ProjectButton = ({ text, type, category, project, link }) => {
   return (
     <BtnElement type={type}>
       {type === "category" ? (
         <Link href={`/projects/${category}`}>
           <a>{text}</a>
         </Link>
-      ) : (
+      ) : type === "intro" ? (
         <Link href={`/projects/${category}/${project}`}>
+          <a>{text}</a>
+        </Link>
+      ) : (
+        <Link href={link}>
           <a>{text}</a>
         </Link>
       )}
@@ -33,7 +36,10 @@ const BtnElement = styled.button`
 
   a {
     font-size: ${({ type }) =>
-      type === "category" ? (24 / 365) * 100 : (16 / 365) * 100}vw;
+      type === "category" || type === "single"
+        ? (24 / 365) * 100
+        : (16 / 365) * 100}vw;
+    text-decoration: none;
   }
 
   @media only screen and (min-width: 768px) {
