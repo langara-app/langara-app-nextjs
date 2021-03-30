@@ -2,21 +2,32 @@ import React from "react";
 import Link from "next/link";
 import Head from "next/head";
 
-function Post() {
+import { ProjectCategoryData } from "../../lib/ProjectCategoryData";
+
+import ProjectCategory from "../../components/Project/ProjectCategory";
+
+// export async function getStaticProps() {
+//     // fetch post data from an external API endpoint
+//     const res = await fetch(
+//       "https://api.langara-app.ca/wp-json/wp/v2/news-and-events"
+//     );
+
+//     const news_events = await res.json();
+
+//     return { props: { news_events} };
+//   }
+
+const Projects = () => {
   return (
     <>
       <Head>
-        <title>Post Index Page </title>
+        <title>Project Index Page </title>
       </Head>
-      <h1>First Post</h1>
-      <h1>
-        Test link
-        <Link href="/">
-          <a>click here to go home</a>
-        </Link>
-      </h1>
+      {ProjectCategoryData.map((data, index) => (
+        <ProjectCategory key={index} id={index} {...data} />
+      ))}
     </>
   );
-}
+};
 
-export default Post;
+export default Projects;

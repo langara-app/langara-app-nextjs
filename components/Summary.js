@@ -34,7 +34,7 @@ const Summary = ({ summaryHeader, summaryData, homeData, id }) => {
   ) : id === 0 ? (
     <SummaryContainerWithTitle>
       <Title type={"summary"} style={{ zIndex: 3 }}>
-        {summaryHeader.title}
+        {summaryHeader}
       </Title>
 
       <SummaryContainer color={summaryData.tag} index={id}>
