@@ -9,13 +9,9 @@ const AboutUs = () => {
   const curriculumInfo = WmddData.curriculum;
 
   const curriculumDetails = curriculumInfo.map(curriculum => 
-    
-      <div>
-        <img src={curriculum.image} alt="PLACEHOLDER FOR NOW" 
-          style={{width: 50, height: 50}}/>
+      <div className={styles.curriculum_body}>
         <p>{curriculum.description}</p>
       </div>
-    
   )
 
   const developerInfo = WmddData.developer_details;
@@ -36,23 +32,37 @@ const AboutUs = () => {
 
   return (
     <div className={styles.wmdd_body}>
-      <TitleBox 
-        title={WmddData.header.title}
-        subtitle={WmddData.header.subtitle}
-        desc={WmddData.header.description}
-        />
-      <div>
-        <h3>Program Curriculum</h3>
+      <p className={styles.small_title}>{WmddData.header.title}</p>
+      <div className={styles.wmdd_intro}>
+        <TitleBox 
+          title={WmddData.header.subtitle}
+          desc={WmddData.header.description}
+          />
+      </div>
+
+      <div className={styles.curriculum_container}>
+        <h3 className={styles.curriculum_title}>Program Curriculum</h3>
+        <div className={styles.intro_movie_wrap}>
+          <div className="intro-movie">
+            <iframe className={styles.iframe} frameBorder="0" src="https://www.youtube.com/embed/BTciK1vJ8QY?rel=0" title="intro-movie"></iframe>
+          </div>
+        </div>
         { curriculumDetails }
       </div>
-      <h3>Summary of Developer Stream</h3>
-      <div className={styles.stream_grid}>
-        { developerDetails }
+      <div className={styles.developer_container}>
+        <h3 className={styles.dev_title}>Summary of Developer Stream</h3>
+        <div className={styles.stream_grid}>
+            { developerDetails }
+        </div>
       </div>
-      <h3>Summary of Designer Stream</h3>
-      <div className={styles.stream_grid}>
-        { designerDetails }
+      <div className={styles.designer_container}>
+        <h3 className={styles.des_title}>Summary of Designer Stream</h3>
+        <div className={styles.stream_grid}>
+          { designerDetails }
+        </div>
       </div>
+
+
       <div>
         <h3>{WmddData.complete_program.title}</h3>
         <p>{WmddData.complete_program.description}</p>

@@ -24,10 +24,6 @@ const Instructors = () => {
       </Head>
       <div className={styles.all_content}>
         <div className={styles.body_content}>
-          {/* <Link href="/">
-          <a><img className={styles.langara_logo} src="/langara-logo.svg" alt="Langara College Logo" /></a>
-        </Link>
-          <img className={styles.langara_hamburger} src="hamburger.svg" alt="Mobile Menu Button" /> */}
           <h1 className={styles.title_main}>{InstructorData.header.title}</h1>
           <p className={styles.description_main}>
             {InstructorData.header.description}

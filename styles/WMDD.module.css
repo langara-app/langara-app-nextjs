@@ -1,8 +1,43 @@
-.wmdd_body {
-    text-align: center
+.wmdd_text {
+    font-weight: 200;
+    font-size: 13px;
+    margin-bottom: 0;
 }
-
-
+.wmdd_intro {
+    height: 75vh;
+}
+.wmdd_body {
+    text-align: center;
+    font-size: 13px;
+    font-weight: 200;
+}
+.curriculum_container {
+    background-color: white;
+    padding: 1rem 0;
+}
+.curriculum_title, 
+.dev_title, 
+.des_title {
+    font-size: 32px;
+    margin: 40px;
+    margin-bottom: 20px;
+    line-height: 1.25;
+}
+.curriculum_body {
+    padding: 0 2.5rem;
+}
+.intro_movie_wrap {
+    overflow: hidden;
+    position: relative;  
+}
+.iframe {
+    width: 100vw;
+    height: 60vw;
+}
+.developer_container {
+    background-color: #675D51;
+    color: white;
+}
 
 @media only screen and (min-width: 800px)  {
     .stream_grid {
@@ -10,3 +45,10 @@
         grid-template-columns: 1fr 1fr 1fr;
     }
 }
+
+@media screen and (min-width: 1200px) {
+    .iframe {
+        width: 65vw;
+        height: 40vw;
+    }
+  }

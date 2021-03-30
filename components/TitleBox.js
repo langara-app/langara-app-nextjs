@@ -20,6 +20,8 @@ const Title = styled.h1`
   color: #c36448;
   font-weight: 800;
   font-size: 32px;
+  margin: 0 43px;
+  line-height: 40px;
 `;
 
 const Subtitle = styled.h2`
@@ -29,12 +31,12 @@ const Subtitle = styled.h2`
 
 const Paragraph = styled.p`
   font-size: 1em;
-  text-align: left;
   color: #675d51;
   line-height: 1.4;
   font-weight: 200;
   font-size: 13px;
-  padding: 2rem;
+  padding: 0 2.5rem;
+  text-align: center;
 `;
 
 // Create a Wrapper component that'll render a <section> tag with some styles
