@@ -4,6 +4,9 @@ import { slide as Menu } from "react-burger-menu";
 import styles from "../styles/MenuBar.module.css";
 import { MenuData } from "../lib/MenuData";
 
+import logo from "../assets/logo.svg";
+import hamburger from "../assets/hamburger.svg";
+
 import useWindowWidth from "./Hooks/useWindowWidth";
 
 const MenuBar = () => {
@@ -28,7 +31,7 @@ const MenuBar = () => {
           <a>
             <img
               className={styles.langara_logo}
-              src="/langara-logo.svg"
+              src={logo}
               alt="Langara College Logo"
             />
           </a>
@@ -40,7 +43,7 @@ const MenuBar = () => {
         isOpen={open}
         onOpen={openMenu}
         onClose={openMenu}
-        customBurgerIcon={<img src="hamburger.svg" />}
+        customBurgerIcon={<img src={hamburger} />}
       >
         {MenuData.map((menu) => (
           <Link href={menu.link}>
