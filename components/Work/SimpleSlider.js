@@ -34,7 +34,7 @@ const SimpleSlider = ({ data }) => {
           {data.map((project) => (
             <SwiperSlide>
               <ImageContainer>
-                <Image2
+                <CacheImage
                   src={project.acf.app_picture}
                   width={1000}
                   height={1000}
@@ -59,7 +59,7 @@ const SimpleSlider = ({ data }) => {
           {data.map((project) => (
             <SwiperSlide>
               <ImageContainer>
-                <Image2
+                <CacheImage
                   src={project.acf.app_picture}
                   width={1000}
                   height={1000}
@@ -89,7 +89,7 @@ const ImageContainer = styled.div`
     width: 21vw;
   }
 `;
-const Image2 = styled(Image)`
+const CacheImage = styled(Image)`
   display: block;
   width: 100%;
   height: 100%;

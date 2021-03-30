@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Slider from "react-slick";
 import useWindowWidth from "../Hooks/useWindowWidth";
+import Image from "next/image";
 
 const AlumniIntro = (props) => {
   const width = useWindowWidth();
@@ -16,7 +17,7 @@ const AlumniIntro = (props) => {
   return width < 768 ? (
     <Container>
       <AlumniImageTopContainer>
-        <AlumniImageTop src={profile_image} />
+        <img src={profile_image} width={1000} height={1000} />
       </AlumniImageTopContainer>
       <AlumniComment>"{comment}"</AlumniComment>
       <PersonalInfo size={"big"}>{alumni_name}</PersonalInfo>
@@ -26,7 +27,7 @@ const AlumniIntro = (props) => {
   ) : (
     <Container>
       <AlumniImageTopContainer>
-        <AlumniImageTop src={profile_image} />
+        <img src={profile_image} width={1000} height={1000} />
       </AlumniImageTopContainer>
 
       <PersonalInfo size={"big"} style={{ color: "#C36448" }}>
@@ -64,6 +65,13 @@ const AlumniImageTopContainer = styled.div`
   transform: translateX(-50%);
   width: 40%;
 
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+
   @media only screen and (min-width: 415px) {
     top: -${(60 / 375) * 100}vw;
   }
@@ -77,11 +85,13 @@ const AlumniImageTopContainer = styled.div`
     margin-bottom: 1rem;
   }
 `;
-const AlumniImageTop = styled.img`
-  display: block;
-  width: 100%;
-  border-radius: 50%;
-`;
+
+// const CachedImage = styled(Image)`
+//   display: block;
+//   width: 100%;
+//   height: 100%;
+//   border-radius: 50%;
+// `;
 
 const AlumniComment = styled.p`
   padding-top: 20vw;
