@@ -44,8 +44,8 @@ const Footer = () => {
           <img src={logo} style={{ display: "block", width: "100%" }} />
         </Logo>
         <FlexLinks>
-          {MenuData.map((menu) => (
-            <Link href={menu.link}>
+          {MenuData.map((menu, index) => (
+            <Link href={menu.link} key={index}>
               <a className="menu-item">{menu.title}</a>
             </Link>
           ))}

@@ -50,6 +50,7 @@ const Alumni = ({ alumni }) => {
                 data={alumna.acf}
                 length={alumni.length}
                 index={index + 1}
+                key={index}
               />
             ) : null
           )}
@@ -62,6 +63,7 @@ const Alumni = ({ alumni }) => {
                 index={"even"}
                 length={alumni.length}
                 index={index + 1}
+                key={index}
               />
             ) : null
           )}
