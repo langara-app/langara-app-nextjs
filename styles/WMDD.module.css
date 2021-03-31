@@ -10,20 +10,23 @@
     text-align: center;
     font-size: 13px;
     font-weight: 200;
+    padding-top: 5%;
+    margin: 0 0;
+}
+.small_title {
+    margin-bottom: 0;
 }
 .curriculum_container {
     background-color: white;
-    padding: 1rem 0;
+    /* padding: 1rem 0; */
+    padding: 50px 0;
 }
-.curriculum_title, 
-.dev_title, 
-.des_title {
+.curriculum_title {
     font-size: 32px;
-    margin: 40px;
-    margin-bottom: 20px;
-    line-height: 1.25;
+    margin-top: 0;
 }
-.curriculum_body {
+.curriculum_body,
+.complete_program_body {
     padding: 0 2.5rem;
 }
 .intro_movie_wrap {
@@ -37,6 +40,19 @@
 .developer_container {
     background-color: #675D51;
     color: white;
+}
+.dev_title,
+.des_title {
+    margin-top: 0;
+    padding-top: 40px;
+}
+
+.complete_program_title {
+    color: white;
+    font-size: 32px;
+    background-color: #C36448;
+    padding-top: 50px;
+    padding-bottom: 20px;
 }
 
 @media only screen and (min-width: 800px)  {
