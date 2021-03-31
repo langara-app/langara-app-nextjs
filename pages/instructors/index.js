@@ -1,9 +1,8 @@
 import styles from "../../styles/Instructors.module.css";
 import Head from "next/head";
-import Link from "next/link";
 import AdminBox from "../../components/AdminBox";
 import { InstructorData } from "../../lib/InstructorData";
-
+import InstructorsIntro from "../../components/Instructors/InstructorsIntro";
 const Instructors = () => {
   const instructors = InstructorData.instructors;
 
@@ -22,21 +21,13 @@ const Instructors = () => {
       <Head>
         <title>Instructors Page</title>
       </Head>
+
+
       <div className={styles.all_content}>
-        <div className={styles.body_content}>
-          <h1 className={styles.title_main}>{InstructorData.header.title}</h1>
-          <p className={styles.description_main}>
-            {InstructorData.header.description}
-          </p>
-          <div className={styles.planet_container}>
-            <img
-              className={styles.planet}
-              src="temporary-planet.svg"
-              alt="planet illustration"
-            />
-          </div>
+          <InstructorsIntro 
+            title={InstructorData.header.title}
+            desc={InstructorData.header.description}/>
           <div className={styles.instructor_grid}>{instructorDetails}</div>
-        </div>
         <AdminBox />
       </div>
     </>
