@@ -7,8 +7,8 @@ import { InstructorData } from "../../lib/InstructorData";
 const Instructors = () => {
   const instructors = InstructorData.instructors;
 
-  const instructorDetails = instructors.map((instructor) => (
-    <div className={styles.image_text_grid}>
+  const instructorDetails = instructors.map((instructor, index) => (
+    <div className={styles.image_text_grid} key={index}>
       <img className={styles.instructor_image} src={instructor.image} />
       <div>
         <p className={styles.instructor_name}>{instructor.name}</p>

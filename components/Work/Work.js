@@ -8,6 +8,7 @@ function Work({ data }) {
           <img
             src={d.acf.app_picture}
             style={{ width: "20%", display: "block", height: "auto" }}
+            key={index}
           />
         ) : null
       )}

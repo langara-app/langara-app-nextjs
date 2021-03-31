@@ -1,6 +1,8 @@
-.listContainer {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding: 0 6.1vw;
-  justify-items: center;
+@media only screen and (min-width: 768px) {
+  .listContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 6.1vw;
+    justify-items: center;
+  }
 }

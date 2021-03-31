@@ -3,9 +3,12 @@ import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
 import ProjectButton from "../../../components/ReusableElements/ProjectButton";
+import useWindowWidth from "../../../components/Hooks/useWindowWidth";
 
 const Project = ({ project }) => {
   const data = project[0];
+
+  const width = useWindowWidth();
 
   return (
     <Container>
@@ -48,7 +51,10 @@ const Container = styled.div`
 `;
 
 const ImageContainer = styled.div`
-  /* margin-bottom: ${(55 / 375) * 100}vw; */
+  @media only screen and (min-width: 768px) {
+    padding: 0 ${(466 / 1365) * 100}vw;
+    margin-bottom: ${(33 / 1365) * 100}vw;
+  }
 `;
 
 const InfoContainer = styled.div`
@@ -59,6 +65,13 @@ const InfoContainer = styled.div`
     font-family: "Inter";
     margin-top: ${(22 / 375) * 100}vw;
   }
+
+  @media only screen and (min-width: 768px) {
+    padding: ${(50 / 1365) * 100}vw ${(466 / 1365) * 100}vw;
+  }
+  span {
+    margin-top: ${(22 / 1365) * 100}vw;
+  }
 `;
 
 const LinkStyled = styled.a`
@@ -68,6 +81,10 @@ const LinkStyled = styled.a`
   margin-top: ${(22 / 375) * 100}vw;
   font-size: ${(24 / 375) * 100}vw;
   font-weight: 700;
+  @media only screen and (min-width: 768px) {
+    font-size: ${(24 / 1365) * 100}vw;
+    margin-top: ${(22 / 1365) * 100}vw;
+  }
 `;
 
 const ProjectContents = styled.div`
@@ -82,6 +99,17 @@ const ProjectContents = styled.div`
   p {
     font-size: ${(14 / 375) * 100}vw;
     font-weight: 200;
+  }
+
+  @media only screen and (min-width: 768px) {
+    padding: ${(50 / 1365) * 100}vw ${(370 / 1365) * 100}vw;
+    h1 {
+      font-size: ${(45 / 1365) * 100}vw;
+    }
+
+    p {
+      font-size: ${(14 / 1365) * 100}vw;
+    }
   }
 `;
 

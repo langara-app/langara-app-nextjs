@@ -45,8 +45,8 @@ const MenuBar = () => {
         onClose={openMenu}
         customBurgerIcon={<img src={hamburger} />}
       >
-        {MenuData.map((menu) => (
-          <Link href={menu.link}>
+        {MenuData.map((menu, index) => (
+          <Link href={menu.link} key={index}>
             <a className="menu-item" onClick={openMenu}>
               {menu.title}
             </a>
@@ -61,15 +61,15 @@ const MenuBar = () => {
           <a>
             <img
               className={styles.langara_logo}
-              src="/langara-logo.svg"
+              src={logo}
               alt="Langara College Logo"
             />
           </a>
         </Link>
       </div>
       <div className={styles.menues}>
-        {MenuData.map((menu) => (
-          <Link href={menu.link}>
+        {MenuData.map((menu, index) => (
+          <Link href={menu.link} key={index}>
             <a className={styles.menuItem} onClick={openMenu}>
               {menu.title}
             </a>

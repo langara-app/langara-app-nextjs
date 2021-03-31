@@ -31,8 +31,8 @@ const SimpleSlider = ({ data }) => {
           navigation
           pagination={{ clickable: true }}
         >
-          {data.map((project) => (
-            <SwiperSlide>
+          {data.map((project, index) => (
+            <SwiperSlide key={index}>
               <ImageContainer>
                 <CacheImage
                   src={project.acf.app_picture}
@@ -56,8 +56,8 @@ const SimpleSlider = ({ data }) => {
           navigation
           pagination={{ clickable: true }}
         >
-          {data.map((project) => (
-            <SwiperSlide>
+          {data.map((project, index) => (
+            <SwiperSlide key={index}>
               <ImageContainer>
                 <CacheImage
                   src={project.acf.app_picture}
