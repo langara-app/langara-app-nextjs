@@ -35,6 +35,7 @@ const Title = styled.h2`
   @media only screen and (min-width: 768px) {
     line-height: 1;
     font-size: ${(50 / 1365) * 100}vw;
+    padding-right: 150px;
   }
 `;
 
@@ -48,6 +49,7 @@ const Paragraph = styled.p`
  
   @media only screen and (min-width: 768px) {
     font-size: ${(19 / 1365) * 100}vw;
+
   }
 `;
 

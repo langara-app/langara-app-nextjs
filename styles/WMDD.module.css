@@ -13,12 +13,8 @@
     padding-top: 5%;
     margin: 0 0;
 }
-/* .small_title {
-    margin-bottom: 0;
-} */
-.curriculum_container {
+/* .curriculum_container {
     background-color: white;
-    /* padding: 1rem 0; */
     padding: 50px 0;
 }
 .curriculum_title {
@@ -26,17 +22,14 @@
     margin-top: 0;
     padding: 0 2.5rem;
     
-}
-.curriculum_body,
-.complete_program_body {
+} */
+/* .curriculum_body {
     padding: 0 2.5rem;
-}
+} */
 .intro_movie_wrap {
-    overflow: hidden;
-    /* position: relative;   */
+    /* overflow: hidden; */
     margin-top: auto;
     margin-bottom: auto;
-    
 }
 .iframe {
     width: 100vw;
@@ -52,63 +45,34 @@
     padding-top: 40px;
 }
 
-.complete_program_title {
-    color: white;
-    font-size: 32px;
-    background-color: #C36448;
-    padding-top: 50px;
-    padding-bottom: 20px;
-    margin-bottom: 0;
-}
 .wmdd_image {
     display: none;
 }
 
 @media only screen and (min-width: 800px)  {
-    .curriculum_container {
+    /* .curriculum_container {
         display: grid;
         grid-template-columns: 1fr 1fr;
         font-size: 19px;
-    }
-    .curriculum_title,
+    } */
+    /* .curriculum_title,
     .curriculum_body {
         grid-column: 2;
         text-align: left;
-    }
-    .intro_movie_wrap {
+    } */
+    /* .intro_movie_wrap {
         grid-row: 1 / span 4;
         align-content: center;
         justify-content: center;
         
-    }
+    } */
     .iframe {
         width: 50vw;
         height: 30vw;
         padding-left: 2.5rem;
+        padding-right: 2.5rem;
         max-width: 600px;
         max-height: 400px;
-    }
-    .complete_program_title,
-    .curriculum_title {
-        /* font-size: (1.39px)vw; */
-        /* font-size: ((19px / 1365px) * 100px)vw; */
-        /* font-size: 43px;
-        line-height: 1.25; */
-    }
-    .complete_program_body {
-        margin: 0;
-        text-align: left;
-        margin-top: auto;
-        margin-bottom: auto;
-        font-size: 19px;
-    }
-    .complete_program_container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
-    .complete_program_title {
-        height: 50%;
-        margin-top: 0;
     }
     .wmdd_full_intro {
         display: grid;
@@ -122,5 +86,11 @@
         text-align: left;
         padding: 0 2.5rem;
         margin-bottom: 20px;
-    }  
+    } 
+    .wmdd_intro {
+        height: 50vh
+    }
+    .wmdd_body {
+        padding-top: 0;
+    }
 }
