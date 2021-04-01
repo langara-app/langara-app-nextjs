@@ -23,8 +23,8 @@ const AlumniSlider = ({ data }) => {
   return (
     <AlumniSliderContainer>
       <Slider {...settings}>
-        {data.map((alumna) => (
-          <AlumniIntro {...alumna.acf} />
+        {data.map((alumna, index) => (
+          <AlumniIntro {...alumna.acf} key={index} />
         ))}
       </Slider>
     </AlumniSliderContainer>

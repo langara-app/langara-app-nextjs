@@ -28,7 +28,7 @@ const AboutUs = () => {
       <AfterProgram />
       <AdminBox />
     </div>
-  )
+  );
 };
 
 export default AboutUs;

@@ -17,7 +17,10 @@ const AlumniIntro = (props) => {
   return width < 768 ? (
     <Container>
       <AlumniImageTopContainer>
-        <img src={profile_image} width={1000} height={1000} />
+        {!profile_image ? null : (
+          <img src={profile_image} width={1000} height={1000} />
+        )}
+        {/* <img src={profile_image} width={1000} height={1000} /> */}
       </AlumniImageTopContainer>
       <AlumniComment>"{comment}"</AlumniComment>
       <PersonalInfo size={"big"}>{alumni_name}</PersonalInfo>
@@ -27,7 +30,10 @@ const AlumniIntro = (props) => {
   ) : (
     <Container>
       <AlumniImageTopContainer>
-        <img src={profile_image} width={1000} height={1000} />
+        {!profile_image ? null : (
+          <img src={profile_image} width={1000} height={1000} />
+        )}
+        {/* <img src={profile_image} width={1000} height={1000} /> */}
       </AlumniImageTopContainer>
 
       <PersonalInfo size={"big"} style={{ color: "#C36448" }}>

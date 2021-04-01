@@ -15,8 +15,8 @@ const Category = ({ projectLists, category }) => {
         <h1>Full Stack Web Applications with Data Visualization</h1>
       )}
 
-      {projectLists.map((project) => (
-        <ProjectIntro {...project} category={category} />
+      {projectLists.map((project, index) => (
+        <ProjectIntro {...project} category={category} key={index} />
       ))}
     </Container>
   );
