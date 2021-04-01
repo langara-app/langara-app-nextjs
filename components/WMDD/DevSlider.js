@@ -4,9 +4,7 @@ import Slider from "react-slick";
 import useWindowWidth from "../Hooks/useWindowWidth";
 import { WmddData }from '../../lib/WmddData';
 
-const SimpleSlider = () => {
-// export default class SimpleSlider extends Component {
-//   render() {
+const DevSlider = () => {
     const width = useWindowWidth();
     const settings = {
       dots: true,
@@ -15,35 +13,51 @@ const SimpleSlider = () => {
       slidesToShow: 1,
       slidesToScroll: 1,
       arrows: false,
-      autoplay: true,
-      speed: 2000
+    //   autoplay: true,
+      speed: 2000,
+      
     };
     
     const developerInfo = WmddData.developer_details;
     const developerDetails = developerInfo.map(detail => 
     <ContentContainer>
-      <Number src={detail.number} width={40} height={90}/>
+      {/* <Number src={detail.number} width={40} height={90}/> */}
       <Subtitle>{detail.title}</Subtitle>
       <Body>{detail.description}</Body>
-      <Arrow src={detail.arrow} />
+      {/* <Arrow src={detail.arrow} /> */}
     </ContentContainer>
 )
-return width < 768 ? (
+return width < 1015 ? (
     <DevSliderContainer>
         <Title>Summary Of Developer Stream</Title>
         <Slider {...settings}>
             {/* <Number src={detail.number} width={40} height={90}/> */}
-            {developerDetails[0]}
-            {developerDetails[1]}
-            {developerDetails[2]}
+            <SliderContainer>
+                {developerDetails[0]}
+            </SliderContainer>
+            <SliderContainer>
+                {developerDetails[1]}
+            </SliderContainer>
+            <SliderContainer>
+                {developerDetails[2]}
+            </SliderContainer>
         </Slider>
   </DevSliderContainer>
   ) : (
-      <DevGridContainer>
-        {developerDetails[0]}
-        {developerDetails[1]}
-        {developerDetails[2]}
-      </DevGridContainer>
+      <DevContainer>
+        <Title>Summary Of Developer Stream</Title>
+        <GridContainer>
+            <GridItem>
+                {developerDetails[0]}   
+            </GridItem>
+            <GridItem>
+                {developerDetails[1]}
+            </GridItem>
+            <GridItem>
+                {developerDetails[2]}
+            </GridItem>
+        </GridContainer>
+      </DevContainer>
   );
 };
 const Number = styled.img`
@@ -52,20 +66,25 @@ const Number = styled.img`
     top: 1%;
 `;
 
+const SliderContainer = styled.div`
+    width: 308px;
+    height: 398px;
+`;
+
 const Arrow = styled.img`
     position: absolute;
-    // bottom: 20%;
-    // left: 24%
     margin-top: 10px;
     margin-left: 170px;
-    // margin-bottom: 5%;
-
 `;
 const Title = styled.h1`
     color: white;
     font-size: 32px;
     margin-top: 0;
     line-height: 1.25;
+
+    @media only screen and (min-width: 768px) {
+        font-size: ${(50 / 1366) * 100}vw;
+      }
 `;
 const Subtitle = styled.h2`
     color: #FFF2A8;
@@ -79,26 +98,30 @@ const Body = styled.div`
 const DevSliderContainer = styled.div`
     background-color: #675D51;
     padding: 50px 2.5rem;
-    // position: relative;
-    height: 80%;
 `;
 const ContentContainer = styled.div`
     background-color: #596C69;
     width: 308px; 
     height: 398px;
-    margin-right: 0;
     padding: 20px;
-    // position: relative;
+    margin-left: auto;
+    margin-right: auto;
 `;
 
-const DevGridContainer = styled.div`
+const DevContainer = styled.div`
+    background-color: #675D51;
+    padding: 2.5rem;
+`;
+
+const GridContainer = styled.div`
     display: grid;
+    grid-gap: 1rem;
     grid-template-columns: 1fr 1fr 1fr;
-    justify-content: center;
-    align-content: center;
-
-
-
 `;
 
-  export default SimpleSlider;
+const GridItem = styled.div`
+      margin-left: auto;
+      margin-right: auto;
+`;
+
+export default DevSlider;

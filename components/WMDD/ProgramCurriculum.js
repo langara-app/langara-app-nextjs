@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { WmddData } from '../../lib/WmddData';
 import styles from '../../styles/WMDD.module.css';
 
-const ProgramCurriculum = (props) => {
+const ProgramCurriculum = () => {
 
   const curriculumInfo = WmddData.curriculum;
   const curriculumDetails = curriculumInfo.map(curriculum => 
@@ -14,7 +14,6 @@ const ProgramCurriculum = (props) => {
 
   return (
     <Container>
-        
         <Title>Program Curriculum</Title>
             <Body>
                 <Movie className="intro-movie">
@@ -23,19 +22,6 @@ const ProgramCurriculum = (props) => {
             
             </Body>
             <Details>{curriculumDetails}</Details>
-            
-            {/* { curriculumDetails } */}
-
-
-        {/* <div className={styles.curriculum_container}> */}
-            {/* <h3 className={styles.curriculum_title}>Program Curriculum</h3>
-            <div className={styles.intro_movie_wrap}>
-            <div className="intro-movie">
-                <iframe className={styles.iframe} frameBorder="0" src="https://www.youtube.com/embed/BTciK1vJ8QY?rel=0" title="intro-movie"></iframe>
-            </div>
-            </div>
-            { curriculumDetails } */}
-        {/* </div> */}
     </Container>
   )
 };
@@ -48,22 +34,26 @@ const Container = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     font-size: ${(19 / 1366) * 100}vw;
+    text-align: left;
+    padding-right: 3rem;
   }
 `;
 
 const Title = styled.h3`
     grid-column: 2;
-    text-align: left;
+    text-align: center;
     font-size: 32px;
 
      @media only screen and (min-width: 768px) {
          height: 50%;
          font-size: ${(50 / 1366) * 100}vw;
+         text-align: left;
+         margin-bottom: 0;
+         padding: 0 2.5rem;
        }
 `;
 
 const Body = styled.p`
-    // padding: 0 2.5rem;
 
     @media only screen and (min-width: 768px) {
         margin-top: auto;
@@ -74,7 +64,11 @@ const Body = styled.p`
 `;
 
 const Details = styled.div`
-    text-align: left;
+
+    @media only screen and (min-width: 768px) {
+        text-align: left;
+        padding: 0 2.5rem;
+    }
 `;
 
 const Movie = styled.div`

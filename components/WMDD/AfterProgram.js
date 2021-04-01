@@ -12,7 +12,7 @@ const AfterProgram = (props) => {
     <Container>
         <AfterProgramContainer>
           <Title>{WmddData.complete_program.title}</Title>
-          <Image src={instructorTyler} width={1000} height={700} />
+          <Image src={instructorTyler} width={1358} height={668} />
         </AfterProgramContainer>
         <Body>{WmddData.complete_program.description}</Body>
     </Container>
@@ -20,18 +20,8 @@ const AfterProgram = (props) => {
 };
 
 const Container = styled.div`
-//   position: relative;
-//   background-color: white;
-//   margin: 4rem 0 0;
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   padding: 0 1rem 1rem;
 
   @media only screen and (min-width: 768px) {
-    // margin: 0;
-    // padding: ${(149 / 1366) * 100}vw;
-    // padding-bottom: 5vw;
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
@@ -52,6 +42,7 @@ const Title = styled.h1`
     @media only screen and (min-width: 768px) {
         height: 50%;
         font-size: ${(50 / 1366) * 100}vw;
+        margin-top: 0;
       }
 `;
 
