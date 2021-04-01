@@ -1,12 +1,96 @@
+.wmdd_text {
+    font-weight: 200;
+    font-size: 13px;
+    margin-bottom: 0;
+}
+.wmdd_intro {
+    height: 75vh;
+}
 .wmdd_body {
-    text-align: center
+    text-align: center;
+    font-size: 13px;
+    font-weight: 200;
+    padding-top: 5%;
+    margin: 0 0;
+}
+/* .curriculum_container {
+    background-color: white;
+    padding: 50px 0;
+}
+.curriculum_title {
+    font-size: 32px;
+    margin-top: 0;
+    padding: 0 2.5rem;
+    
+} */
+/* .curriculum_body {
+    padding: 0 2.5rem;
+} */
+.intro_movie_wrap {
+    /* overflow: hidden; */
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.iframe {
+    width: 100vw;
+    height: 60vw;
+}
+.developer_container {
+    background-color: #675D51;
+    color: white;
+}
+.dev_title,
+.des_title {
+    margin-top: 0;
+    padding-top: 40px;
 }
 
-
+.wmdd_image {
+    display: none;
+}
 
 @media only screen and (min-width: 800px)  {
-    .stream_grid {
+    /* .curriculum_container {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+        font-size: 19px;
+    } */
+    /* .curriculum_title,
+    .curriculum_body {
+        grid-column: 2;
+        text-align: left;
+    } */
+    /* .intro_movie_wrap {
+        grid-row: 1 / span 4;
+        align-content: center;
+        justify-content: center;
+        
+    } */
+    .iframe {
+        width: 50vw;
+        height: 30vw;
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+        max-width: 600px;
+        max-height: 400px;
+    }
+    .wmdd_full_intro {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .wmdd_image {
+        width: 50vw;
+        display: inline;
+    } 
+    .small_title {
+        text-align: left;
+        padding: 0 2.5rem;
+        margin-bottom: 20px;
+    } 
+    .wmdd_intro {
+        height: 50vh
+    }
+    .wmdd_body {
+        padding-top: 0;
     }
 }
