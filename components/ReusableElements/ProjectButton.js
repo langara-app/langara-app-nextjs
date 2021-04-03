@@ -14,9 +14,9 @@ const ProjectButton = ({ text, type, category, project, link }) => {
           <a>{text}</a>
         </Link>
       ) : (
-        <Link href={link}>
-          <a>{text}</a>
-        </Link>
+        <a href={link} target="_blank">
+          {text}
+        </a>
       )}
     </BtnElement>
   );

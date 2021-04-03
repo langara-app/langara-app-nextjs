@@ -13,7 +13,7 @@ const Project = ({ project }) => {
   return (
     <Container>
       <ImageContainer>
-        <Image src={data.acf.app_picture} width={1000} height={1000} />
+        <ImageElement src={data.acf.app_picture} width={1000} height={1000} />
       </ImageContainer>
       <InfoContainer>
         <ProjectButton
@@ -24,15 +24,11 @@ const Project = ({ project }) => {
         {data.acf.case_study !== "" || data.acf.project_proposal_file !== "" ? (
           <span>or</span>
         ) : null}
-        {data.acf.case_study !== "" ? (
-          <Link href={data.acf.case_study}>
-            <LinkStyled>view case study</LinkStyled>
-          </Link>
-        ) : null}
+
         {data.acf.project_proposal_file !== "" ? (
-          <Link href={data.acf.project_proposal_file}>
-            <LinkStyled>download proposal</LinkStyled>
-          </Link>
+          <LinkStyled href={data.acf.project_proposal_file} target="_blank">
+            download proposal
+          </LinkStyled>
         ) : null}
       </InfoContainer>
       <ProjectContents>
@@ -51,10 +47,17 @@ const Container = styled.div`
 `;
 
 const ImageContainer = styled.div`
+  position: relative;
+
   @media only screen and (min-width: 768px) {
     padding: 0 ${(466 / 1365) * 100}vw;
     margin-bottom: ${(33 / 1365) * 100}vw;
   }
+`;
+
+const ImageElement = styled(Image)`
+  height: auto !important;
+  min-height: auto !important;
 `;
 
 const InfoContainer = styled.div`

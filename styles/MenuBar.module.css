@@ -9,6 +9,14 @@
   width: 23vw;
 }
 
+.langara_logo_in_menu {
+  height: 11vw;
+  width: 23vw;
+  position: absolute;
+  top: 29px;
+  left: 25px;
+}
+
 .menues {
   display: flex;
   justify-content: space-between;

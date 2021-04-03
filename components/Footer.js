@@ -19,10 +19,15 @@ const Footer = () => {
         <Link href="/about-this-site">About this site</Link>
       </LinkWrapper>
       <LinkWrapper>
-        <Link href="/FAQs">FAQs</Link>
+        <Link href="/faqs">FAQ</Link>
       </LinkWrapper>
       <LinkWrapper>
-        <Link href="https://www.langara-app.ca/">Privacy Policy</Link>
+        <a
+          href="https://langara.ca/about-langara/records-management-and-privacy/privacy/privacy-statement.html"
+          target="_blank"
+        >
+          Privacy Policy
+        </a>
       </LinkWrapper>
 
       <ContactInfo>
@@ -52,8 +57,13 @@ const Footer = () => {
         </FlexLinks>
         <FlexLinks>
           <Link href="/about-this-site">About this site</Link>
-          <Link href="/FAQs">FAQs</Link>
-          <Link href="https://www.langara-app.ca/">Privacy Policy</Link>
+          <Link href="/faqs">FAQ</Link>
+          <a
+            href="https://langara.ca/about-langara/records-management-and-privacy/privacy/privacy-statement.html"
+            target="_blank"
+          >
+            Privacy Policy
+          </a>
         </FlexLinks>
         <ContactInfo>
           <span>CONTACT</span>

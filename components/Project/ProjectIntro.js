@@ -110,9 +110,10 @@ const ImageContainer = styled.div`
 `;
 
 const ImageStyle = styled(Image)`
-  display: block;
-  width: 100%;
-  height: auto;
+  /* display: block; */
+  /* width: 100%; */
+  height: auto !important;
+  min-height: auto !important;
   border-radius: 10px;
 `;
 
