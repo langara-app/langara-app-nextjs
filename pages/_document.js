@@ -20,7 +20,7 @@ export default class MyDocument extends Document {
           <>
             {/* <Head>
               <link
-                href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
+                href="https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;600;700&display=swap"
                 rel="stylesheet"
               />
             </Head> */}

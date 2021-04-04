@@ -19,6 +19,11 @@ const OtherHeader = ({ type, title, desc, img, page }) => {
       <HeaderTitle>{title}</HeaderTitle>
       <HeaderP>{desc}</HeaderP>
     </div>
+  ) : width < 768 && page === "faq" ? (
+    <div className={styles.containerFaq}>
+      <HeaderTitle>{title}</HeaderTitle>
+      <HeaderP>{desc}</HeaderP>
+    </div>
   ) : width >= 768 && page === "alumni" ? (
     <div className={styles.containerAlumni}>
       <ImageContainer side={"left"}>
@@ -39,38 +44,6 @@ const OtherHeader = ({ type, title, desc, img, page }) => {
     </div>
   );
 };
-
-// const HeaderContainer = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: flex-start;
-//   align-items: center;
-//   background-position: center;
-//   background-size: cover;
-//   background-color: #effcfa;
-//   height: 100vh;
-//   position: relative;
-//   padding-top: ${(140 / 375) * 100}vw;
-//   padding-left: 35px;
-//   padding-right: 35px;
-//   color: #c36448;
-//   text-align: center;
-//   /* background: url(${({ img }) => img}); */
-
-//   @media only screen and (min-width: 768px) {
-//     /* For everything bigger than 768px */
-//   }
-
-//   /* &::after {
-//       content: "";
-//       position: absolute;
-//       top: 0;
-//       left: 0;
-//       height: 100vh;
-//       width: 100%;
-//       background: rgba(241, 90, 34, 0.3);
-//       display: block; */
-// `;
 
 const HeaderTitle = styled.h1`
   text-transform: uppercase;
