@@ -1,3 +1,4 @@
+import "./_app.css";
 import "../styles/globals.css";
 import "swiper/swiper.scss";
 import "swiper/components/navigation/navigation.scss";
@@ -5,6 +6,7 @@ import "swiper/components/pagination/pagination.scss";
 import "swiper/components/scrollbar/scrollbar.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
 import Head from "next/head";
 import MenuBar from "../components/MenuBar";
 import Footer from "../components/Footer";
@@ -12,12 +14,7 @@ import Footer from "../components/Footer";
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      <Head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;600;700&display=swap"
-          rel="stylesheet"
-        />
-      </Head>
+      <Head></Head>
       <MenuBar />
       <Component {...pageProps} />
       <Footer />
