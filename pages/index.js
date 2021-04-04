@@ -22,7 +22,7 @@ import { HomeData } from "../lib/HomeData";
 
 import Slide from "react-reveal/Slide";
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   // Instead of the file system,
   // fetch post data from an external API endpoint
   //   const data = getHomeData();
