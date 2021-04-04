@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import style from "styled-components";
-import { GoArrowDown } from "react-icons/Go";
+import { GoArrowDown } from "react-icons/go";
 import Link from "next/link";
 
 const ScrollArrow = () => {
