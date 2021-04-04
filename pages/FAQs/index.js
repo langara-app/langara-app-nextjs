@@ -24,7 +24,7 @@ const FAQ = ({ faqLists, questionCat }) => {
 
 export default FAQ;
 
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
   const cats = await fetch(
     "https://api.langara-app.ca/wp-json/wp/v2/categories"
   ).then((result) => result.json());
