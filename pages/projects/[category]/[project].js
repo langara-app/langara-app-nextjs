@@ -118,21 +118,21 @@ const ProjectContents = styled.div`
 
 export default Project;
 
-export async function getStaticPaths() {
-  const res = await fetch(
-    "https://api.langara-app.ca/wp-json/wp/v2/projects?per_page=100"
-  );
-  const projects = await res.json();
+// export async function getStaticPaths() {
+//   const res = await fetch(
+//     "https://api.langara-app.ca/wp-json/wp/v2/projects?per_page=100"
+//   );
+//   const projects = await res.json();
 
-  return {
-    paths: projects.map((project) => ({
-      params: { category: project.categories_slugs[0], project: project.slug },
-    })),
-    fallback: false,
-  };
-}
+//   return {
+//     paths: projects.map((project) => ({
+//       params: { category: project.categories_slugs[0], project: project.slug },
+//     })),
+//     fallback: false,
+//   };
+// }
 
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
   const slug = params.project;
   const res = await fetch(
     "https://api.langara-app.ca/wp-json/wp/v2/projects?per_page=100"
