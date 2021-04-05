@@ -5,7 +5,7 @@ import Options from "../../components/Faq/Options";
 import QAs from "../../components/Faq/QAs";
 // import { styled } from "@material-ui/core";
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const cats = await fetch(
     "https://api.langara-app.ca/wp-json/wp/v2/categories"
   ).then((result) => result.json());
@@ -14,11 +14,11 @@ export async function getServerSideProps() {
     "https://api.langara-app.ca/wp-json/wp/v2/faq?per_page=100"
   ).then((result) => result.json());
 
-  const faqLists = await cats.map((cat) =>
+  const faqLists = cats.map((cat) =>
     faqs.filter((faq) => faq.categories_slugs.find((slug) => slug === cat.slug))
   );
 
-  const faqCats = await faqLists.map((faq) => {
+  const faqCats = faqLists.map((faq) => {
     if (faq[0]) {
       return {
         categoryName: faq[0].categories_names.toString(),
@@ -26,8 +26,8 @@ export async function getServerSideProps() {
       };
     }
   });
-  let filteredFaqLists = await faqLists.filter((faq) => faq.length !== 0);
-  let filteredCat = await faqCats.filter((cat) => cat != undefined);
+  let filteredFaqLists = faqLists.filter((faq) => faq.length !== 0);
+  let filteredCat = faqCats.filter((cat) => cat != undefined);
 
   return {
     props: {
