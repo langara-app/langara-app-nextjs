@@ -9,7 +9,7 @@ const QAs = ({ data }) => {
   return (
     <QAContainer>
       {data.map((q, index) => (
-        <MuiAccordion>
+        <MuiAccordion key={index}>
           <MuiAccordionSummary
             style={{ borderBotomWidth: "1px" }}
             expandIcon={<IoIosArrowDown />}
