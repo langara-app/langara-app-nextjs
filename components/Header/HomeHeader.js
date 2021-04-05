@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-// import Link from "next/link";
 
 import Button from "../ReusableElements/Button";
 import ScrollArrow from "../ReusableElements/ScrollArrow";
@@ -46,6 +45,7 @@ const HomeHeader = ({ type, title, desc, btnText, img, page }) => {
             size={"med"}
             bcg={"transparent"}
             color={"#675D51"}
+            to={"wmdd"}
           />
           <Link
             activeClass="active"
