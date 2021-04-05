@@ -59,6 +59,10 @@ const AlumniSliderContainer = styled.div`
       height: 50vw !important;
     }
 
+    .slick-dots {
+      bottom: -5px;
+    }
+
     .slick-dots li button:before {
       font-size: 13px !important;
     }

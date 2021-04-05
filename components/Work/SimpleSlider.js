@@ -117,6 +117,16 @@ const SliderContainer = styled.div`
   .swiper-button-next {
     left: 16vw;
   }
+  .swiper-pagination-fraction,
+  .swiper-pagination-custom,
+  .swiper-container-horizontal > .swiper-pagination-bullets {
+    bottom: 0;
+  }
+
+  .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+  }
 
   @media only screen and (min-width: 768px) {
     margin-right: 41vw;
@@ -145,6 +155,12 @@ const SliderContainer = styled.div`
     .slick-list {
       height: 42vw !important;
       width: 50vw !important;
+    }
+
+    .swiper-pagination-fraction,
+    .swiper-pagination-custom,
+    .swiper-container-horizontal > .swiper-pagination-bullets {
+      bottom: 10px;
     }
   }
 `;
