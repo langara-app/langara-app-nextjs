@@ -16,3 +16,7 @@ a {
 * {
   box-sizing: border-box;
 }
+
+:root {
+  --swiper-theme-color: #675d51 !important;
+}

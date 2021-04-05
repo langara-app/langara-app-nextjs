@@ -26,7 +26,7 @@ const Options = ({ data, onClick }) => {
       labelField={"categoryName"}
       color={"#C36448"}
       values={[data[0]]}
-      style={{ marginBottom: "8.5vw" }}
+      style={{ padding: "1rem", marginBottom: "8.5vw" }}
       searchable={false}
     />
   ) : (
@@ -59,6 +59,7 @@ const CategoryName = styled.p`
   font-weight: ${({ number, checked }) => (number === checked ? 600 : 200)};
   background-color: ${({ number, checked }) =>
     number === checked ? "white" : "#EFFCFA"};
+  cursor: pointer;
 `;
 
 const Container = styled.div`
