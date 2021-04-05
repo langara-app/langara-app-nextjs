@@ -52,6 +52,7 @@ const QAContainer = styled.div`
   .MuiAccordionSummary-content {
     font-size: 4vw;
     color: #675d51;
+    margin: ${(15 / 375) * 100}vw 0;
   }
 
   .MuiAccordionDetails-root {
@@ -67,6 +68,26 @@ const QAContainer = styled.div`
 
   a {
     text-decoration: underline;
+  }
+
+  @media only screen and (min-width: 768px) {
+    background-color: white;
+    padding: ${(70 / 1365) * 100}vw ${(293 / 1365) * 100}vw
+      ${(130 / 1365) * 100}vw;
+    margin: 0;
+
+    .MuiAccordionSummary-content {
+      font-size: ${(16 / 1365) * 100}vw;
+    }
+
+    .MuiAccordionSummary-content {
+      margin: ${(21 / 1365) * 100}vw 0;
+    }
+
+    p,
+    a {
+      font-size: ${(16 / 1365) * 100}vw;
+    }
   }
 `;
 

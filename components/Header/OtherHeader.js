@@ -24,6 +24,11 @@ const OtherHeader = ({ type, title, desc, img, page }) => {
       <HeaderTitle>{title}</HeaderTitle>
       <HeaderP>{desc}</HeaderP>
     </div>
+  ) : width >= 768 && page === "faq" ? (
+    <div className={styles.containerFaq}>
+      <HeaderTitle>{title}</HeaderTitle>
+      <HeaderP>{desc}</HeaderP>
+    </div>
   ) : width >= 768 && page === "alumni" ? (
     <div className={styles.containerAlumni}>
       <ImageContainer side={"left"}>

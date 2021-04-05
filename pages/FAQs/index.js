@@ -25,9 +25,7 @@ const FAQ = ({ faqLists, questionCat }) => {
   );
 };
 
-const FaqContainer = styled.div`
-  padding: 0 2rem;
-`;
+const FaqContainer = styled.div``;
 
 export default FAQ;
 
