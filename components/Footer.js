@@ -57,7 +57,6 @@ const Footer = () => {
         </FlexLinks>
         <FlexLinks>
           <Link href="/about-this-site">About this site</Link>
-          <Link href="/faqs">FAQ</Link>
           <a
             href="https://langara.ca/about-langara/records-management-and-privacy/privacy/privacy-statement.html"
             target="_blank"
