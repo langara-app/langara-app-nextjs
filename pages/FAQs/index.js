@@ -5,7 +5,7 @@ import Options from "../../components/Faq/Options";
 import QAs from "../../components/Faq/QAs";
 // import { styled } from "@material-ui/core";
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const cats = await fetch(
     "https://api.langara-app.ca/wp-json/wp/v2/categories"
   ).then((result) => result.json());
