@@ -19,6 +19,7 @@ const Options = ({ data, onClick }) => {
       color={"#C36448"}
       values={[data[0]]}
       style={{ marginBottom: "8.5vw" }}
+      searchable={false}
     />
   );
 };
