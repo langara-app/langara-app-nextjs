@@ -25,7 +25,13 @@ const FAQ = ({ faqLists, questionCat }) => {
   );
 };
 
-const FaqContainer = styled.div``;
+const FaqContainer = styled.div`
+  padding: 0 2rem;
+
+  @media only screen and (min-width: 768px) {
+    padding: 0;
+  }
+`;
 
 export default FAQ;
 

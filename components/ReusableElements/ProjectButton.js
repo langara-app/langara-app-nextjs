@@ -32,7 +32,6 @@ const BtnElement = styled.button`
   color: #675d51;
   font-weight: 700;
   font-family: "Kanit";
-  padding: ${(5 / 375) * 100}vw ${(24 / 375) * 100}vw;
 
   a {
     font-size: ${({ type }) =>
@@ -40,15 +39,23 @@ const BtnElement = styled.button`
         ? (24 / 375) * 100
         : (16 / 375) * 100}vw;
     text-decoration: none;
+    padding: ${(5 / 375) * 100}vw ${(24 / 375) * 100}vw;
+    display: block;
   }
 
   @media only screen and (min-width: 768px) {
-    padding: ${(10 / 1365) * 100}vw ${(72 / 1365) * 100}vw;
     a {
       font-size: ${({ type }) =>
         type === "category" || type === "single"
           ? (24 / 1365) * 100
           : (16 / 1365) * 100}vw;
+      padding: ${(10 / 1365) * 100}vw ${(72 / 1365) * 100}vw;
+      padding-left: ${({ type }) =>
+        type === "intro" ? (17 / 1365) * 100 : (72 / 1365) * 100}vw;
+      padding-right: ${({ type }) =>
+        type === "intro" ? (17 / 1365) * 100 : (72 / 1365) * 100}vw;
+
+      display: block;
     }
   }
 `;

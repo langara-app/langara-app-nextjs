@@ -1,7 +1,18 @@
 import React from "react";
+import Link from "next/link";
 import styled from "styled-components";
 
-const Button = ({ text, margin, font, size, color, bcg, layout, section }) => {
+const Button = ({
+  text,
+  margin,
+  font,
+  size,
+  color,
+  bcg,
+  layout,
+  section,
+  to,
+}) => {
   return (
     <BtnElement
       margin={margin}
@@ -12,7 +23,26 @@ const Button = ({ text, margin, font, size, color, bcg, layout, section }) => {
       layout={layout}
       section={section}
     >
-      {text}
+      {to === "wmdd" ? (
+        <Link href={"/about-us"}>
+          <a> {text}</a>
+        </Link>
+      ) : to === "project" ? (
+        <Link href={"/projects"}>
+          <a> {text}</a>
+        </Link>
+      ) : to === "alumni" ? (
+        <Link href={"/alumni"}>
+          <a> {text}</a>
+        </Link>
+      ) : (
+        <a
+          href="https://langara.ca/programs-and-courses/programs/web-and-mobile-app/admission-requirements.html"
+          target="_blank"
+        >
+          {text}
+        </a>
+      )}
     </BtnElement>
   );
 };
@@ -23,14 +53,7 @@ const BtnElement = styled.button`
   display: block;
   font-size: ${({ font }) => font}px;
   cursor: pointer;
-  padding: ${({ size }) =>
-    size === "med"
-      ? "8px 24px"
-      : size === "big"
-      ? "10px 53px"
-      : size === "long"
-      ? "14px 10px"
-      : "14px 10px"};
+
   font-weight: ${({ size }) =>
     size === "med" ? "bold" : size === "big" ? "bold" : "600"};
 
@@ -39,6 +62,18 @@ const BtnElement = styled.button`
   border: 2px solid ${({ color }) => color};
   background-color: ${({ bcg }) => bcg};
   color: ${({ color }) => color};
+
+  a {
+    padding: ${({ size }) =>
+      size === "med"
+        ? "8px 24px"
+        : size === "big"
+        ? "10px 53px"
+        : size === "long"
+        ? "14px 10px"
+        : "14px 10px"};
+    display: block;
+  }
 
   @media only screen and (min-width: 768px) {
     margin: ${({ layout }) => (layout === "desktop" ? 0 : (30 / 1366) * 100)}vw
@@ -51,13 +86,15 @@ const BtnElement = styled.button`
         ? (500 / 1366) * 100
         : (120 / 1366) * 100}vw;
 
-    padding: ${({ layout, section }) =>
-        layout === "desktop" ? (10 / 1366) * 100 : (12 / 1366) * 100}vw
-      ${({ section }) =>
-        section === "joinWMDD" ? (10 / 1366) * 100 : (34 / 1366) * 100}vw;
-
     font-size: ${({ section }) =>
       section === "joinWMDD" ? (18 / 1366) * 100 : (24 / 1366) * 100}vw;
+
+    a {
+      padding: ${({ layout, section }) =>
+          layout === "desktop" ? (10 / 1366) * 100 : (12 / 1366) * 100}vw
+        ${({ section }) =>
+          section === "joinWMDD" ? (10 / 1366) * 100 : (34 / 1366) * 100}vw;
+    }
   }
 `;
 

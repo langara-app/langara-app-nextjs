@@ -107,6 +107,7 @@ const Home = ({ data, alumni, work, homeData }) => {
               size={"big"}
               color={"white"}
               bcg={"transparent"}
+              to={"project"}
             />
           </BtnBcg>
         </SectionContainer>
@@ -132,6 +133,7 @@ const Home = ({ data, alumni, work, homeData }) => {
                 color={"white"}
                 bcg={"transparent"}
                 layout={"desktop"}
+                to={"project"}
               />
             </BtnBcg>
           </div>
@@ -156,6 +158,7 @@ const Home = ({ data, alumni, work, homeData }) => {
               color={"white"}
               bcg={"transparent"}
               layout={"desktop"}
+              to={"alumni"}
             />
           </BtnBcg>
         </SectionContainer>
@@ -174,6 +177,7 @@ const Home = ({ data, alumni, work, homeData }) => {
               color={"white"}
               bcg={"transparent"}
               layout={"desktop"}
+              to={"alumni"}
             />
           </BtnBcg>
           <SliderContainer contents={"alumni"}>
