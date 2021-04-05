@@ -7,7 +7,7 @@ import useWindowWidth from "../../components/Hooks/useWindowWidth";
 
 import styles from "../../styles/AlumniIndex.module.css";
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   // Instead of the file system,
   // fetch post data from an external API endpoint
   //   const data = getHomeData();
