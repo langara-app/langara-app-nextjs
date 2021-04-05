@@ -3,17 +3,22 @@ import Select from "react-dropdown-select";
 
 import { ProjectCategoryData } from "../../lib/ProjectCategoryData";
 
-const Options = ({ data }) => {
+const Options = ({ data, onClick }) => {
   const [questionCat, setQuestionCat] = useState(data[0].categorySlug);
+
+  const setCat = (values) => {
+    onClick(values[0].categorySlug);
+  };
 
   return (
     <Select
       options={data}
-      onChange={(values) => setQuestionCat(values[0].categorySlug)}
+      onChange={setCat}
       valueField={"categorySlug"}
       labelField={"categoryName"}
       color={"#C36448"}
       values={[data[0]]}
+      style={{ marginBottom: "8.5vw" }}
     />
   );
 };

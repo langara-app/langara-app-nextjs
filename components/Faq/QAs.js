@@ -1,0 +1,73 @@
+import React from "react";
+import styled from "styled-components";
+import MuiAccordion from "@material-ui/core/Accordion";
+import MuiAccordionDetails from "@material-ui/core/AccordionDetails";
+import MuiAccordionSummary from "@material-ui/core/AccordionSummary";
+import { IoIosArrowDown } from "react-icons/io";
+
+const QAs = ({ data }) => {
+  return (
+    <QAContainer>
+      {data.map((q, index) => (
+        <MuiAccordion>
+          <MuiAccordionSummary
+            style={{ borderBotomWidth: "1px" }}
+            expandIcon={<IoIosArrowDown />}
+          >
+            {index + 1}. {q.acf.question}
+          </MuiAccordionSummary>
+          <MuiAccordionDetails>
+            <p
+              dangerouslySetInnerHTML={{
+                __html: q.acf.answer,
+              }}
+            ></p>
+
+            <a href={q.acf.link}>
+              {q.acf.link !== undefined ? "More details" : null}
+            </a>
+          </MuiAccordionDetails>
+        </MuiAccordion>
+      ))}
+    </QAContainer>
+  );
+};
+
+const QAContainer = styled.div`
+  margin-bottom: ${(70 / 375) * 100}vw;
+  .MuiAccordion-root.Mui-expanded {
+    margin: 0;
+  }
+
+  .MuiPaper-root {
+    background-color: unset;
+  }
+  .MuiAccordion-root.Mui-expanded {
+    background-color: "#EFFDFB";
+  }
+  .MuiPaper-elevation1 {
+    border-bottom: 1px solid #e0e0e0;
+    box-shadow: unset;
+  }
+  .MuiAccordionSummary-content {
+    font-size: 4vw;
+    color: #675d51;
+  }
+
+  .MuiAccordionDetails-root {
+    flex-direction: column;
+  }
+
+  p,
+  a {
+    font-size: 4vw;
+    font-weight: 200;
+    color: #675d51;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+`;
+
+export default QAs;
