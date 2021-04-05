@@ -29,6 +29,8 @@ export async function getStaticProps() {
   let filteredFaqLists = faqLists.filter((faq) => faq.length !== 0);
   let filteredCat = faqCats.filter((cat) => cat != undefined);
 
+  console.log(filteredFaqLists);
+
   return {
     props: {
       faqLists: filteredFaqLists.reverse(),
