@@ -30,19 +30,19 @@ const Container = styled.div`
 
 export default Category;
 
-// export async function getStaticPaths() {
-//   const res = await fetch("https://api.langara-app.ca/wp-json/wp/v2/projects");
-//   const projects = await res.json();
+export async function getStaticPaths() {
+  const res = await fetch("https://api.langara-app.ca/wp-json/wp/v2/projects");
+  const projects = await res.json();
 
-//   return {
-//     paths: projects.map((project) => ({
-//       params: { category: project.categories_slugs[0] },
-//     })),
-//     fallback: false,
-//   };
-// }
+  return {
+    paths: projects.map((project) => ({
+      params: { category: project.categories_slugs[0] },
+    })),
+    fallback: false,
+  };
+}
 
-export async function getServerSideProps({ params }) {
+export async function getStaticProps({ params }) {
   const category = params.category;
   const res = await fetch(
     "https://api.langara-app.ca/wp-json/wp/v2/projects?per_page=100"
