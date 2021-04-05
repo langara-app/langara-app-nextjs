@@ -1,26 +1,33 @@
 import React, { useState, useEffect } from "react";
+import styled from "styled-components";
 import OtherHeader from "../../components/Header/OtherHeader";
 import Options from "../../components/Faq/Options";
+import QAs from "../../components/Faq/QAs";
+// import { styled } from "@material-ui/core";
 
 const FAQ = ({ faqLists, questionCat }) => {
-  //   const faqCats = faqLists.map((faq) => {
-  //     if (faq[0]) {
-  //       return {
-  //         categoryName: faq[0].categories_names,
-  //         categorySlug: faq[0].categories_slugs,
-  //       };
-  //     }
-  //   });
-  //   let filteredCat = faqCats.filter((cat) => cat != undefined);
+  const [catSlug, setCatSlug] = useState(questionCat[0].categorySlug);
 
-  console.log(questionCat);
+  const onSlugSet = (value) => {
+    setCatSlug(value);
+  };
+
+  const filteredArr = faqLists.find(
+    (list) => list[0].categories_slugs[0] === catSlug
+  );
+
   return (
-    <div>
+    <FaqContainer>
       <OtherHeader title={"WMDD FAQs"} page={"faq"} />
-      <Options data={questionCat} />
-    </div>
+      <Options data={questionCat} onClick={onSlugSet} />
+      <QAs data={filteredArr} />
+    </FaqContainer>
   );
 };
+
+const FaqContainer = styled.div`
+  padding: 0 2rem;
+`;
 
 export default FAQ;
 
@@ -43,15 +50,15 @@ export async function getServerSideProps({ params }) {
         categoryName: faq[0].categories_names.toString(),
         categorySlug: faq[0].categories_slugs.toString(),
       };
-      //   return faq[0].categories_names.toString();
     }
   });
+  let filteredFaqLists = faqLists.filter((faq) => faq.length !== 0);
   let filteredCat = faqCats.filter((cat) => cat != undefined);
 
   return {
     props: {
-      faqLists: faqLists,
-      questionCat: filteredCat,
+      faqLists: filteredFaqLists.reverse(),
+      questionCat: filteredCat.reverse(),
     },
   };
 }

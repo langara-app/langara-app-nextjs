@@ -1,9 +1,11 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheet } from "styled-components";
+import { ServerStyleSheets } from "@material-ui/core/styles";
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const sheet = new ServerStyleSheet();
+    const materialSheets = new ServerStyleSheets();
     const originalRenderPage = ctx.renderPage;
 
     try {
@@ -26,6 +28,7 @@ export default class MyDocument extends Document {
             </Head> */}
             {initialProps.styles}
             {sheet.getStyleElement()}
+            {materialSheets.getStyleElement()}
           </>
         ),
       };
