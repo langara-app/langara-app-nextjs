@@ -49,7 +49,7 @@ export async function getStaticProps() {
 
 const Home = ({ data, alumni, work, homeData }) => {
   const width = useWindowWidth();
-  console.log("home", width);
+
   return (
     <>
       <Head>

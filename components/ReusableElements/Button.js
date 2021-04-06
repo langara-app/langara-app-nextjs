@@ -48,6 +48,7 @@ const Button = ({
 };
 
 const BtnElement = styled.button`
+  z-index: 3;
   text-align: center;
   text-decoration: none;
   display: block;
