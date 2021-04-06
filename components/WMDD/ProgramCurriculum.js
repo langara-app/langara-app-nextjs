@@ -19,7 +19,6 @@ const ProgramCurriculum = () => {
                 <Movie className="intro-movie">
                     <iframe frameBorder="0" className={styles.iframe} src="https://www.youtube.com/embed/BTciK1vJ8QY?rel=0" title="intro-movie"></iframe>
                 </Movie>
-            
             </Body>
             <Details>{curriculumDetails}</Details>
     </Container>
@@ -49,7 +48,6 @@ const Title = styled.h3`
          font-size: ${(50 / 1366) * 100}vw;
          text-align: left;
          margin-bottom: 0;
-         padding: 0 2.5rem;
        }
 `;
 
@@ -64,16 +62,20 @@ const Body = styled.p`
 `;
 
 const Details = styled.div`
+    padding: 0 2.5rem;
+    text-align: left;
+
 
     @media only screen and (min-width: 768px) {
-        text-align: left;
-        padding: 0 2.5rem;
+      padding: 0;
     }
+
 `;
 
 const Movie = styled.div`
-    margin-top: auto;
-    margin-bottom: auto;
+    // margin-top: auto;
+    // margin-bottom: auto;
+   
 `;
 
 export default ProgramCurriculum;

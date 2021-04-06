@@ -3,7 +3,8 @@ import styled from "styled-components";
 import useWindowWidth from "../Hooks/useWindowWidth";
 import { WmddData } from '../../lib/WmddData';
 import Image from "next/image";
-import instructorTyler from '../../assets/img/wmdd/instructorTyler.jpg';
+// import instructorTyler from '../../assets/img/wmdd/instructorTyler.jpg';
+import instructorTylerCropped from '../../assets/img/wmdd/instructorTylerCropped.jpg';
 
 const AfterProgram = (props) => {
   const width = useWindowWidth();
@@ -12,7 +13,7 @@ const AfterProgram = (props) => {
     <Container>
         <AfterProgramContainer>
           <Title>{WmddData.complete_program.title}</Title>
-          <Image src={instructorTyler} width={1358} height={668} />
+          <InstructorImage src={instructorTylerCropped}  />
         </AfterProgramContainer>
         <Body>{WmddData.complete_program.description}</Body>
     </Container>
@@ -20,15 +21,23 @@ const AfterProgram = (props) => {
 };
 
 const Container = styled.div`
+  background-color: white;
 
   @media only screen and (min-width: 768px) {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    overflow: hidden;
   }
 `;
 
 const AfterProgramContainer = styled.div`
 
+`;
+
+const InstructorImage = styled.img`
+ max-width: 100%;
+ height: auto;
+//  overflow: hidden;
 `;
 
 const Title = styled.h1`
@@ -48,6 +57,7 @@ const Title = styled.h1`
 
 const Body = styled.p`
     padding: 0 2.5rem;
+   
 
     @media only screen and (min-width: 768px) {
         margin-top: auto;
@@ -56,6 +66,7 @@ const Body = styled.p`
         font-size: ${(19 / 1366) * 100}vw;
         grid-column: 2;
         text-align: left;
+        // overflow: hidden;
     }
 
 
