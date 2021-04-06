@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import ataglance from '../../assets/ataglance.svg';
 
 const WmddIntro = ({ title, desc, subtitle }) => {
   return (
@@ -7,17 +8,36 @@ const WmddIntro = ({ title, desc, subtitle }) => {
       <Subtitle>{subtitle}</Subtitle>
       <Title>{title}</Title>
       <Paragraph>{desc}</Paragraph>
+      {/* <Container> */}
+        <Illustration src={ataglance} />
+      {/* </Container> */}
+      
+      {/* <img src={ataglance} className={styles.wmdd_image} />  */}
     </Wrapper>
   );
 };
 
 export default WmddIntro;
 
+const Illustration = styled.img`
+  width: 315px;
+  height: 333px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media only screen and (min-width: 768px) {
+    display: none;
+  }
+`;
+
+const Container = styled.div`
+
+`;
 const Subtitle = styled.h1`
     font-size: 13px;
     font-weight: 200;
     margin-bottom: 0;
-    padding: 0 2.5rem;
 
     @media only screen and (min-width: 768px) {
       margin-bottom: 10px;
@@ -29,13 +49,12 @@ const Title = styled.h2`
   color: #c36448;
   font-weight: 800;
   font-size: 32px;
-  margin: 0 43px;
   line-height: 1.25;
+  margin: 0;
 
   @media only screen and (min-width: 768px) {
     line-height: 1;
     font-size: ${(50 / 1365) * 100}vw;
-    padding-right: 150px;
   }
 `;
 
@@ -45,7 +64,7 @@ const Paragraph = styled.p`
   line-height: 1.4;
   font-weight: 200;
   font-size: 13px;
-  padding: 0 2.5rem;
+  // padding: 0 2.5rem;
  
   @media only screen and (min-width: 768px) {
     font-size: ${(19 / 1365) * 100}vw;
@@ -54,7 +73,8 @@ const Paragraph = styled.p`
 `;
 
 const Wrapper = styled.section`
-  text-align: center;
+  text-align: left;
+  padding: 0 2.5rem;
 
   @media only screen and (min-width: 768px) {
     text-align: left;
