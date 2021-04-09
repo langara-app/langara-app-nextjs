@@ -92,6 +92,11 @@ const MenuLink = styled.a`
   margin: 1rem 0;
   font-weight: 200;
   font-size: ${(28 / 375) * 100}vw;
+
+  @media only screen and (min-width: 768px) {
+    color: #6b6156;
+    font-size: ${(15 / 1365) * 100}vw;
+  }
 `;
 
 const MobileMenuContainer = styled.div`
