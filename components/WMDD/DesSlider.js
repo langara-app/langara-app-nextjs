@@ -130,6 +130,9 @@ const DesSliderContainer = styled.div`
   .slick-dots li.slick-active button:before {
     color: #675D51 !important;
   }
+  .slick-slide div {
+    outline: none;
+}
 
 `;
 const ContentContainer = styled.div`

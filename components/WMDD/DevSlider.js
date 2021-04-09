@@ -147,6 +147,9 @@ const DevContainer = styled.div`
       .slick-dots li.slick-active button:before {
         color: white !important;
       }
+    .slick-slide div {
+        outline: none;
+    }
 `;
 const GridContainer = styled.div`
     display: grid;

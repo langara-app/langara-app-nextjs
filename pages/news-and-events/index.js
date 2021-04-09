@@ -20,19 +20,19 @@ const NewsEvents = ({ news_events }) => {
   return (
     <div>
       <div className={styles.news_body}>
-        <h1>News & Events Details</h1>
+        <h1 className={styles.news_title}>News & Event Details</h1>
         {news_events.map((news) => (
           <div key={news} className={styles.events_content}>
-            <div>
+            <div className={styles.events_image}>
               <Image
                 src={news.acf.article_image}
                 alt="Capstone Showcase Banner"
-                width={600}
-                height={300}
+                width={1200}
+                height={600}
               />
             </div>
-            <div>
-              <span>
+            <div className={styles.events_content_individual}>
+              <span className={styles.events_date}>
                 {new Date(news.date).toLocaleDateString(undefined, {
                   year: "numeric",
                   month: "long",
@@ -41,14 +41,16 @@ const NewsEvents = ({ news_events }) => {
               </span>
               <h2 className={styles.title}>{news.title.rendered}</h2>
               <p
-                className="excerpt"
+                className={styles.description}
                 dangerouslySetInnerHTML={{
                   __html: news.acf.excerpt,
                 }}
               ></p>
               <Link href={`/news-and-events/${news.slug}`}>
                 <a>
-                  <div>read more</div>
+                  <div className={styles.readmore_button}>
+                    <p className={styles.readmore_button_text}>Read More</p>
+                  </div>
                 </a>
               </Link>
             </div>
