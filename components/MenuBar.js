@@ -77,7 +77,7 @@ const MenuBar = () => {
       <div className={styles.menues}>
         {MenuData.map((menu, index) => (
           <Link href={menu.link} key={index}>
-            <a className={styles.menuItem} onClick={openMenu}>
+            <a className={styles.menuItem} >
               {menu.title}
             </a>
           </Link>

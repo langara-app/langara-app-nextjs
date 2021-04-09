@@ -10,6 +10,8 @@ const Project = ({ project }) => {
 
   const width = useWindowWidth();
 
+  console.log(project);
+
   return (
     <Container>
       <ImageContainer>
