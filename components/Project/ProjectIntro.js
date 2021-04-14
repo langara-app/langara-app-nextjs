@@ -20,7 +20,7 @@ const ProjectIntro = (props) => {
         />
       </ImageContainer>
       <h1>{acf.name_of_the_project}</h1>
-      <p dangerouslySetInnerHTML={{ __html: acf.app__short_description }}></p>
+      <p dangerouslySetInnerHTML={{ __html: acf.app_short_description }}></p>
       <ProjectButton
         text={"See project details"}
         data={props}
