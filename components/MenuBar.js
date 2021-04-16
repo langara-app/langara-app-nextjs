@@ -14,9 +14,19 @@ import styled from "styled-components";
 const MenuBar = () => {
   const width = useWindowWidth();
   const [open, setOpen] = useState(false);
+  const [checkedIndex, setCheckedIndex] = useState(0);
 
   const openMenu = () => {
     setOpen(!open);
+  };
+
+  const scrutinizer = (val) => {
+    return parseInt(val.split(" ")[2]);
+  };
+
+  const setCat = (values) => {
+    console.log(values.className);
+    setCheckedIndex(scrutinizer(values.className));
   };
 
   return width < 768 ? (
@@ -77,9 +87,16 @@ const MenuBar = () => {
       <div className={styles.menues}>
         {MenuData.map((menu, index) => (
           <Link href={menu.link} key={index}>
-            <a className={styles.menuItem} >
+            <MenuLinkWeb
+              className={index + 1}
+              onClick={(e) => {
+                setCat(e.target);
+              }}
+              number={index + 1}
+              checked={checkedIndex}
+            >
               {menu.title}
-            </a>
+            </MenuLinkWeb>
           </Link>
         ))}
       </div>
@@ -92,11 +109,21 @@ const MenuLink = styled.a`
   margin: 1rem 0;
   font-weight: 200;
   font-size: ${(28 / 375) * 100}vw;
+  cursor: pointer;
 
   @media only screen and (min-width: 768px) {
     color: #6b6156;
     font-size: ${(15 / 1365) * 100}vw;
   }
+`;
+
+const MenuLinkWeb = styled.a`
+  margin-left: 7.5vw;
+  font-weight: 300;
+  font-size: 1.1vw;
+  color: ${({ number, checked }) =>
+    number === checked ? "#c36448" : "#675D51"};
+  cursor: pointer;
 `;
 
 const MobileMenuContainer = styled.div`
