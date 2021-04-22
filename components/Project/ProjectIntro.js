@@ -20,7 +20,7 @@ const ProjectIntro = (props) => {
         />
       </ImageContainer>
       <h1>{acf.name_of_the_project}</h1>
-      <p dangerouslySetInnerHTML={{ __html: acf.app_description }}></p>
+      <p dangerouslySetInnerHTML={{ __html: acf.app_short_description }}></p>
       <ProjectButton
         text={"See project details"}
         data={props}
@@ -41,7 +41,10 @@ const ProjectIntro = (props) => {
       </ImageContainer>
       <div>
         <h1>{acf.name_of_the_project}</h1>
-        <p dangerouslySetInnerHTML={{ __html: acf.app_description }}></p>
+        <p
+          dangerouslySetInnerHTML={{ __html: acf.app_short_description }}
+          style={{ marginBottom: "0.8vw" }}
+        ></p>
         <ProjectButton
           text={"See project details"}
           data={props}

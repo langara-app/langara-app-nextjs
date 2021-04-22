@@ -5,8 +5,7 @@ import Slider from "react-slick";
 import AlumniIntro from "./AlumniIntro";
 import AlumniSingle from "./AlumniSingle";
 
-// const height = document.getElementById("slidercomponent-id").clientHeight;
-// this.setState({ height });
+const alumnaNameToRemove = "Eduard Landa";
 
 const settings = {
   dots: true,
@@ -23,9 +22,11 @@ const AlumniSlider = ({ data }) => {
   return (
     <AlumniSliderContainer>
       <Slider {...settings}>
-        {data.map((alumna, index) => (
-          <AlumniIntro {...alumna.acf} key={index} />
-        ))}
+        {data.map((alumna, index) =>
+          alumna.acf.alumni_name === alumnaNameToRemove ? null : (
+            <AlumniIntro {...alumna.acf} key={index} />
+          )
+        )}
       </Slider>
     </AlumniSliderContainer>
   );

@@ -29,8 +29,6 @@ export async function getStaticProps() {
   let filteredFaqLists = faqLists.filter((faq) => faq.length !== 0);
   let filteredCat = faqCats.filter((cat) => cat != undefined);
 
-  console.log(filteredFaqLists);
-
   return {
     props: {
       faqLists: filteredFaqLists.reverse(),
@@ -68,35 +66,3 @@ const FaqContainer = styled.div`
 `;
 
 export default FAQ;
-
-// export async function getStaticProps() {
-//   const cats = await fetch(
-//     "https://api.langara-app.ca/wp-json/wp/v2/categories"
-//   ).then((result) => result.json());
-
-//   const faqs = await fetch(
-//     "https://api.langara-app.ca/wp-json/wp/v2/faq?per_page=100"
-//   ).then((result) => result.json());
-
-//   const faqLists = cats.map((cat) =>
-//     faqs.filter((faq) => faq.categories_slugs.find((slug) => slug === cat.slug))
-//   );
-
-//   const faqCats = faqLists.map((faq) => {
-//     if (faq[0]) {
-//       return {
-//         categoryName: faq[0].categories_names.toString(),
-//         categorySlug: faq[0].categories_slugs.toString(),
-//       };
-//     }
-//   });
-//   let filteredFaqLists = faqLists.filter((faq) => faq.length !== 0);
-//   let filteredCat = faqCats.filter((cat) => cat != undefined);
-
-//   return {
-//     props: {
-//       faqLists: filteredFaqLists.reverse(),
-//       questionCat: filteredCat.reverse(),
-//     },
-//   };
-// }

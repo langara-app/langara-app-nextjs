@@ -14,6 +14,8 @@ const AlumniIntro = (props) => {
     graduation_year,
   } = props;
 
+  console.log(props.alumni_name);
+
   return width < 768 ? (
     <Container>
       <AlumniImageTopContainer>
