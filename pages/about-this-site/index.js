@@ -4,10 +4,10 @@ import AdminBox from "../../components/AdminBox";
 
 const AboutThisSite = () => {
   return (
-  <div>
+  <>
     <About />
     <AdminBox />
-  </div>
+  </>
   );
 };
 
