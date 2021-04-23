@@ -131,7 +131,7 @@ export async function getStaticPaths() {
       params: { category: project.categories_slugs[0], project: project.slug },
     })),
     // paths: [],
-    fallback: true,
+    fallback: "blocking",
   };
 }
 
