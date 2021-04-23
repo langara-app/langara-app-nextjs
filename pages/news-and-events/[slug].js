@@ -1,19 +1,11 @@
 import Image from 'next/image';
 import styles from "../../styles/NewsEvents.module.css";
 
-const NewsEventsInvidivual = ({ event }) => {
-  // const formatDate = () => {
-  //   const options = { year: "numeric", month: "long", day: "numeric" };
-  //     return new Date(event.date).toLocaleDateString(undefined, options);
-  // };
-  
+const NewsEventsInvidivual = ({ event }) => {  
   return (
     <article>
       <div className="news-and-events-single">
-        {/* <h1>News & Events Details</h1> */}
         <div>
-          {/* <h2>{event.title.rendered}</h2> */}
-          {/* <span className="post-date">{formatDate()}</span> */}
           <div className={styles.event_image_single}>
             <Image 
               src={event.acf.article_image}
@@ -23,8 +15,6 @@ const NewsEventsInvidivual = ({ event }) => {
           </div>
           <div className={styles.news_events_single_content}>
             <div className={styles.single_content}>
-
-           
           {event.acf.section1_title !== "" ? (
             <h3 className={styles.article1_title}>{event.acf.section1_title}</h3>
           ) : null}
