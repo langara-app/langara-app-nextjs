@@ -14,11 +14,11 @@ const DesSlider = () => {
       slidesToShow: 1,
       slidesToScroll: 1,
       arrows: false,
-      // autoplay: true,
       speed: 2000
     };
 
     const designerInfo = WmddData.designer_details;
+    
     const designerDetails = designerInfo.map(detail => 
       <ContentContainer>
         <Container>

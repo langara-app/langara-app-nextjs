@@ -1,35 +1,24 @@
-import styles from "../../styles/Instructors.module.css";
 import Head from "next/head";
 import AdminBox from "../../components/AdminBox";
 import { InstructorData } from "../../lib/InstructorData";
 import InstructorsIntro from "../../components/Instructors/InstructorsIntro";
+import InstructorsDetails from "../../components/Instructors/InstructorsDetails";
 
 const Instructors = () => {
-  const instructors = InstructorData.instructors;
-
-  const instructorDetails = instructors.map((instructor, index) => (
-    <div className={styles.image_text_grid} key={index}>
-      <img className={styles.instructor_image} src={instructor.image} />
-      <div>
-        <p className={styles.instructor_name}>{instructor.name}</p>
-        <p className={styles.instructor_description}>{instructor.title}</p>
-      </div>
-    </div>
-  ));
-
   return (
     <>
       <Head>
         <title>Instructors Page</title>
       </Head>
-
-
-      <div className={styles.all_content}>
+      <div>
           <InstructorsIntro 
             title={InstructorData.header.title}
             desc={InstructorData.header.description}/>
-          <div className={styles.instructor_grid}>{instructorDetails}</div>
-        <AdminBox />
+          <InstructorsDetails
+            image={InstructorData.instructors.image}
+            name={InstructorData.instructors.name}
+            desc={InstructorData.instructors.title} />
+          <AdminBox />
       </div>
     </>
   );

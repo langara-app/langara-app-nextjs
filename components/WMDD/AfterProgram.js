@@ -2,8 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import useWindowWidth from "../Hooks/useWindowWidth";
 import { WmddData } from '../../lib/WmddData';
-import Image from "next/image";
-// import instructorTyler from '../../assets/img/wmdd/instructorTyler.jpg';
 import instructorTylerCropped from '../../assets/img/wmdd/instructorTylerCropped.jpg';
 
 const AfterProgram = (props) => {
