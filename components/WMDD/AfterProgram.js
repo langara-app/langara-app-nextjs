@@ -21,6 +21,7 @@ const AfterProgram = (props) => {
 const Container = styled.div`
   background-color: white;
 
+
   @media only screen and (min-width: 768px) {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -55,6 +56,8 @@ const Title = styled.h1`
 
 const Body = styled.p`
     padding: 0 2.5rem;
+    margin-bottom: 0;
+    padding-bottom: 20px;
    
 
     @media only screen and (min-width: 768px) {
