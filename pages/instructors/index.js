@@ -3,6 +3,7 @@ import Head from "next/head";
 import AdminBox from "../../components/AdminBox";
 import { InstructorData } from "../../lib/InstructorData";
 import InstructorsIntro from "../../components/Instructors/InstructorsIntro";
+
 const Instructors = () => {
   const instructors = InstructorData.instructors;
 
