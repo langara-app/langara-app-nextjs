@@ -127,6 +127,8 @@ const CircleContainer = styled.div`
 const Circle = styled.div`
   height: ${(151 / 375) * 100}vw;
   width: ${(151 / 375) * 100}vw;
+  max-width: 200px;
+  max-height: 200px;
   border-radius: 50%;
   background-color: ${({ color }) => color};
 `;
