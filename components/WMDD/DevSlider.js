@@ -13,7 +13,6 @@ const DevSlider = () => {
       slidesToShow: 1,
       slidesToScroll: 1,
       arrows: false,
-    //   autoplay: true,
       speed: 2000,
     };
     
@@ -74,7 +73,6 @@ const Number = styled.img`
         display: block;
       }
 `;
-
 const Arrow = styled.img`
     position: absolute;
     bottom: 30px;
@@ -89,8 +87,8 @@ const Arrow = styled.img`
       }
 `;
 
-const SliderContainer = styled.div`
-`;
+const SliderContainer = styled.div``;
+
 const Title = styled.h1`
     color: white;
     font-size: 32px;
@@ -126,14 +124,12 @@ const ContentContainer = styled.div`
     @media only screen and (min-width: 768px) {
         width: 520px;
         height: 300px;
-      }
-
+    }
     @media only screen and (min-width: 1015px) {
         width: 308px; 
         height: 428px;
-      }
+    }
 `;
-
 const DevContainer = styled.div`
     background-color: #675D51;
     padding: 50px 2.5rem;
@@ -157,8 +153,6 @@ const GridContainer = styled.div`
     grid-template-columns: 1fr 1fr 1fr;
 `;
 const GridItem = styled.div`
-    //   margin-left: auto;
-    //   margin-right: auto;
       position: relative;
 `;
 

@@ -1,12 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import useWindowWidth from "../Hooks/useWindowWidth";
 import { WmddData } from '../../lib/WmddData';
 import instructorTylerCropped from '../../assets/img/wmdd/instructorTylerCropped.jpg';
 
-const AfterProgram = (props) => {
-  const width = useWindowWidth();
-
+const AfterProgram = () => {
   return (
     <Container>
         <AfterProgramContainer>
@@ -21,7 +18,6 @@ const AfterProgram = (props) => {
 const Container = styled.div`
   background-color: white;
 
-
   @media only screen and (min-width: 768px) {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -29,14 +25,11 @@ const Container = styled.div`
   }
 `;
 
-const AfterProgramContainer = styled.div`
-
-`;
+const AfterProgramContainer = styled.div``;
 
 const InstructorImage = styled.img`
  max-width: 100%;
  height: auto;
-//  overflow: hidden;
 `;
 
 const Title = styled.h1`
@@ -59,7 +52,6 @@ const Body = styled.p`
     margin-bottom: 0;
     padding-bottom: 20px;
    
-
     @media only screen and (min-width: 768px) {
         margin-top: auto;
         margin-bottom: auto;
@@ -67,10 +59,7 @@ const Body = styled.p`
         font-size: ${(19 / 1366) * 100}vw;
         grid-column: 2;
         text-align: left;
-        // overflow: hidden;
     }
-
-
 `;
 
 export default AfterProgram;

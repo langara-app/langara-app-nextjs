@@ -4,6 +4,7 @@ import { AboutThisSiteData } from '../../lib/AboutThisSiteData';
 import Link from "next/link";
 
 const AboutThisSite = () => {
+  
     const team = AboutThisSiteData.team;
     const teamDetails = team.map((member, index) => 
       <MemberWrapper key={index}>
@@ -69,19 +70,23 @@ const IntroWrapper = styled.div`
 `;
 const MemberWrapper = styled.div`
   margin-bottom: 40px;
-  // width: 250px;
   `;
 
 const MemberImage = styled.img`
   width: 128px;
   height: 128px;
-  border-radius: 50%`
+  border-radius: 50%
+  `;
 
 const MemberName = styled.h3`
   color: #C36448;
   font-weight: 400;
   font-size: 20px;
   margin-bottom: 0;
+
+  @media only screen and (min-width: 768px) {
+    font-size: 22px;
+  }
   `;
 
 const MemberDetails = styled.p`
@@ -90,13 +95,17 @@ const MemberDetails = styled.p`
   margin: 0;
 
   @media only screen and (min-width: 768px) {
-    // width: 220px;
+    font-size: 15px;
   }
   `;
 
 const MemberLinkedIn = styled.p`
   margin: 0;
   text-decoration: underline;
+
+  @media only screen and (min-width: 768px) {
+    font-size: 15px;
+  }
   `;
 
 const TeamWrapper = styled.div`
@@ -127,6 +136,7 @@ const Title = styled.h1`
     text-align: left;
     margin-left: auto;
     margin-right: auto;
+    font-size: ${(50 / 1366) * 100}vw;
   }
 `;
 
@@ -138,6 +148,7 @@ const Paragraph = styled.p`
       width: 725px;
       margin-left: auto;
       margin-right: auto;
+      font-size: ${(19 / 1366) * 100}vw;
     }
 `;
 
@@ -148,8 +159,8 @@ const TeamTitle = styled.h2`
 
   @media only screen and (min-width: 768px) {
     text-align: left;
+    font-size: ${(50 / 1366) * 100}vw;
   }
-  
 `;
 
 const Des_Wrapper = styled.div`
@@ -174,6 +185,7 @@ const DevTitle = styled.h2`
     width: 725px;
     margin-left: auto;
     margin-right: auto;
+    font-size: ${(50 / 1366) * 100}vw;
   }
   `;
 const DesTitle = styled.h2`
@@ -186,6 +198,7 @@ const DesTitle = styled.h2`
     width: 725px;
     margin-left: auto;
     margin-right: auto;
+    font-size: ${(50 / 1366) * 100}vw;
   }
 `;
 const DesParagraph = styled.p`
@@ -198,6 +211,7 @@ const DesParagraph = styled.p`
     width: 725px;
     margin-left: auto;
     margin-right: auto;
+    font-size: ${(19 / 1366) * 100}vw;
   }
 `;
 const DevParagraph = styled.p`
@@ -209,6 +223,7 @@ const DevParagraph = styled.p`
     width: 725px;
     margin-left: auto;
     margin-right: auto;
+    font-size: ${(19 / 1366) * 100}vw;
   }
 `;
 const DesButton = styled.div`
@@ -224,9 +239,7 @@ const DesButton = styled.div`
 
   @media only screen and (min-width: 768px) {
     margin: 0;
-    
   }
-  
   `;
 const DevButton = styled.div`
   text-align: center;
@@ -240,17 +253,11 @@ const DevButton = styled.div`
 
   @media only screen and (min-width: 768px) {
     margin: 0;
-    // margin-left: auto;
-    // margin-right: auto;
   }
   `;
 
 const ButtonDetails = styled.p`
   margin-top: 8px;
-
-  @media only screen and (min-width: 768px) {
-
-  }
   `;
 
 const ButtonWrapper = styled.div`
@@ -259,11 +266,7 @@ const ButtonWrapper = styled.div`
   width: 725px;
   margin-left: auto;
   margin-right: auto;
-
 }
-  
-`
-
-const Wrapper = styled.section`
-  
 `;
+
+const Wrapper = styled.section``;
