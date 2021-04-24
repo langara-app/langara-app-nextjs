@@ -43,7 +43,7 @@ const HomeHeader = ({ type, title, desc, btnText, img, page }) => {
             margin={0.5}
             font={18}
             size={"med"}
-            bcg={"transparent"}
+            bcg={"white"}
             color={"#675D51"}
             to={"wmdd"}
           />

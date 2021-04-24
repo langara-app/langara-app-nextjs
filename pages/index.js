@@ -241,11 +241,14 @@ const TitleContainer = styled.div`
 `;
 const Title = styled.h2`
   text-align: center;
-  margin-top: 0;
+  margin: 0 auto;
   padding-top: ${({ type }) =>
     type === "summary" ? (120 / 375) * 100 : (47 / 375) * 100}vw;
-  padding-left: ${({ type }) => (type === "summary" ? "5.5rem" : "35px")};
-  padding-right: ${({ type }) => (type === "summary" ? "5.5rem" : "35px")};
+  /* padding-left: ${({ type }) => (type === "summary" ? "5.5rem" : "35px")};
+  padding-right: ${({ type }) => (type === "summary" ? "5.5rem" : "35px")}; */
+  width: 70%;
+  max-width: 300px;
+
   line-height: ${({ type }) => (type === "summary" ? 1.5 : 1.1)};
   font-size: 32px;
   @media only screen and (min-width: 768px) {
@@ -258,6 +261,7 @@ const Title = styled.h2`
 `;
 const SectionDescription = styled.p`
   padding: 2rem 35px ${({ paddingBottom }) => (paddingBottom / 375) * 100}vw;
+  margin: 0 auto;
   text-align: center;
   font-weight: 200;
   font-size: 13px;

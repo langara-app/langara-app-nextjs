@@ -39,7 +39,7 @@ const Summary = ({ summaryHeader, summaryData, homeData, id }) => {
 
       <SummaryContainer color={summaryData.tag} index={id}>
         <GridDivider></GridDivider>
-        <GridDivider style={{ backgroundColor: "#707070" }}>
+        <GridDivider style={{ backgroundColor: "#596C69" }}>
           <ImageContainer id={id}>
             <img style={{ display: "block", width: "100%" }} src={desImg} />
           </ImageContainer>

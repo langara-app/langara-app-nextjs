@@ -61,7 +61,7 @@ const AlumniSliderContainer = styled.div`
     }
 
     .slick-dots {
-      bottom: -5px;
+      bottom: 40px;
     }
 
     .slick-dots li button:before {

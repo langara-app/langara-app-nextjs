@@ -86,6 +86,7 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 130vw;
+  max-height: 500px;
   color: white;
   font-size: 13px;
   font-weight: 200;
