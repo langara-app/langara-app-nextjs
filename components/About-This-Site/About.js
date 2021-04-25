@@ -4,7 +4,7 @@ import { AboutThisSiteData } from '../../lib/AboutThisSiteData';
 import Link from "next/link";
 
 const AboutThisSite = () => {
-  
+
     const team = AboutThisSiteData.team;
     const teamDetails = team.map((member, index) => 
       <MemberWrapper key={index}>
@@ -52,9 +52,11 @@ const AboutThisSite = () => {
           <DevParagraph>{AboutThisSiteData.development.description}</DevParagraph>
           <ButtonWrapper>
             <DevButton>
-              <ButtonDetails>
-                {AboutThisSiteData.development.button}
-              </ButtonDetails>
+              <Link href={AboutThisSiteData.development.button}>
+                <a>
+                    <ButtonDetails>Link to GitHub</ButtonDetails>
+                </a>
+              </Link>
             </DevButton>
           </ButtonWrapper>
         </Dev_Wrapper>
@@ -160,6 +162,9 @@ const TeamTitle = styled.h2`
   @media only screen and (min-width: 768px) {
     text-align: left;
     font-size: ${(50 / 1366) * 100}vw;
+    width: 750px;
+    margin-left: auto;
+    margin-right: auto;
   }
 `;
 
@@ -238,7 +243,7 @@ const DesButton = styled.div`
   font-size: 20px;
 
   @media only screen and (min-width: 768px) {
-    margin: 0;
+    margin-left: 0;
   }
   `;
 const DevButton = styled.div`
@@ -252,12 +257,13 @@ const DevButton = styled.div`
   font-size: 20px;
 
   @media only screen and (min-width: 768px) {
-    margin: 0;
+    margin-left: 0;
   }
   `;
 
 const ButtonDetails = styled.p`
   margin-top: 8px;
+  font-weight: 600;
   `;
 
 const ButtonWrapper = styled.div`
