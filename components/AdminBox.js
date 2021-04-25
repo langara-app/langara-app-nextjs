@@ -48,7 +48,7 @@ const AdminDescription = styled.p`
   padding-bottom: ${(41 / 375) * 100}vw;
   @media only screen and (min-width: 768px) {
     font-size: ${(19 / 1366) * 100}vw;
-    padding-bottom: ${(97 / 1366) * 100}vw;
+    padding-bottom: 0;
     width: ${(510 / 1366) * 100}vw;
     margin: 0 auto;
   }

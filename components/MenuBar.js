@@ -118,7 +118,7 @@ const MenuLink = styled.a`
 `;
 
 const MenuLinkWeb = styled.a`
-  margin-left: 7.5vw;
+  margin-left: 3.5vw;
   font-weight: 300;
   font-size: 1.1vw;
   color: ${({ number, checked }) =>

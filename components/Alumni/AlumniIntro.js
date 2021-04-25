@@ -14,8 +14,6 @@ const AlumniIntro = (props) => {
     graduation_year,
   } = props;
 
-  console.log(props.alumni_name);
-
   return width < 768 ? (
     <Container>
       <AlumniImageTopContainer>
@@ -61,6 +59,7 @@ const Container = styled.div`
   @media only screen and (min-width: 768px) {
     margin: 0;
     padding: ${(149 / 1366) * 100}vw;
+    padding-top: 3vw;
     padding-bottom: 5vw;
   }
 `;

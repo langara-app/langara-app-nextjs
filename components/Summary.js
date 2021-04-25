@@ -39,7 +39,7 @@ const Summary = ({ summaryHeader, summaryData, homeData, id }) => {
 
       <SummaryContainer color={summaryData.tag} index={id}>
         <GridDivider></GridDivider>
-        <GridDivider style={{ backgroundColor: "#707070" }}>
+        <GridDivider style={{ backgroundColor: "#596C69" }}>
           <ImageContainer id={id}>
             <img style={{ display: "block", width: "100%" }} src={desImg} />
           </ImageContainer>
@@ -127,6 +127,8 @@ const CircleContainer = styled.div`
 const Circle = styled.div`
   height: ${(151 / 375) * 100}vw;
   width: ${(151 / 375) * 100}vw;
+  max-width: 200px;
+  max-height: 200px;
   border-radius: 50%;
   background-color: ${({ color }) => color};
 `;

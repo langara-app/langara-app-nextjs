@@ -130,7 +130,8 @@ export async function getStaticPaths() {
     paths: projects.map((project) => ({
       params: { category: project.categories_slugs[0], project: project.slug },
     })),
-    fallback: false,
+    // paths: [],
+    fallback: "blocking",
   };
 }
 
@@ -145,5 +146,6 @@ export async function getStaticProps({ params }) {
     props: {
       project: projects.filter((project) => project.slug === slug),
     },
+    revalidate: 1,
   };
 }

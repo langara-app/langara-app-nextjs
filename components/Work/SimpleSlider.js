@@ -93,7 +93,7 @@ const SliderContainer = styled.div`
 
   .swiper-container {
     padding: 4.7vw !important;
-    box-shadow: 10px 3px 10px;
+    box-shadow: 10px 3px 10px rgb(67 59 50 / 30%);
   }
 
   .swiper-button-prev,
