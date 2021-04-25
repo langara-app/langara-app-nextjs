@@ -37,7 +37,6 @@ const Container = styled.div`
     padding-right: 3rem;
   }
 `;
-
 const Title = styled.h3`
     grid-column: 2;
     text-align: center;
@@ -50,7 +49,6 @@ const Title = styled.h3`
          margin-bottom: 0;
        }
 `;
-
 const Body = styled.p`
 
     @media only screen and (min-width: 768px) {
@@ -60,22 +58,15 @@ const Body = styled.p`
         font-size: ${(19 / 1366) * 100}vw;
     }
 `;
-
 const Details = styled.div`
     padding: 0 2.5rem;
     text-align: left;
 
-
     @media only screen and (min-width: 768px) {
       padding: 0;
     }
-
 `;
 
-const Movie = styled.div`
-    // margin-top: auto;
-    // margin-bottom: auto;
-   
-`;
+const Movie = styled.div``;
 
 export default ProgramCurriculum;

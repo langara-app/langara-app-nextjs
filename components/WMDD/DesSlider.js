@@ -4,7 +4,6 @@ import Slider from "react-slick";
 import useWindowWidth from "../Hooks/useWindowWidth";
 import { WmddData }from '../../lib/WmddData';
 
-
 const DesSlider = () => {
   const width = useWindowWidth();
     const settings = {
@@ -14,7 +13,6 @@ const DesSlider = () => {
       slidesToShow: 1,
       slidesToScroll: 1,
       arrows: false,
-      // autoplay: true,
       speed: 2000
     };
 
@@ -47,28 +45,26 @@ const DesSlider = () => {
       </DesSliderContainer>
     ) : (
       <DesContainer>
-      <Title>Summary Of Designer Stream</Title>
-      <GridContainer>
-          <GridItem>
-              {designerDetails[0]}   
-          </GridItem>
-          <GridItem>
-              {designerDetails[1]}
-          </GridItem>
-          <GridItem>
-              {designerDetails[2]}
-          </GridItem>
-      </GridContainer>
+        <Title>Summary Of Designer Stream</Title>
+        <GridContainer>
+            <GridItem>
+                {designerDetails[0]}   
+            </GridItem>
+            <GridItem>
+                {designerDetails[1]}
+            </GridItem>
+            <GridItem>
+                {designerDetails[2]}
+            </GridItem>
+        </GridContainer>
     </DesContainer>
-
     );
-  }
+}
 
 const Container = styled.div`
   height: 30px;
   background-color: #EFFDFB;
 `;
-
 const Number = styled.img`
   position: absolute;
   top: -4%;
@@ -78,7 +74,6 @@ const Number = styled.img`
     display: block;
   }
 `;
-
 const Arrow = styled.img`
     position: absolute;
     bottom: 30px;
@@ -87,14 +82,12 @@ const Arrow = styled.img`
     @media only screen and (min-width: 768px) {
       margin-left: 415px;
     }
-  
-  @media only screen and (min-width: 768px) {
-      display: none;
-    }
+    @media only screen and (min-width: 768px) {
+        display: none;
+      }
 `;
 
-const SliderContainer = styled.div`
-`;
+const SliderContainer = styled.div``;
 
 const Title = styled.h1`
     font-size: 32px;
@@ -133,12 +126,10 @@ const DesSliderContainer = styled.div`
   .slick-slide div {
     outline: none;
 }
-
 `;
 const ContentContainer = styled.div`
   background-color: #FFF2A8;
   width: 308px;
-  // height: 398px;
   height: 428px;
   margin-left: auto;
   margin-right: auto;
@@ -147,24 +138,21 @@ const ContentContainer = styled.div`
     width: 520px;
     height: 300px;
   }
-
-@media only screen and (min-width: 1015px) {
-    width: 308px; 
-    height: 428px;
-  }
+  @media only screen and (min-width: 1015px) {
+      width: 308px; 
+      height: 428px;
+    }
   `;
 
-  const DesContainer = styled.div`
-    background-color: #EFFDFB;
-    padding: 2.5rem;
+const DesContainer = styled.div`
+  background-color: #EFFDFB;
+  padding: 2.5rem;
 `;
-
 const GridContainer = styled.div`
   display: grid;
   grid-gap: 1rem;
   grid-template-columns: 1fr 1fr 1fr;
 `;
-
 const GridItem = styled.div`
     margin-left: auto;
     margin-right: auto;

@@ -25,7 +25,6 @@ const Title = styled.h2`
     font-size: ${(50 / 1365) * 100}vw;
   }
 `;
-
 const Paragraph = styled.p`
   font-size: 1em;
   color: #675d51;
@@ -40,11 +39,6 @@ const Paragraph = styled.p`
     margin-right: 5%;
   }
 `;
-
 const Wrapper = styled.section`
   text-align: center;
-
-//   @media only screen and (min-width: 768px) {
-//     text-align: left;
-//   }
 `;

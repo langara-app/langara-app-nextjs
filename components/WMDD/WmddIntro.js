@@ -8,11 +8,7 @@ const WmddIntro = ({ title, desc, subtitle }) => {
       <Subtitle>{subtitle}</Subtitle>
       <Title>{title}</Title>
       <Paragraph>{desc}</Paragraph>
-      {/* <Container> */}
-        <Illustration src={ataglance} />
-      {/* </Container> */}
-      
-      {/* <img src={ataglance} className={styles.wmdd_image} />  */}
+      <Illustration src={ataglance} />
     </Wrapper>
   );
 };
@@ -30,10 +26,8 @@ const Illustration = styled.img`
     display: none;
   }
 `;
+const Container = styled.div``;
 
-const Container = styled.div`
-
-`;
 const Subtitle = styled.h1`
     font-size: 13px;
     font-weight: 200;
@@ -43,7 +37,6 @@ const Subtitle = styled.h1`
       margin-bottom: 10px;
     }
 `;
-
 const Title = styled.h2`
   font-size: 1.5em;
   color: #c36448;
@@ -57,21 +50,17 @@ const Title = styled.h2`
     font-size: ${(50 / 1365) * 100}vw;
   }
 `;
-
 const Paragraph = styled.p`
   font-size: 1em;
   color: #675d51;
   line-height: 1.4;
   font-weight: 200;
   font-size: 13px;
-  // padding: 0 2.5rem;
  
   @media only screen and (min-width: 768px) {
     font-size: ${(19 / 1365) * 100}vw;
-
   }
 `;
-
 const Wrapper = styled.section`
   text-align: left;
   padding: 0 2.5rem;

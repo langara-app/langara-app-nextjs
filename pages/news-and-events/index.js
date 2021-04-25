@@ -3,7 +3,6 @@ import styles from "../../styles/NewsEvents.module.css";
 import AdminBox from "../../components/AdminBox";
 import Image from "next/image";
 import Link from "next/link";
-// import fetch from "node-fetch";
 
 export async function getStaticProps() {
   // fetch post data from an external API endpoint
@@ -20,7 +19,7 @@ const NewsEvents = ({ news_events }) => {
   return (
     <div>
       <div className={styles.news_body}>
-        <h1 className={styles.news_title}>News & Event Details</h1>
+        <h1 className={styles.news_title}>News & Events Details</h1>
         {news_events.map((news) => (
           <div key={news} className={styles.events_content}>
             <div className={styles.events_image}>
