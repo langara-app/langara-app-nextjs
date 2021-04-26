@@ -28,7 +28,6 @@
     font-size: 13px;
     font-weight: 200;
 }
-
 .readmore_button {
     text-align: center;
     width: 172px;
@@ -39,7 +38,6 @@
     background-color: white;
     margin-top: 30px;
 }
-
 .readmore_button_text {
     font-size: 22px;
     font-weight: 600;
@@ -48,7 +46,6 @@
 }
 
 /* [slug].js --> news and events single */
-
 .news_events_single_content {
     background-color: white;
     font-size: 14px;
@@ -57,7 +54,6 @@
     padding-bottom: 2rem;
     padding-top: 40px;
 }
-
 .event_image_single {
     max-width: 100%;
     height: auto;
@@ -66,7 +62,6 @@
     font-size: 32px;
     line-height: 1.25;
 }
-
 .article4_title {
     font-size: 13px;
     border-top: 1px solid #D6D6D6;
@@ -116,15 +111,11 @@
         margin-left: auto;
         margin-right: auto;
     }
-
     .single_content {
         width: 621px;
         margin-left: auto;
         margin-right: auto;
-
     }
-
-
 }
 
 @media only screen and (min-width: 1000px)  {

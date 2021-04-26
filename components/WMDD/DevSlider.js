@@ -26,7 +26,8 @@ const DevSlider = () => {
             <Body>{detail.description}</Body>
             <Arrow src={detail.arrow} />
         </ContentContainer>
-)
+    );
+
 return width < 1015 ? (
     <DevContainer>
         <Title>Summary Of Developer Stream</Title>
@@ -71,7 +72,7 @@ const Number = styled.img`
 
     @media only screen and (min-width: 768px) {
         display: block;
-      }
+    }
 `;
 const Arrow = styled.img`
     position: absolute;
@@ -86,7 +87,6 @@ const Arrow = styled.img`
         display: none;
       }
 `;
-
 const SliderContainer = styled.div``;
 
 const Title = styled.h1`
@@ -97,7 +97,7 @@ const Title = styled.h1`
 
     @media only screen and (min-width: 768px) {
         font-size: ${(50 / 1366) * 100}vw;
-      }
+    }
 `;
 const Subtitle = styled.h2`
     color: #FFF2A8;
@@ -113,7 +113,6 @@ const Body = styled.div`
     padding: 0 20px;
     text-align: left;
 `;
-
 const ContentContainer = styled.div`
     background-color: #596C69;
     width: 308px; 

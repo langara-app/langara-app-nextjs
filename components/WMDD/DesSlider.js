@@ -26,7 +26,7 @@ const DesSlider = () => {
         <Body>{detail.description}</Body>
         <Arrow src={detail.arrow} />
     </ContentContainer>
-    )
+    );
 
     return width < 1015 ? (
       <DesSliderContainer>
@@ -75,41 +75,41 @@ const Number = styled.img`
   }
 `;
 const Arrow = styled.img`
-    position: absolute;
-    bottom: 30px;
-    margin-left: 215px;
+  position: absolute;
+  bottom: 30px;
+  margin-left: 215px;
 
-    @media only screen and (min-width: 768px) {
-      margin-left: 415px;
-    }
-    @media only screen and (min-width: 768px) {
-        display: none;
-      }
+  @media only screen and (min-width: 768px) {
+    margin-left: 415px;
+    display: none;
+  }
+  // @media only screen and (min-width: 768px) {
+  //     display: none;
+  // }
 `;
-
 const SliderContainer = styled.div``;
 
 const Title = styled.h1`
-    font-size: 32px;
-    margin-top: 0;
-    line-height: 1.25;
+  font-size: 32px;
+  margin-top: 0;
+  line-height: 1.25;
 
-    @media only screen and (min-width: 768px) {
-      font-size: ${(50 / 1366) * 100}vw;
-    }
+  @media only screen and (min-width: 768px) {
+    font-size: ${(50 / 1366) * 100}vw;
+  }
 `;
 const Subtitle = styled.h2`
-    color: #C36448;
-    padding-top: 20px;
-    font-size: 24px;
-    padding: 0 60px;
-    text-align: center;
-    line-height: 1.25;
+  color: #C36448;
+  padding-top: 20px;
+  font-size: 24px;
+  padding: 0 60px;
+  text-align: center;
+  line-height: 1.25;
 `;
 const Body = styled.div`
-    size: 13px;
-    padding: 0 20px;
-    text-align: left;
+  size: 13px;
+  padding: 0 20px;
+  text-align: left;
 `;
 const DesSliderContainer = styled.div`
   padding: 2.5rem;
@@ -125,7 +125,7 @@ const DesSliderContainer = styled.div`
   }
   .slick-slide div {
     outline: none;
-}
+  }
 `;
 const ContentContainer = styled.div`
   background-color: #FFF2A8;
@@ -139,11 +139,10 @@ const ContentContainer = styled.div`
     height: 300px;
   }
   @media only screen and (min-width: 1015px) {
-      width: 308px; 
-      height: 428px;
-    }
-  `;
-
+    width: 308px; 
+    height: 428px;
+  }
+`;
 const DesContainer = styled.div`
   background-color: #EFFDFB;
   padding: 2.5rem;
@@ -154,9 +153,9 @@ const GridContainer = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
 `;
 const GridItem = styled.div`
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
 `;
 
 export default DesSlider;

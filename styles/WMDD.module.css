@@ -1,11 +1,3 @@
-.wmdd_text {
-    font-weight: 200;
-    font-size: 13px;
-    margin-bottom: 0;
-}
-.wmdd_intro {
-    height: 75vh;
-}
 .wmdd_body {
     text-align: center;
     font-size: 13px;
@@ -13,25 +5,10 @@
     padding-top: 5%;
     margin: 0 0;
 }
-
-.intro_movie_wrap {
-    margin-top: auto;
-    margin-bottom: auto;
-}
 .iframe {
     width: 100vw;
     height: 60vw;
 }
-.developer_container {
-    background-color: #675D51;
-    color: white;
-}
-.dev_title,
-.des_title {
-    margin-top: 0;
-    padding-top: 40px;
-}
-
 .wmdd_image {
     display: none;
 }
@@ -50,11 +27,6 @@
     .wmdd_image {
         width: 50vw;
         display: inline;
-    } 
-    .small_title {
-        text-align: left;
-        padding: 0 2.5rem;
-        margin-bottom: 20px;
     } 
     .wmdd_intro {
         height: 50vh

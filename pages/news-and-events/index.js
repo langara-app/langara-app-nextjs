@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 export async function getStaticProps() {
-  // fetch post data from an external API endpoint
   const res = await fetch(
     "https://api.langara-app.ca/wp-json/wp/v2/news-and-events"
   );
