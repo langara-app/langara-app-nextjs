@@ -1,20 +1,36 @@
 import React from "react";
 import styled from "styled-components";
 import Slider from "react-slick";
-import useWindowWidth from "../Hooks/useWindowWidth";
 import { WmddData }from '../../lib/WmddData';
 
 const DesSlider = () => {
-  const width = useWindowWidth();
     const settings = {
-      dots: true,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      arrows: false,
-      speed: 2000
-    };
+        dots: true,
+        infinite: false,
+        speed: 2000,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        arrows: false,
+        responsive: [
+          {
+            breakpoint: 1016,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 3,
+              infinite: true,
+              dots: true
+            }
+          },
+          {
+            breakpoint: 1015,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              initialSlide: 1
+            }
+          },
+        ]
+      };
 
     const designerInfo = WmddData.designer_details;
     const designerDetails = designerInfo.map(detail => 
@@ -28,7 +44,7 @@ const DesSlider = () => {
     </ContentContainer>
     );
 
-    return width < 1015 ? (
+    return (
       <DesSliderContainer>
         <Title>Summary Of Designer Stream</Title>
         <Slider {...settings}>
@@ -43,23 +59,7 @@ const DesSlider = () => {
           </SliderContainer>
         </Slider>
       </DesSliderContainer>
-    ) : (
-      <DesContainer>
-        <Title>Summary Of Designer Stream</Title>
-        <GridContainer>
-            <GridItem>
-                {designerDetails[0]}   
-            </GridItem>
-            <GridItem>
-                {designerDetails[1]}
-            </GridItem>
-            <GridItem>
-                {designerDetails[2]}
-            </GridItem>
-        </GridContainer>
-    </DesContainer>
-    );
-}
+)};
 
 const Container = styled.div`
   height: 30px;
@@ -81,11 +81,11 @@ const Arrow = styled.img`
 
   @media only screen and (min-width: 768px) {
     margin-left: 415px;
-    display: none;
   }
-  // @media only screen and (min-width: 768px) {
-  //     display: none;
-  // }
+
+@media only screen and (min-width: 1016px) {
+    width: 0;
+  }
 `;
 const SliderContainer = styled.div``;
 
@@ -143,19 +143,19 @@ const ContentContainer = styled.div`
     height: 428px;
   }
 `;
-const DesContainer = styled.div`
-  background-color: #EFFDFB;
-  padding: 2.5rem;
-`;
-const GridContainer = styled.div`
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: 1fr 1fr 1fr;
-`;
-const GridItem = styled.div`
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-`;
+// const DesContainer = styled.div`
+//   background-color: #EFFDFB;
+//   padding: 2.5rem;
+// `;
+// const GridContainer = styled.div`
+//   display: grid;
+//   grid-gap: 1rem;
+//   grid-template-columns: 1fr 1fr 1fr;
+// `;
+// const GridItem = styled.div`
+//   margin-left: auto;
+//   margin-right: auto;
+//   position: relative;
+// `;
 
 export default DesSlider;

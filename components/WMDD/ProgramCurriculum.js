@@ -5,8 +5,8 @@ import styles from '../../styles/WMDD.module.css';
 
 const ProgramCurriculum = () => {
   const curriculumInfo = WmddData.curriculum;
-  const curriculumDetails = curriculumInfo.map(curriculum => 
-      <div>
+  const curriculumDetails = curriculumInfo.map((curriculum, index) => 
+      <div key={index}>
         <p>{curriculum.description}</p>
       </div>
   );
@@ -48,7 +48,7 @@ const Title = styled.h3`
     margin-bottom: 0;
   }
 `;
-const Body = styled.p`
+const Body = styled.div`
   @media only screen and (min-width: 768px) {
     margin-top: auto;
     margin-bottom: auto;
