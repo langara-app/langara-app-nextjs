@@ -37,6 +37,8 @@ const Title = styled.h1`
   padding-top: 50px;
   padding-bottom: 20px;
   margin-bottom: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
 
   @media only screen and (min-width: 768px) {
     height: 50%;
@@ -47,7 +49,7 @@ const Title = styled.h1`
 const Body = styled.p`
   padding: 0 2.5rem;
   margin-bottom: 0;
-  padding-bottom: 20px;
+  padding-bottom: 2.5rem;
    
   @media only screen and (min-width: 768px) {
     margin-top: auto;

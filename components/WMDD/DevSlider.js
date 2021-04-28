@@ -81,11 +81,10 @@ const Arrow = styled.img`
 
     @media only screen and (min-width: 768px) {
         margin-left: 415px;
-      }
- 
+    }
     @media only screen and (min-width: 1016px) {
         width: 0;
-      }
+    }
 `;
 const SliderContainer = styled.div``;
 
@@ -138,6 +137,7 @@ const DevContainer = styled.div`
       }
       .slick-dots li button:before {
         font-size: 11px !important;
+        color: #BAA994;
       }
       .slick-dots li.slick-active button:before {
         color: white !important;
@@ -145,14 +145,6 @@ const DevContainer = styled.div`
     .slick-slide div {
         outline: none;
     }
-`;
-const GridContainer = styled.div`
-    display: grid;
-    grid-gap: 1rem;
-    grid-template-columns: 1fr 1fr 1fr;
-`;
-const GridItem = styled.div`
-      position: relative;
 `;
 
 export default DevSlider;

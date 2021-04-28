@@ -5,32 +5,32 @@ import { WmddData }from '../../lib/WmddData';
 
 const DesSlider = () => {
     const settings = {
-        dots: true,
-        infinite: false,
-        speed: 2000,
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        arrows: false,
-        responsive: [
-          {
-            breakpoint: 1016,
-            settings: {
-              slidesToShow: 3,
-              slidesToScroll: 3,
-              infinite: true,
-              dots: true
-            }
-          },
-          {
-            breakpoint: 1015,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1,
-              initialSlide: 1
-            }
-          },
-        ]
-      };
+      dots: true,
+      infinite: false,
+      speed: 2000,
+      slidesToShow: 3,
+      slidesToScroll: 3,
+      arrows: false,
+      responsive: [
+        {
+          breakpoint: 1016,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: true
+        }
+        },
+        {
+          breakpoint: 1015,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            initialSlide: 1
+        }
+      },
+    ]
+};
 
     const designerInfo = WmddData.designer_details;
     const designerDetails = designerInfo.map(detail => 
@@ -82,8 +82,7 @@ const Arrow = styled.img`
   @media only screen and (min-width: 768px) {
     margin-left: 415px;
   }
-
-@media only screen and (min-width: 1016px) {
+  @media only screen and (min-width: 1016px) {
     width: 0;
   }
 `;
@@ -122,6 +121,7 @@ const DesSliderContainer = styled.div`
   }
   .slick-dots li.slick-active button:before {
     color: #675D51 !important;
+
   }
   .slick-slide div {
     outline: none;
@@ -143,19 +143,5 @@ const ContentContainer = styled.div`
     height: 428px;
   }
 `;
-// const DesContainer = styled.div`
-//   background-color: #EFFDFB;
-//   padding: 2.5rem;
-// `;
-// const GridContainer = styled.div`
-//   display: grid;
-//   grid-gap: 1rem;
-//   grid-template-columns: 1fr 1fr 1fr;
-// `;
-// const GridItem = styled.div`
-//   margin-left: auto;
-//   margin-right: auto;
-//   position: relative;
-// `;
 
 export default DesSlider;

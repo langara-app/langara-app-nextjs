@@ -31,7 +31,11 @@ const FullWrapper = styled.div`
   padding-bottom: 15px;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  width: 315px;
+
+  @media only screen and (min-width: 768px) {
+    font-size: ${(20 / 1365) * 100}vw;
+}
 `;
 const DetailsWrapper = styled.div`
   font-size: 13px;
@@ -44,6 +48,11 @@ const InstructorImage = styled.img`
   width: 67px;
   height: 67px;
   border-radius: 50px;
+
+  @media only screen and (min-width: 1000px) {
+    width: 100px;
+    height: 100px;
+}
 `;
 const InstructorName = styled.p`
   font-weight: 700;
@@ -58,9 +67,10 @@ const Paragraph = styled.p`
   align-items: center;
 `;
 const Wrapper = styled.section`
-
   @media only screen and (min-width: 768px) {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    padding-left: 5rem;
+    padding-right: 5rem;
   }
 `;
