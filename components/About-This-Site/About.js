@@ -40,9 +40,11 @@ const AboutThisSite = () => {
           <DesParagraph>{AboutThisSiteData.wireframe.description}</DesParagraph>
           <ButtonWrapper>
             <DesButton>
-              <ButtonDetails>
-                {AboutThisSiteData.wireframe.button}
-              </ButtonDetails>
+              <Link href={AboutThisSiteData.wireframe.button}>
+                <a>
+                    <ButtonDetails>Link to Mockup</ButtonDetails>
+                </a>
+              </Link>
             </DesButton>
           </ButtonWrapper>
         </Des_Wrapper>
@@ -72,14 +74,12 @@ const IntroWrapper = styled.div`
 `;
 const MemberWrapper = styled.div`
   margin-bottom: 40px;
-  `;
-
+`;
 const MemberImage = styled.img`
   width: 128px;
   height: 128px;
   border-radius: 50%
-  `;
-
+`;
 const MemberName = styled.h3`
   color: #C36448;
   font-weight: 400;
@@ -89,8 +89,7 @@ const MemberName = styled.h3`
   @media only screen and (min-width: 768px) {
     font-size: 22px;
   }
-  `;
-
+`;
 const MemberDetails = styled.p`
   font-size: 13px;
   font-weight: 200;
@@ -99,8 +98,7 @@ const MemberDetails = styled.p`
   @media only screen and (min-width: 768px) {
     font-size: 15px;
   }
-  `;
-
+`;
 const MemberLinkedIn = styled.p`
   margin: 0;
   text-decoration: underline;
@@ -108,15 +106,13 @@ const MemberLinkedIn = styled.p`
   @media only screen and (min-width: 768px) {
     font-size: 15px;
   }
-  `;
-
+`;
 const TeamWrapper = styled.div`
   background-color: #FFFFFF;
   text-align: center;
   width: 100%;
   padding-bottom: 20px;
- `;
-
+`;
  const Team = styled.div`
   @media only screen and (min-width: 768px) {
     width: 750px;
@@ -125,8 +121,7 @@ const TeamWrapper = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
- `;
-
+`;
 const Title = styled.h1`
   color: #C36448;
   font-size: 32px;
@@ -141,7 +136,6 @@ const Title = styled.h1`
     font-size: ${(50 / 1366) * 100}vw;
   }
 `;
-
 const Paragraph = styled.p`
     font-weight: 200;
     font-size: 15px;
@@ -153,7 +147,6 @@ const Paragraph = styled.p`
       font-size: ${(19 / 1366) * 100}vw;
     }
 `;
-
 const TeamTitle = styled.h2`
   font-size: 32px;
   padding-top: 25px;
@@ -167,19 +160,16 @@ const TeamTitle = styled.h2`
     margin-right: auto;
   }
 `;
-
 const Des_Wrapper = styled.div`
   background-color: #675D51;
   padding-top: 5px;
   padding-bottom: 50px;
 `;
-
 const Dev_Wrapper = styled.div`
   background-color: #FFFFFF;
   padding-top: 5px;
   padding-bottom: 50px;
-  `;
-
+`;
 const DevTitle = styled.h2`
   color: #C36448;
   font-size: 32px;
@@ -192,7 +182,7 @@ const DevTitle = styled.h2`
     margin-right: auto;
     font-size: ${(50 / 1366) * 100}vw;
   }
-  `;
+`;
 const DesTitle = styled.h2`
   color: #FFF2A8;
   font-size: 32px;
@@ -245,7 +235,7 @@ const DesButton = styled.div`
   @media only screen and (min-width: 768px) {
     margin-left: 0;
   }
-  `;
+`;
 const DevButton = styled.div`
   text-align: center;
   width: 200px;
@@ -259,13 +249,11 @@ const DevButton = styled.div`
   @media only screen and (min-width: 768px) {
     margin-left: 0;
   }
-  `;
-
+`;
 const ButtonDetails = styled.p`
   margin-top: 8px;
   font-weight: 600;
-  `;
-
+`;
 const ButtonWrapper = styled.div`
 
 @media only screen and (min-width: 768px) {
@@ -274,5 +262,4 @@ const ButtonWrapper = styled.div`
   margin-right: auto;
 }
 `;
-
 const Wrapper = styled.section``;

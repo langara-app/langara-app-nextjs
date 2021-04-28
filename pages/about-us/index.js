@@ -20,7 +20,7 @@ const AboutUs = () => {
               desc={WmddData.header.description}
               />
           </div>
-        <img src={ataglance} className={styles.wmdd_image} /> 
+          <img src={ataglance} className={styles.wmdd_image} /> 
       </div>
       <ProgramCurriculum />
       <DevSlider />

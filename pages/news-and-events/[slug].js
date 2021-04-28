@@ -1,6 +1,27 @@
 import Image from 'next/image';
 import styles from "../../styles/NewsEvents.module.css";
 
+export async function getStaticPaths() {
+  const res = await fetch("https://api.langara-app.ca/wp-json/wp/v2/news-and-events")
+  const news_events = await res.json();
+
+  return {
+    paths: news_events.map((event) => ({ params: { slug: event.slug } })),
+    fallback: false,
+  };
+}
+
+export async function getStaticProps({ params }) {
+  const res = await fetch("https://api.langara-app.ca/wp-json/wp/v2/news-and-events")
+  const news_events = await res.json();
+  
+  return {
+    props: {
+      event: news_events.find((event) => event.slug === params.slug),
+    },
+  };
+}
+
 const NewsEventsInvidivual = ({ event }) => {  
   return (
     <article>
@@ -86,26 +107,5 @@ const NewsEventsInvidivual = ({ event }) => {
   </article>
   )
 };
+
 export default NewsEventsInvidivual;
-
-export async function getStaticPaths() {
-  const res = await fetch("https://api.langara-app.ca/wp-json/wp/v2/news-and-events")
-  const news_events = await res.json();
-
-  return {
-    paths: news_events.map((event) => ({ params: { slug: event.slug } })),
-    fallback: false,
-  };
-}
-
-export async function getStaticProps({ params }) {
-  const res = await fetch("https://api.langara-app.ca/wp-json/wp/v2/news-and-events")
-  const news_events = await res.json();
-  
-  return {
-    props: {
-      event: news_events.find((event) => event.slug === params.slug),
-    },
-  };
-}
-

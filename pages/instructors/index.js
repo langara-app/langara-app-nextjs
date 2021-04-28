@@ -11,14 +11,14 @@ const Instructors = () => {
         <title>Instructors Page</title>
       </Head>
       <div>
-          <InstructorsIntro 
-            title={InstructorData.header.title}
-            desc={InstructorData.header.description}/>
-          <InstructorsDetails
-            image={InstructorData.instructors.image}
-            name={InstructorData.instructors.name}
-            desc={InstructorData.instructors.title} />
-          <AdminBox />
+        <InstructorsIntro 
+          title={InstructorData.header.title}
+          desc={InstructorData.header.description}/>
+        <InstructorsDetails
+          image={InstructorData.instructors.image}
+          name={InstructorData.instructors.name}
+          desc={InstructorData.instructors.title} />
+        <AdminBox />
       </div>
     </>
   );

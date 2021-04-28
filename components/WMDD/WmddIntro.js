@@ -26,16 +26,14 @@ const Illustration = styled.img`
     display: none;
   }
 `;
-const Container = styled.div``;
-
 const Subtitle = styled.h1`
-    font-size: 13px;
-    font-weight: 200;
-    margin-bottom: 0;
+  font-size: 13px;
+  font-weight: 200;
+  margin-bottom: 0;
 
-    @media only screen and (min-width: 768px) {
-      margin-bottom: 10px;
-    }
+  @media only screen and (min-width: 768px) {
+    margin-bottom: 10px;
+  }
 `;
 const Title = styled.h2`
   font-size: 1.5em;
