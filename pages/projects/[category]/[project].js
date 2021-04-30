@@ -113,7 +113,7 @@ const ProjectContents = styled.div`
     }
 
     p {
-      font-size: ${(14 / 1365) * 100}vw;
+      font-size: ${(21 / 1365) * 100}vw;
     }
   }
 `;

@@ -79,6 +79,8 @@ const BtnElement = styled.button`
   @media only screen and (min-width: 768px) {
     margin: ${({ layout }) => (layout === "desktop" ? 0 : (30 / 1366) * 100)}vw
       ${({ section }) => (section === "joinWMDD" ? (500 / 1366) * 100 : 0)}vw;
+    margin-top: ${({ section }) =>
+      section === "project" || "alumni" ? (20 / 1366) * 100 : 0}vw;
 
     margin-right: ${({ layout, section }) =>
       layout === "desktop"
