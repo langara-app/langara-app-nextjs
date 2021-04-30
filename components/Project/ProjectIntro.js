@@ -95,7 +95,7 @@ const Container = styled.div`
     }
 
     p {
-      font-size: ${(12 / 1365) * 100}vw;
+      font-size: ${(21 / 1365) * 100}vw;
       margin: 0;
       margin-top: ${(21 / 1365) * 100}vw;
       text-align: left;

@@ -134,6 +134,7 @@ const Home = ({ data, alumni, work, homeData }) => {
                 bcg={"transparent"}
                 layout={"desktop"}
                 to={"project"}
+                section={"project"}
               />
             </BtnBcg>
           </div>
@@ -178,6 +179,7 @@ const Home = ({ data, alumni, work, homeData }) => {
               bcg={"transparent"}
               layout={"desktop"}
               to={"alumni"}
+              section={"alumni"}
             />
           </BtnBcg>
           <SliderContainer contents={"alumni"}>
@@ -257,6 +259,8 @@ const Title = styled.h2`
     font-size: ${(50 / 1366) * 100}vw;
     text-align: left;
     color: white;
+    width: 100%;
+    max-width: unset;
   }
 `;
 const SectionDescription = styled.p`
@@ -268,6 +272,7 @@ const SectionDescription = styled.p`
   @media only screen and (min-width: 768px) {
     text-align: left;
     padding: 0;
+    margin-top: ${(40 / 1366) * 100}vw;
     margin-right: ${(119 / 1366) * 100}vw;
     font-size: ${(19 / 1366) * 100}vw;
     color: white;
