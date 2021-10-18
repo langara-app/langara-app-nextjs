@@ -91,7 +91,7 @@ const MemberName = styled.h3`
   }
 `;
 const MemberDetails = styled.p`
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 200;
   margin: 0;
 

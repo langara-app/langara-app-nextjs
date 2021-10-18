@@ -125,7 +125,7 @@ const HeaderP = styled.p`
   margin: 1rem 0;
   margin-bottom: ${(36 / 375) * 100}vw;
   font-weight: 200;
-  font-size: 13px;
+  font-size: 15px;
   color: #675d51;
 
   @media only screen and (min-width: 768px) {

@@ -106,7 +106,7 @@ const Subtitle = styled.h2`
   line-height: 1.25;
 `;
 const Body = styled.div`
-  size: 13px;
+  font-size: 15px;
   padding: 0 20px;
   text-align: left;
 `;

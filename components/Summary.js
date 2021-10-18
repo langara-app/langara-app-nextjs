@@ -182,7 +182,7 @@ const GridDivider = styled.div`
 `;
 const SummaryDescription = styled.p`
   font-weight: 200;
-  font-size: 13px;
+  font-size: 15px;
   text-align: center;
   color: ${({ color }) => (color === "development" ? "white" : "#675D51")};
   @media only screen and (min-width: 768px) {

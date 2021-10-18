@@ -50,6 +50,7 @@ const Body = styled.p`
   padding: 0 2.5rem;
   margin-bottom: 0;
   padding-bottom: 2.5rem;
+  font-size: 15px;
    
   @media only screen and (min-width: 768px) {
     margin-top: auto;

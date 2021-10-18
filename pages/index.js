@@ -221,6 +221,7 @@ const SectionContainer = styled.div`
   position: ${({ overlay }) => (overlay ? "relative" : "static")};
   background-color: ${({ type }) =>
     type === "alumni" || type === "project" ? "white" : "#effcfa"};
+  overflow-x: hidden;
 
   @media only screen and (min-width: 768px) {
     display: ${({ type }) => (type === "alumni" ? "grid" : "unset")};
@@ -234,6 +235,7 @@ const SectionContainerProject = styled.div`
     position: relative;
     height: ${(694 / 1366) * 100}vw;
     background-color: white;
+    overflow-x: hidden;
   }
 `;
 
@@ -268,7 +270,7 @@ const SectionDescription = styled.p`
   margin: 0 auto;
   text-align: center;
   font-weight: 200;
-  font-size: 13px;
+  font-size: 15px;
   @media only screen and (min-width: 768px) {
     text-align: left;
     padding: 0;

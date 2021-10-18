@@ -30,7 +30,7 @@ const Paragraph = styled.p`
   color: #675d51;
   line-height: 1.4;
   font-weight: 200;
-  font-size: 13px;
+  font-size: 15px;
   padding: 0 2.5rem;
  
   @media only screen and (min-width: 768px) {
