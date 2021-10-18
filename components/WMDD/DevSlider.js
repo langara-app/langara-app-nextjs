@@ -108,7 +108,7 @@ const Subtitle = styled.h2`
 `;
 const Body = styled.div`
     color: white;
-    size: 13px;
+    font-size: 15px;
     padding: 0 20px;
     text-align: left;
 `;

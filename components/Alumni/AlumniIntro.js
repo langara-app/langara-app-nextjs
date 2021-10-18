@@ -103,7 +103,7 @@ const AlumniImageTopContainer = styled.div`
 const AlumniComment = styled.p`
   padding-top: 20vw;
   font-weight: 200;
-  font-size: 13px;
+  font-size: 15px;
   color: #707070;
   text-align: center;
   @media only screen and (min-width: 768px) {

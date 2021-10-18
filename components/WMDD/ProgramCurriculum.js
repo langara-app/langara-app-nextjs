@@ -27,6 +27,7 @@ const ProgramCurriculum = () => {
 const Container = styled.div`
   background-color: white;
   padding: 50px 0;
+  font-size: 15px;
 
   @media only screen and (min-width: 768px) {
     display: grid;

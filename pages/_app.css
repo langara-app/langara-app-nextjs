@@ -6,3 +6,6 @@
     padding-right: 8vw;
   }
 } */
+body {
+  overflow-x: hidden;
+}

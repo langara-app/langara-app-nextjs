@@ -27,7 +27,7 @@ const Illustration = styled.img`
   }
 `;
 const Subtitle = styled.h1`
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 200;
   margin-bottom: 0;
 
@@ -53,7 +53,7 @@ const Paragraph = styled.p`
   color: #675d51;
   line-height: 1.4;
   font-weight: 200;
-  font-size: 13px;
+  font-size: 15px;
  
   @media only screen and (min-width: 768px) {
     font-size: ${(19 / 1365) * 100}vw;

@@ -73,7 +73,7 @@ const Container = styled.div`
     text-align: center;
   }
   p {
-    font-size: ${(13 / 375) * 100}vw;
+    font-size: 15px;
     font-weight: 200;
     text-align: center;
     margin-bottom: ${(11 / 375) * 100}vw;

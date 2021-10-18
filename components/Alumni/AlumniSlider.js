@@ -65,7 +65,7 @@ const AlumniSliderContainer = styled.div`
     }
 
     .slick-dots li button:before {
-      font-size: 13px !important;
+      font-size: 15px !important;
     }
     .slick-dots li.slick-active button:before {
       color: #675d51 !important;

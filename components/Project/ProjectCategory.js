@@ -52,12 +52,12 @@ const Container = styled.div`
     text-align: center;
   }
   p {
-    font-size: ${(13 / 375) * 100}vw;
+    font-size: 15px;
     font-weight: 200;
     text-align: center;
     margin-bottom: ${(54 / 375) * 100}vw;
   }
-
+  
   @media only screen and (min-width: 768px) {
     /* For everything bigger than 768px */
     display: grid;
