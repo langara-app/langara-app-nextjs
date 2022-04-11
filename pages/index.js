@@ -38,7 +38,6 @@ export async function getStaticProps() {
     "https://api.langara-app.ca/wp-json/acf/v3/alumni"
   );
   const alumni = await alumniData.json();
-  console.log(alumni);
 
   const workData = await fetch(
     "https://api.langara-app.ca/wp-json/wp/v2/projects?per_page=5"
