@@ -116,31 +116,7 @@ const Home = ({ data, alumni, work, homeData }) => {
         }
       </CareerPath>
 
-      {/* {width < 768 ? (
-        <SectionContainer margin={true}>
-          <TitleBcg>
-            <Slide ssrFadeout bottom>
-              <Title type={"summary"}>{homeData.careerPath.title}</Title>
-            </Slide>
-          </TitleBcg>
-
-          {HomeData.summary.contents.map((content, index) => (
-            <Summary key={index} summaryData={content} id={index} />
-          ))}
-        </SectionContainer>
-      ) : (
-        <SectionContainer margin={true}>
-          {HomeData.summary.contents.map((content, index) => (
-            <Summary
-              key={index}
-              summaryData={content}
-              summaryHeader={homeData.summary.title}
-              homeData={homeData}
-              id={index}
-            />
-          ))}
-        </SectionContainer>
-      )} */}
+      <AdminBox />
     </>
   );
 };
