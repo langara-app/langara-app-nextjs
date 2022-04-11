@@ -51,7 +51,7 @@ export async function getStaticProps() {
 
 const Home = ({ data, alumni, work, homeData }) => {
   const width = useWindowWidth();
-  const [field, setField] = useState('developer');
+  const [field, setField] = useState("developer");
 
   const selectedFieldStyles = {
     color: "#DE3F21",
@@ -60,7 +60,7 @@ const Home = ({ data, alumni, work, homeData }) => {
   };
 
   return (
-    <>
+    <div>
       <Head>
         <title>Home Page </title>
       </Head>
@@ -74,24 +74,39 @@ const Home = ({ data, alumni, work, homeData }) => {
 
       <CareerPath>
         <div style={{ textAlign: "center" }}>
-          <h2 style={{ fontSize: "2.4rem" }}>{HomeData.careerPath.title}</h2>
-          <p>{HomeData.careerPath.description}</p>
+          <CareerTitle>
+            {HomeData.careerPath.title}
+          </CareerTitle>
+          <CareerDesc>{HomeData.careerPath.description}</CareerDesc>
         </div>
         <FieldSelector>
-          <Field style={field === "developer" ? selectedFieldStyles : null}
-            onClick={e => setField('developer')}
-          >Developer</Field>
-          <Field style={field === "designer" ? selectedFieldStyles : null}
-            onClick={e => setField('designer')}
-          >Designer</Field>
+          <Field
+            style={
+              field === "developer" ? selectedFieldStyles : null
+            }
+            onClick={(e) => setField("developer")}
+          >
+            Developer
+          </Field>
+          <Field
+            style={
+              field === "designer" ? selectedFieldStyles : null
+            }
+            onClick={(e) => setField("designer")}
+          >
+            Designer
+          </Field>
         </FieldSelector>
-        {field === 'developer' ?
-          <div style={{ width: '100%' }}>
+        {field === "developer" ? (
+          <div style={{ width: "100%" }}>
             <Slide ssrFadeout left>
               <Cards>
-                {HomeData.careerPath.developer.map(career => (
+                {HomeData.careerPath.developer.map((career) => (
                   <Card>
-                    <IllustrationImage src={career.image} alt="illustration" />
+                    <IllustrationImage
+                      src={career.image}
+                      alt="illustration"
+                    />
                     <b>{career.title}</b>
                     <p>{career.description}</p>
                   </Card>
@@ -99,13 +114,16 @@ const Home = ({ data, alumni, work, homeData }) => {
               </Cards>
             </Slide>
           </div>
-          :
-          <section style={{ width: '100%' }}>
+        ) : (
+          <section style={{ width: "100%" }}>
             <Slide ssrFadeout right>
               <Cards>
-                {HomeData.careerPath.designer.map(career => (
+                {HomeData.careerPath.designer.map((career) => (
                   <Card>
-                    <IllustrationImage src={career.image} alt="illustration" />
+                    <IllustrationImage
+                      src={career.image}
+                      alt="illustration"
+                    />
                     <b>{career.title}</b>
                     <p>{career.description}</p>
                   </Card>
@@ -113,69 +131,176 @@ const Home = ({ data, alumni, work, homeData }) => {
               </Cards>
             </Slide>
           </section>
-        }
+        )}
       </CareerPath>
 
+      <Gradute>
+        <GraduateImg src={HomeData.graduate.image} />
+
+        <GradDescWrapper>
+          <GradTitle>{HomeData.graduate.title}</GradTitle>
+          <GradDesc>{HomeData.graduate.desc}</GradDesc>
+          <ButtonWrapper>
+            <Button
+              text={"See Student Work"}
+              font={16}
+              color={"white"}
+              bcg={"#DE3F21"}
+              section={"joinWMDD"}
+              borderColor={"transparent"}
+              to={"project"}
+            />
+          </ButtonWrapper>
+        </GradDescWrapper>
+      </Gradute>
       <AdminBox />
-    </>
+    </div>
   );
 };
 
 const CareerPath = styled.div`
-  padding: 2vh 5.4vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow: hidden;
+    padding: 2vh 5.4vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+
+    @media screen and (min-width: 768px) {
+        padding: 2vh 13.5vw;
+    }
+`;
+
+const CareerTitle = styled.h2`
+  font-size: 2.375rem;
+  line-height: 3.125rem;
+  color: rgba(38, 50, 56, 1); 
+  font-weight: 700;
+
+  @media screen and (min-width: 768px) {
+    margin: 0;
+  }
+`
+const CareerDesc = styled.p`
+margin: 0;
+font-size: 1.3rem;
+font-weight: 400;
+line-height: 1.875rem;
+color: rgba(38, 50, 56, 1); 
+@media screen and (min-width: 768px) {
+    padding-top: 1.5vh;
+  }
+
+`;
+
+const Gradute = styled.div`
+  padding: 7.8vh 4.1vw 9.7vh;
 
   @media screen and (min-width: 768px){
-    padding: 2vh 13.5vw;
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 10vh 13.5vw 10.9vh 13.5vw;
+    gap: 2vw;
   }
 `;
 
-const Cards = styled.div`
-  max-width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  overflow: hidden;
+const GraduateImg = styled.img`
+  width: 100%;
 
   @media screen and (min-width: 768px){
-    flex-direction: row;
+    max-width: 477px;
   }
+`;
+
+const GradDescWrapper = styled.div`
+  padding-top: 4.8vh;
+`
+
+const GradTitle = styled.h2`
+  margin: 0;
+  font-size: 2.375rem;
+  color: rgba(33, 38, 58, 1);
+  line-height: 3.125rem;
+  font-weight: 700;
+`
+
+const GradDesc = styled.p`
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.875rem;
+  color: rgba(33, 38, 58, 1);
+  margin: 0;
+
+  @media screen and (min-width: 768px) {
+    padding-top: 1.5vh;
+  }
+`
+
+const ButtonWrapper = styled.div`
+  padding-top: 4.8vh;
+
+  @media screen and (min-width: 768px){
+    padding-top: 3.6vh;
+  }
+`
+
+const Cards = styled.div`
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    overflow: hidden;
+
+    @media screen and (min-width: 768px) {
+        flex-direction: row;
+    }
 `;
 
 const Card = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: .2rem;
-  align-items: flex-start;
-  background-color: #FFFFFF;
-  padding: 2rem;
-  border: 1px solid #B0BEC5;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #ffffff;
+    padding: 2rem;
+    border: 1px solid #b0bec5;
 
-  @media screen and (min-width: 768px){
-    width: 30vw;
-  }
+    b{
+      font-size: 1rem;
+      padding-top: 1rem;
+    }
+
+    p{
+      line-height: 1.25rem;
+      margin: 0;
+      padding-top: 1.6vh;
+      font-weight: 400;
+      font-size: 0.875rem;
+    }
+
+    @media screen and (min-width: 768px) {
+        width: 30vw;
+    }
 `;
 
 const IllustrationImage = styled.img``;
 
 const FieldSelector = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 3vh 0vw;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 4.9vh 0vw;
+    font-size: 1.25rem;
+    line-height:1.875rem;
 
-  @media screen and (min-width: 768px){
-    padding: 3vh 10vw;
-    justify-content: space-around;
-  }
+    @media screen and (min-width: 768px) {
+        padding: 3vh 10vw;
+        justify-content: space-around;
+    }
 `;
 
 const Field = styled.span`
-  cursor: pointer;
+    cursor: pointer;
+    padding-bottom: 8px;
 `;
 
 export default Home;
