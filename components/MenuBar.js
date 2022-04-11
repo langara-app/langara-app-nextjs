@@ -122,10 +122,10 @@ const MenuLink = styled.a`
 
 const MenuLinkWeb = styled.a`
   margin-left: 3.5vw;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 1.1vw;
   color: ${({ number, checked }) =>
-    number === checked ? "#c36448" : "#675D51"};
+    number === checked ? "#c36448" : "#263238"};
   cursor: pointer;
 `;
 
