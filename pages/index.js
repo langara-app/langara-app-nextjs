@@ -55,7 +55,7 @@ const Home = ({ data, alumni, work, homeData }) => {
 
   const selectedFieldStyles = {
     color: "#DE3F21",
-    borderBottom: "1px solid #DE3F21",
+    borderBottom: "2px solid #DE3F21",
     fontWeight: "bold",
   };
 
