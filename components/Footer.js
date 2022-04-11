@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import styled from "styled-components";
 import useWindowWidth from "./Hooks/useWindowWidth";
-import logo from "../assets/logo-white.svg";
+import logo from "../assets/logo.svg";
 
 import { HomeData } from "../lib/HomeData";
 import { MenuData } from "../lib/MenuData";
@@ -12,112 +12,93 @@ const Footer = () => {
 
   return width < 768 ? (
     <Container>
-      <Logo>
-        <img src={logo} style={{ display: "block", width: "100%" }} />
-      </Logo>
       <LinkWrapper>
-        <Link href="/about-this-site">About this site</Link>
-      </LinkWrapper>
-      <LinkWrapper>
-        <Link href="/FAQs">FAQ</Link>
-      </LinkWrapper>
-      <LinkWrapper>
-        <a
-          href="https://langara.ca/about-langara/records-management-and-privacy/privacy/privacy-statement.html"
-          target="_blank"
-        >
-          Privacy Policy
-        </a>
-      </LinkWrapper>
-
-      <ContactInfo>
-        <span>CONTACT</span>
-        <p>100 W 49th Ave, Vancouver, BC V5Y 2Z6</p>
-        <a
-          href={HomeData.footer.contactLink}
-          style={{ textDecoration: "underline" }}
-        >
-          {HomeData.footer.contactDesc}
-        </a>
-      </ContactInfo>
-      <CopyRight>&copy; 2021 Langara College. All rights reserved.</CopyRight>
-    </Container>
-  ) : (
-    <Container>
-      <FlexContainer>
         <Logo>
           <img src={logo} style={{ display: "block", width: "100%" }} />
         </Logo>
-        <FlexLinks>
-          {MenuData.map((menu, index) => (
-            <Link href={menu.link} key={index}>
+        {MenuData.map((menu, index) => {
+          if (index != 0) {
+            return (<Link href={menu.link} key={index}>
               <a className="menu-item">{menu.title}</a>
-            </Link>
-          ))}
-        </FlexLinks>
-        <FlexLinks>
-          <Link href="/about-this-site">About this site</Link>
-          <a
-            href="https://langara.ca/about-langara/records-management-and-privacy/privacy/privacy-statement.html"
-            target="_blank"
-          >
-            Privacy Policy
-          </a>
-        </FlexLinks>
-        <ContactInfo>
-          <span>CONTACT</span>
-          <p>100 W 49th Ave, Vancouver, BC V5Y 2Z6</p>
-          <a
-            href={HomeData.footer.contactLink}
-            style={{ textDecoration: "underline" }}
-          >
-            {HomeData.footer.contactDesc}
-          </a>
-        </ContactInfo>
-      </FlexContainer>
-      <CopyRight>&copy; 2021 Langara College. All rights reserved.</CopyRight>
+            </Link>)
+          }
+        })}
+        <a href="https://langara.ca/programs-and-courses/programs/web-and-mobile-app/admission-requirements.html" target="_blank">Apply</a>
+        <a href={HomeData.footer.contactLink}>
+          Contact
+        </a>
+      </LinkWrapper>
+      <CopyRight>
+        <span>
+          &copy; 2022 Langara College. All rights reserved.
+        </span>
+        <a href="https://langara.ca/about-langara/records-management-and-privacy/privacy/privacy-statement.html" target="_blank">
+          Privacy Policy
+        </a>
+      </CopyRight>
     </Container>
+  ) : (
+    <FlexContainer>
+      <LinkWrapper>
+        <Logo>
+          <img src={logo} style={{ display: "block", width: "100%" }} />
+        </Logo>
+        <div style={{ display: "flex", gap: "1.5rem" }}>
+          {MenuData.map((menu, index) => {
+            if (index != 0) {
+              return (<Link href={menu.link} key={index}>
+                <a className="menu-item">{menu.title}</a>
+              </Link>)
+            }
+          })}
+          <a href="https://langara.ca/programs-and-courses/programs/web-and-mobile-app/admission-requirements.html" target="_blank">Apply</a>
+          <a href={HomeData.footer.contactLink}>
+            Contact
+          </a>
+        </div>
+      </LinkWrapper>
+      <CopyRight>
+        <span>
+          &copy; 2022 Langara College. All rights reserved.
+        </span>
+        <a href="https://langara.ca/about-langara/records-management-and-privacy/privacy/privacy-statement.html" target="_blank">
+          Privacy Policy
+        </a>
+      </CopyRight>
+    </FlexContainer>
   );
 };
+
 const Container = styled.div`
-  background-color: #675d51;
+  background-color: #FFFFFF;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  height: 130vw;
-  max-height: 500px;
-  color: white;
-  font-size: 15px;
-  font-weight: 200;
-  @media only screen and (min-width: 768px) {
-    /* For everything bigger than 768px */
+  align-items: flex-start;
+  color: #21263A;
+  font-weight: 300;
+`;
 
-    height: auto;
-    align-items: unset;
+const LinkWrapper = styled.div`
+  padding: 4vh 5.4vw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  @media only screen and (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2vh 13.5vw;
   }
 `;
 
 const FlexContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  margin-top: ${(54 / 1365) * 100}vw;
-`;
-
-const FlexLinks = styled.div`
+  background-color: #FFFFFF;
   display: flex;
   flex-direction: column;
-
-  a {
-    font-size: ${(19 / 1365) * 100}vw;
-    font-weight: 200;
-    margin-bottom: ${(16 / 1365) * 100}vw;
-  }
 `;
 
 const Logo = styled.div`
-  margin: 1rem auto;
   width: 30%;
 
   @media only screen and (min-width: 768px) {
@@ -127,48 +108,22 @@ const Logo = styled.div`
   }
 `;
 
-const LinkWrapper = styled.div`
-  margin: 1rem 0;
-`;
-
-const ContactInfo = styled.div`
+const CopyRight = styled.div`
+  padding: 2vh 6vw;
   display: flex;
   flex-direction: column;
+  font-size: 0.95rem;
+  border-top: 1px solid #CFD8DC;
+  width: 100%;
+  color: #546E7A;
   align-items: center;
-  margin-top: 2rem;
-  span {
-    font-size: 15px;
-    font-weight: bold;
-  }
+  gap: 1rem;
+  font-family: "Ubuntu Mono";
 
   @media only screen and (min-width: 768px) {
-    margin-top: 0;
-    align-items: flex-start;
-
-    span {
-      font-size: ${(22 / 1365) * 100}vw;
-      margin-bottom: ${(16 / 1365) * 100}vw;
-    }
-    p {
-      font-size: ${(13 / 1365) * 100}vw;
-      margin-bottom: ${(32 / 1365) * 100}vw;
-    }
-    a {
-      font-size: ${(13 / 1365) * 100}vw;
-      margin-bottom: ${(32 / 1365) * 100}vw;
-    }
-  }
-`;
-
-const CopyRight = styled.p`
-  font-size: 10px;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-
-  @media only screen and (min-width: 768px) {
-    margin: ${(42 / 1365) * 100}vw auto ${(11 / 1365) * 100}vw;
-    font-size: ${(13 / 1365) * 100}vw;
-    font-weight: 200;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2vh 13.5vw;
   }
 `;
 
