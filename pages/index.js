@@ -3,6 +3,8 @@ import styles from "../styles/home/home.module.scss";
 import Link from "next/link";
 import fetch from "node-fetch";
 
+import { useState } from "react";
+
 import Alumni from "../components/Alumni/AlumniSlider";
 import Work from "../components/Work/Work";
 
@@ -49,6 +51,13 @@ export async function getStaticProps() {
 
 const Home = ({ data, alumni, work, homeData }) => {
   const width = useWindowWidth();
+  const [field, setField] = useState('developer');
+
+  const selectedFieldStyles = {
+    color: "#DE3F21",
+    borderBottom: "1px solid #DE3F21",
+    fontWeight: "bold",
+  };
 
   return (
     <>
@@ -63,7 +72,51 @@ const Home = ({ data, alumni, work, homeData }) => {
         page={"home"}
       />
 
-      {width < 768 ? (
+      <CareerPath>
+        <div style={{ textAlign: "center" }}>
+          <h2 style={{ fontSize: "2.4rem" }}>{HomeData.careerPath.title}</h2>
+          <p>{HomeData.careerPath.description}</p>
+        </div>
+        <FieldSelector>
+          <Field style={field === "developer" ? selectedFieldStyles : null}
+            onClick={e => setField('developer')}
+          >Developer</Field>
+          <Field style={field === "designer" ? selectedFieldStyles : null}
+            onClick={e => setField('designer')}
+          >Designer</Field>
+        </FieldSelector>
+        {field === 'developer' ?
+          <div style={{ width: '100%' }}>
+            <Slide ssrFadeout left>
+              <Cards>
+                {HomeData.careerPath.developer.map(career => (
+                  <Card>
+                    <IllustrationImage src={career.image} alt="illustration" />
+                    <b>{career.title}</b>
+                    <p>{career.description}</p>
+                  </Card>
+                ))}
+              </Cards>
+            </Slide>
+          </div>
+          :
+          <section style={{ width: '100%' }}>
+            <Slide ssrFadeout right>
+              <Cards>
+                {HomeData.careerPath.designer.map(career => (
+                  <Card>
+                    <IllustrationImage src={career.image} alt="illustration" />
+                    <b>{career.title}</b>
+                    <p>{career.description}</p>
+                  </Card>
+                ))}
+              </Cards>
+            </Slide>
+          </section>
+        }
+      </CareerPath>
+
+      {/* {width < 768 ? (
         <SectionContainer margin={true}>
           <TitleBcg>
             <Slide ssrFadeout bottom>
@@ -87,248 +140,66 @@ const Home = ({ data, alumni, work, homeData }) => {
             />
           ))}
         </SectionContainer>
-      )}
-
-      {width < 768 ? (
-        <SectionContainer margin={true} overlay={true} type={"project"}>
-          <Title>{homeData.projects.title}</Title>
-          <SectionDescription paddingBottom={64}>
-            {homeData.projects.description}
-          </SectionDescription>
-
-          <SliderContainer>
-            <SimpleSlider data={work} />
-          </SliderContainer>
-          <BtnBcg color={"brown"}>
-            <Button
-              text={"SEE MORE"}
-              margin={2}
-              font={24}
-              size={"big"}
-              color={"white"}
-              bcg={"transparent"}
-              to={"project"}
-            />
-          </BtnBcg>
-        </SectionContainer>
-      ) : (
-        <SectionContainerProject>
-          <div></div>
-          <SliderContainer contents={"project"}>
-            <SimpleSlider data={work} />
-          </SliderContainer>
-          <div>
-            <BtnBcg color={"brown"}>
-              <TitleContainer>
-                <Title>{homeData.projects.title}</Title>
-                <SectionDescription paddingBottom={64}>
-                  {homeData.projects.description}
-                </SectionDescription>
-              </TitleContainer>
-              <Button
-                text={"SEE MORE"}
-                margin={2}
-                font={24}
-                size={"big"}
-                color={"white"}
-                bcg={"transparent"}
-                layout={"desktop"}
-                to={"project"}
-                section={"project"}
-              />
-            </BtnBcg>
-          </div>
-        </SectionContainerProject>
-      )}
-
-      {width < 768 ? (
-        <SectionContainer margin={false} overlay={true} type={"alumni"}>
-          <Title>{homeData.alumni.title}</Title>
-          <SectionDescription paddingBottom={112}>
-            {homeData.alumni.description}
-          </SectionDescription>
-          <SliderContainer>
-            <AlumniSlider data={alumni} />
-          </SliderContainer>
-          <BtnBcg color={"orange"}>
-            <Button
-              text={"SEE MORE"}
-              margin={2}
-              font={24}
-              size={"big"}
-              color={"white"}
-              bcg={"transparent"}
-              layout={"desktop"}
-              to={"alumni"}
-            />
-          </BtnBcg>
-        </SectionContainer>
-      ) : (
-        <SectionContainer margin={false} overlay={true} type={"alumni"}>
-          <BtnBcg color={"orange"}>
-            <Title>{homeData.alumni.title}</Title>
-            <SectionDescription paddingBottom={112}>
-              {homeData.alumni.description}
-            </SectionDescription>
-            <Button
-              text={"SEE MORE"}
-              margin={2}
-              font={24}
-              size={"big"}
-              color={"white"}
-              bcg={"transparent"}
-              layout={"desktop"}
-              to={"alumni"}
-              section={"alumni"}
-            />
-          </BtnBcg>
-          <SliderContainer contents={"alumni"}>
-            <AlumniSlider data={alumni} />
-          </SliderContainer>
-        </SectionContainer>
-      )}
-
-      <AdminBox />
+      )} */}
     </>
   );
 };
 
-const TitleBcg = styled.div`
-  background: rgb(103, 93, 81);
-  background: linear-gradient(
-    0deg,
-    rgba(103, 93, 81, 1) 0%,
-    rgba(103, 93, 81, 0.9472163865546218) 10%,
-    rgba(103, 93, 81, 0.9023984593837535) 20%,
-    rgba(103, 93, 81, 0.8463760504201681) 30%,
-    rgba(103, 93, 81, 0.7987570028011204) 40%,
-    rgba(103, 93, 81, 0.7035189075630253) 50%,
-    rgba(103, 93, 81, 0.5494572829131652) 60%,
-    rgba(103, 93, 81, 0.3981967787114846) 70%,
-    rgba(103, 93, 81, 0.30015756302521013) 80%,
-    rgba(103, 93, 81, 0.10127801120448177) 90%,
-    rgba(103, 93, 81, 0) 100%
-  );
-  height: ${(300 / 375) * 100}vw;
-  color: white;
-
-  @media only screen and (min-width: 540px) {
-    height: ${(200 / 375) * 100}vw;
-  }
-`;
-const SectionContainer = styled.div`
-  margin: ${({ margin }) => (margin ? "0 0rem 0rem" : 0)};
-  position: ${({ overlay }) => (overlay ? "relative" : "static")};
-  background-color: ${({ type }) =>
-    type === "alumni" || type === "project" ? "white" : "#effcfa"};
-  overflow-x: hidden;
-
-  @media only screen and (min-width: 768px) {
-    display: ${({ type }) => (type === "alumni" ? "grid" : "unset")};
-    grid-template-columns: 1fr 1fr;
-  }
-`;
-const SectionContainerProject = styled.div`
-  @media only screen and (min-width: 768px) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    position: relative;
-    height: ${(694 / 1366) * 100}vw;
-    background-color: white;
-    overflow-x: hidden;
-  }
-`;
-
-const TitleContainer = styled.div`
-  color: white;
-  /* margin-left: ${(153 / 1366) * 100}vw; */
-`;
-const Title = styled.h2`
-  text-align: center;
-  margin: 0 auto;
-  padding-top: ${({ type }) =>
-    type === "summary" ? (120 / 375) * 100 : (47 / 375) * 100}vw;
-  /* padding-left: ${({ type }) => (type === "summary" ? "5.5rem" : "35px")};
-  padding-right: ${({ type }) => (type === "summary" ? "5.5rem" : "35px")}; */
-  width: 70%;
-  max-width: 300px;
-
-  line-height: ${({ type }) => (type === "summary" ? 1.5 : 1.1)};
-  font-size: 32px;
-  @media only screen and (min-width: 768px) {
-    padding: 0;
-    margin: 0;
-    font-size: ${(50 / 1366) * 100}vw;
-    text-align: left;
-    color: white;
-    width: 100%;
-    max-width: unset;
-  }
-`;
-const SectionDescription = styled.p`
-  padding: 2rem 35px ${({ paddingBottom }) => (paddingBottom / 375) * 100}vw;
-  margin: 0 auto;
-  text-align: center;
-  font-weight: 200;
-  font-size: 15px;
-  @media only screen and (min-width: 768px) {
-    text-align: left;
-    padding: 0;
-    margin-top: ${(40 / 1366) * 100}vw;
-    margin-right: ${(119 / 1366) * 100}vw;
-    font-size: ${(19 / 1366) * 100}vw;
-    color: white;
-  }
-`;
-const SliderContainer = styled.div`
-  position: absolute;
-  width: 100vw;
-  bottom: ${(140 / 375) * 100}vw;
-  @media only screen and (min-width: 768px) {
-    bottom: ${(107 / 1366) * 100}vw;
-    position: ${({ contents }) =>
-      contents === "project" ? "absolute" : "static"};
-    width: ${({ contents }) => (contents === "alumni" ? 50 : 100)}vw;
-  }
-`;
-
-// const SliderContainerProject = styled.div`
-//   position: absolute;
-//   width: 100vw;
-//   bottom: ${(140 / 375) * 100}vw;
-//   height: ${(479 / 1366) * 100}vw;
-// `;
-
-const BtnBcg = styled.div`
-  background-color: ${({ color }) =>
-    color === "orange" ? "#C36448" : color === "brown" ? "#675D51" : "white"};
-  height: 100vw;
+const CareerPath = styled.div`
+  padding: 2vh 5.4vw;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  align-items: center;
+  overflow: hidden;
 
-  @media only screen and (min-width: 768px) {
-    height: ${(694 / 1366) * 100}vw;
-    padding-left: ${(153 / 1366) * 100}vw;
-    justify-content: center;
+  @media screen and (min-width: 768px){
+    padding: 2vh 13.5vw;
   }
 `;
 
-const AdmissionContainer = styled.div`
+const Cards = styled.div`
+  max-width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 3rem 2rem;
-  background-color: #c2e5e0;
+  gap: 1.5rem;
+  overflow: hidden;
+
+  @media screen and (min-width: 768px){
+    flex-direction: row;
+  }
 `;
-const AdminTitle = styled.h2`
-  margin: 0;
-  text-align: center;
+
+const Card = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+  align-items: flex-start;
+  background-color: #FFFFFF;
+  padding: 2rem;
+  border: 1px solid #B0BEC5;
+
+  @media screen and (min-width: 768px){
+    width: 30vw;
+  }
 `;
-const AdminDescription = styled.p`
-  text-align: center;
-  font-weight: 200;
-  font-size: 18px;
+
+const IllustrationImage = styled.img``;
+
+const FieldSelector = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 3vh 0vw;
+
+  @media screen and (min-width: 768px){
+    padding: 3vh 10vw;
+    justify-content: space-around;
+  }
+`;
+
+const Field = styled.span`
+  cursor: pointer;
 `;
 
 export default Home;
