@@ -77,7 +77,7 @@ const BtnElement = styled.button`
     display: block;
   }
 
-  @media only screen and (min-width: 768px) {
+  /* @media only screen and (min-width: 768px) {
     margin: ${({ layout }) => (layout === "desktop" ? 0 : (30 / 1366) * 100)}vw
       ${({ section }) => (section === "joinWMDD" ? (500 / 1366) * 100 : 0)}vw;
     margin-top: ${({ section }) =>
@@ -99,7 +99,7 @@ const BtnElement = styled.button`
         ${({ section }) =>
     section === "joinWMDD" ? (10 / 1366) * 100 : (34 / 1366) * 100}vw;
     }
-  }
+  } */
 `;
 
 export default Button;
