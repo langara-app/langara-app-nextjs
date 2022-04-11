@@ -24,7 +24,7 @@ const Button = ({
       section={section}
     >
       {to === "wmdd" ? (
-        <Link href={"/about-us"}>
+        <Link href={"/program-overview"}>
           <a> {text}</a>
         </Link>
       ) : to === "project" ? (
@@ -54,6 +54,7 @@ const BtnElement = styled.button`
   display: block;
   font-size: ${({ font }) => font}px;
   cursor: pointer;
+  border-radius: 4px;
 
   font-weight: ${({ size }) =>
     size === "med" ? "bold" : size === "big" ? "bold" : "600"};
@@ -66,13 +67,13 @@ const BtnElement = styled.button`
 
   a {
     padding: ${({ size }) =>
-      size === "med"
-        ? "8px 24px"
-        : size === "big"
+    size === "med"
+      ? "8px 24px"
+      : size === "big"
         ? "10px 53px"
         : size === "long"
-        ? "14px 10px"
-        : "14px 10px"};
+          ? "14px 10px"
+          : "14px 10px"};
     display: block;
   }
 
@@ -80,23 +81,23 @@ const BtnElement = styled.button`
     margin: ${({ layout }) => (layout === "desktop" ? 0 : (30 / 1366) * 100)}vw
       ${({ section }) => (section === "joinWMDD" ? (500 / 1366) * 100 : 0)}vw;
     margin-top: ${({ section }) =>
-      section === "project" || "alumni" ? (20 / 1366) * 100 : 0}vw;
+    section === "project" || "alumni" ? (20 / 1366) * 100 : 0}vw;
 
     margin-right: ${({ layout, section }) =>
-      layout === "desktop"
-        ? (315 / 1366) * 100
-        : section === "joinWMDD"
+    layout === "desktop"
+      ? (315 / 1366) * 100
+      : section === "joinWMDD"
         ? (500 / 1366) * 100
         : (120 / 1366) * 100}vw;
 
     font-size: ${({ section }) =>
-      section === "joinWMDD" ? (18 / 1366) * 100 : (24 / 1366) * 100}vw;
+    section === "joinWMDD" ? (18 / 1366) * 100 : (24 / 1366) * 100}vw;
 
     a {
       padding: ${({ layout, section }) =>
-          layout === "desktop" ? (10 / 1366) * 100 : (12 / 1366) * 100}vw
+    layout === "desktop" ? (10 / 1366) * 100 : (12 / 1366) * 100}vw
         ${({ section }) =>
-          section === "joinWMDD" ? (10 / 1366) * 100 : (34 / 1366) * 100}vw;
+    section === "joinWMDD" ? (10 / 1366) * 100 : (34 / 1366) * 100}vw;
     }
   }
 `;

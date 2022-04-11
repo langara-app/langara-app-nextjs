@@ -3,6 +3,7 @@ import Link from "next/link";
 import { slide as Menu } from "react-burger-menu";
 import styles from "../styles/MenuBar.module.css";
 import { MenuData } from "../lib/MenuData";
+import Button from "../components/ReusableElements/Button"
 
 import logo from "../assets/logo.svg";
 import logowhite from "../assets/logo-white.svg";
@@ -69,6 +70,7 @@ const MenuBar = () => {
             </MenuLink>
           </Link>
         ))}
+        <Button text="Apply" bcg="#FFFFFF" color="#DE3F21" font={18}></Button>
       </Menu>
     </MobileMenuContainer>
   ) : (
@@ -99,6 +101,7 @@ const MenuBar = () => {
             </MenuLinkWeb>
           </Link>
         ))}
+        <Button text="Apply" bcg="#DE3F21" color="#FFFFFF" font={16}></Button>
       </div>
     </div>
   );
@@ -131,6 +134,7 @@ const MobileMenuContainer = styled.div`
   justify-content: space-between;
   padding: 7vw 6vw;
   text-align: center;
+  background-color: #ffffff;
 
   /* Position and sizing of burger button */
   .bm-burger-button {
@@ -177,7 +181,7 @@ const MobileMenuContainer = styled.div`
 
   /* General sidebar styles */
   .bm-menu {
-    background-color: #c36448;
+    background-color: #DE3F21;
     padding: 2.5em 1.5em 0;
     font-size: 1.15em;
   }
