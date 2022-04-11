@@ -38,6 +38,7 @@ export async function getStaticProps() {
     "https://api.langara-app.ca/wp-json/acf/v3/alumni"
   );
   const alumni = await alumniData.json();
+  console.log(alumni);
 
   const workData = await fetch(
     "https://api.langara-app.ca/wp-json/wp/v2/projects?per_page=5"
@@ -116,12 +117,35 @@ const Home = ({ data, alumni, work, homeData }) => {
         }
       </CareerPath>
 
+      <AlumniSection>
+        <article style={{ textAlign: "center" }}>
+          <h2 style={{ fontSize: "2.4rem" }}>{HomeData.alumni.title}</h2>
+          <p>{HomeData.alumni.description}</p>
+        </article>
+        <AlumniSlider data={alumni} />
+      </AlumniSection>
       <AdminBox />
     </>
   );
 };
 
-const CareerPath = styled.div`
+const AlumniSection = styled.section`
+  background-color: #ffffff;
+  padding: 3rem 5.4vw;
+
+  article{
+    h2{
+      margin: 0;
+      margin-bottom: 2rem;
+    }
+  }
+
+  @media screen and (min-width: 768px){
+    padding: 3rem 13.5vw;
+  }
+`;
+
+const CareerPath = styled.section`
   padding: 2vh 5.4vw;
   display: flex;
   flex-direction: column;

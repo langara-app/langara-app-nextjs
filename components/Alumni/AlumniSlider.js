@@ -3,22 +3,24 @@ import styled from "styled-components";
 import Slider from "react-slick";
 
 import AlumniIntro from "./AlumniIntro";
-import AlumniSingle from "./AlumniSingle";
+import useWindowWidth from "../Hooks/useWindowWidth";
 
 const alumnaNameToRemove = "Eduard Landa";
 
-const settings = {
-  dots: true,
-  infinite: true,
-  autoplaySpeed: 7000,
-  speed: 1000,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  arrows: false,
-  autoplay: true,
-};
-
 const AlumniSlider = ({ data }) => {
+  const width = useWindowWidth();
+
+  const settings = {
+    dots: false,
+    infinite: false,
+    autoplaySpeed: 7000,
+    speed: 1000,
+    slidesToShow: width > 768 ? 3 : 1,
+    slidesToScroll: width > 768 ? 3 : 1,
+    arrows: width > 768,
+    autoplay: false,
+  };
+
   return (
     <AlumniSliderContainer>
       <Slider {...settings}>
@@ -33,43 +35,18 @@ const AlumniSlider = ({ data }) => {
 };
 
 const AlumniSliderContainer = styled.div`
-  backgroundcolor: white;
+  background-color: white;
   margin: 0 2rem;
 
-  .slick-list {
-    height: 91vw !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
+  .slick-track {
+    padding: 10px 0;
+    display: flex;
+    flex-direction: row;
+    gap: 1.25rem;
   }
 
-  .slick-dots li {
-    margin: 0 !important;
-  }
-  .slick-dots li button:before {
-    font-size: 11px !important;
-  }
-  .slick-dots li.slick-active button:before {
-    color: white !important;
-  }
-
-  @media only screen and (min-width: 768px) {
-    width: 50vw !important;
-    margin: 0;
-    .slick-list {
-      height: 50vw !important;
-    }
-
-    .slick-dots {
-      bottom: 40px;
-    }
-
-    .slick-dots li button:before {
-      font-size: 15px !important;
-    }
-    .slick-dots li.slick-active button:before {
-      color: #675d51 !important;
-    }
+  .slick-prev:before, .slick-next:before{
+    color: black;
   }
 `;
 
