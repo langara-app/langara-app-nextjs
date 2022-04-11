@@ -39,7 +39,7 @@ const AlumniIntro = (props) => {
       </Comment>
       <DescriptionBlock>
         <div>{alumni_name}</div>
-        <div>{company} at {job_position}</div>
+        <div>{job_position} at {company}</div>
       </DescriptionBlock>
     </Card>
   );
@@ -49,6 +49,7 @@ const Card = styled.div`
 `;
 
 const Comment = styled.p`
+  line-height: 1.5rem;
 `;
 
 const VideoBlock = styled.div`
@@ -91,6 +92,8 @@ const Video = styled.iframe`
 const DepartmentBlock = styled.div`
   padding: 1rem 0;
   font-family: "Ubuntu Mono";
+  color: #546e7a;
+  font-size: 0.875rem;
 `;
 
 const DescriptionBlock = styled.div`
@@ -101,6 +104,12 @@ const DescriptionBlock = styled.div`
   div:nth-child(1) {
     font-weight: bold;
     font-size: 1.25rem;
+  }
+
+  div:nth-child(2) {
+    font-size: 0.875rem;
+    color: #37474f;
+    line-height: 1.25rem;
   }
 `;
 
