@@ -88,7 +88,7 @@ const LinkWrapper = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 2vh 13.5vw;
+    padding: 4vh 13.5vw;
   }
 `;
 
