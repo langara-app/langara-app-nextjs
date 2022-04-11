@@ -5,7 +5,7 @@ import Button from "../ReusableElements/Button";
 import ScrollArrow from "../ReusableElements/ScrollArrow";
 import useWindowWidth from "../Hooks/useWindowWidth";
 import homeImg from "../../assets/home.svg";
-import topImg from "../../assets/img/wmdd/HomeImage.svg"
+import topImg from "../../assets/img/wmdd/HomeImage.png"
 
 import { Link } from "react-scroll";
 
@@ -50,7 +50,7 @@ const HeaderContainer = styled.div`
   justify-content: flex-start;
   align-items: left;
   background: url(${({ img }) => img});
-  background-color: #effcfa;
+  background-color: #F3FBFF;
   height: 100vh;
   position: relative;
   padding-top: 5.7vh;
@@ -69,7 +69,7 @@ const HeaderContainer = styled.div`
     justify-content: unset;
     align-items: unset;
     height: unset;
-    
+
   }
 
   /* &::after {
