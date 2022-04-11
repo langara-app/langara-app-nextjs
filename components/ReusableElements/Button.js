@@ -12,6 +12,7 @@ const Button = ({
   layout,
   section,
   to,
+  borderColor
 }) => {
   return (
     <BtnElement
@@ -22,6 +23,7 @@ const Button = ({
       bcg={bcg}
       layout={layout}
       section={section}
+      borderColor={borderColor}
     >
       {to === "wmdd" ? (
         <Link href={"/program-overview"}>
@@ -61,7 +63,7 @@ const BtnElement = styled.button`
 
   margin: ${({ margin }) => margin}rem auto;
   font-family: Kanit;
-  border: 2px solid ${({ color }) => color};
+  border: 2px solid ${({ borderColor }) => borderColor ? borderColor : ({ color }) => color};
   background-color: ${({ bcg }) => bcg};
   color: ${({ color }) => color};
 
