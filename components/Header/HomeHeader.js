@@ -51,7 +51,6 @@ const HeaderContainer = styled.div`
   align-items: left;
   background: url(${({ img }) => img});
   background-color: #F3FBFF;
-  height: 100vh;
   position: relative;
   padding-top: 5.7vh;
   padding-left: 5.2vw;
@@ -154,12 +153,14 @@ const HomeImageContainer = styled.div`
 
 const HomeImg = styled.img`
 padding-top: 5.7vh;
+width: 100%;
 @media only screen and (min-width: 768px) {
   padding-top: 0;
   display: block;
   width: 100%;
   height: auto;
   padding-right: 1.6vw;
+  margin: 0 auto;
 }
 `
 

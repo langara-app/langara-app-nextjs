@@ -17,7 +17,7 @@ const AdminBox = () => {
         <ButtonWrapper>
           <Button
             text={"Explore Program Overview"}
-            font={18}
+            font={16}
             color={"#675D51"}
             bcg={"white"}
             section={"joinWMDD"}
