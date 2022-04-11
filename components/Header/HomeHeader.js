@@ -5,6 +5,7 @@ import Button from "../ReusableElements/Button";
 import ScrollArrow from "../ReusableElements/ScrollArrow";
 import useWindowWidth from "../Hooks/useWindowWidth";
 import homeImg from "../../assets/home.svg";
+import topImg from "../../assets/img/wmdd/HomeImage.svg"
 
 import { Link } from "react-scroll";
 
@@ -22,45 +23,21 @@ const HomeHeader = ({ type, title, desc, btnText, img, page }) => {
         {width < 768 ? (
           <div>
             <HomeTitle>{title}</HomeTitle>
-            <HeaderP>
-              {desc.description1}
-              {desc.description2}
-            </HeaderP>
+            <HeaderP>{desc.description1}</HeaderP>
+            <HeaderQ>{desc.description2}</HeaderQ>
+            <HomeImg src={topImg} alt="WMDD Top Image" />
           </div>
         ) : (
           <div>
-            <HomeTitle>
-              Web & Mobile APP <br /> Development & Design
-            </HomeTitle>
+            <HomeTitle>{title}</HomeTitle>
             <HeaderP>{desc.description1}</HeaderP>
-            <HeaderP>{desc.description2}</HeaderP>
+            <HeaderQ>{desc.description2}</HeaderQ>
           </div>
         )}
-
-        <ButtonArrowContainer>
-          <Button
-            text={btnText}
-            margin={0.5}
-            font={18}
-            size={"med"}
-            bcg={"white"}
-            color={"#675D51"}
-            to={"wmdd"}
-          />
-          <Link
-            activeClass="active"
-            to={scrollTo}
-            spy={true}
-            smooth={true}
-            duration={500}
-          >
-            <ScrollArrow />
-          </Link>
-        </ButtonArrowContainer>
       </HeaderLeftWeb>
       {width < 768 ? null : (
         <HomeImageContainer>
-          <HomeImage src={homeImg} alt="WMDD Top Image" />
+          <HomeImg src={topImg} alt="WMDD Top Image" />
         </HomeImageContainer>
       )}
     </HeaderContainer>
@@ -71,26 +48,28 @@ const HeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  align-items: left;
   background: url(${({ img }) => img});
   background-color: #effcfa;
   height: 100vh;
   position: relative;
-  padding-top: ${(50 / 375) * 100}vw;
-  padding-left: 35px;
-  padding-right: 35px;
-  color: #c36448;
-  text-align: center;
+  padding-top: 5.7vh;
+  padding-left: 5.2vw;
+  padding-right: 4.4vw;
+  color: rgba(55, 71, 79, 1);
+  text-align: left;
 
   @media only screen and (min-width: 768px) {
     /* For everything bigger than 768px */
+    padding: 5.5vh 13vw 8.5vh 13.5vw;
     display: grid;
-    grid-template-columns: 1.8fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+    "pic desc";
     justify-content: unset;
     align-items: unset;
-    padding-top: 0;
     height: unset;
-    margin-bottom: ${(90 / 1365) * 100}vw;
+    
   }
 
   /* &::after {
@@ -106,35 +85,51 @@ const HeaderContainer = styled.div`
 
 const HeaderLeftWeb = styled.div`
   @media only screen and (min-width: 768px) {
-    padding: 0 ${(74 / 1366) * 100}vw;
+    grid-area: desc;
   }
 `;
 
 const HomeTitle = styled.h1`
-  text-transform: uppercase;
   margin: 0;
+  font-size: 0.85rem;
+  line-height: 18px;
+  font-weight: 400;
+  font-family: "Ubuntu Mono";
 
   @media only screen and (min-width: 768px) {
-    font-size: ${(60 / 1366) * 100}vw;
-    text-align: left;
-    line-height: ${(60 / 1280) * 100}vw;
+    margin-top: 2.75rem;
+    font-size: 0.85rem;
   }
 `;
 
 const HeaderP = styled.p`
-  margin: 1rem 0;
-  margin-bottom: ${(36 / 375) * 100}vw;
-  font-weight: 200;
-  font-size: 15px;
-  color: #675d51;
+  margin-top: 0.5rem;
+  font-weight: 700;
+  font-size: 2.3rem;
+  color: rgba(38, 50, 56, 1);
+  margin-bottom: 1.5rem;
+  line-height: 3.125rem;
 
   @media only screen and (min-width: 768px) {
-    font-size: $((463 / 1366) * 100) vw;
+    font-size: 3.5rem;
     text-align: left;
-    font-size: ${(19 / 1366) * 100}vw;
-    margin-bottom: 0;
-    margin-right: ${(190 / 1365) * 100}vw;
+    margin-bottom: 1.5rem;
+    line-height: 4rem;
   }
+`;
+
+const HeaderQ = styled.p`
+margin: 0;
+font-size: 1.3rem;
+font-weight: 400;
+line-height: 1.875rem;
+
+@media only screen and (min-width: 768px) {
+  font-size: ${((463 / 1366) * 100)} vw;
+  text-align: left;
+  font-size: 1.25rem;
+  margin-bottom: 0;
+}
 `;
 
 const ButtonArrowContainer = styled.div`
@@ -148,15 +143,24 @@ const ButtonArrowContainer = styled.div`
 `;
 
 const HomeImageContainer = styled.div`
-  /* @media only screen and (min-width: 768px) {
-   
-  } */
+  @media only screen and (min-width: 768px) {
+    grid-area: pic;
+    max-width: 540px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
-const HomeImage = styled.img`
+const HomeImg = styled.img`
+padding-top: 5.7vh;
+@media only screen and (min-width: 768px) {
+  padding-top: 0;
   display: block;
   width: 100%;
   height: auto;
-`;
+  padding-right: 1.6vw;
+}
+`
 
 export default HomeHeader;

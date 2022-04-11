@@ -67,7 +67,7 @@ const Home = ({ data, alumni, work, homeData }) => {
         <SectionContainer margin={true}>
           <TitleBcg>
             <Slide ssrFadeout bottom>
-              <Title type={"summary"}>{homeData.summary.title}</Title>
+              <Title type={"summary"}>{homeData.careerPath.title}</Title>
             </Slide>
           </TitleBcg>
 
@@ -287,7 +287,7 @@ const SliderContainer = styled.div`
   @media only screen and (min-width: 768px) {
     bottom: ${(107 / 1366) * 100}vw;
     position: ${({ contents }) =>
-      contents === "project" ? "absolute" : "static"};
+    contents === "project" ? "absolute" : "static"};
     width: ${({ contents }) => (contents === "alumni" ? 50 : 100)}vw;
   }
 `;
