@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import Head from "next/head";
 import styled from "styled-components";
 import useWindowWidth from "../../components/Hooks/useWindowWidth"
@@ -13,6 +13,14 @@ import Button from "../../components/ReusableElements/Button";
 
 const AboutUs = () => {
   const width = useWindowWidth();
+
+  const profVidRef = useRef(null);
+
+  const handleImageClick = (event) => {
+    profVidRef.current.style = "visibility: visible";
+    profVidRef.current.src = `${profVidRef.current.src}&autoplay=1&controls=1`;
+  }
+
   return (
     <>
       <Head>
@@ -26,7 +34,10 @@ const AboutUs = () => {
               <WmddTitle>{WmddData.header.title}</WmddTitle>
               <Header1>{WmddData.header.subtitle}</Header1>
               <Header2>{WmddData.header.description}</Header2>
-              <WmddImg src={placeholder} alt="Program Overview Image" />
+              <VideoBlock>
+                <WmddImg src={placeholder} alt="Program Overview Image" onClick={e => handleImageClick(e)} />
+                <Video src={"https://www.youtube.com/embed/BTciK1vJ8QY?rel=0"} ref={profVidRef} allow="autoplay; encrypted-media"></Video>
+              </VideoBlock>
             </div>
           ) : (
             <div>
@@ -38,7 +49,10 @@ const AboutUs = () => {
         </WmddWebLeft>
         {width < 768 ? null : (
           <WmddImageContainer>
-            <WmddImg src={placeholder} alt="Program Overview Image" />
+            <VideoBlock>
+              <WmddImg src={placeholder} alt="Program Overview Image" onClick={e => handleImageClick(e)} />
+              <Video src={"https://www.youtube.com/embed/BTciK1vJ8QY?rel=0&autoplay=1"} ref={profVidRef} allow="autoplay; encrypted-media"></Video>
+            </VideoBlock>
           </WmddImageContainer>
         )}
       </WmddContainer>
@@ -320,20 +334,15 @@ const WmddImageContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
   }
 `
 
 const WmddImg = styled.img`
-  padding-top: 5.7vh;
+  position: absolute;
+  z-index: 2;
   width: 100%;
-@media only screen and (min-width: 768px) {
-  padding-top: 0;
-  display: block;
-  width: 100%;
-  height: auto;
-  padding-right: 1.6vw;
-  margin: 0 auto;
-}
+  height: 100%;
 `
 
 const InstructorSection = styled.section`
@@ -477,4 +486,29 @@ const ProgramDetails = styled.div`
     cursor: pointer;
   }
 `;
+
+const Video = styled.iframe`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  visibility: hidden;
+  z-index: 5;
+`;
+
+const VideoBlock = styled.div`
+  padding-top: 5.7vh;
+  border-radius: 4px;
+  width: 100%;
+  height: 50vh;
+  position: relative;
+
+  @media only screen and (min-width: 768px) {
+    padding-top: 0;
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    margin-right: 1.6vw;
+  }
+`;
+
 export default AboutUs;
