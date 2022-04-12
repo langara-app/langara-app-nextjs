@@ -253,6 +253,7 @@ const GradDesc = styled.p`
   line-height: 1.875rem;
   color: rgba(33, 38, 58, 1);
   margin: 0;
+  padding-top: 2vh;
 
   @media screen and (min-width: 768px) {
     padding-top: 1.5vh;
