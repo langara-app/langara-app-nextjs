@@ -56,35 +56,6 @@ const AboutUs = () => {
           </WmddImageContainer>
         )}
       </WmddContainer>
-
-      <KickStart>
-        <KickImg src={WmddData.kickStart.image} />
-
-        <KickDescWrapper>
-          <KickTitle>{WmddData.kickStart.title}</KickTitle>
-          <KickDesc>{WmddData.kickStart.desc}</KickDesc>
-        </KickDescWrapper>
-      </KickStart>
-
-      <NextStepContainer>
-        <NextStepDetails>
-          <NextTitle>{WmddData.nextStep.title}</NextTitle>
-          <NextDesc>{WmddData.nextStep.desc}</NextDesc>
-
-          <ButtonWrapper>
-            <Button
-              text={"Apply now"}
-              font={16}
-              color={"#37474F"}
-              bcg={"white"}
-              section={"joinWMDD"}
-              borderColor={"transparent"}
-            />
-          </ButtonWrapper>
-        </NextStepDetails>
-      </NextStepContainer>
-
-
       <ProgramInfo>
         {WmddData.programInfo.map((i, index) => (
           <InfoBlock key={index}>
@@ -136,6 +107,15 @@ const AboutUs = () => {
           </div>
         }
       </ProgramDetails>
+      <KickStart>
+        <KickImg src={WmddData.kickStart.image} />
+
+        <KickDescWrapper>
+          <KickTitle>{WmddData.kickStart.title}</KickTitle>
+          <KickDesc>{WmddData.kickStart.desc}</KickDesc>
+        </KickDescWrapper>
+      </KickStart>
+
       <InstructorSection>
         <article style={{ textAlign: "center" }}>
           <h2 style={{ fontSize: "2.4rem" }}>{InstructorData.header.title}</h2>
@@ -143,6 +123,24 @@ const AboutUs = () => {
         </article>
         <InstructorSlider data={InstructorData.instructors} />
       </InstructorSection>
+
+      <NextStepContainer>
+        <NextStepDetails>
+          <NextTitle>{WmddData.nextStep.title}</NextTitle>
+          <NextDesc>{WmddData.nextStep.desc}</NextDesc>
+
+          <ButtonWrapper>
+            <Button
+              text={"Apply now"}
+              font={16}
+              color={"#37474F"}
+              bcg={"white"}
+              section={"joinWMDD"}
+              borderColor={"transparent"}
+            />
+          </ButtonWrapper>
+        </NextStepDetails>
+      </NextStepContainer>
 
     </>
   );
@@ -412,7 +410,7 @@ const ProgramDetails = styled.div`
     margin: 2vh 13.5vw;
   }
 
-  div:nth-child(1){
+  >div:nth-child(1){
     display: flex;
     flex-direction: column;
     align-items: center;
