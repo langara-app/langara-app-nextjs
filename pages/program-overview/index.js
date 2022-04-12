@@ -254,7 +254,6 @@ const WmddContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: left;
   background: url(${({ img }) => img});
   background-color: #F3FBFF;
   position: relative;
@@ -266,7 +265,7 @@ const WmddContainer = styled.div`
 
   @media only screen and (min-width: 768px) {
     /* For everything bigger than 768px */
-    padding: 11.5vh 13vw 8.5vh 13.5vw;
+    padding: 0 13vw 0 13.5vw;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
@@ -280,6 +279,8 @@ const WmddContainer = styled.div`
 const WmddWebLeft = styled.div`
   @media only screen and (min-width: 768px) {
     grid-area: desc;
+    display: flex;
+    align-items: center;
   }
 `
 
