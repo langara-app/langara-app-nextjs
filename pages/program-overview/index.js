@@ -4,6 +4,8 @@ import styled from "styled-components";
 import useWindowWidth from "../../components/Hooks/useWindowWidth"
 
 import { WmddData } from '../../lib/WmddData';
+import { InstructorData } from '../../lib/InstructorData';
+import InstructorSlider from '../../components/Instructor/InstructorSlider';
 
 import placeholder from '../../assets/img/wmdd/placeholder.svg'
 import Button from "../../components/ReusableElements/Button";
@@ -120,6 +122,13 @@ const AboutUs = () => {
           </div>
         }
       </ProgramDetails>
+      <InstructorSection>
+        <article style={{ textAlign: "center" }}>
+          <h2 style={{ fontSize: "2.4rem" }}>{InstructorData.header.title}</h2>
+          <p>{InstructorData.header.description}</p>
+        </article>
+        <InstructorSlider data={InstructorData.instructors} />
+      </InstructorSection>
 
     </>
   );
@@ -327,6 +336,21 @@ const WmddImg = styled.img`
 }
 `
 
+const InstructorSection = styled.section`
+  padding: 5vh 5.4vw;
+
+  @media only screen and (min-width: 768px) {
+    padding: 5vh 13.5vw;
+  }
+  background-color: #ffffff;
+  article{
+    h2{
+      margin: 0;
+      margin-bottom: 2rem;
+    }
+  }
+`;
+
 const ProgramInfo = styled.div`
   padding: 2.3rem;
   background-color: #ffffff;
@@ -335,6 +359,12 @@ const ProgramInfo = styled.div`
   display: flex;
   gap: 4.5vw;
   flex-direction: column;
+
+  margin: 2vh 5.4vw;
+
+  @media only screen and (min-width: 768px) {
+    margin: 2vh 13.5vw;
+  }
 
   @media only screen and (min-width: 768px) {
     display: grid;
@@ -367,6 +397,12 @@ const InfoBlock = styled.div`
 `;
 
 const ProgramDetails = styled.div`
+  margin: 2vh 5.4vw;
+
+  @media only screen and (min-width: 768px) {
+    margin: 2vh 13.5vw;
+  }
+
   div:nth-child(1){
     display: flex;
     flex-direction: column;
