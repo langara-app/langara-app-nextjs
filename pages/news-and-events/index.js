@@ -1,8 +1,10 @@
 import React from "react";
-import styles from "../../styles/NewsEvents.module.css";
-import AdminBox from "../../components/AdminBox";
-import Image from "next/image";
 import Link from "next/link";
+import Head from "next/head";
+
+import { NewsAndEvents } from "../../lib/NewsAndEvents";
+
+import styled from "styled-components";
 
 export async function getStaticProps() {
   const res = await fetch(
@@ -16,48 +18,132 @@ export async function getStaticProps() {
 
 const NewsEvents = ({ news_events }) => {
   return (
-    <div>
-      <div className={styles.news_body}>
-        <h1 className={styles.news_title}>News & Events Details</h1>
+    <PageContainer>
+      <Head>
+        <title>{NewsAndEvents.title}</title>
+      </Head>
+      <PageHeader>
+        <h1>
+          {NewsAndEvents.title}
+        </h1>
+        <p>
+          {NewsAndEvents.description}
+        </p>
+      </PageHeader>
+      <Posts>
         {news_events.map((news) => (
-          <div key={news} className={styles.events_content}>
-            <div className={styles.events_image}>
-              <Image
-                src={news.acf.article_image}
-                alt="Capstone Showcase Banner"
-                width={1200}
-                height={600}
-              />
-            </div>
-            <div className={styles.events_content_individual}>
-              <span className={styles.events_date}>
+          <Post key={news.id}>
+            <Link href={`/news-and-events/${news.slug}`}>
+              <a>
+                <Image
+                  src={news.acf.article_image}
+                  alt={`${news.title.rendered} Banner`}
+                />
+              </a>
+            </Link>
+            <PostDetails>
+              <h2 className="title">{news.title.rendered}</h2>
+              <p className="excerpt">
+                {news.acf.excerpt}
+              </p>
+              <span className="date">
                 {new Date(news.date).toLocaleDateString(undefined, {
                   year: "numeric",
                   month: "long",
                   day: "numeric",
                 })}
               </span>
-              <h2 className={styles.title}>{news.title.rendered}</h2>
-              <p
-                className={styles.description}
-                dangerouslySetInnerHTML={{
-                  __html: news.acf.excerpt,
-                }}
-              ></p>
-              <Link href={`/news-and-events/${news.slug}`}>
-                <a>
-                  <div className={styles.readmore_button}>
-                    <p className={styles.readmore_button_text}>Read More</p>
-                  </div>
-                </a>
-              </Link>
-            </div>
-          </div>
+            </PostDetails>
+          </Post>
         ))}
-      </div>
-      <AdminBox />
-    </div>
+      </Posts>
+    </PageContainer>
   );
 };
+
+const PageContainer = styled.div`
+  padding: 9.8vh 5.4vw;
+  color: #263238;
+
+  @media only screen and (min-width: 768px) {
+    padding: 4vh 13.5vw;
+  }
+`;
+
+const PageHeader = styled.div`
+  text-align: center;
+  padding-bottom: 5rem;
+  h1{
+    margin: 0;
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 64px;
+    color: #263238;
+    padding-bottom: 1.5rem;
+  }
+
+  p{
+    margin: 0;
+    font-size: 20px;
+  line-height: 30px;
+  }
+`;
+
+const Posts = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  @media only screen and (min-width: 768px) {
+    display: grid;
+    grid-template-areas: '1fr 1fr';
+  }
+`;
+
+const Post = styled.div`
+  width: 100%;
+  background: #FFFFFF;
+  border: 1px solid #B0BEC5;
+  box-sizing: border-box;
+  border-radius: 4px;
+  min-height: fit-content;
+  `;
+
+const PostDetails = styled.div`
+  padding: 2rem;
+
+  .title{
+    margin: 0;
+    padding-bottom: 0.5rem;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+  }
+
+  .excerpt{
+    margin: 0;
+    padding-bottom: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .date{
+    font-family: 'Ubuntu Mono';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+  }
+  `;
+
+const Image = styled.img`
+  cursor: pointer;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+`;
 
 export default NewsEvents;
