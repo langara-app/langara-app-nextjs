@@ -1,5 +1,10 @@
-import Image from 'next/image';
-import styles from "../../styles/NewsEvents.module.css";
+import Link from "next/link";
+import Image from "next/image";
+import Head from "next/head";
+
+import { NewsAndEvents } from "../../lib/NewsAndEvents";
+
+import styled from "styled-components";
 
 export async function getStaticPaths() {
   const res = await fetch("https://api.langara-app.ca/wp-json/wp/v2/news-and-events")
@@ -14,7 +19,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const res = await fetch("https://api.langara-app.ca/wp-json/wp/v2/news-and-events")
   const news_events = await res.json();
-  
+
   return {
     props: {
       event: news_events.find((event) => event.slug === params.slug),
@@ -22,42 +27,50 @@ export async function getStaticProps({ params }) {
   };
 }
 
-const NewsEventsInvidivual = ({ event }) => {  
+const NewsEventsInvidivual = ({ event }) => {
   return (
-    <article>
-      <div className="news-and-events-single">
-        <div>
-          <div className={styles.event_image_single}>
-            <Image 
-              src={event.acf.article_image}
-              alt="Capstone Showcase Banner"
-              width={1200}
-              height={600}/>
-          </div>
-          <div className={styles.news_events_single_content}>
-            <div className={styles.single_content}>
-          {event.acf.section1_title !== "" ? (
-            <h3 className={styles.article1_title}>{event.acf.section1_title}</h3>
-          ) : null}
+    <SingleEventPageContainer>
+      <Head>
+        <title>{`Event: ${event.acf.section1_title}`}</title>
+      </Head>
+      <Link href={`/news-and-events/`}>
+        <a>
+          <span className="events-title">
+            {NewsAndEvents.singleEventPage.title}
+          </span>
+        </a>
+      </Link>
+      <EventDetails>
+        {event.acf.section1_title !== "" ? (
+          <h1 className="section-title">{event.acf.section1_title}</h1>
+        ) : null}
+        <Image
+          src={event.acf.article_image}
+          alt="Capstone Showcase Banner"
+          width={1200}
+          height={600} />
+        <article>
           {event.acf.section1_article !== "" ? (
             <p
-              className="article1"
+              className="article-para"
               dangerouslySetInnerHTML={{
                 __html: event.acf.section1_article,
               }}
             ></p>
           ) : null}
           {event.acf.section1_link !== "" ? (
-            <a className="article1-link" href={event.acf.section1_link}>
+            <a className="article-link" href={event.acf.section1_link}>
               {event.acf.section1_link_title}
             </a>
           ) : null}
+        </article>
+        <article>
           {event.acf.section2_title !== "" ? (
-            <h3 className="article2-title">{event.acf.section2_title}</h3>
+            <h3 className="article-title">{event.acf.section2_title}</h3>
           ) : null}
           {event.acf.section2_article !== "" ? (
             <p
-              className="article2"
+              className="article-para"
               dangerouslySetInnerHTML={{
                 __html: event.acf.section2_article,
               }}
@@ -68,44 +81,96 @@ const NewsEventsInvidivual = ({ event }) => {
               {event.acf.section1_link_title}
             </a>
           ) : null}
+        </article>
+        <article>
           {event.acf.section3_title !== "" ? (
-            <h3 className="article1-title">{event.acf.section3_title}</h3>
+            <h3 className="article-title">{event.acf.section3_title}</h3>
           ) : null}
           {event.acf.section3_article !== "" ? (
             <p
-              className="article3"
+              className="article-para"
               dangerouslySetInnerHTML={{
                 __html: event.acf.section3_article,
               }}
             ></p>
           ) : null}
           {event.acf.section3_link !== "" ? (
-            <a className="article1-link" href={event.acf.section3_link}>
+            <a className="article-link" href={event.acf.section3_link}>
               {event.acf.section3_link_title}
             </a>
           ) : null}
+        </article>
+        <article>
           {event.acf.section4_title !== "" ? (
-            <h3 className={styles.article4_title}>{event.acf.section4_title}</h3>
+            <h3 className="article-title">{event.acf.section4_title}</h3>
           ) : null}
           {event.acf.section4_article !== "" ? (
             <p
-              className={styles.article4}
+              className="article-para"
               dangerouslySetInnerHTML={{
                 __html: event.acf.section4_article,
               }}
             ></p>
           ) : null}
           {event.acf.section4_link !== "" ? (
-            <a className="article1-link" href={event.acf.section4_link}>
+            <a className="article-link" href={event.acf.section4_link}>
               {event.acf.section4_link_title}
             </a>
           ) : null}
-           </div>
-          </div>
-        </div>
-      </div>
-  </article>
+        </article>
+      </EventDetails>
+    </SingleEventPageContainer>
   )
 };
+
+const SingleEventPageContainer = styled.div`
+  background-color: #ffffff;
+  text-align: left;
+  padding: 4.2vh 5.4vw;
+  color: #263238;
+
+  .events-title{
+    font-family: 'Ubuntu Mono';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #37474F;
+    cursor: pointer;
+  }
+
+  @media only screen and (min-width: 768px) {
+    padding: 7vh 25vw;
+  }
+`;
+
+const EventDetails = styled.section`
+
+  .section-title{
+    font-weight: 700;
+    font-size: 38px;
+    line-height: 50px;
+  }
+
+  .article-para {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+  };
+
+  .article-link{
+    color: #DE3F21;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+    cursor: pointer;
+  }
+
+  .article-title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 48px;
+  }
+`;
 
 export default NewsEventsInvidivual;
