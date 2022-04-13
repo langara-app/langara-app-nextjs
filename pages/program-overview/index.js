@@ -51,7 +51,7 @@ const AboutUs = () => {
           <WmddImageContainer>
             <VideoBlock>
               <WmddImg src={placeholder} alt="Program Overview Image" onClick={e => handleImageClick(e)} />
-              <Video src={"https://www.youtube.com/embed/BTciK1vJ8QY?rel=0&autoplay=1"} ref={profVidRef} allow="autoplay; encrypted-media"></Video>
+              <Video src={"https://www.youtube.com/embed/BTciK1vJ8QY?rel=0"} ref={profVidRef} allow="autoplay; encrypted-media"></Video>
             </VideoBlock>
           </WmddImageContainer>
         )}
