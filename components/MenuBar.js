@@ -135,6 +135,7 @@ const MobileMenuContainer = styled.div`
   padding: 7vw 6vw;
   text-align: center;
   background-color: #ffffff;
+  border-bottom: 1px solid #CFD8DC;
 
   /* Position and sizing of burger button */
   .bm-burger-button {
