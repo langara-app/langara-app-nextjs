@@ -22,7 +22,7 @@ const AboutUs = () => {
   }
 
   return (
-    <>
+    <PageContainer>
       <Head>
         <title>{WmddData.header.title}</title>
       </Head>
@@ -142,9 +142,13 @@ const AboutUs = () => {
         </NextStepDetails>
       </NextStepContainer>
 
-    </>
+    </PageContainer>
   );
 };
+
+const PageContainer = styled.div`
+  background-color: #f3fbff;
+`;
 
 const NextStepContainer = styled.div`
   display: flex;
