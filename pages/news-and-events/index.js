@@ -64,6 +64,7 @@ const NewsEvents = ({ news_events }) => {
 const PageContainer = styled.div`
   padding: 9.8vh 5.4vw;
   color: #263238;
+  background-color: #f3fbff;
 
   @media only screen and (min-width: 768px) {
     padding: 4vh 13.5vw;

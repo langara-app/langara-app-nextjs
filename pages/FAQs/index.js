@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import OtherHeader from "../../components/Header/OtherHeader";
+import Head from "next/head";
+import useWindowWidth from "../../components/Hooks/useWindowWidth"
+
 import Options from "../../components/Faq/Options";
 import QAs from "../../components/Faq/QAs";
-// import { styled } from "@material-ui/core";
+import { Faq } from "../../lib/Faq"
 
 export async function getStaticProps() {
   const cats = await fetch(
@@ -28,6 +30,7 @@ export async function getStaticProps() {
   });
   let filteredFaqLists = faqLists.filter((faq) => faq.length !== 0);
   let filteredCat = faqCats.filter((cat) => cat != undefined);
+  console.log(filteredCat);
 
   return {
     props: {
@@ -39,6 +42,7 @@ export async function getStaticProps() {
 
 const FAQ = ({ faqLists, questionCat }) => {
   const [catSlug, setCatSlug] = useState(questionCat[0].categorySlug);
+  const width = useWindowWidth();
 
   const onSlugSet = (value) => {
     setCatSlug(value);
@@ -48,21 +52,66 @@ const FAQ = ({ faqLists, questionCat }) => {
     (list) => list[0].categories_slugs[0] === catSlug
   );
 
+  const getFilteredArr = (slug) => {
+    return faqLists.find(
+      (list) => list[0].categories_slugs[0] === slug
+    );
+  }
+
   return (
     <FaqContainer>
-      <OtherHeader title={"WMDD FAQs"} page={"faq"} />
-      <Options data={questionCat} onClick={onSlugSet} />
-      <QAs data={filteredArr} />
-    </FaqContainer>
+      <Head>
+        <title>
+          {Faq.title}
+        </title>
+      </Head>
+      <FAQHeader>
+        {Faq.title}
+      </FAQHeader>
+      {width < 768 ? questionCat.map(qc =>
+        <div key={qc.categorySlug}>
+          <CategoryTitle >{qc.categoryName}</CategoryTitle>
+          <QAs data={getFilteredArr(qc.categorySlug)} />
+        </div>
+      ) :
+        <>
+          <Options data={questionCat} onClick={onSlugSet} />
+          <QAs data={filteredArr} />
+        </>
+      }
+    </FaqContainer >
   );
 };
 
 const FaqContainer = styled.div`
-  padding: 0 2rem;
+  background-color: #ffffff;
+  padding: 9.8vh 5.4vw 12.8vh 5.4vw;
+  color: #263238;
 
   @media only screen and (min-width: 768px) {
-    padding: 0;
-  }
+    padding: 4vh 20vw 12.8vh 20vw;
+  };
+`;
+
+const FAQHeader = styled.div`
+  padding: 5vh 0 0 0;
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 64px;
+  text-align: center;
+
+  @media only screen and (min-width: 768px) {
+    padding: 5vh 0;
+  };
+`;
+
+const CategoryTitle = styled.div`
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center;
+  color: #DE3F21;
+  padding: 8.5vh 20vw 3.4vh 20vw;
 `;
 
 export default FAQ;

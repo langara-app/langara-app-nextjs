@@ -51,22 +51,17 @@ const Options = ({ data, onClick }) => {
 
 const CategoryName = styled.p`
   text-align: center;
-  font-size: ${(16 / 1365) * 100}vw;
-  margin-bottom: 0;
-  padding: ${(23 / 1365) * 100}vw ${(15 / 1365) * 100}vw;
-  color: ${({ number, checked }) =>
-    number === checked ? "#c36448" : "#675D51"};
+  font-size: 1.25rem;
+  color: ${({ number, checked }) => number === checked ? "#DE3F21" : "#37474F"};
   font-weight: ${({ number, checked }) => (number === checked ? 600 : 200)};
-  background-color: ${({ number, checked }) =>
-    number === checked ? "white" : "#EFFCFA"};
+  border-bottom: ${({ number, checked }) => number === checked ? "3px solid #DE3F21" : "none"};
+  padding-bottom: 0.8rem;
   cursor: pointer;
 `;
 
 const Container = styled.div`
   display: flex;
   justify-content: center;
-
-  margin: 0 ${(293 / 1365) * 100}vw;
 `;
 
 export default Options;
