@@ -504,6 +504,7 @@ const VideoBlock = styled.div`
   width: 100%;
   height: 50vh;
   position: relative;
+  cursor: pointer;
 
   @media only screen and (min-width: 768px) {
     padding-top: 0;
