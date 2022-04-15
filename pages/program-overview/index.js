@@ -15,9 +15,12 @@ const AboutUs = () => {
   const width = useWindowWidth();
 
   const profVidRef = useRef(null);
+  const profImageRef = useRef(null);
 
   const handleImageClick = (event) => {
     profVidRef.current.style = "visibility: visible";
+    console.log(profImageRef.current);
+    profImageRef.current.style = "visibility: hidden";
     profVidRef.current.src = `${profVidRef.current.src}&autoplay=1&controls=1`;
   }
 
@@ -35,7 +38,7 @@ const AboutUs = () => {
               <Header1>{WmddData.header.subtitle}</Header1>
               <Header2>{WmddData.header.description}</Header2>
               <VideoBlock>
-                <WmddImg src={placeholder} alt="Program Overview Image" onClick={e => handleImageClick(e)} />
+                <WmddImg src={placeholder} alt="Program Overview Image" onClick={e => handleImageClick(e)} ref={profImageRef} />
                 <Video src={"https://www.youtube.com/embed/BTciK1vJ8QY?rel=0"} ref={profVidRef} allow="autoplay; encrypted-media"></Video>
               </VideoBlock>
             </div>
@@ -50,7 +53,7 @@ const AboutUs = () => {
         {width < 768 ? null : (
           <WmddImageContainer>
             <VideoBlock>
-              <WmddImg src={placeholder} alt="Program Overview Image" onClick={e => handleImageClick(e)} />
+              <WmddImg src={placeholder} alt="Program Overview Image" onClick={e => handleImageClick(e)} ref={profImageRef} />
               <Video src={"https://www.youtube.com/embed/BTciK1vJ8QY?rel=0"} ref={profVidRef} allow="autoplay; encrypted-media"></Video>
             </VideoBlock>
           </WmddImageContainer>
@@ -345,7 +348,8 @@ const WmddImg = styled.img`
   position: absolute;
   z-index: 2;
   width: 100%;
-  height: 100%;
+  top: 50%;
+  transform: translateY(-50%);
 `
 
 const InstructorSection = styled.section`
@@ -496,6 +500,11 @@ const Video = styled.iframe`
   position: absolute;
   visibility: hidden;
   z-index: 5;
+  @media screen and (min-width: 768px) {
+    top: 50%;
+    transform: translateY(-50%);
+    height: 18vw;
+  }
 `;
 
 const VideoBlock = styled.div`
