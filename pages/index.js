@@ -118,7 +118,7 @@ const Home = ({ data, alumni, work, homeData }) => {
           <section style={{ width: "100%" }}>
             <Slide ssrFadeout right>
               <Cards>
-                {HomeData.careerPath.designer.map((career) => (
+                {HomeData.careerPath.designer.map((career, index) => (
                   <Card key={index}>
                     <IllustrationImage
                       src={career.image}
