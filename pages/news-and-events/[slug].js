@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import Head from "next/head";
 
 import { NewsAndEvents } from "../../lib/NewsAndEvents";
@@ -46,7 +45,7 @@ const NewsEventsInvidivual = ({ event }) => {
         ) : null}
         <Image
           src={event.acf.article_image}
-          alt="Capstone Showcase Banner"
+          alt={`${event.title.rendered} Banner`}
           width={1200}
           height={600} />
         <article>
@@ -171,6 +170,11 @@ const EventDetails = styled.section`
     font-size: 32px;
     line-height: 48px;
   }
+`;
+
+const Image = styled.img`
+  width: 100%;
+  height: auto;
 `;
 
 export default NewsEventsInvidivual;
