@@ -34,8 +34,8 @@ jobs:
       - name: rsync deployments
         uses: burnett01/rsync-deployments@5.1
         with:
-          switches: -avzr --delete --include=".next"
-          path: ./*
+          switches: -avzr --delete
+          path: ./
           remote_path: /home/ec2-user/langara-app
           remote_host: ec2-3-97-248-209.ca-central-1.compute.amazonaws.com
           remote_user: ec2-user
