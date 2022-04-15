@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
@@ -6,118 +6,127 @@ import ProjectButton from "../ReusableElements/ProjectButton";
 import useWindowWidth from "../../components/Hooks/useWindowWidth";
 
 const ProjectIntro = (props) => {
-  const { acf, category, slug } = props;
+  const { acf, category1, category2, category3, categories_slugs, slug } = props;
   const width = useWindowWidth();
 
-  return width < 768 ? (
-    <Container>
-      <ImageContainer>
-        <ImageStyle
-          src={acf.app_picture}
-          alt="project image"
-          width={1000}
-          height={1000}
-        />
-      </ImageContainer>
-      <h1>{acf.name_of_the_project}</h1>
-      <p dangerouslySetInnerHTML={{ __html: acf.app_short_description }}></p>
-      <ProjectButton
-        text={"See project details"}
-        data={props}
-        type={"intro"}
-        category={category}
-        project={slug}
-      />
-    </Container>
-  ) : (
-    <Container>
-      <ImageContainer>
-        <ImageStyle
-          src={acf.app_picture}
-          alt="project image"
-          width={1000}
-          height={1000}
-        />
-      </ImageContainer>
-      <div>
-        <h1>{acf.name_of_the_project}</h1>
-        <p
-          dangerouslySetInnerHTML={{ __html: acf.app_short_description }}
-          style={{ marginBottom: "0.8vw" }}
-        ></p>
-        <ProjectButton
-          text={"See project details"}
-          data={props}
-          type={"intro"}
-          category={category}
-          project={slug}
-        />
-      </div>
-    </Container>
-  );
+  return (
+
+    <div>
+      <Container>
+        <div className="projectContainer">
+          {categories_slugs == category1 ? (
+            <Link href={`/projects/${category1}/${slug}`}>
+              <div className="card">
+                <div className="imgWrap">
+                  <img src={acf.app_picture} alt="project image" />
+                </div>
+                <p className="projectTitle">{acf.name_of_the_project}</p>
+                <p className="projectDesc">{acf.app_short_description}</p>
+              </div>
+            </Link>
+
+          ) : (null)}
+        </div>
+      </Container>
+
+      <Container>
+        <div className="projectContainer">
+          {categories_slugs == category2 ? (
+            <Link href={`/projects/${category2}/${slug}`}>
+              <div className="card">
+                <div className="imgWrap">
+                  <img src={acf.app_picture} alt="project image" />
+                </div>
+                <p className="projectTitle">{acf.name_of_the_project}</p>
+                <p className="projectDesc">{acf.app_short_description}</p>
+              </div>
+            </Link>
+
+          ) : (null)}
+        </div>
+      </Container>
+
+      <Container>
+        <div className="projectContainer">
+          {categories_slugs == category3 ? (
+            <Link href={`/projects/${category3}/${slug}`}>
+              <div className="card">
+                <div className="imgWrap">
+                  <img src={acf.app_picture} alt="project image" />
+                </div>
+                <p className="projectTitle">{acf.name_of_the_project}</p>
+                <p className="projectDesc">{acf.app_short_description}</p>
+              </div>
+            </Link>
+
+          ) : (null)}
+        </div>
+      </Container>
+    </div>
+
+  )
 };
 
 const Container = styled.div`
-  background-color: ${({ color }) => color};
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  padding: ${(56 / 375) * 100}vw ${(28 / 375) * 100}vw ${(41 / 375) * 100}vw;
-  margin: ${(30 / 375) * 100}vw ${(24 / 375) * 100}vw;
-  border-radius: 30px;
-  h1 {
-    margin: ${(30 / 375) * 100}vw 0 ${(23 / 375) * 100}vw;
-    font-size: ${(24 / 375) * 100}vw;
-    font-weight: 600;
-    text-align: center;
+
+
+.imgWrap{
+  width: 356px;
+  height: 236px;
+
+
+  img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
   }
-  p {
-    font-size: 15px;
-    font-weight: 200;
-    text-align: center;
-    margin-bottom: ${(11 / 375) * 100}vw;
+}
+
+  .card{
+    margin-top: 3.5vh;
+    width: 358px;
+    height: 399px;
+    border-radius: 4px;
+    border: 1px solid #B0BEC5;
+    background-color: #FFFFFF;
+  }
+
+  .projectTitle{
+    padding: 32px 32px 8px 32px;
+    font-size:1.25rem;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .projectDesc{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    margin: 0 32px 32px 32px;
+    font-size:0.875rem;
+    line-height: 1.25rem;
   }
 
   @media only screen and (min-width: 768px) {
-    /* For everything bigger than 768px */
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: ${(145 / 1365) * 100}vw;
-    padding: ${(64 / 1365) * 100}vw ${(127 / 1365) * 100}vw
-      ${(48 / 1365) * 100}vw ${(72 / 1365) * 100}vw;
-    margin: ${(30 / 1365) * 100}vw ${(24 / 1365) * 100}vw;
-
-    h1 {
-      font-size: ${(33 / 1365) * 100}vw;
-      margin: 0;
-      text-align: left !important;
+    .card{
+      width: 354px;
+      height: 399px;
+      margin-right: 15px;
     }
 
-    p {
-      font-size: ${(21 / 1365) * 100}vw;
-      margin: 0;
-      margin-top: ${(21 / 1365) * 100}vw;
-      text-align: left;
+    .imgWrap{
+      width: 352px;
+      height: 236px;
     }
   }
 `;
 
-const ImageContainer = styled.div`
-  /* img {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-  } */
-`;
 
-const ImageStyle = styled(Image)`
-  /* display: block; */
-  /* width: 100%; */
-  height: auto !important;
-  min-height: auto !important;
-  border-radius: 10px;
-`;
+
+
 
 export default ProjectIntro;
