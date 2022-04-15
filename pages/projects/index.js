@@ -103,7 +103,14 @@ const Container = styled.div`
     font-weight: 400;
     margin: 0;
     padding-top: 2.7vh;
+    padding-bottom: 3.5vh;
   }
+
+  .projects{
+      display: flex;
+      flex-direction: column;
+      gap: 0.97rem;
+    }
 
   @media only screen and (min-width: 768px){
     padding: 0 13.3vw 9.8vh 13.4vw;
@@ -124,13 +131,11 @@ const Container = styled.div`
       width: 35.7vw;
       font-size: 1.25rem;
       padding-top: 2vh;
-      padding-bottom: 3.5vh;
     }
 
     .projects{
-      display: flex;
+      flex-direction: row;
       flex-wrap: wrap;
-      gap: 0.97rem;
     }
   }
 
