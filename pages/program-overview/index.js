@@ -22,7 +22,7 @@ const AboutUs = () => {
   }
 
   return (
-    <>
+    <PageContainer>
       <Head>
         <title>{WmddData.header.title}</title>
       </Head>
@@ -51,7 +51,7 @@ const AboutUs = () => {
           <WmddImageContainer>
             <VideoBlock>
               <WmddImg src={placeholder} alt="Program Overview Image" onClick={e => handleImageClick(e)} />
-              <Video src={"https://www.youtube.com/embed/BTciK1vJ8QY?rel=0&autoplay=1"} ref={profVidRef} allow="autoplay; encrypted-media"></Video>
+              <Video src={"https://www.youtube.com/embed/BTciK1vJ8QY?rel=0"} ref={profVidRef} allow="autoplay; encrypted-media"></Video>
             </VideoBlock>
           </WmddImageContainer>
         )}
@@ -142,9 +142,13 @@ const AboutUs = () => {
         </NextStepDetails>
       </NextStepContainer>
 
-    </>
+    </PageContainer>
   );
 };
+
+const PageContainer = styled.div`
+  background-color: #f3fbff;
+`;
 
 const NextStepContainer = styled.div`
   display: flex;

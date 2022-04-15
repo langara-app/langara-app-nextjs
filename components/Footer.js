@@ -70,7 +70,7 @@ const Footer = () => {
 };
 
 const Container = styled.div`
-  background-color: #FFFFFF;
+  background-color: #F5F5F5;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -93,7 +93,7 @@ const LinkWrapper = styled.div`
 `;
 
 const FlexContainer = styled.div`
-  background-color: #FFFFFF;
+  background-color: #F5F5F5;
   display: flex;
   flex-direction: column;
 `;

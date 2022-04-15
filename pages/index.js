@@ -188,6 +188,7 @@ const CareerPath = styled.section`
   flex-direction: column;
   align-items: center;
   overflow: hidden;
+  background-color: #f3fbff;
 
   @media screen and (min-width: 768px) {
     padding: 2vh 13.5vw;
@@ -218,6 +219,7 @@ color: rgba(38, 50, 56, 1);
 
 const Gradute = styled.div`
 padding: 7.8vh 4.1vw 9.7vh;
+background-color: #f3fbff;
 
 @media screen and (min-width: 768px){
   display: flex;

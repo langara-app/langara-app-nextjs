@@ -14,7 +14,7 @@ const QAs = ({ data }) => {
             style={{ borderBotomWidth: "1px" }}
             expandIcon={<IoIosArrowDown />}
           >
-            {index + 1}. {q.acf.question}
+            {q.acf.question}
           </MuiAccordionSummary>
           <MuiAccordionDetails>
             <p
@@ -34,14 +34,22 @@ const QAs = ({ data }) => {
 };
 
 const QAContainer = styled.div`
-  margin-bottom: ${(70 / 375) * 100}vw;
-  .MuiAccordion-root.Mui-expanded {
-    margin: 0;
+  border: 1px solid #B0BEC5;
+  font-size: 1.5rem;
+  border-radius: 4px;
+  background-color: white;
+
+  .MuiAccordion-root {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+    color: #263238;
   }
 
   .MuiPaper-root {
-    background-color: unset;
+    /* background-color: unset; */
   }
+
   .MuiAccordion-root.Mui-expanded {
     background-color: "#EFFDFB";
   }
@@ -49,44 +57,48 @@ const QAContainer = styled.div`
     border-bottom: 1px solid #e0e0e0;
     box-shadow: unset;
   }
-  .MuiAccordionSummary-content {
-    font-size: 4vw;
-    color: #675d51;
-    margin: ${(15 / 375) * 100}vw 0;
+  .MuiAccordionSummary-root {
+    padding: 0 2rem;
   }
-
+  .MuiAccordionSummary-content {
+    margin: 2rem 0 2rem 0;
+  }
+  .MuiAccordionSummary-content.Mui-expanded{
+    margin: 2rem 0 2rem 0;
+  }
   .MuiAccordionDetails-root {
     flex-direction: column;
+    padding: 0;
   }
 
   p,
   a {
-    font-size: 4vw;
     font-weight: 200;
     color: #675d51;
+    margin: 0;
+  }
+
+  p {
+    padding: 0 2rem;
+    padding-bottom: 2rem;
   }
 
   a {
-    text-decoration: underline;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+    color: #DE3F21;
+    padding: 0 2rem;
+    padding-bottom: 2rem;
   }
 
   @media only screen and (min-width: 768px) {
-    background-color: white;
-    padding: ${(70 / 1365) * 100}vw ${(293 / 1365) * 100}vw
-      ${(130 / 1365) * 100}vw;
-    margin: 0;
 
     .MuiAccordionSummary-content {
-      font-size: ${(16 / 1365) * 100}vw;
-    }
-
-    .MuiAccordionSummary-content {
-      margin: ${(21 / 1365) * 100}vw 0;
     }
 
     p,
     a {
-      font-size: ${(16 / 1365) * 100}vw;
     }
   }
 `;
