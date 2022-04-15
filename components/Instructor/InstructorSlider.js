@@ -15,7 +15,7 @@ const InstructorSlider = ({ data }) => {
     speed: 1000,
     slidesToShow: width > 768 ? 4 : 2,
     slidesToScroll: width > 768 ? 4 : 2,
-    arrows: width > 768,
+    arrows: true,
     autoplay: false,
   };
 
