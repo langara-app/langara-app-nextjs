@@ -10,31 +10,30 @@ const Project = ({ project }) => {
 
   const width = useWindowWidth();
 
-  console.log(project);
-
   return (
     <Container>
+
+      <div className="titleWrapper">
+        {data.categories_slugs == 'native-app' ? (
+          <p className="singleTitle">Native Mobile Apps</p>
+        ) : data.categories_slugs == 'data-visualization' ? (
+          <p className="singleTitle">Full Stack Web Applications with Data Visualization</p>
+        ) : data.categories_slugs == 'hybrid' ? (
+          <p className="singleTitle">Hybrid Mobile Apps</p>
+        ) : (null)}
+        <h1 className="projectTitle">{data.acf.name_of_the_project}</h1>
+      </div>
+
+      <div className="actionContainer">
+        <Link className="proposal" href={data.acf.project_proposal_file}>Download Proposal</Link>
+        <Link className="liveProject" href={data.acf.project_site_link}>See live project</Link>
+      </div>
+
       <ImageContainer>
         <ImageElement src={data.acf.app_picture} width={1000} height={1000} />
       </ImageContainer>
-      <InfoContainer>
-        <ProjectButton
-          text={"See live project"}
-          type={"single"}
-          link={data.acf.project_site_link}
-        />
-        {data.acf.case_study !== "" || data.acf.project_proposal_file !== "" ? (
-          <span>or</span>
-        ) : null}
 
-        {data.acf.project_proposal_file !== "" ? (
-          <LinkStyled href={data.acf.project_proposal_file} target="_blank">
-            download proposal
-          </LinkStyled>
-        ) : null}
-      </InfoContainer>
       <ProjectContents>
-        <h1>{data.acf.name_of_the_project}</h1>
         <p dangerouslySetInnerHTML={{ __html: data.acf.app_description }}></p>
       </ProjectContents>
     </Container>
@@ -44,77 +43,93 @@ const Project = ({ project }) => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  background-color: #effdfb;
+  align-items: flex-start;
+  background-color: #FFFFFF;
+  padding: 4.9vh 4.1vw 9.7vh 4.1vw;
+
+
+  .projectTitle{
+    font-size: 2.375rem;
+    text-align: left;
+    margin: 0;
+    padding-top: 1vh;
+  }
+
+  .singleTitle{
+    margin: 0;
+    font-family: 'Ubuntu Mono';
+    font-weight: 400;
+    font-size: 0.875rem;
+  }
+
+  .actionContainer{
+    padding-top: 4.9vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  a:first-child{
+    font-size:1.25rem;
+    
+    background-position: left center;
+    background-repeat: no-repeat;
+    padding-left: 20px; 
+  }
+
+
+  a:last-child{
+    font-size:1.25rem;
+    padding-top: 2.9vh;
+
+    background-position: left center;
+    background-repeat: no-repeat;
+    padding-left: 20px; 
+  }
+
+  @media only screen and (min-width: 768px) {
+    padding: 7.3vh 25.7vw 10.9vh 25.7vw;
+
+    .actionContainer{
+      flex-direction: row;
+    }
+
+    a:last-child{
+      padding: 0 0 0 40px;
+    }
+}
+  
 `;
 
 const ImageContainer = styled.div`
-  position: relative;
+  width: 100%;
+  height: auto;
+  padding-top: 2.9vh;
 
   @media only screen and (min-width: 768px) {
-    padding: 0 ${(466 / 1365) * 100}vw;
-    margin-bottom: ${(33 / 1365) * 100}vw;
+
   }
 `;
 
-const ImageElement = styled(Image)`
-  height: auto !important;
-  min-height: auto !important;
+const ImageElement = styled.img`
+  max-width: 100%;
+  height: auto;
+  margin: 0;
 `;
 
-const InfoContainer = styled.div`
-  padding: ${(55 / 375) * 100}vw 0;
-  span {
-    display: block;
-    text-align: center;
-    font-family: "Inter";
-    margin-top: ${(22 / 375) * 100}vw;
-  }
-
-  @media only screen and (min-width: 768px) {
-    padding: ${(50 / 1365) * 100}vw ${(466 / 1365) * 100}vw;
-  }
-  span {
-    margin-top: ${(22 / 1365) * 100}vw;
-  }
-`;
-
-const LinkStyled = styled.a`
-  display: block;
-  text-decoration: underline;
-  text-align: center;
-  margin-top: ${(22 / 375) * 100}vw;
-  font-size: ${(24 / 375) * 100}vw;
-  font-weight: 700;
-  @media only screen and (min-width: 768px) {
-    font-size: ${(24 / 1365) * 100}vw;
-    margin-top: ${(22 / 1365) * 100}vw;
-  }
-`;
 
 const ProjectContents = styled.div`
   background-color: white;
-  padding: ${(35 / 375) * 100}vw;
-  h1 {
-    font-size: ${(45 / 375) * 100}vw;
-    margin: 0;
-    padding: 0;
-  }
+  padding-top: 3.9vh;
 
   p {
-    font-size: ${(14 / 375) * 100}vw;
-    font-weight: 200;
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.875rem;
+    margin: 0;
   }
 
   @media only screen and (min-width: 768px) {
-    padding: ${(50 / 1365) * 100}vw ${(370 / 1365) * 100}vw;
-    h1 {
-      font-size: ${(45 / 1365) * 100}vw;
-    }
-
-    p {
-      font-size: ${(21 / 1365) * 100}vw;
-    }
+    
   }
 `;
 
