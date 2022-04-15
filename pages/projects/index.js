@@ -65,6 +65,7 @@ const Projects = ({ projectLists, category1, category2, category3 }) => {
 
 const Container = styled.div`
   padding: 0 4.1vw 9vh 4.1vw;
+  background-color: #F3FBFF;
 
   .term4{
     padding-top: 4.6vh;

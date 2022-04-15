@@ -115,7 +115,7 @@ const Container = styled.div`
     .card{
       width: 354px;
       height: 399px;
-      margin-right: 15px;
+      cursor: pointer;
     }
 
     .imgWrap{
