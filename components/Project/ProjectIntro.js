@@ -6,74 +6,28 @@ import ProjectButton from "../ReusableElements/ProjectButton";
 import useWindowWidth from "../../components/Hooks/useWindowWidth";
 
 const ProjectIntro = (props) => {
-  const { acf, category1, category2, category3, categories_slugs, slug } = props;
+  const { acf, slug } = props;
   const width = useWindowWidth();
 
   return (
-
-    <div>
-      <Container>
-        <div className="projectContainer">
-          {categories_slugs == category1 ? (
-            <Link href={`/projects/${category1}/${slug}`}>
-              <div className="card">
-                <div className="imgWrap">
-                  <img src={acf.app_picture} alt="project image" />
-                </div>
-                <p className="projectTitle">{acf.name_of_the_project}</p>
-                <p className="projectDesc">{acf.app_short_description}</p>
-              </div>
-            </Link>
-
-          ) : (null)}
+    <Container>
+      <Link href={`/projects/${slug}`}>
+        <div className="card">
+          <div className="imgWrap">
+            <img src={acf.app_picture} alt="project image" />
+          </div>
+          <p className="projectTitle">{acf.name_of_the_project}</p>
+          <p className="projectDesc">{acf.app_short_description}</p>
         </div>
-      </Container>
-
-      <Container>
-        <div className="projectContainer">
-          {categories_slugs == category2 ? (
-            <Link href={`/projects/${category2}/${slug}`}>
-              <div className="card">
-                <div className="imgWrap">
-                  <img src={acf.app_picture} alt="project image" />
-                </div>
-                <p className="projectTitle">{acf.name_of_the_project}</p>
-                <p className="projectDesc">{acf.app_short_description}</p>
-              </div>
-            </Link>
-
-          ) : (null)}
-        </div>
-      </Container>
-
-      <Container>
-        <div className="projectContainer">
-          {categories_slugs == category3 ? (
-            <Link href={`/projects/${category3}/${slug}`}>
-              <div className="card">
-                <div className="imgWrap">
-                  <img src={acf.app_picture} alt="project image" />
-                </div>
-                <p className="projectTitle">{acf.name_of_the_project}</p>
-                <p className="projectDesc">{acf.app_short_description}</p>
-              </div>
-            </Link>
-
-          ) : (null)}
-        </div>
-      </Container>
-    </div>
-
+      </Link>
+    </Container>
   )
 };
 
 const Container = styled.div`
-
-
 .imgWrap{
   width: 356px;
   height: 236px;
-
 
   img{
     width: 100%;
@@ -86,7 +40,6 @@ const Container = styled.div`
 }
 
   .card{
-    margin-top: 3.5vh;
     width: 358px;
     height: 399px;
     border-radius: 4px;
@@ -124,9 +77,5 @@ const Container = styled.div`
     }
   }
 `;
-
-
-
-
 
 export default ProjectIntro;

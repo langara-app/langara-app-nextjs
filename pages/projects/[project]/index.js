@@ -1,11 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
-import Image from "next/image";
-import ProjectButton from "../../../components/ReusableElements/ProjectButton";
 import useWindowWidth from "../../../components/Hooks/useWindowWidth";
 
+import { ProjectData } from "../../../lib/ProjectData";
+
 const Project = ({ project }) => {
+  const ProjectCategoryData = ProjectData.ProjectCategoryData;
+
   const data = project[0];
 
   const width = useWindowWidth();
@@ -15,18 +17,28 @@ const Project = ({ project }) => {
 
       <div className="titleWrapper">
         {data.categories_slugs == 'native-app' ? (
-          <p className="singleTitle">Native Mobile Apps</p>
+          <p className="singleTitle">{ProjectCategoryData[0].title}</p>
         ) : data.categories_slugs == 'data-visualization' ? (
-          <p className="singleTitle">Full Stack Web Applications with Data Visualization</p>
+          <p className="singleTitle">{ProjectCategoryData[1].title}</p>
         ) : data.categories_slugs == 'hybrid' ? (
-          <p className="singleTitle">Hybrid Mobile Apps</p>
+          <p className="singleTitle">{ProjectCategoryData[2].title}</p>
         ) : (null)}
         <h1 className="projectTitle">{data.acf.name_of_the_project}</h1>
       </div>
 
       <div className="actionContainer">
-        <Link className="proposal" href={data.acf.project_proposal_file}>Download Proposal</Link>
-        <Link className="liveProject" href={data.acf.project_site_link}>See live project</Link>
+        <Link href={data.acf.project_proposal_file}>
+          <a>
+            <img src={ProjectData.ProjectDetails.downloadProposalIcon} />
+            {ProjectData.ProjectDetails.downloadProposal}
+          </a>
+        </Link>
+        <Link href={data.acf.project_site_link}>
+          <a>
+            <img src={ProjectData.ProjectDetails.seeLiveProjectIcon} />
+            {ProjectData.ProjectDetails.seeLiveProject}
+          </a>
+        </Link>
       </div>
 
       <ImageContainer>
@@ -66,24 +78,13 @@ const Container = styled.div`
     padding-top: 4.9vh;
     display: flex;
     flex-direction: column;
+    gap: 2.9vh;
+    font-size: 1.25rem;
   }
 
-  a:first-child{
-    font-size:1.25rem;
-    
-    background-position: left center;
-    background-repeat: no-repeat;
-    padding-left: 20px; 
-  }
-
-
-  a:last-child{
-    font-size:1.25rem;
-    padding-top: 2.9vh;
-
-    background-position: left center;
-    background-repeat: no-repeat;
-    padding-left: 20px; 
+  a{
+    display: flex;
+    gap: 0.5rem;
   }
 
   @media only screen and (min-width: 768px) {
@@ -92,12 +93,8 @@ const Container = styled.div`
     .actionContainer{
       flex-direction: row;
     }
-
-    a:last-child{
-      padding: 0 0 0 40px;
-    }
 }
-  
+
 `;
 
 const ImageContainer = styled.div`
@@ -129,7 +126,7 @@ const ProjectContents = styled.div`
   }
 
   @media only screen and (min-width: 768px) {
-    
+
   }
 `;
 

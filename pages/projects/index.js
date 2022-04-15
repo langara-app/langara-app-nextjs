@@ -1,14 +1,34 @@
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
+import React from "react";
 import Head from "next/head";
 import styled from "styled-components";
 
-import { ProjectCategoryData } from "../../lib/ProjectCategoryData";
-
-import ProjectCategory from "../../components/Project/ProjectCategory";
+import { ProjectData } from "../../lib/ProjectData";
 import ProjectIntro from "../../components/Project/ProjectIntro";
 
-const Projects = ({ projectLists, category1, category2, category3 }) => {
+const ProjectCategoryData = ProjectData.ProjectCategoryData;
+
+export async function getServerSideProps() {
+  const res = await fetch(
+    "https://api.langara-app.ca/wp-json/wp/v2/projects?per_page=100"
+  );
+  const projects = await res.json();
+  let category1 = ProjectCategoryData[0].slug
+  let category2 = ProjectCategoryData[1].slug
+  let category3 = ProjectCategoryData[2].slug
+
+  return {
+    props: {
+      projectLists: projects.filter(
+        (project) => project.categories_slugs[0] === category1 || category2 || category3
+      ),
+      category1: category1,
+      category2: category2,
+      category3: category3
+    }
+  };
+}
+
+const Projects = ({ projectLists }) => {
 
   return (
     <div>
@@ -24,8 +44,8 @@ const Projects = ({ projectLists, category1, category2, category3 }) => {
         </div>
 
         <div className="projects">
-          {projectLists.map((project, index) => (
-            <ProjectIntro {...project} category1={category1} key={index} />
+          {projectLists.filter(p => p.categories_slugs[0] === ProjectCategoryData[0].slug).map((project, index) => (
+            <ProjectIntro {...project} key={index} />
           ))}
         </div>
 
@@ -35,11 +55,9 @@ const Projects = ({ projectLists, category1, category2, category3 }) => {
           <p className="desc">{ProjectCategoryData[1].description}</p>
         </div>
 
-        <p>{console.log(projectLists)}</p>
-
         <div className="projects">
-          {projectLists.map((project, index) => (
-            <ProjectIntro {...project} category2={category2} key={index} />
+          {projectLists.filter(p => p.categories_slugs[0] === ProjectCategoryData[1].slug).map((project, index) => (
+            <ProjectIntro {...project} key={index} />
           ))}
         </div>
 
@@ -49,16 +67,12 @@ const Projects = ({ projectLists, category1, category2, category3 }) => {
           <p className="desc">{ProjectCategoryData[2].description}</p>
         </div>
 
-        <p>{console.log(projectLists)}</p>
-
         <div className="projects">
-          {projectLists.map((project, index) => (
-            <ProjectIntro {...project} category2={category3} key={index} />
+          {projectLists.filter(p => p.categories_slugs[0] === ProjectCategoryData[2].slug).map((project, index) => (
+            <ProjectIntro {...project} key={index} />
           ))}
         </div>
       </Container>
-
-
     </div>
   );
 };
@@ -93,7 +107,7 @@ const Container = styled.div`
 
   @media only screen and (min-width: 768px){
     padding: 0 13.3vw 9.8vh 13.4vw;
-    
+
     .term4{
     padding-top: 9.8vh;
     font-family: Ubuntu Mono;
@@ -110,35 +124,16 @@ const Container = styled.div`
       width: 35.7vw;
       font-size: 1.25rem;
       padding-top: 2vh;
+      padding-bottom: 3.5vh;
     }
 
     .projects{
-      display: inline-flex;
+      display: flex;
       flex-wrap: wrap;
+      gap: 0.97rem;
     }
   }
 
 `
 
 export default Projects;
-
-export async function getServerSideProps() {
-  const res = await fetch(
-    "https://api.langara-app.ca/wp-json/wp/v2/projects?per_page=100"
-  );
-  const projects = await res.json();
-  let category1 = ProjectCategoryData[0].slug
-  let category2 = ProjectCategoryData[1].slug
-  let category3 = ProjectCategoryData[2].slug
-
-  return {
-    props: {
-      projectLists: projects.filter(
-        (project) => project.categories_slugs[0] === category1 || category2 || category3
-      ),
-      category1: category1,
-      category2: category2,
-      category3: category3
-    }
-  };
-}
