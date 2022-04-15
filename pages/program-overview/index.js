@@ -11,7 +11,7 @@ import placeholder from '../../assets/img/wmdd/placeholder.svg'
 import Button from "../../components/ReusableElements/Button";
 
 
-const AboutUs = () => {
+const ProgramOverview = () => {
   const width = useWindowWidth();
 
   const profVidRef = useRef(null);
@@ -79,7 +79,7 @@ const AboutUs = () => {
             </div>
             <div className="courses">
               {WmddData.programDetails.courses.map((c, index) => (index != 8 ?
-                <div>{c}</div>
+                <div key={index}>{c}</div>
                 : null))}
             </div>
             <div className="seeAll"><a href={WmddData.programDetails.seeAllLink}>{WmddData.programDetails.seeAll}</a></div>
@@ -88,7 +88,7 @@ const AboutUs = () => {
             </div>
             <div className="courses">
               {WmddData.programDetails.courses.map((c, index) => (index != 7 ?
-                <div>{c}</div>
+                <div key={index}>{c}</div>
                 : null))}
             </div>
             <div className="seeAll"><a href={WmddData.programDetails.seeAllLink}>{WmddData.programDetails.seeAll}</a></div>
@@ -524,4 +524,4 @@ const VideoBlock = styled.div`
   }
 `;
 
-export default AboutUs;
+export default ProgramOverview;
