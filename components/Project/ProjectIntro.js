@@ -29,6 +29,11 @@ const Container = styled.div`
   width: 356px;
   height: 236px;
 
+  @media only screen and (min-width: 768px){
+    width: 100%;
+    
+  }
+
   img{
     width: 100%;
     height: 100%;
@@ -45,6 +50,7 @@ const Container = styled.div`
     border-radius: 4px;
     border: 1px solid #B0BEC5;
     background-color: #FFFFFF;
+    margin-top: 3.8vh;
   }
 
   .projectTitle{
@@ -66,14 +72,9 @@ const Container = styled.div`
 
   @media only screen and (min-width: 768px) {
     .card{
-      width: 354px;
-      height: 399px;
+      width: 100%;
+      height: 100%;
       cursor: pointer;
-    }
-
-    .imgWrap{
-      width: 352px;
-      height: 236px;
     }
   }
 `;
