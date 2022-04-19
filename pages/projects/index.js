@@ -86,16 +86,26 @@ const Container = styled.div`
     font-family: Ubuntu Mono;
     margin: 0;
     font-size: 0.875rem;
+    color: rgba(55, 71, 79, 1);
   }
 
   .term3, .term2{
+    color: rgba(55, 71, 79, 1);
     padding-top: 10vh;
+    font-family: Ubuntu Mono;
+    font-size: 0.875rem;
   }
 
   .title{
     font-size: 2.375rem;
     margin: 0;
     padding-top: 1vh;
+  }
+
+  @media only screen and (min-width: 768px){
+    .title:nth-child(2){
+    width: 50%;
+  }
   }
 
   .desc{
@@ -117,20 +127,26 @@ const Container = styled.div`
 
     .term3, .term2{
       margin: 0;
-      padding-top: 6.6vh;
+      padding-top: 10vh;
     }
 
     .desc{
-      width: 35.7vw;
-      font-size: 1.25rem;
+      width: 50%;
+      font-size: 1.2rem;
       padding-top: 2vh;
-      padding-bottom: 3.5vh;
+      padding-bottom: 5.5vh;
     }
 
     .projects{
       display: flex;
       flex-wrap: wrap;
-      gap: 0.97rem;
+      
+
+    @media only screen and (min-width: 768px) {
+        display: grid;
+        grid-template-areas: '1fr 1fr 1fr';
+        gap: 24px;
+      }
     }
   }
 
