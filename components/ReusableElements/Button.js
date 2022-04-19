@@ -68,14 +68,7 @@ const BtnElement = styled.button`
   color: ${({ color }) => color};
 
   a {
-    padding: ${({ size }) =>
-    size === "med"
-      ? "8px 24px"
-      : size === "big"
-        ? "10px 53px"
-        : size === "long"
-          ? "14px 10px"
-          : "14px 10px"};
+    padding: 12px 32px;
     display: block;
   }
 
