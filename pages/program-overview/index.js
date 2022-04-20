@@ -9,6 +9,7 @@ import InstructorSlider from '../../components/Instructor/InstructorSlider';
 
 import placeholder from '../../assets/img/wmdd/placeholder.svg'
 import Button from "../../components/ReusableElements/Button";
+
 import { CommonStyling } from "../../lib/CommonStyling";
 
 const ProgramOverview = () => {

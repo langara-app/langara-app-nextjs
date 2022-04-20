@@ -6,6 +6,7 @@ import ScrollArrow from "../ReusableElements/ScrollArrow";
 import useWindowWidth from "../Hooks/useWindowWidth";
 import homeImg from "../../assets/home.svg";
 import topImg from "../../assets/img/wmdd/HomeImage.png"
+import { CommonStyling } from '../../lib/CommonStyling';
 
 import { Link } from "react-scroll";
 import { CommonStyling } from "../../lib/CommonStyling";
