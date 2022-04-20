@@ -94,7 +94,7 @@ const HomeTitle = styled.h1`
   font-size: ${CommonStyling.body3FontSize};
   line-height: ${CommonStyling.body3LineHeight};
   font-weight: 400;
-  font-family: "Ubuntu Mono";
+  font-family: ${CommonStyling.secondaryFontFamily};
 
   @media only screen and (min-width: 768px) {
     font-size: ${CommonStyling.body3FontSize};

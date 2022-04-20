@@ -121,7 +121,7 @@ const CopyRight = styled.div`
   color: #546E7A;
   align-items: center;
   gap: 1rem;
-  font-family: "Ubuntu Mono";
+  font-family: ${CommonStyling.secondaryFontFamily};
 
   @media only screen and (min-width: 768px) {
     flex-direction: row;

@@ -3,6 +3,8 @@ import styled from "styled-components";
 
 import playIcon from "../../assets/img/wmdd/playIcon.svg"
 
+import { CommonStyling } from "../../lib/CommonStyling";
+
 const AlumniIntro = (props) => {
   const {
     profile_image,
@@ -93,7 +95,7 @@ const Video = styled.iframe`
 
 const DepartmentBlock = styled.div`
   padding: 1rem 0;
-  font-family: "Ubuntu Mono";
+  font-family: ${CommonStyling.secondaryFontFamily};
   color: #546e7a;
   font-size: 0.875rem;
 `;

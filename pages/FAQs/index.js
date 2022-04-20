@@ -89,11 +89,11 @@ const FaqContainer = styled.div`
   color: #263238;
 
   @media only screen and (min-width: 768px) {
-    padding: 4vh 20vw 12.8vh 20vw;
+    padding: 0 20vw 12.8vh 20vw;
   };
 `;
 
-const FAQHeader = styled.div`
+const FAQHeader = styled.h1`
   padding: 5vh 0 0 0;
   font-weight: 700;
   font-size: 56px;
@@ -101,7 +101,8 @@ const FAQHeader = styled.div`
   text-align: center;
 
   @media only screen and (min-width: 768px) {
-    padding: 5vh 0;
+    padding: 7.2vh 0;
+    margin: 0;
   };
 `;
 

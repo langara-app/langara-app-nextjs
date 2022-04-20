@@ -5,6 +5,8 @@ import styled from "styled-components";
 import { ProjectData } from "../../lib/ProjectData";
 import ProjectIntro from "../../components/Project/ProjectIntro";
 
+import { CommonStyling } from '../../lib/CommonStyling';
+
 const ProjectCategoryData = ProjectData.ProjectCategoryData;
 
 export async function getServerSideProps() {
@@ -82,8 +84,8 @@ const Container = styled.div`
   background-color: #F3FBFF;
 
   .term4{
-    padding-top: 4.6vh;
-    font-family: Ubuntu Mono;
+    padding-top: 9.5vh;
+    font-family: ${CommonStyling.secondaryFontFamily};
     margin: 0;
     font-size: 0.875rem;
     color: rgba(55, 71, 79, 1);
@@ -92,7 +94,7 @@ const Container = styled.div`
   .term3, .term2{
     color: rgba(55, 71, 79, 1);
     padding-top: 10vh;
-    font-family: Ubuntu Mono;
+    font-family: ${CommonStyling.secondaryFontFamily};
     font-size: 0.875rem;
   }
 
@@ -109,11 +111,12 @@ const Container = styled.div`
   }
 
   .desc{
-    line-height: 1.875rem;
+    line-height: ${CommonStyling.body1LineHeight};
     font-weight: 400;
     margin: 0;
     padding-top: 2.7vh;
     padding-bottom: 3.5vh;
+    font-size: ${CommonStyling.body1FontSize};
   }
 
   .projects{
@@ -126,8 +129,8 @@ const Container = styled.div`
     padding: 0 13.3vw 9.8vh 13.4vw;
 
     .term4{
-    padding-top: 9.8vh;
-    font-family: Ubuntu Mono;
+    padding-top: 9.3vh;
+    font-family: ${CommonStyling.secondaryFontFamily};
     margin: 0;
     font-size: 0.875rem;
     }
@@ -139,7 +142,6 @@ const Container = styled.div`
 
     .desc{
       width: 50%;
-      font-size: 1.2rem;
       padding-top: 2vh;
       padding-bottom: 5.5vh;
     }

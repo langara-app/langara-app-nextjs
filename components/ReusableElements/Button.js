@@ -39,12 +39,9 @@ const Button = ({
           <a> {text}</a>
         </Link>
       ) : (
-        <a
-          href="https://langara.ca/programs-and-courses/programs/web-and-mobile-app/admission-requirements.html"
-          target="_blank"
-        >
-          {text}
-        </a>
+        <Link href={"/program-overview"}>
+          <a> {text}</a>
+        </Link>
       )}
     </BtnElement>
   );

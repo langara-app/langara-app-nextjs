@@ -11,7 +11,6 @@ import placeholder from '../../assets/img/wmdd/placeholder.svg'
 import Button from "../../components/ReusableElements/Button";
 import { CommonStyling } from "../../lib/CommonStyling";
 
-
 const ProgramOverview = () => {
   const width = useWindowWidth();
 
@@ -291,7 +290,7 @@ const WmddTitle = styled.h1`
   font-size: 0.85rem;
   line-height: 18px;
   font-weight: 400;
-  font-family: "Ubuntu Mono";
+  font-family: ${CommonStyling.secondaryFontFamily};
 
   @media only screen and (min-width: 768px) {
     font-size: 0.85rem;

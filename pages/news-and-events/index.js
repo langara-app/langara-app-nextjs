@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Head from "next/head";
+import { CommonStyling } from "../../lib/CommonStyling";
 
 import { NewsAndEvents } from "../../lib/NewsAndEvents";
 
@@ -67,7 +68,7 @@ const PageContainer = styled.div`
   background-color: #f3fbff;
 
   @media only screen and (min-width: 768px) {
-    padding: 4vh 13.5vw;
+    padding: 9.1vh 13.5vw;
   }
 `;
 
@@ -80,12 +81,12 @@ const PageHeader = styled.div`
     font-size: 56px;
     line-height: 64px;
     color: #263238;
-    padding-bottom: 1.5rem;
+    padding-bottom: 2vh;
   }
 
   p{
     margin: 0;
-    font-size: 20px;
+    font-size: ${CommonStyling.body1FontSize};
   line-height: 30px;
   }
 `;
@@ -132,7 +133,7 @@ const PostDetails = styled.div`
   }
 
   .date{
-    font-family: 'Ubuntu Mono';
+    font-family: ${CommonStyling.secondaryFontFamily};
     font-style: normal;
     font-weight: 400;
     font-size: 14px;

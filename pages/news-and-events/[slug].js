@@ -5,6 +5,8 @@ import { NewsAndEvents } from "../../lib/NewsAndEvents";
 
 import styled from "styled-components";
 
+import { CommonStyling } from '../../lib/CommonStyling'
+
 export async function getStaticPaths() {
   const res = await fetch("https://api.langara-app.ca/wp-json/wp/v2/news-and-events")
   const news_events = await res.json();
@@ -129,7 +131,7 @@ const SingleEventPageContainer = styled.div`
   color: #263238;
 
   .events-title{
-    font-family: 'Ubuntu Mono';
+    font-family: ${CommonStyling.secondaryFontFamily};
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -139,7 +141,7 @@ const SingleEventPageContainer = styled.div`
   }
 
   @media only screen and (min-width: 768px) {
-    padding: 7vh 25vw;
+    padding: 9.3vh 25vw;
   }
 `;
 
@@ -149,6 +151,9 @@ const EventDetails = styled.section`
     font-weight: 700;
     font-size: 38px;
     line-height: 50px;
+    margin: 0;
+    padding-top: 1vh;
+    padding-bottom: 5.6vh;
   }
 
   .article-para {

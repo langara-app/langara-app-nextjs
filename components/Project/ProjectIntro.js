@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import ProjectButton from "../ReusableElements/ProjectButton";
 import useWindowWidth from "../../components/Hooks/useWindowWidth";
+import { CommonStyling } from '../../lib/CommonStyling';
 
 const ProjectIntro = (props) => {
   const { acf, slug } = props;
@@ -26,13 +27,15 @@ const ProjectIntro = (props) => {
 
 const Container = styled.div`
   overflow: hidden;
+
   .imgWrap{
     max-width: 358px;
     height: 236px;
 
-  @media only screen and (min-width: 768px){
-    width: 100%;  
-  }
+
+    @media only screen and (min-width: 768px){
+      max-width: 100%;
+    }
 
     img{
       width: 100%;
@@ -45,17 +48,17 @@ const Container = styled.div`
   }
 
   .card{
-    max-width: 358px;
+    width: 358px;
     height: 399px;
     border-radius: 4px;
     border: 1px solid #B0BEC5;
     background-color: #FFFFFF;
-    margin-top: 3.8vh;
   }
 
   .projectTitle{
     padding: 32px 32px 8px 32px;
-    font-size:1.25rem;
+    font-size:${CommonStyling.body1FontSize};
+    line-height:${CommonStyling.body1LineHeight};
     font-weight: 700;
     margin: 0;
   }
@@ -66,15 +69,14 @@ const Container = styled.div`
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     margin: 0 32px 32px 32px;
-    font-size:0.875rem;
-    line-height: 1.25rem;
+    font-size:${CommonStyling.body2FontSize};
+    line-height: ${CommonStyling.body2LineHeight};
   }
 
   @media only screen and (min-width: 768px) {
     .card{
       width: 100%;
       cursor: pointer;
-      gap: 24px;
     }
   }
 `;
