@@ -11,13 +11,16 @@ import placeholder from '../../assets/img/wmdd/placeholder.svg'
 import Button from "../../components/ReusableElements/Button";
 
 
-const AboutUs = () => {
+const ProgramOverview = () => {
   const width = useWindowWidth();
 
   const profVidRef = useRef(null);
+  const profImageRef = useRef(null);
 
   const handleImageClick = (event) => {
     profVidRef.current.style = "visibility: visible";
+    console.log(profImageRef.current);
+    profImageRef.current.style = "visibility: hidden";
     profVidRef.current.src = `${profVidRef.current.src}&autoplay=1&controls=1`;
   }
 
@@ -35,7 +38,7 @@ const AboutUs = () => {
               <Header1>{WmddData.header.subtitle}</Header1>
               <Header2>{WmddData.header.description}</Header2>
               <VideoBlock>
-                <WmddImg src={placeholder} alt="Program Overview Image" onClick={e => handleImageClick(e)} />
+                <WmddImg src={placeholder} alt="Program Overview Image" onClick={e => handleImageClick(e)} ref={profImageRef} />
                 <Video src={"https://www.youtube.com/embed/BTciK1vJ8QY?rel=0"} ref={profVidRef} allow="autoplay; encrypted-media"></Video>
               </VideoBlock>
             </div>
@@ -50,7 +53,7 @@ const AboutUs = () => {
         {width < 768 ? null : (
           <WmddImageContainer>
             <VideoBlock>
-              <WmddImg src={placeholder} alt="Program Overview Image" onClick={e => handleImageClick(e)} />
+              <WmddImg src={placeholder} alt="Program Overview Image" onClick={e => handleImageClick(e)} ref={profImageRef} />
               <Video src={"https://www.youtube.com/embed/BTciK1vJ8QY?rel=0"} ref={profVidRef} allow="autoplay; encrypted-media"></Video>
             </VideoBlock>
           </WmddImageContainer>
@@ -76,7 +79,7 @@ const AboutUs = () => {
             </div>
             <div className="courses">
               {WmddData.programDetails.courses.map((c, index) => (index != 8 ?
-                <div>{c}</div>
+                <div key={index}>{c}</div>
                 : null))}
             </div>
             <div className="seeAll"><a href={WmddData.programDetails.seeAllLink}>{WmddData.programDetails.seeAll}</a></div>
@@ -85,7 +88,7 @@ const AboutUs = () => {
             </div>
             <div className="courses">
               {WmddData.programDetails.courses.map((c, index) => (index != 7 ?
-                <div>{c}</div>
+                <div key={index}>{c}</div>
                 : null))}
             </div>
             <div className="seeAll"><a href={WmddData.programDetails.seeAllLink}>{WmddData.programDetails.seeAll}</a></div>
@@ -345,7 +348,8 @@ const WmddImg = styled.img`
   position: absolute;
   z-index: 2;
   width: 100%;
-  height: 100%;
+  top: 50%;
+  transform: translateY(-50%);
 `
 
 const InstructorSection = styled.section`
@@ -496,6 +500,11 @@ const Video = styled.iframe`
   position: absolute;
   visibility: hidden;
   z-index: 5;
+  @media screen and (min-width: 768px) {
+    top: 50%;
+    transform: translateY(-50%);
+    height: 18vw;
+  }
 `;
 
 const VideoBlock = styled.div`
@@ -504,6 +513,7 @@ const VideoBlock = styled.div`
   width: 100%;
   height: 50vh;
   position: relative;
+  cursor: pointer;
 
   @media only screen and (min-width: 768px) {
     padding-top: 0;
@@ -514,4 +524,4 @@ const VideoBlock = styled.div`
   }
 `;
 
-export default AboutUs;
+export default ProgramOverview;

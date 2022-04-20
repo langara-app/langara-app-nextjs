@@ -25,27 +25,27 @@ const ProjectIntro = (props) => {
 };
 
 const Container = styled.div`
-.imgWrap{
-  width: 356px;
-  height: 236px;
+  overflow: hidden;
+  .imgWrap{
+    max-width: 358px;
+    height: 236px;
 
   @media only screen and (min-width: 768px){
-    width: 100%;
-    
+    width: 100%;  
   }
 
-  img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    overflow: hidden;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      overflow: hidden;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+    }
   }
-}
 
   .card{
-    width: 358px;
+    max-width: 358px;
     height: 399px;
     border-radius: 4px;
     border: 1px solid #B0BEC5;
@@ -73,8 +73,8 @@ const Container = styled.div`
   @media only screen and (min-width: 768px) {
     .card{
       width: 100%;
-      height: 100%;
       cursor: pointer;
+      gap: 24px;
     }
   }
 `;
