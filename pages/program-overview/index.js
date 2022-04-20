@@ -92,7 +92,7 @@ const ProgramOverview = () => {
                 <div key={index}>{c}</div>
                 : null))}
             </div>
-            <div className="seeAll"><a href={WmddData.programDetails.seeAllLink}>{WmddData.programDetails.seeAll}</a></div>
+            <div className="seeAll"><a target="_blank" href={WmddData.programDetails.seeAllLink}>{WmddData.programDetails.seeAll}</a></div>
           </div>
           :
           <div>
@@ -107,7 +107,7 @@ const ProgramOverview = () => {
                 </div>
                 : <div key={index}>{c}</div>))}
             </div>
-            <div className="seeAll"><a href={WmddData.programDetails.seeAllLink}>{WmddData.programDetails.seeAll}</a></div>
+            <div className="seeAll"><a target="_blank" href={WmddData.programDetails.seeAllLink}>{WmddData.programDetails.seeAll}</a></div>
           </div>
         }
       </ProgramDetails>
