@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import Head from "next/head";
 import styled from "styled-components";
 import useWindowWidth from "../../components/Hooks/useWindowWidth"
+import Link from "next/link";
 
 import { WmddData } from '../../lib/WmddData';
 import { InstructorData } from '../../lib/InstructorData';
@@ -38,10 +39,11 @@ const ProgramOverview = () => {
               <WmddTitle>{WmddData.header.title}</WmddTitle>
               <Header1>{WmddData.header.subtitle}</Header1>
               <Header2>{WmddData.header.description}</Header2>
-              <VideoBlock>
-                <WmddImg src={placeholder} alt="Program Overview Image" onClick={e => handleImageClick(e)} ref={profImageRef} />
-                <Video src={"https://www.youtube.com/embed/BTciK1vJ8QY?rel=0"} ref={profVidRef} allow="autoplay; encrypted-media"></Video>
-              </VideoBlock>
+              <Link href="https://www.youtube.com/watch?v=BTciK1vJ8QY">
+                <a target="_blank">
+                  <WmddImg src={placeholder} alt="Program Overview Image" />
+                </a>
+              </Link>
             </div>
           ) : (
             <div>
@@ -53,10 +55,11 @@ const ProgramOverview = () => {
         </WmddWebLeft>
         {width < 768 ? null : (
           <WmddImageContainer>
-            <VideoBlock>
-              <WmddImg src={placeholder} alt="Program Overview Image" onClick={e => handleImageClick(e)} ref={profImageRef} />
-              <Video src={"https://www.youtube.com/embed/BTciK1vJ8QY?rel=0"} ref={profVidRef} allow="autoplay; encrypted-media"></Video>
-            </VideoBlock>
+            <Link href="https://www.youtube.com/watch?v=BTciK1vJ8QY">
+              <a target="_blank">
+                <WmddImg src={placeholder} alt="Program Overview Image" />
+              </a>
+            </Link>
           </WmddImageContainer>
         )}
       </WmddContainer>
@@ -266,6 +269,7 @@ const WmddContainer = styled.div`
   padding-right: 4.4vw;
   color: rgba(55, 71, 79, 1);
   text-align: left;
+  gap: 1rem;
 
   @media only screen and (min-width: 768px) {
     /* For everything bigger than 768px */
@@ -282,6 +286,8 @@ const WmddContainer = styled.div`
 
 const WmddWebLeft = styled.div`
   @media only screen and (min-width: 768px) {
+    display: flex;
+    align-items: center;
     grid-area: desc;
   }
 `
@@ -325,22 +331,22 @@ const Header2 = styled.p`
 `
 
 const WmddImageContainer = styled.div`
-    @media only screen and (min-width: 768px) {
+
+  @media only screen and (min-width: 768px) {
     grid-area: pic;
-    max-width: 540px;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
+    a{
+      flex: 1;
+    }
   }
 `
 
 const WmddImg = styled.img`
-  position: absolute;
-  z-index: 2;
   width: 100%;
-  top: 50%;
-  transform: translateY(-50%);
+  cursor: pointer;
+  margin: 2rem 0;
 `
 
 const InstructorSection = styled.section`
@@ -494,35 +500,35 @@ const ProgramDetails = styled.div`
   }
 `;
 
-const Video = styled.iframe`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  visibility: hidden;
-  z-index: 5;
-  @media screen and (min-width: 768px) {
-    top: 50%;
-    transform: translateY(-50%);
-    height: 18vw;
-  }
-`;
+// const Video = styled.iframe`
+//   width: 100%;
+//   height: 100%;
+//   position: absolute;
+//   visibility: hidden;
+//   z-index: 5;
+//   @media screen and (min-width: 768px) {
+//     top: 50%;
+//     transform: translateY(-50%);
+//     height: 18vw;
+//   }
+// `;
 
-const VideoBlock = styled.div`
-  padding-top: 5.7vh;
-  border-radius: 4px;
-  width: 100%;
-  height: 28rem;
-  position: relative;
-  cursor: pointer;
+// const VideoBlock = styled.div`
+//   padding-top: 5.7vh;
+//   border-radius: 4px;
+//   width: 100%;
+//   height: 28rem;
+//   position: relative;
+//   cursor: pointer;
 
-  @media only screen and (min-width: 768px) {
-    padding-top: 0;
-    display: block;
-    width: 100%;
-    height: 6rem;
-    margin: 0 auto;
-    margin-right: 1.6vw;
-  }
-`;
+//   @media only screen and (min-width: 768px) {
+//     padding-top: 0;
+//     display: block;
+//     width: 100%;
+//     height: 6rem;
+//     margin: 0 auto;
+//     margin-right: 1.6vw;
+//   }
+// `;
 
 export default ProgramOverview;
