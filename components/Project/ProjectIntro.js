@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import ProjectButton from "../ReusableElements/ProjectButton";
 import useWindowWidth from "../../components/Hooks/useWindowWidth";
+import { CommonStyling } from '../../lib/CommonStyling';
 
 const ProjectIntro = (props) => {
   const { acf, slug } = props;
@@ -57,7 +58,8 @@ const Container = styled.div`
 
   .projectTitle{
     padding: 32px 32px 8px 32px;
-    font-size:1.25rem;
+    font-size:${CommonStyling.body1FontSize};
+    line-height:${CommonStyling.body1LineHeight};
     font-weight: 700;
     margin: 0;
   }
@@ -68,8 +70,8 @@ const Container = styled.div`
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     margin: 0 32px 32px 32px;
-    font-size:0.875rem;
-    line-height: 1.25rem;
+    font-size:${CommonStyling.body2FontSize};
+    line-height: ${CommonStyling.body2LineHeight};
   }
 
   @media only screen and (min-width: 768px) {

@@ -5,6 +5,8 @@ import styled from "styled-components";
 import { ProjectData } from "../../lib/ProjectData";
 import ProjectIntro from "../../components/Project/ProjectIntro";
 
+import { CommonStyling } from '../../lib/CommonStyling';
+
 const ProjectCategoryData = ProjectData.ProjectCategoryData;
 
 export async function getServerSideProps() {
@@ -109,11 +111,12 @@ const Container = styled.div`
   }
 
   .desc{
-    line-height: 1.875rem;
+    line-height: ${CommonStyling.body1LineHeight};
     font-weight: 400;
     margin: 0;
     padding-top: 2.7vh;
     padding-bottom: 3.5vh;
+    font-size: ${CommonStyling.body1FontSize};
   }
 
   .projects{
@@ -139,7 +142,6 @@ const Container = styled.div`
 
     .desc{
       width: 50%;
-      font-size: 1.2rem;
       padding-top: 2vh;
       padding-bottom: 5.5vh;
     }
