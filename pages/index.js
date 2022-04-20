@@ -157,7 +157,7 @@ const Home = ({ data, alumni, work, homeData }) => {
       </Gradute>
       <AlumniSection>
         <article style={{ textAlign: "center" }}>
-          <h2 style={{ fontSize: "2.4rem" }}>{HomeData.alumni.title}</h2>
+          <h2>{HomeData.alumni.title}</h2>
           <p>{HomeData.alumni.description}</p>
         </article>
         <AlumniSlider data={alumni} />
@@ -173,13 +173,20 @@ const AlumniSection = styled.section`
 
   article{
     h2{
+      font-size: ${CommonStyling.h2FontSize};
+      line-height: ${CommonStyling.h2LineHeight};
       margin: 0;
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
+    }
+    p {
+      font-size: ${CommonStyling.body1FontSize};
+      line-height: ${CommonStyling.body1LineHeight};
+      margin: 0 0 2rem 0;
     }
   }
 
   @media screen and (min-width: 768px){
-    padding: 3rem 13.5vw;
+    padding: 4rem 13.5vw 5rem 13.5vw;
   }
 `;
 
@@ -197,8 +204,8 @@ const CareerPath = styled.section`
 `;
 
 const CareerTitle = styled.h2`
-font-size: 2.375rem;
-line-height: 3.125rem;
+font-size: ${CommonStyling.h2FontSize};
+line-height: ${CommonStyling.h2LineHeight};
 color: rgba(38, 50, 56, 1);
 font-weight: 700;
 
@@ -208,9 +215,9 @@ font-weight: 700;
 `
 const CareerDesc = styled.p`
 margin: 0;
-font-size: 1.3rem;
+font-size: ${CommonStyling.body1FontSize};
 font-weight: 400;
-line-height: 1.875rem;
+line-height: ${CommonStyling.body1LineHeight};
 color: rgba(38, 50, 56, 1);
 @media screen and (min-width: 768px) {
   padding-top: 1.5vh;
@@ -244,16 +251,16 @@ padding-top: 4.8vh;
 
 const GradTitle = styled.h2`
   margin: 0;
-  font-size: 2.375rem;
+  font-size: ${CommonStyling.h2FontSize};
   color: rgba(33, 38, 58, 1);
-  line-height: 3.125rem;
+  line-height: ${CommonStyling.h2LineHeight};
   font-weight: 700;
 `
 
 const GradDesc = styled.p`
-  font-size: 1.25rem;
+  font-size: ${CommonStyling.body1FontSize};
   font-weight: 400;
-  line-height: 1.875rem;
+  line-height: ${CommonStyling.body1LineHeight};
   color: rgba(33, 38, 58, 1);
   margin: 0;
   padding-top: 2vh;

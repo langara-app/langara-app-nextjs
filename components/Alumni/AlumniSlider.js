@@ -5,7 +5,34 @@ import Slider from "react-slick";
 import AlumniIntro from "./AlumniIntro";
 import useWindowWidth from "../Hooks/useWindowWidth";
 
+import rightArrow from "../../assets/rightArrow.svg"
+import leftArrow from "../../assets/leftArrow.svg"
+
 const alumnaNameToRemove = "Eduard Landa";
+
+function NextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <img
+      className={className}
+      style={{ ...style, display: "block" }}
+      onClick={onClick}
+      src={rightArrow}
+    />
+  );
+}
+
+function PrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <img
+      className={className}
+      style={{ ...style, display: "block" }}
+      onClick={onClick}
+      src={leftArrow}
+    />
+  );
+}
 
 const AlumniSlider = ({ data }) => {
   const width = useWindowWidth();
@@ -19,6 +46,8 @@ const AlumniSlider = ({ data }) => {
     slidesToScroll: width > 768 ? 3 : 1,
     arrows: true,
     autoplay: false,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />
   };
 
   return (
@@ -45,8 +74,17 @@ const AlumniSliderContainer = styled.div`
     gap: 1.25rem;
   }
 
-  .slick-prev:before, .slick-next:before{
-    color: black;
+  .slick-prev{
+    left: -50px;
+  }
+
+  .slick-next{
+    right: -50px;
+  }
+
+  .slick-prev, .slick-next{
+    width: 40px;
+    height: 40px;
   }
 `;
 

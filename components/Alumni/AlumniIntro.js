@@ -52,6 +52,7 @@ const Card = styled.div`
 
 const Comment = styled.p`
   line-height: 1.5rem;
+  margin: 0 0 2rem 0;
 `;
 
 const VideoBlock = styled.div`
@@ -102,7 +103,7 @@ const DepartmentBlock = styled.div`
 const DescriptionBlock = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.2rem;
 
   div:nth-child(1) {
     font-weight: bold;

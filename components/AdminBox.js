@@ -50,43 +50,37 @@ const AdmissionContainer = styled.div`
   gap: 2rem;
 
   @media only screen and (min-width: 768px){
-    padding: 10vh 13.5vw;
+    padding: 7vh 13.5vw;
     display: flex;
     flex-direction: row;
     align-items: center;
   }
 `;
+
 const AdminTitle = styled.h2`
   margin: 0;
   text-align: left;
   font-weight: bold;
-  font-size: 2.375rem;
-  line-height: 3.125rem;
+  font-size: ${CommonStyling.h2FontSize};
+  line-height: ${CommonStyling.h2LineHeight};
   @media only screen and (min-width: 768px) {
-    font-size: ${(45 / 1366) * 100}vw;
-    margin-bottom: ${(20 / 1366) * 100}vw;
   }
 `;
 const AdminDescription = styled.p`
   text-align: left;
   font-weight: 200;
-  font-size: 1.25rem;
-  line-height: 1.875rem;
+  font-size: ${CommonStyling.body1FontSize};
+  line-height: ${CommonStyling.body1LineHeight};
   padding-top: 1rem;
   padding-bottom: 2.5rem;
   margin: 0;
   @media only screen and (min-width: 768px) {
-    /* font-size: ${(19 / 1366) * 100}vw;
-    padding-bottom: 0;
-    width: ${(510 / 1366) * 100}vw;
-    margin: 0 auto; */
   }
 `;
 
 const AdminBoxDetails = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
 `;
 
 const BtmImg = styled.img`

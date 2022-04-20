@@ -5,6 +5,33 @@ import Slider from "react-slick";
 import InstructionIntro from "../Instructor/InstructorIntro";
 import useWindowWidth from "../Hooks/useWindowWidth";
 
+import rightArrow from "../../assets/rightArrow.svg"
+import leftArrow from "../../assets/leftArrow.svg"
+
+function NextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <img
+      className={className}
+      style={{ ...style, display: "block" }}
+      onClick={onClick}
+      src={rightArrow}
+    />
+  );
+}
+
+function PrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <img
+      className={className}
+      style={{ ...style, display: "block" }}
+      onClick={onClick}
+      src={leftArrow}
+    />
+  );
+}
+
 const InstructorSlider = ({ data }) => {
   const width = useWindowWidth();
 
@@ -13,10 +40,12 @@ const InstructorSlider = ({ data }) => {
     infinite: false,
     autoplaySpeed: 7000,
     speed: 1000,
-    slidesToShow: width > 768 ? 4 : 2,
-    slidesToScroll: width > 768 ? 4 : 2,
+    slidesToShow: width > 768 ? 5 : 2,
+    slidesToScroll: width > 768 ? 5 : 2,
     arrows: true,
     autoplay: false,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />
   };
 
   return (
@@ -39,8 +68,17 @@ const InstructorSliderContainer = styled.div`
     gap: 1.25rem;
   }
 
-  .slick-prev:before, .slick-next:before{
-    color: black;
+  .slick-prev{
+    left: -50px;
+  }
+
+  .slick-next{
+    right: -50px;
+  }
+
+  .slick-prev, .slick-next{
+    width: 40px;
+    height: 40px;
   }
 `;
 
