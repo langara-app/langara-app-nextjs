@@ -5,6 +5,8 @@ import useWindowWidth from "../../../components/Hooks/useWindowWidth";
 
 import { ProjectData } from "../../../lib/ProjectData";
 
+import { CommonStyling } from '../../../lib/CommonStyling'
+
 const Project = ({ project }) => {
   const ProjectCategoryData = ProjectData.ProjectCategoryData;
 
@@ -27,18 +29,24 @@ const Project = ({ project }) => {
       </div>
 
       <div className="actionContainer">
-        <Link href={data.acf.project_proposal_file}>
-          <a>
-            <img src={ProjectData.ProjectDetails.downloadProposalIcon} />
-            {ProjectData.ProjectDetails.downloadProposal}
-          </a>
-        </Link>
-        <Link href={data.acf.project_site_link}>
-          <a>
-            <img src={ProjectData.ProjectDetails.seeLiveProjectIcon} />
-            {ProjectData.ProjectDetails.seeLiveProject}
-          </a>
-        </Link>
+        {data.acf.project_proposal_file ? (
+          <Link href={data.acf.project_proposal_file}>
+            <a>
+              <img src={ProjectData.ProjectDetails.downloadProposalIcon} />
+              {ProjectData.ProjectDetails.downloadProposal}
+            </a>
+          </Link>
+        ) : (null)}
+
+        {data.acf.project_site_link ? (
+          <Link href={data.acf.project_site_link}>
+            <a>
+              <img src={ProjectData.ProjectDetails.seeLiveProjectIcon} />
+              {ProjectData.ProjectDetails.seeLiveProject}
+            </a>
+          </Link>
+        ) : (null)}
+
       </div>
 
       <ImageContainer>
@@ -69,7 +77,7 @@ const Container = styled.div`
 
   .singleTitle{
     margin: 0;
-    font-family: 'Ubuntu Mono';
+    font-family: ${CommonStyling.secondaryFontFamily};
     font-weight: 400;
     font-size: 0.875rem;
   }

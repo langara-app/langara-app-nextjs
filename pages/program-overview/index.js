@@ -10,6 +10,7 @@ import InstructorSlider from '../../components/Instructor/InstructorSlider';
 import placeholder from '../../assets/img/wmdd/placeholder.svg'
 import Button from "../../components/ReusableElements/Button";
 
+import { CommonStyling } from "../../lib/CommonStyling";
 
 const ProgramOverview = () => {
   const width = useWindowWidth();
@@ -296,7 +297,7 @@ const WmddTitle = styled.h1`
   font-size: 0.85rem;
   line-height: 18px;
   font-weight: 400;
-  font-family: "Ubuntu Mono";
+  font-family: ${CommonStyling.secondaryFontFamily};
 
   @media only screen and (min-width: 768px) {
     font-size: 0.85rem;
@@ -396,7 +397,7 @@ const InfoBlock = styled.div`
   gap: 0.5rem;
 
   div:nth-child(1){
-    font-family: Ubuntu Mono;
+    font-family: ${CommonStyling.secondaryFontFamily};
     font-size: 0.875rem;
     font-weight: 400;
     line-height: 1.125rem;

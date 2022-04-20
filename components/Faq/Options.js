@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Select from "react-dropdown-select";
 import useWindowWidth from "../Hooks/useWindowWidth";
 import styled from "styled-components";
+import { CommonStyling } from '../../lib/CommonStyling';
 
 const Options = ({ data, onClick }) => {
   const width = useWindowWidth();
@@ -51,12 +52,14 @@ const Options = ({ data, onClick }) => {
 
 const CategoryName = styled.p`
   text-align: center;
-  font-size: 1.25rem;
+  font-size: ${CommonStyling.body1FontSize};
   color: ${({ number, checked }) => number === checked ? "#DE3F21" : "#37474F"};
   font-weight: ${({ number, checked }) => (number === checked ? 600 : 200)};
   border-bottom: ${({ number, checked }) => number === checked ? "3px solid #DE3F21" : "none"};
-  padding-bottom: 0.8rem;
+  padding: 0.8rem;
   cursor: pointer;
+  margin-bottom: 2.8vh;
+  margin-top: 0;
 `;
 
 const Container = styled.div`

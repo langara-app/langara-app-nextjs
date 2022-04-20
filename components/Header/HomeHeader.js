@@ -6,6 +6,7 @@ import ScrollArrow from "../ReusableElements/ScrollArrow";
 import useWindowWidth from "../Hooks/useWindowWidth";
 import homeImg from "../../assets/home.svg";
 import topImg from "../../assets/img/wmdd/HomeImage.png"
+import { CommonStyling } from '../../lib/CommonStyling';
 
 import { Link } from "react-scroll";
 
@@ -93,7 +94,7 @@ const HomeTitle = styled.h1`
   font-size: 0.85rem;
   line-height: 18px;
   font-weight: 400;
-  font-family: "Ubuntu Mono";
+  font-family: ${CommonStyling.secondaryFontFamily};
 
   @media only screen and (min-width: 768px) {
     margin-top: 2.75rem;

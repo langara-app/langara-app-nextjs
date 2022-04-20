@@ -4,6 +4,7 @@ import MuiAccordion from "@material-ui/core/Accordion";
 import MuiAccordionDetails from "@material-ui/core/AccordionDetails";
 import MuiAccordionSummary from "@material-ui/core/AccordionSummary";
 import { IoIosArrowDown } from "react-icons/io";
+import { CommonStyling } from '../../lib/CommonStyling';
 
 const QAs = ({ data }) => {
   return (
@@ -41,7 +42,7 @@ const QAContainer = styled.div`
 
   .MuiAccordion-root {
     font-weight: 700;
-    font-size: 20px;
+    font-size: ${CommonStyling.body1FontSize};
     line-height: 30px;
     color: #263238;
   }
@@ -74,7 +75,7 @@ const QAContainer = styled.div`
   p,
   a {
     font-weight: 200;
-    color: #675d51;
+    color: #263238;;
     margin: 0;
   }
 
@@ -85,7 +86,7 @@ const QAContainer = styled.div`
 
   a {
     font-weight: 700;
-    font-size: 20px;
+    font-size: ${CommonStyling.body2FontSize};
     line-height: 30px;
     color: #DE3F21;
     padding: 0 2rem;
@@ -99,6 +100,7 @@ const QAContainer = styled.div`
 
     p,
     a {
+      font-size: ${CommonStyling.body2FontSize};
     }
   }
 `;

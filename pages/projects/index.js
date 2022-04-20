@@ -85,7 +85,7 @@ const Container = styled.div`
 
   .term4{
     padding-top: 9.5vh;
-    font-family: Ubuntu Mono;
+    font-family: ${CommonStyling.secondaryFontFamily};
     margin: 0;
     font-size: 0.875rem;
     color: rgba(55, 71, 79, 1);
@@ -94,7 +94,7 @@ const Container = styled.div`
   .term3, .term2{
     color: rgba(55, 71, 79, 1);
     padding-top: 10vh;
-    font-family: Ubuntu Mono;
+    font-family: ${CommonStyling.secondaryFontFamily};
     font-size: 0.875rem;
   }
 
@@ -129,8 +129,8 @@ const Container = styled.div`
     padding: 0 13.3vw 9.8vh 13.4vw;
 
     .term4{
-    padding-top: 9.8vh;
-    font-family: Ubuntu Mono;
+    padding-top: 9.3vh;
+    font-family: ${CommonStyling.secondaryFontFamily};
     margin: 0;
     font-size: 0.875rem;
     }
