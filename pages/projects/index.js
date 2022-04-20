@@ -82,7 +82,7 @@ const Container = styled.div`
   background-color: #F3FBFF;
 
   .term4{
-    padding-top: 4.6vh;
+    padding-top: 9.5vh;
     font-family: Ubuntu Mono;
     margin: 0;
     font-size: 0.875rem;

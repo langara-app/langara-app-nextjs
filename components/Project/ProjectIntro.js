@@ -26,13 +26,15 @@ const ProjectIntro = (props) => {
 
 const Container = styled.div`
   overflow: hidden;
+
   .imgWrap{
     max-width: 358px;
     height: 236px;
 
-  @media only screen and (min-width: 768px){
-    width: 100%;  
-  }
+
+    @media only screen and (min-width: 768px){
+      max-width: 100%;
+    }
 
     img{
       width: 100%;
@@ -45,7 +47,7 @@ const Container = styled.div`
   }
 
   .card{
-    max-width: 358px;
+    width: 358px;
     height: 399px;
     border-radius: 4px;
     border: 1px solid #B0BEC5;
@@ -74,7 +76,6 @@ const Container = styled.div`
     .card{
       width: 100%;
       cursor: pointer;
-      gap: 24px;
     }
   }
 `;
