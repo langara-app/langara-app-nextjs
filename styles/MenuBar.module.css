@@ -7,13 +7,13 @@
 }
 
 .langara_logo {
-  height: 11vw;
-  width: 23vw;
+  height: 41.65px;
+  width: 87.9px;
 }
 
 .langara_logo_in_menu {
-  height: 11vw;
-  width: 23vw;
+  height: 60px;
+  width: auto;
   position: absolute;
   top: 29px;
   left: 25px;
@@ -29,7 +29,6 @@
 .menues button {
   margin: 0;
   margin-left: 3.5vw;
-  font-size: 1.1vw;
 }
 
 @media only screen and (min-width: 768px) {
@@ -45,6 +44,5 @@
   .menuItem {
     margin-left: 7.5vw;
     font-weight: 300;
-    font-size: 1.1vw;
   }
 }

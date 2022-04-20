@@ -23,6 +23,7 @@ import useWindowWidth from "../components/Hooks/useWindowWidth";
 import { HomeData } from "../lib/HomeData";
 
 import Slide from "react-reveal/Slide";
+import { CommonStyling } from "../lib/CommonStyling";
 
 export async function getStaticProps() {
   // Instead of the file system,
@@ -144,7 +145,7 @@ const Home = ({ data, alumni, work, homeData }) => {
           <ButtonWrapper>
             <Button
               text={"See Student Work"}
-              font={16}
+              font={CommonStyling.body2FontSize.split('r')[0]}
               color={"white"}
               bcg={"#DE3F21"}
               section={"joinWMDD"}

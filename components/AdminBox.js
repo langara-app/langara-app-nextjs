@@ -5,6 +5,7 @@ import useWindowWidth from "./Hooks/useWindowWidth";
 import btmImage from '../assets/img/wmdd/Homebtm.svg'
 
 import { HomeData } from "../lib/HomeData";
+import { CommonStyling } from "../lib/CommonStyling";
 
 const AdminBox = () => {
   const width = useWindowWidth();
@@ -17,7 +18,7 @@ const AdminBox = () => {
         <ButtonWrapper>
           <Button
             text={"Explore Program Overview"}
-            font={16}
+            font={CommonStyling.body2FontSize.split('r')[0]}
             color={"#37474F"}
             bcg={"white"}
             section={"joinWMDD"}

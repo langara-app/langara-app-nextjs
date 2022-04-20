@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import styled from "styled-components";
+import { CommonStyling } from "../../lib/CommonStyling";
 
 const Button = ({
   text,
@@ -54,7 +55,7 @@ const BtnElement = styled.button`
   text-align: center;
   text-decoration: none;
   display: block;
-  font-size: ${({ font }) => font}px;
+  font-size: ${({ font }) => font}rem;
   cursor: pointer;
   border-radius: 4px;
 
@@ -62,7 +63,7 @@ const BtnElement = styled.button`
     size === "med" ? "bold" : size === "big" ? "bold" : "600"};
 
   margin: ${({ margin }) => margin}rem auto;
-  font-family: Kanit;
+  font-family: ${CommonStyling.primaryFontFamily};
   border: 2px solid ${({ borderColor }) => borderColor ? borderColor : ({ color }) => color};
   background-color: ${({ bcg }) => bcg};
   color: ${({ color }) => color};
