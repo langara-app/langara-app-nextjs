@@ -53,7 +53,6 @@ const Container = styled.div`
     border-radius: 4px;
     border: 1px solid #B0BEC5;
     background-color: #FFFFFF;
-    margin-top: 3.8vh;
   }
 
   .projectTitle{
