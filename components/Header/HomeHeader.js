@@ -8,6 +8,7 @@ import homeImg from "../../assets/home.svg";
 import topImg from "../../assets/img/wmdd/HomeImage.png"
 
 import { Link } from "react-scroll";
+import { CommonStyling } from "../../lib/CommonStyling";
 
 const HomeHeader = ({ type, title, desc, btnText, img, page }) => {
   const [scrollTo, setScrollTo] = useState("home");
@@ -60,13 +61,13 @@ const HeaderContainer = styled.div`
 
   @media only screen and (min-width: 768px) {
     /* For everything bigger than 768px */
-    padding: 5.5vh 13vw 8.5vh 13.5vw;
+    padding: 5.5vh 13.5vw;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
     "pic desc";
     justify-content: unset;
-    align-items: unset;
+    align-items: center;
     height: unset;
 
   }
@@ -90,43 +91,37 @@ const HeaderLeftWeb = styled.div`
 
 const HomeTitle = styled.h1`
   margin: 0;
-  font-size: 0.85rem;
-  line-height: 18px;
+  font-size: ${CommonStyling.body3FontSize};
+  line-height: ${CommonStyling.body3LineHeight};
   font-weight: 400;
   font-family: "Ubuntu Mono";
 
   @media only screen and (min-width: 768px) {
-    margin-top: 2.75rem;
-    font-size: 0.85rem;
+    font-size: ${CommonStyling.body3FontSize};
   }
 `;
 
 const HeaderP = styled.p`
   margin-top: 0.5rem;
   font-weight: 700;
-  font-size: 2.3rem;
+  font-size: ${CommonStyling.h1FontSize};
   color: rgba(38, 50, 56, 1);
   margin-bottom: 1.5rem;
-  line-height: 3.125rem;
+  line-height: ${CommonStyling.h1LineHeight};
 
   @media only screen and (min-width: 768px) {
-    font-size: 3.5rem;
     text-align: left;
-    margin-bottom: 1.5rem;
-    line-height: 4rem;
   }
 `;
 
 const HeaderQ = styled.p`
 margin: 0;
-font-size: 1.3rem;
+font-size: ${CommonStyling.body1FontSize};
 font-weight: 400;
-line-height: 1.875rem;
+line-height: ${CommonStyling.body1LineHeight};
 
 @media only screen and (min-width: 768px) {
-  font-size: ${((463 / 1366) * 100)} vw;
   text-align: left;
-  font-size: 1.25rem;
   margin-bottom: 0;
 }
 `;

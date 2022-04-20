@@ -9,6 +9,7 @@ import InstructorSlider from '../../components/Instructor/InstructorSlider';
 
 import placeholder from '../../assets/img/wmdd/placeholder.svg'
 import Button from "../../components/ReusableElements/Button";
+import { CommonStyling } from "../../lib/CommonStyling";
 
 
 const ProgramOverview = () => {
@@ -120,8 +121,8 @@ const ProgramOverview = () => {
       </KickStart>
 
       <InstructorSection>
-        <article style={{ textAlign: "center" }}>
-          <h2 style={{ fontSize: "2.4rem" }}>{InstructorData.header.title}</h2>
+        <article>
+          <h2>{InstructorData.header.title}</h2>
           <p>{InstructorData.header.description}</p>
         </article>
         <InstructorSlider data={InstructorData.instructors} />
@@ -135,7 +136,7 @@ const ProgramOverview = () => {
           <ButtonWrapper>
             <Button
               text={"Apply now"}
-              font={16}
+              font={CommonStyling.body2FontSize.split('r')[0]}
               color={"#37474F"}
               bcg={"white"}
               section={"joinWMDD"}
@@ -163,7 +164,7 @@ const NextStepContainer = styled.div`
   align-items: flex-start;
 
   @media only screen and (min-width: 768px){
-    padding: 10vh 13.5vw;
+    padding: 7vh 13.5vw;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -179,19 +180,15 @@ const NextTitle = styled.h2`
   margin: 0;
   text-align: center;
   font-weight: bold;
-  font-size: 2.375rem;
-  line-height: 3.125rem;
-  @media only screen and (min-width: 768px) {
-    font-size: ${(45 / 1366) * 100}vw;
-    margin-bottom: ${(20 / 1366) * 100}vw;
-  }
+  font-size: ${CommonStyling.h2FontSize};
+  line-height: ${CommonStyling.h2LineHeight};
 `
 
 const NextDesc = styled.p`
   text-align: center;
   font-weight: 200;
-  font-size: 1.25rem;
-  line-height: 1.875rem;
+  font-size: ${CommonStyling.body1FontSize};
+  line-height: ${CommonStyling.body1LineHeight};
   padding-top: 1rem;
   padding-bottom: 4.6vh;
   margin: 0;
@@ -238,16 +235,16 @@ const KickDescWrapper = styled.div`
 `
 const KickTitle = styled.h2`
   margin: 0;
-  font-size: 2.375rem;
+  font-size: ${CommonStyling.h2FontSize};
+  line-height: ${CommonStyling.h2LineHeight};
   color: rgba(33, 38, 58, 1);
-  line-height: 3.125rem;
   font-weight: 700;
 `
 
 const KickDesc = styled.p`
-  font-size: 1.25rem;
+  font-size: ${CommonStyling.body1FontSize};
+  line-height: ${CommonStyling.body1LineHeight};
   font-weight: 400;
-  line-height: 1.875rem;
   color: rgba(33, 38, 58, 1);
   margin: 0;
   padding-top: 2vh;
@@ -272,7 +269,7 @@ const WmddContainer = styled.div`
 
   @media only screen and (min-width: 768px) {
     /* For everything bigger than 768px */
-    padding: 0 13vw 0 13.5vw;
+    padding: 5.5vh 13.5vw 8.5vh 13.5vw;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
@@ -286,8 +283,6 @@ const WmddContainer = styled.div`
 const WmddWebLeft = styled.div`
   @media only screen and (min-width: 768px) {
     grid-area: desc;
-    display: flex;
-    align-items: center;
   }
 `
 
@@ -304,31 +299,27 @@ const WmddTitle = styled.h1`
 `
 
 const Header1 = styled.p`
-    margin-top: 0.5rem;
+  margin-top: 0.5rem;
   font-weight: 700;
-  font-size: 2.3rem;
+  font-size: ${CommonStyling.h1FontSize};
   color: rgba(38, 50, 56, 1);
   margin-bottom: 1.5rem;
-  line-height: 3.125rem;
+  line-height: ${CommonStyling.h1LineHeight};
 
   @media only screen and (min-width: 768px) {
-    font-size: 3.5rem;
     text-align: left;
     margin-bottom: 1.5rem;
-    line-height: 4rem;
   }
 `
 
 const Header2 = styled.p`
   margin: 0;
-  font-size: 1.3rem;
+  font-size: ${CommonStyling.body1FontSize};
   font-weight: 400;
-  line-height: 1.875rem;
+  line-height: ${CommonStyling.body1LineHeight};
 
 @media only screen and (min-width: 768px) {
-  font-size: ${((463 / 1366) * 100)} vw;
   text-align: left;
-  font-size: 1.25rem;
   margin-bottom: 0;
 }
 `
@@ -356,13 +347,20 @@ const InstructorSection = styled.section`
   padding: 5vh 5.4vw;
 
   @media only screen and (min-width: 768px) {
-    padding: 5vh 13.5vw;
+    padding: 4rem 13.5vw 5rem 13.5vw;
   }
   background-color: #ffffff;
   article{
+    text-align: center;
     h2{
+      font-size: ${CommonStyling.h2FontSize};
+      line-height: ${CommonStyling.h2LineHeight};
       margin: 0;
       margin-bottom: 2rem;
+    }
+    p{
+      font-size: ${CommonStyling.body1FontSize};
+      line-height: ${CommonStyling.body1LineHeight};
     }
   }
 `;
@@ -376,16 +374,15 @@ const ProgramInfo = styled.div`
   gap: 4.5vw;
   flex-direction: column;
 
-  margin: 2vh 5.4vw;
+  margin: 0 5.4vw 2vh 5.4vw;
 
   @media only screen and (min-width: 768px) {
-    margin: 2vh 13.5vw;
+    margin: 0 13.5vw 7vh 13.5vw;
   }
 
   @media only screen and (min-width: 768px) {
     display: grid;
     grid-template-areas: '1fr 1fr 1fr';
-    height: 16rem;
   }
 `;
 
@@ -397,23 +394,24 @@ const InfoBlock = styled.div`
 
   div:nth-child(1){
     font-family: Ubuntu Mono;
-    font-size: 0.875rem;
     font-weight: 400;
-    line-height: 1.125rem;
+    font-size: ${CommonStyling.body3FontSize};
+    line-height: ${CommonStyling.body3LineHeight};
     letter-spacing: 0em;
     text-align: center;
   }
+
   div:nth-child(2){
-    font-size: 1.25rem;
+    font-size: ${CommonStyling.body1FontSize};
+    line-height: ${CommonStyling.body1LineHeight};
     font-weight: 700;
-    line-height: 1.875rem;
     letter-spacing: 0em;
     text-align: center;
   }
 `;
 
 const ProgramDetails = styled.div`
-  margin: 2vh 5.4vw;
+  margin: 5vh 5.4vw 2vh 5.4vw;
 
   @media only screen and (min-width: 768px) {
     margin: 2vh 13.5vw;
@@ -426,16 +424,18 @@ const ProgramDetails = styled.div`
     text-align: center;
 
     h2{
-      font-size: 2.375rem;
+      font-size: ${CommonStyling.h2FontSize};
+      line-height: ${CommonStyling.h2LineHeight};
       font-weight: 700;
-      line-height: 3.125rem;
-      letter-spacing: 0em;
+      margin: 0;
     }
     p{
-      font-size: 20px;
+      font-size: ${CommonStyling.body1FontSize};
+      line-height: ${CommonStyling.body1LineHeight};
       font-weight: 400;
-      line-height: 30px;
-      letter-spacing: 0em;
+      margin: 0;
+      margin-bottom: 3rem;
+      padding-top: 1.5vh;
     }
   }
 
@@ -444,8 +444,8 @@ const ProgramDetails = styled.div`
     flex-direction: row;
     justify-content: space-between;
     font-size: 1.25rem;
-    font-weight: 700;
     line-height: 1.875rem;
+    font-weight: 700;
     letter-spacing: 0em;
     text-align: center;
     margin-bottom: 1rem;
@@ -457,7 +457,7 @@ const ProgramDetails = styled.div`
     margin-bottom: 1rem;
     >div{
       width: 100%;
-      padding: 1.875rem 1rem;
+      padding: 1.2rem;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -475,7 +475,7 @@ const ProgramDetails = styled.div`
       flex-direction: row;
       div{
         width: 50%;
-        padding: 1.875rem 1rem;
+        padding: 1.2rem;
       }
       div:nth-child(2) {
         border-left: 1px solid #B0BEC5;
@@ -511,7 +511,7 @@ const VideoBlock = styled.div`
   padding-top: 5.7vh;
   border-radius: 4px;
   width: 100%;
-  height: 50vh;
+  height: 28rem;
   position: relative;
   cursor: pointer;
 
@@ -519,6 +519,7 @@ const VideoBlock = styled.div`
     padding-top: 0;
     display: block;
     width: 100%;
+    height: 6rem;
     margin: 0 auto;
     margin-right: 1.6vw;
   }

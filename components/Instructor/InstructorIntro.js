@@ -36,8 +36,8 @@ const ImageBlock = styled.div`
   position: relative;
 
   @media only screen and (min-width: 768px) {
-    height: 15vw;
-    width: 15vw;
+    height: 11.5vw;
+    width: 11.5vw;
   }
 `;
 
