@@ -11,6 +11,7 @@ import hamburger from "../assets/hamburger.svg";
 
 import useWindowWidth from "./Hooks/useWindowWidth";
 import styled from "styled-components";
+import { CommonStyling } from "../lib/CommonStyling";
 
 const MenuBar = () => {
   const width = useWindowWidth();
@@ -70,7 +71,7 @@ const MenuBar = () => {
             </MenuLink>
           </Link>
         ))}
-        <Button text="Apply" bcg="#FFFFFF" color="#DE3F21" font={18}></Button>
+        <Button text="Apply" bcg="#FFFFFF" color="#DE3F21" font={CommonStyling.body2FontSize.split('r')[0]}></Button>
       </Menu>
     </MobileMenuContainer>
   ) : (
@@ -101,7 +102,7 @@ const MenuBar = () => {
             </MenuLinkWeb>
           </Link>
         ))}
-        <Button text="Apply" bcg="#DE3F21" color="#FFFFFF" font={16}></Button>
+        <Button text="Apply" bcg="#DE3F21" color="#FFFFFF" font={CommonStyling.body2FontSize.split('r')[0]}></Button>
       </div>
     </div>
   );
@@ -111,19 +112,18 @@ const MenuLink = styled.a`
   color: white;
   margin: 1rem 0;
   font-weight: 200;
-  font-size: ${(28 / 375) * 100}vw;
   cursor: pointer;
+  font-size: 1rem;
 
   @media only screen and (min-width: 768px) {
     color: #6b6156;
-    font-size: ${(15 / 1365) * 100}vw;
   }
 `;
 
 const MenuLinkWeb = styled.a`
   margin-left: 3.5vw;
   font-weight: 400;
-  font-size: 1.1vw;
+  font-size: ${CommonStyling.body2FontSize};
   color: ${({ number, checked }) =>
     number === checked ? "#c36448" : "#263238"};
   cursor: pointer;
@@ -132,7 +132,7 @@ const MenuLinkWeb = styled.a`
 const MobileMenuContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 7vw 6vw;
+  padding: 24px;
   text-align: center;
   background-color: #ffffff;
   border-bottom: 1px solid #CFD8DC;
@@ -184,7 +184,6 @@ const MobileMenuContainer = styled.div`
   .bm-menu {
     background-color: #DE3F21;
     padding: 2.5em 1.5em 0;
-    font-size: 1.15em;
   }
 
   /* Morph shape necessary with bubble or elastic */

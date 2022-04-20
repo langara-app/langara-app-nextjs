@@ -6,6 +6,7 @@ import logo from "../assets/logo.svg";
 
 import { HomeData } from "../lib/HomeData";
 import { MenuData } from "../lib/MenuData";
+import { CommonStyling } from "../lib/CommonStyling";
 
 const Footer = () => {
   const width = useWindowWidth();
@@ -100,10 +101,12 @@ const FlexContainer = styled.div`
 
 const Logo = styled.div`
   width: 30%;
+  height: 41.65px;
+  width: 87.9px;
 
   @media only screen and (min-width: 768px) {
-    width: ${(167 / 1360) * 100}vw;
-    height: ${(79 / 1365) * 100}vw;
+    height: 41.65px;
+    width: 87.9px;
     margin: 0;
   }
 `;
@@ -112,7 +115,7 @@ const CopyRight = styled.div`
   padding: 2vh 6vw;
   display: flex;
   flex-direction: column;
-  font-size: 0.95rem;
+  font-size: ${CommonStyling.body3FontSize};
   border-top: 1px solid #CFD8DC;
   width: 100%;
   color: #546E7A;
