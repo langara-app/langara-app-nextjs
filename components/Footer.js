@@ -53,7 +53,7 @@ const Footer = () => {
             }
           })}
           <a href="https://langara.ca/programs-and-courses/programs/web-and-mobile-app/admission-requirements.html" target="_blank">Apply</a>
-          <a href={HomeData.footer.contactLink}>
+          <a href={HomeData.footer.contactLink} target="_blank">
             Contact
           </a>
         </div>
