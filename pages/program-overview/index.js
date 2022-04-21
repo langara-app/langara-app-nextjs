@@ -269,7 +269,7 @@ const WmddContainer = styled.div`
   padding-right: 4.4vw;
   color: rgba(55, 71, 79, 1);
   text-align: left;
-  gap: 1rem;
+  gap: 2rem;
 
   @media only screen and (min-width: 768px) {
     /* For everything bigger than 768px */
