@@ -8,8 +8,6 @@ import useWindowWidth from "../Hooks/useWindowWidth";
 import rightArrow from "../../assets/rightArrow.svg"
 import leftArrow from "../../assets/leftArrow.svg"
 
-const alumnaNameToRemove = "Eduard Landa";
-
 function NextArrow(props) {
   const { className, style, onClick } = props;
   return (
@@ -54,9 +52,7 @@ const AlumniSlider = ({ data }) => {
     <AlumniSliderContainer>
       <Slider {...settings}>
         {data.map((alumna, index) =>
-          // alumna.acf.alumni_name === alumnaNameToRemove ? null : (
           <AlumniIntro {...alumna.acf} key={index} />
-          // )
         )}
       </Slider>
     </AlumniSliderContainer>
