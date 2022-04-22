@@ -239,6 +239,7 @@ background-color: #f3fbff;
 
 const GraduateImg = styled.img`
 width: 100%;
+object-fit: contain;
 
 @media screen and (min-width: 768px){
   max-width: 477px;

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Button from "../components/ReusableElements/Button";
 import useWindowWidth from "./Hooks/useWindowWidth";
-import btmImage from '../assets/img/wmdd/Homebtm.svg'
+import btmImage from '../assets/img/wmdd/Homebtm.png'
 
 import { HomeData } from "../lib/HomeData";
 import { CommonStyling } from "../lib/CommonStyling";

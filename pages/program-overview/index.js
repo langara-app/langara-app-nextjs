@@ -8,7 +8,7 @@ import { WmddData } from '../../lib/WmddData';
 import { InstructorData } from '../../lib/InstructorData';
 import InstructorSlider from '../../components/Instructor/InstructorSlider';
 
-import placeholder from '../../assets/img/wmdd/placeholder.svg'
+import placeholder from '../../assets/img/wmdd/placeholder.png'
 import Button from "../../components/ReusableElements/Button";
 
 import { CommonStyling } from "../../lib/CommonStyling";
