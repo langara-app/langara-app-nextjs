@@ -21,7 +21,7 @@ const AlumniIntro = (props) => {
 
   const handleImageClick = (event) => {
     profVidRef.current.style = "z-index: 5";
-    profVidRef.current.src = `${profVidRef.current.src}&autoplay=1&controls=1`;
+    profVidRef.current.src = `${profVidRef.current.src}`;
   }
 
   return (

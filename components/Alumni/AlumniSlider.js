@@ -54,9 +54,9 @@ const AlumniSlider = ({ data }) => {
     <AlumniSliderContainer>
       <Slider {...settings}>
         {data.map((alumna, index) =>
-          alumna.acf.alumni_name === alumnaNameToRemove ? null : (
-            <AlumniIntro {...alumna.acf} key={index} />
-          )
+          // alumna.acf.alumni_name === alumnaNameToRemove ? null : (
+          <AlumniIntro {...alumna.acf} key={index} />
+          // )
         )}
       </Slider>
     </AlumniSliderContainer>
