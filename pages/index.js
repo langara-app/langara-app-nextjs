@@ -54,6 +54,15 @@ const Home = ({ data, alumni, work, homeData }) => {
   const width = useWindowWidth();
   const [field, setField] = useState("developer");
 
+  const newAlumni = [];
+
+  newAlumni.push(alumni[2])
+  newAlumni.push(alumni[4])
+  newAlumni.push(alumni[3])
+  newAlumni.push(alumni[1])
+  newAlumni.push(alumni[0])
+
+
   const selectedFieldStyles = {
     color: "#DE3F21",
     borderBottom: "2px solid #DE3F21",
@@ -160,7 +169,7 @@ const Home = ({ data, alumni, work, homeData }) => {
           <h2>{HomeData.alumni.title}</h2>
           <p>{HomeData.alumni.description}</p>
         </article>
-        <AlumniSlider data={alumni} />
+        <AlumniSlider data={newAlumni} />
       </AlumniSection>
       <AdminBox />
     </div>
