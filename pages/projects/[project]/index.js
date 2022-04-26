@@ -127,9 +127,9 @@ const ProjectContents = styled.div`
   padding-top: 3.9vh;
 
   p {
-    font-size: 1.25rem;
+    font-size: ${CommonStyling.body1FontSize};
     font-weight: 400;
-    line-height: 1.875rem;
+    line-height: ${CommonStyling.body1LineHeight};
     margin: 0;
   }
 
