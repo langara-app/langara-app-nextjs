@@ -6,6 +6,7 @@ import useWindowWidth from "../../components/Hooks/useWindowWidth"
 import Options from "../../components/Faq/Options";
 import QAs from "../../components/Faq/QAs";
 import { Faq } from "../../lib/Faq"
+import { HomeData } from "../../lib/HomeData";
 
 export async function getStaticProps() {
   const cats = await fetch(
@@ -62,7 +63,7 @@ const FAQ = ({ faqLists, questionCat }) => {
     <FaqContainer>
       <Head>
         <title>
-          {Faq.title}
+          {HomeData.tabName.title}
         </title>
       </Head>
       <FAQHeader>

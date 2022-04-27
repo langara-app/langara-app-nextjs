@@ -6,6 +6,7 @@ import { CommonStyling } from "../../lib/CommonStyling";
 import { NewsAndEvents } from "../../lib/NewsAndEvents";
 
 import styled from "styled-components";
+import { HomeData } from "../../lib/HomeData";
 
 export async function getStaticProps() {
   const res = await fetch(
@@ -21,7 +22,7 @@ const NewsEvents = ({ news_events }) => {
   return (
     <PageContainer>
       <Head>
-        <title>{NewsAndEvents.title}</title>
+        <title>{HomeData.tabName.title}</title>
       </Head>
       <PageHeader>
         <h1>

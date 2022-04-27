@@ -6,6 +6,7 @@ import { ProjectData } from "../../lib/ProjectData";
 import ProjectIntro from "../../components/Project/ProjectIntro";
 
 import { CommonStyling } from '../../lib/CommonStyling';
+import { HomeData } from "../../lib/HomeData";
 
 const ProjectCategoryData = ProjectData.ProjectCategoryData;
 
@@ -35,7 +36,7 @@ const Projects = ({ projectLists }) => {
   return (
     <div>
       <Head>
-        <title>Project Index Page </title>
+        <title>{HomeData.tabName.title}</title>
       </Head>
 
       <Container>

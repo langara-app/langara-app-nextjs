@@ -12,6 +12,7 @@ import placeholder from '../../assets/img/wmdd/placeholder.png'
 import Button from "../../components/ReusableElements/Button";
 
 import { CommonStyling } from "../../lib/CommonStyling";
+import { HomeData } from "../../lib/HomeData";
 
 const ProgramOverview = () => {
   const width = useWindowWidth();
@@ -29,7 +30,7 @@ const ProgramOverview = () => {
   return (
     <PageContainer>
       <Head>
-        <title>{WmddData.header.title}</title>
+        <title>{HomeData.tabName.title}</title>
       </Head>
 
       <WmddContainer>

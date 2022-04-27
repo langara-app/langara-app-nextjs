@@ -72,7 +72,7 @@ const Home = ({ data, alumni, work, homeData }) => {
   return (
     <div>
       <Head>
-        <title>Home Page </title>
+        <title>{HomeData.tabName.title}</title>
       </Head>
       <HomeHeader
         type={"home"}
