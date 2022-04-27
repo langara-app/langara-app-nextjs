@@ -6,6 +6,7 @@ import { NewsAndEvents } from "../../lib/NewsAndEvents";
 import styled from "styled-components";
 
 import { CommonStyling } from '../../lib/CommonStyling'
+import { HomeData } from "../../lib/HomeData";
 
 export async function getStaticPaths() {
   const res = await fetch("https://api.langara-app.ca/wp-json/wp/v2/news-and-events")
@@ -32,7 +33,7 @@ const NewsEventsInvidivual = ({ event }) => {
   return (
     <SingleEventPageContainer>
       <Head>
-        <title>{`Event: ${event.acf.section1_title}`}</title>
+        <title>{HomeData.tabName.title}</title>
       </Head>
       <Link href={`/news-and-events/`}>
         <a>

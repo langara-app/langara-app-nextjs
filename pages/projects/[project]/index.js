@@ -2,10 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import useWindowWidth from "../../../components/Hooks/useWindowWidth";
+import Head from "next/head";
 
 import { ProjectData } from "../../../lib/ProjectData";
 
 import { CommonStyling } from '../../../lib/CommonStyling'
+import { HomeData } from "../../../lib/HomeData";
 
 const Project = ({ project }) => {
   const ProjectCategoryData = ProjectData.ProjectCategoryData;
@@ -16,7 +18,9 @@ const Project = ({ project }) => {
 
   return (
     <Container>
-
+      <Head>
+        <title>{HomeData.tabName.title}</title>
+      </Head>
       <div className="titleWrapper">
         {data.categories_slugs == 'native-app' ? (
           <p className="singleTitle">{ProjectCategoryData[0].title}</p>
