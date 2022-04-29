@@ -364,9 +364,11 @@ const InstructorSection = styled.section`
       font-size: ${CommonStyling.h2FontSize};
       line-height: ${CommonStyling.h2LineHeight};
       margin: 0;
-      margin-bottom: 2rem;
     }
     p{
+      margin: 0;
+      margin-top: 1vh;
+      margin-bottom: 2vh;
       font-size: ${CommonStyling.body1FontSize};
       line-height: ${CommonStyling.body1LineHeight};
     }
