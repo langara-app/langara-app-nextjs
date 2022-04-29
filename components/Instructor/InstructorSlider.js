@@ -9,6 +9,7 @@ import rightArrow from "../../assets/rightArrow.svg"
 import leftArrow from "../../assets/leftArrow.svg"
 
 function NextArrow(props) {
+  console.log(props)
   const { className, style, onClick } = props;
   return (
     <img
@@ -79,6 +80,10 @@ const InstructorSliderContainer = styled.div`
   .slick-prev, .slick-next{
     width: 40px;
     height: 40px;
+  }
+
+  .slick-disabled {
+    visibility: hidden;
   }
 `;
 

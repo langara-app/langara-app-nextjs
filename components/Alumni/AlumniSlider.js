@@ -82,6 +82,10 @@ const AlumniSliderContainer = styled.div`
     width: 40px;
     height: 40px;
   }
+
+  .slick-disabled {
+    visibility: hidden;
+  }
 `;
 
 export default AlumniSlider;
