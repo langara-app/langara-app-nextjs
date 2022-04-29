@@ -221,6 +221,7 @@ const KickStart = styled.div`
 
 const KickImg = styled.img`
   width: 100%;
+  object-fit: contain;
 
 @media screen and (min-width: 768px){
   max-width: 477px;
@@ -349,6 +350,7 @@ const WmddImg = styled.img`
   width: 100%;
   cursor: pointer;
   margin: 2rem 0;
+  object-fit: contain;
 `
 
 const InstructorSection = styled.section`
