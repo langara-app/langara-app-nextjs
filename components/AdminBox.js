@@ -23,6 +23,7 @@ const AdminBox = () => {
             bcg={"white"}
             section={"joinWMDD"}
             borderColor={"transparent"}
+            to={"overview"}
           />
         </ButtonWrapper>
       </AdminBoxDetails>

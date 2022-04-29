@@ -13,6 +13,7 @@ const Button = ({
   layout,
   section,
   to,
+  link,
   borderColor
 }) => {
   return (
@@ -26,22 +27,13 @@ const Button = ({
       section={section}
       borderColor={borderColor}
     >
-      {to === "wmdd" ? (
+
+      {to === "overview" ? (
         <Link href={"/program-overview"}>
-          <a> {text}</a>
-        </Link>
-      ) : to === "project" ? (
-        <Link href={"/projects"}>
-          <a> {text}</a>
-        </Link>
-      ) : to === "alumni" ? (
-        <Link href={"/alumni"}>
           <a> {text}</a>
         </Link>
       ) : (
-        <Link href={"/program-overview"}>
-          <a>{text}</a>
-        </Link>
+        <a href={link} target="_blank">{text ? text : "Apply"}</a>
       )}
     </BtnElement>
   );

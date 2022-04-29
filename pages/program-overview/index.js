@@ -145,6 +145,7 @@ const ProgramOverview = () => {
               bcg={"white"}
               section={"joinWMDD"}
               borderColor={"transparent"}
+              link={"https://langara.ca/admissions/apply-to-langara/index.html"}
             />
           </ButtonWrapper>
         </NextStepDetails>

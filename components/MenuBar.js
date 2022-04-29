@@ -71,7 +71,7 @@ const MenuBar = () => {
             </MenuLink>
           </Link>
         ))}
-        <Button text="Apply" bcg="#FFFFFF" color="#DE3F21" font={CommonStyling.body2FontSize.split('r')[0]}></Button>
+        <Button link={"https://langara.ca/admissions/apply-to-langara/index.html"} text="Apply" bcg="#FFFFFF" color="#DE3F21" font={CommonStyling.body2FontSize.split('r')[0]}></Button>
       </Menu>
     </MobileMenuContainer>
   ) : (
@@ -102,7 +102,7 @@ const MenuBar = () => {
             </MenuLinkWeb>
           </Link>
         ))}
-        <Button text="Apply" bcg="#DE3F21" color="#FFFFFF" font={CommonStyling.body2FontSize.split('r')[0]}></Button>
+        <Button link={"https://langara.ca/admissions/apply-to-langara/index.html"} text="Apply" bcg="#DE3F21" color="#FFFFFF" font={CommonStyling.body2FontSize.split('r')[0]}></Button>
       </div>
     </div>
   );
