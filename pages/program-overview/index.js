@@ -109,7 +109,7 @@ const ProgramOverview = () => {
                   <div>{WmddData.programDetails.courses[7]}</div>
                   <div>{WmddData.programDetails.courses[8]}</div>
                 </div>
-                : <div key={index}>{c}</div>))}
+                : index != 8 ? (<div key={index}>{c}</div>) : (null)))}
             </div>
             <div className="seeAll"><a target="_blank" href={WmddData.programDetails.seeAllLink}>{WmddData.programDetails.seeAll}</a></div>
           </div>
