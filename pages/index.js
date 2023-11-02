@@ -56,12 +56,11 @@ const Home = ({ data, alumni, work, homeData }) => {
 
   const newAlumni = [];
 
-  newAlumni.push(alumni[2])
-  newAlumni.push(alumni[4])
-  newAlumni.push(alumni[3])
-  newAlumni.push(alumni[1])
-  newAlumni.push(alumni[0])
-
+  newAlumni.push(alumni[2]);
+  newAlumni.push(alumni[4]);
+  newAlumni.push(alumni[3]);
+  newAlumni.push(alumni[1]);
+  newAlumni.push(alumni[0]);
 
   const selectedFieldStyles = {
     color: "#DE3F21",
@@ -84,26 +83,18 @@ const Home = ({ data, alumni, work, homeData }) => {
 
       <CareerPath>
         <div style={{ textAlign: "center" }}>
-          <CareerTitle>
-            {HomeData.careerPath.title}
-          </CareerTitle>
+          <CareerTitle>{HomeData.careerPath.title}</CareerTitle>
           <CareerDesc>{HomeData.careerPath.description}</CareerDesc>
         </div>
         <FieldSelector>
           <Field
-            style={
-              field === "developer" ? selectedFieldStyles : null
-            }
-            onClick={(e) => setField("developer")}
-          >
+            style={field === "developer" ? selectedFieldStyles : null}
+            onClick={(e) => setField("developer")}>
             Developer
           </Field>
           <Field
-            style={
-              field === "designer" ? selectedFieldStyles : null
-            }
-            onClick={(e) => setField("designer")}
-          >
+            style={field === "designer" ? selectedFieldStyles : null}
+            onClick={(e) => setField("designer")}>
             Designer
           </Field>
         </FieldSelector>
@@ -113,10 +104,7 @@ const Home = ({ data, alumni, work, homeData }) => {
               <Cards>
                 {HomeData.careerPath.developer.map((career, index) => (
                   <Card key={index}>
-                    <IllustrationImage
-                      src={career.image}
-                      alt="illustration"
-                    />
+                    <IllustrationImage src={career.image} alt="illustration" />
                     <b>{career.title}</b>
                     <p>{career.description}</p>
                   </Card>
@@ -130,10 +118,7 @@ const Home = ({ data, alumni, work, homeData }) => {
               <Cards>
                 {HomeData.careerPath.designer.map((career, index) => (
                   <Card key={index}>
-                    <IllustrationImage
-                      src={career.image}
-                      alt="illustration"
-                    />
+                    <IllustrationImage src={career.image} alt="illustration" />
                     <b>{career.title}</b>
                     <p>{career.description}</p>
                   </Card>
@@ -144,7 +129,6 @@ const Home = ({ data, alumni, work, homeData }) => {
         )}
       </CareerPath>
 
-
       <Gradute>
         <GraduateImg src={HomeData.graduate.image} />
 
@@ -154,12 +138,13 @@ const Home = ({ data, alumni, work, homeData }) => {
           <ButtonWrapper>
             <Button
               text={"See Student Work"}
-              font={CommonStyling.body2FontSize.split('r')[0]}
+              font={CommonStyling.body2FontSize.split("r")[0]}
               color={"white"}
-              bcg={"#DE3F21"}
+              bcg={"#F15A22"}
               section={"joinWMDD"}
               borderColor={"transparent"}
               to={"project"}
+              hover
             />
           </ButtonWrapper>
         </GradDescWrapper>
@@ -180,8 +165,8 @@ const AlumniSection = styled.section`
   background-color: #ffffff;
   padding: 3rem 5.4vw;
 
-  article{
-    h2{
+  article {
+    h2 {
       font-size: ${CommonStyling.h2FontSize};
       line-height: ${CommonStyling.h2LineHeight};
       margin: 0;
@@ -194,7 +179,7 @@ const AlumniSection = styled.section`
     }
   }
 
-  @media screen and (min-width: 768px){
+  @media screen and (min-width: 768px) {
     padding: 4rem 13.5vw 5rem 13.5vw;
   }
 `;
@@ -213,51 +198,50 @@ const CareerPath = styled.section`
 `;
 
 const CareerTitle = styled.h2`
-font-size: ${CommonStyling.h2FontSize};
-line-height: ${CommonStyling.h2LineHeight};
-color: rgba(38, 50, 56, 1);
-font-weight: 700;
+  font-size: ${CommonStyling.h2FontSize};
+  line-height: ${CommonStyling.h2LineHeight};
+  color: rgba(38, 50, 56, 1);
+  font-weight: 700;
 
-@media screen and (min-width: 768px) {
-  margin: 0;
-}
-`
+  @media screen and (min-width: 768px) {
+    margin: 0;
+  }
+`;
 const CareerDesc = styled.p`
-margin: 0;
-font-size: ${CommonStyling.body1FontSize};
-font-weight: 400;
-line-height: ${CommonStyling.body1LineHeight};
-color: rgba(38, 50, 56, 1);
-@media screen and (min-width: 768px) {
-  padding-top: 1.5vh;
-}
-
+  margin: 0;
+  font-size: ${CommonStyling.body1FontSize};
+  font-weight: 400;
+  line-height: ${CommonStyling.body1LineHeight};
+  color: rgba(38, 50, 56, 1);
+  @media screen and (min-width: 768px) {
+    padding-top: 1.5vh;
+  }
 `;
 
 const Gradute = styled.div`
-padding: 7.8vh 4.1vw 9.7vh;
-background-color: #f3fbff;
+  padding: 7.8vh 4.1vw 9.7vh;
+  background-color: #f3fbff;
 
-@media screen and (min-width: 768px){
-  display: flex;
-  flex-direction: row-reverse;
-  padding: 10vh 13.5vw 10.9vh 13.5vw;
-  gap: 2vw;
-}
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 10vh 13.5vw 10.9vh 13.5vw;
+    gap: 2vw;
+  }
 `;
 
 const GraduateImg = styled.img`
-width: 100%;
-object-fit: contain;
+  width: 100%;
+  object-fit: contain;
 
-@media screen and (min-width: 768px){
-  max-width: 477px;
-}
+  @media screen and (min-width: 768px) {
+    max-width: 477px;
+  }
 `;
 
 const GradDescWrapper = styled.div`
-padding-top: 4.8vh;
-`
+  padding-top: 4.8vh;
+`;
 
 const GradTitle = styled.h2`
   margin: 0;
@@ -265,7 +249,7 @@ const GradTitle = styled.h2`
   color: rgba(33, 38, 58, 1);
   line-height: ${CommonStyling.h2LineHeight};
   font-weight: 700;
-`
+`;
 
 const GradDesc = styled.p`
   font-size: ${CommonStyling.body1FontSize};
@@ -278,15 +262,15 @@ const GradDesc = styled.p`
   @media screen and (min-width: 768px) {
     padding-top: 1.5vh;
   }
-`
+`;
 
 const ButtonWrapper = styled.div`
   padding-top: 4.8vh;
 
-  @media screen and (min-width: 768px){
+  @media screen and (min-width: 768px) {
     padding-top: 3.6vh;
   }
-`
+`;
 
 const Cards = styled.div`
   max-width: 100%;
@@ -308,12 +292,12 @@ const Card = styled.div`
   padding: 2rem;
   border: 1px solid #b0bec5;
 
-  b{
+  b {
     font-size: 1rem;
     padding-top: 1rem;
   }
 
-  p{
+  p {
     line-height: 1.25rem;
     margin: 0;
     padding-top: 1.6vh;
@@ -329,23 +313,23 @@ const Card = styled.div`
 const IllustrationImage = styled.img``;
 
 const FieldSelector = styled.div`
-width: 100%;
-display: flex;
-flex-direction: row;
-justify-content: space-between;
-padding: 4.9vh 0vw;
-font-size: 1.25rem;
-line-height: 1.875rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 4.9vh 0vw;
+  font-size: 1.25rem;
+  line-height: 1.875rem;
 
-@media screen and (min-width: 768px) {
-  padding: 3vh 10vw;
-  justify-content: space-around;
-}
+  @media screen and (min-width: 768px) {
+    padding: 3vh 10vw;
+    justify-content: space-around;
+  }
 `;
 
 const Field = styled.span`
-cursor: pointer;
-padding-bottom: 8px;
+  cursor: pointer;
+  padding-bottom: 8px;
 `;
 
 export default Home;

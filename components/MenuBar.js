@@ -3,7 +3,7 @@ import Link from "next/link";
 import { slide as Menu } from "react-burger-menu";
 import styles from "../styles/MenuBar.module.css";
 import { MenuData } from "../lib/MenuData";
-import Button from "../components/ReusableElements/Button"
+import Button from "../components/ReusableElements/Button";
 
 import logo from "../assets/logo.svg";
 import logowhite from "../assets/logo-white.svg";
@@ -51,8 +51,7 @@ const MenuBar = () => {
         onOpen={openMenu}
         onClose={openMenu}
         customBurgerIcon={<img src={hamburger} />}
-        width={"100%"}
-      >
+        width={"100%"}>
         <div>
           <Link href="/">
             <a>
@@ -71,7 +70,12 @@ const MenuBar = () => {
             </MenuLink>
           </Link>
         ))}
-        <Button link={"https://langara.ca/admissions/apply-to-langara/index.html"} text="Apply" bcg="#FFFFFF" color="#DE3F21" font={CommonStyling.body2FontSize.split('r')[0]}></Button>
+        <Button
+          link={"https://langara.ca/admissions/apply-to-langara/index.html"}
+          text="Apply"
+          bcg="#FFFFFF"
+          color="#F15A22"
+          font={CommonStyling.body2FontSize.split("r")[0]}></Button>
       </Menu>
     </MobileMenuContainer>
   ) : (
@@ -96,13 +100,18 @@ const MenuBar = () => {
                 setCat(e.target);
               }}
               number={index + 1}
-              checked={checkedIndex}
-            >
+              checked={checkedIndex}>
               {menu.title}
             </MenuLinkWeb>
           </Link>
         ))}
-        <Button link={"https://langara.ca/admissions/apply-to-langara/index.html"} text="Apply" bcg="#DE3F21" color="#FFFFFF" font={CommonStyling.body2FontSize.split('r')[0]}></Button>
+        <Button
+          link={"https://langara.ca/admissions/apply-to-langara/index.html"}
+          text="Apply"
+          bcg="#F15A22"
+          color="#FFFFFF"
+          hover
+          font={CommonStyling.body2FontSize.split("r")[0]}></Button>
       </div>
     </div>
   );
@@ -135,7 +144,7 @@ const MobileMenuContainer = styled.div`
   padding: 24px;
   text-align: center;
   background-color: #ffffff;
-  border-bottom: 1px solid #CFD8DC;
+  border-bottom: 1px solid #cfd8dc;
 
   /* Position and sizing of burger button */
   .bm-burger-button {
@@ -182,7 +191,7 @@ const MobileMenuContainer = styled.div`
 
   /* General sidebar styles */
   .bm-menu {
-    background-color: #DE3F21;
+    background-color: #de3f21;
     padding: 2.5em 1.5em 0;
   }
 
