@@ -8,3 +8,18 @@ const nextConfig = withImages({
 });
 
 module.exports = nextConfig
+
+// Previous custom babel configs
+// {
+//   "presets": ["next/babel"],
+//   "plugins": [
+//     [
+//       "styled-components",
+//       {
+//         "ssr": true,
+//         "displayName": true,
+//         "preprocess": false
+//       }
+//     ]
+//   ]
+// }
