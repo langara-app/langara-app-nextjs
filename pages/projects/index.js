@@ -5,35 +5,35 @@ import styled from "styled-components";
 import { ProjectData } from "../../lib/ProjectData";
 import ProjectIntro from "../../components/Project/ProjectIntro";
 
-import { CommonStyling } from '../../lib/CommonStyling';
+import { CommonStyling } from "../../lib/CommonStyling";
 import { HomeData } from "../../lib/HomeData";
 
 const ProjectCategoryData = ProjectData.ProjectCategoryData;
 
 export async function getServerSideProps() {
   const res = await fetch(
-    "http://localhost/langara-wmdd/wp-json/wp/v2/projects?per_page=100"
+    `${process.env.NEXT_API}/wp/v2/projects?per_page=100`
     // "https://api.langara-app.ca/wp-json/wp/v2/projects?per_page=100"
   );
   const projects = await res.json();
-  let category1 = ProjectCategoryData[0].slug
-  let category2 = ProjectCategoryData[1].slug
-  let category3 = ProjectCategoryData[2].slug
+  let category1 = ProjectCategoryData[0].slug;
+  let category2 = ProjectCategoryData[1].slug;
+  let category3 = ProjectCategoryData[2].slug;
 
   return {
     props: {
       projectLists: projects.filter(
-        (project) => project.categories_slugs[0] === category1 || category2 || category3
+        (project) =>
+          project.categories_slugs[0] === category1 || category2 || category3
       ),
       category1: category1,
       category2: category2,
-      category3: category3
-    }
+      category3: category3,
+    },
   };
 }
 
 const Projects = ({ projectLists }) => {
-
   return (
     <div>
       <Head>
@@ -48,9 +48,13 @@ const Projects = ({ projectLists }) => {
         </div>
 
         <div className="projects">
-          {projectLists.filter(p => p.categories_slugs[0] === ProjectCategoryData[0].slug).map((project, index) => (
-            <ProjectIntro {...project} key={index} />
-          ))}
+          {projectLists
+            .filter(
+              (p) => p.categories_slugs[0] === ProjectCategoryData[0].slug
+            )
+            .map((project, index) => (
+              <ProjectIntro {...project} key={index} />
+            ))}
         </div>
 
         <div className="descWrapper">
@@ -60,9 +64,13 @@ const Projects = ({ projectLists }) => {
         </div>
 
         <div className="projects">
-          {projectLists.filter(p => p.categories_slugs[0] === ProjectCategoryData[1].slug).map((project, index) => (
-            <ProjectIntro {...project} key={index} />
-          ))}
+          {projectLists
+            .filter(
+              (p) => p.categories_slugs[0] === ProjectCategoryData[1].slug
+            )
+            .map((project, index) => (
+              <ProjectIntro {...project} key={index} />
+            ))}
         </div>
 
         <div className="descWrapper">
@@ -72,9 +80,13 @@ const Projects = ({ projectLists }) => {
         </div>
 
         <div className="projects">
-          {projectLists.filter(p => p.categories_slugs[0] === ProjectCategoryData[2].slug).map((project, index) => (
-            <ProjectIntro {...project} key={index} />
-          ))}
+          {projectLists
+            .filter(
+              (p) => p.categories_slugs[0] === ProjectCategoryData[2].slug
+            )
+            .map((project, index) => (
+              <ProjectIntro {...project} key={index} />
+            ))}
         </div>
       </Container>
     </div>
@@ -83,9 +95,9 @@ const Projects = ({ projectLists }) => {
 
 const Container = styled.div`
   padding: 0 4.1vw 9vh 4.1vw;
-  background-color: #F3FBFF;
+  background-color: #f3fbff;
 
-  .term4{
+  .term4 {
     padding-top: 9.5vh;
     font-family: ${CommonStyling.secondaryFontFamily};
     margin: 0;
@@ -93,26 +105,27 @@ const Container = styled.div`
     color: rgba(55, 71, 79, 1);
   }
 
-  .term3, .term2{
+  .term3,
+  .term2 {
     color: rgba(55, 71, 79, 1);
     padding-top: 10vh;
     font-family: ${CommonStyling.secondaryFontFamily};
     font-size: 0.875rem;
   }
 
-  .title{
+  .title {
     font-size: 2.375rem;
     margin: 0;
     padding-top: 1vh;
   }
 
-  @media only screen and (min-width: 768px){
-    .title:nth-child(2){
-    width: 50%;
-  }
+  @media only screen and (min-width: 768px) {
+    .title:nth-child(2) {
+      width: 50%;
+    }
   }
 
-  .desc{
+  .desc {
     line-height: ${CommonStyling.body1LineHeight};
     font-weight: 400;
     margin: 0;
@@ -121,46 +134,45 @@ const Container = styled.div`
     font-size: ${CommonStyling.body1FontSize};
   }
 
-  .projects{
-      display: flex;
-      flex-direction: column;
-      gap: 0.97rem;
-    }
+  .projects {
+    display: flex;
+    flex-direction: column;
+    gap: 0.97rem;
+  }
 
-  @media only screen and (min-width: 768px){
+  @media only screen and (min-width: 768px) {
     padding: 0 13.3vw 9.8vh 13.4vw;
 
-    .term4{
-    padding-top: 9.3vh;
-    font-family: ${CommonStyling.secondaryFontFamily};
-    margin: 0;
-    font-size: 0.875rem;
+    .term4 {
+      padding-top: 9.3vh;
+      font-family: ${CommonStyling.secondaryFontFamily};
+      margin: 0;
+      font-size: 0.875rem;
     }
 
-    .term3, .term2{
+    .term3,
+    .term2 {
       margin: 0;
       padding-top: 10vh;
     }
 
-    .desc{
+    .desc {
       width: 50%;
       padding-top: 2vh;
       padding-bottom: 5.5vh;
     }
 
-    .projects{
+    .projects {
       flex-direction: row;
       flex-wrap: wrap;
-      
 
-    @media only screen and (min-width: 768px) {
+      @media only screen and (min-width: 768px) {
         display: grid;
-        grid-template-areas: '1fr 1fr 1fr';
+        grid-template-areas: "1fr 1fr 1fr";
         gap: 24px;
       }
     }
   }
-
-`
+`;
 
 export default Projects;

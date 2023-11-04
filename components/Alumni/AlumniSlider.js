@@ -52,17 +52,7 @@ const AlumniSlider = ({ data }) => {
     <AlumniSliderContainer>
       <Slider {...settings}>
         {data.map((alumna, index) => {
-          return (
-            <>
-              <AlumniIntro {...alumna.acf} key={index} />
-              <DescriptionBlock>
-                <div>{alumna.acf.alumni_name}</div>
-                <div>
-                  {alumna.acf.job_position} at {alumna.acf.company}
-                </div>
-              </DescriptionBlock>
-            </>
-          );
+          return <AlumniIntro {...alumna.acf} key={index} />;
         })}
       </Slider>
     </AlumniSliderContainer>
@@ -72,12 +62,31 @@ const AlumniSlider = ({ data }) => {
 const AlumniSliderContainer = styled.div`
   background-color: white;
   margin: 0 2rem;
-
   .slick-track {
     padding: 10px 0;
-    display: flex;
+    display: flex !important;
     flex-direction: row;
     gap: 1.25rem;
+  }
+
+  .slick-slider {
+    height: 100%;
+  }
+
+  .slick-slide {
+    height: inherit !important;
+  }
+
+  .slick-slide + div {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .slick-current {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
   }
 
   .slick-prev {

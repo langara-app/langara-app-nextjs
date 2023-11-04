@@ -10,7 +10,7 @@ import { HomeData } from "../../lib/HomeData";
 
 export async function getStaticProps() {
   const res = await fetch(
-    "http://localhost/langara-wmdd/wp-json/wp/v2/news-and-events"
+    `${process.env.NEXT_API}/wp/v2/news-and-events`
     // "https://api.langara-app.ca/wp-json/wp/v2/news-and-events"
   );
 
@@ -26,12 +26,8 @@ const NewsEvents = ({ news_events }) => {
         <title>{HomeData.tabName.title}</title>
       </Head>
       <PageHeader>
-        <h1>
-          {NewsAndEvents.title}
-        </h1>
-        <p>
-          {NewsAndEvents.description}
-        </p>
+        <h1>{NewsAndEvents.title}</h1>
+        <p>{NewsAndEvents.description}</p>
       </PageHeader>
       <Posts>
         {news_events.map((news) => (
@@ -46,9 +42,7 @@ const NewsEvents = ({ news_events }) => {
             </Link>
             <PostDetails>
               <h2 className="title">{news.title.rendered}</h2>
-              <p className="excerpt">
-                {news.acf.excerpt}
-              </p>
+              <p className="excerpt">{news.acf.excerpt}</p>
               <span className="date">
                 {new Date(news.date).toLocaleDateString(undefined, {
                   year: "numeric",
@@ -77,7 +71,7 @@ const PageContainer = styled.div`
 const PageHeader = styled.div`
   text-align: center;
   padding-bottom: 5rem;
-  h1{
+  h1 {
     margin: 0;
     font-weight: 700;
     font-size: 56px;
@@ -86,10 +80,10 @@ const PageHeader = styled.div`
     padding-bottom: 2vh;
   }
 
-  p{
+  p {
     margin: 0;
     font-size: ${CommonStyling.body1FontSize};
-  line-height: 30px;
+    line-height: 30px;
   }
 `;
 
@@ -100,23 +94,23 @@ const Posts = styled.div`
 
   @media only screen and (min-width: 768px) {
     display: grid;
-    grid-template-areas: '1fr 1fr';
+    grid-template-areas: "1fr 1fr";
   }
 `;
 
 const Post = styled.div`
   width: 100%;
-  background: #FFFFFF;
-  border: 1px solid #B0BEC5;
+  background: #ffffff;
+  border: 1px solid #b0bec5;
   box-sizing: border-box;
   border-radius: 4px;
   min-height: fit-content;
-  `;
+`;
 
 const PostDetails = styled.div`
   padding: 2rem;
 
-  .title{
+  .title {
     margin: 0;
     padding-bottom: 0.5rem;
     font-style: normal;
@@ -125,7 +119,7 @@ const PostDetails = styled.div`
     line-height: 30px;
   }
 
-  .excerpt{
+  .excerpt {
     margin: 0;
     padding-bottom: 1.5rem;
     font-style: normal;
@@ -134,14 +128,14 @@ const PostDetails = styled.div`
     line-height: 20px;
   }
 
-  .date{
+  .date {
     font-family: ${CommonStyling.secondaryFontFamily};
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 18px;
   }
-  `;
+`;
 
 const Image = styled.img`
   cursor: pointer;

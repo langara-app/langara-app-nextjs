@@ -49,19 +49,23 @@ const AlumniIntro = (props) => {
         </DepartmentBlock>
         <Comment>{comment}</Comment>
       </Top>
+      <DescriptionBlock>
+        <div>{alumni_name}</div>
+        <div>
+          {job_position} at {company}
+        </div>
+      </DescriptionBlock>
     </Card>
   );
 };
 
-const Top = styled.div``;
-
 const Card = styled.div`
+  height: 100% !important;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  min-height: 400px;
   justify-content: space-between;
 `;
+const Top = styled.div``;
 
 const Comment = styled.p`
   line-height: 1.5rem;
@@ -113,4 +117,20 @@ const DepartmentBlock = styled.div`
   font-size: 0.875rem;
 `;
 
+const DescriptionBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+
+  div:nth-child(1) {
+    font-weight: bold;
+    font-size: 1.25rem;
+  }
+
+  div:nth-child(2) {
+    font-size: 0.875rem;
+    color: #37474f;
+    line-height: 1.25rem;
+  }
+`;
 export default AlumniIntro;

@@ -31,19 +31,19 @@ export async function getStaticProps() {
   //   const data = getHomeData();
 
   const res = await fetch(
-    "http://localhost/langara-wmdd/wp-json/acf/v3/pages/356"
+   `${process.env.NEXT_API}/acf/v3/pages/356`
     // "https://api.langara-app.ca/wp-json/acf/v3/pages/356"
   );
   const data = await res.json();
 
   const alumniData = await fetch(
-    "http://localhost/langara-wmdd/wp-json/acf/v3/alumni"
+    `${process.env.NEXT_API}/acf/v3/alumni`
     // "https://api.langara-app.ca/wp-json/acf/v3/alumni"
   );
   const alumni = await alumniData.json();
   
   const workData = await fetch(
-    "http://localhost/langara-wmdd/wp-json/wp/v2/projects?per_page=5"
+    `${process.env.NEXT_API}/wp/v2/projects?per_page=5`
     // "https://api.langara-app.ca/wp-json/wp/v2/projects?per_page=5"
   );
   const work = await workData.json();
