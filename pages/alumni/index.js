@@ -13,7 +13,8 @@ export async function getStaticProps() {
   //   const data = getHomeData();
 
   const alumniData = await fetch(
-    "https://api.langara-app.ca/wp-json/acf/v3/alumni"
+    "http://localhost/langara-wmdd/wp-json/acf/v3/alumni"
+    // "https://api.langara-app.ca/wp-json/acf/v3/alumni"
   );
   const alumni = await alumniData.json();
 

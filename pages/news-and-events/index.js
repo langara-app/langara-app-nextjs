@@ -10,7 +10,8 @@ import { HomeData } from "../../lib/HomeData";
 
 export async function getStaticProps() {
   const res = await fetch(
-    "https://api.langara-app.ca/wp-json/wp/v2/news-and-events"
+    "http://localhost/langara-wmdd/wp-json/wp/v2/news-and-events"
+    // "https://api.langara-app.ca/wp-json/wp/v2/news-and-events"
   );
 
   const news_events = await res.json();

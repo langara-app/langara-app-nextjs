@@ -12,7 +12,8 @@ const ProjectCategoryData = ProjectData.ProjectCategoryData;
 
 export async function getServerSideProps() {
   const res = await fetch(
-    "https://api.langara-app.ca/wp-json/wp/v2/projects?per_page=100"
+    "http://localhost/langara-wmdd/wp-json/wp/v2/projects?per_page=100"
+    // "https://api.langara-app.ca/wp-json/wp/v2/projects?per_page=100"
   );
   const projects = await res.json();
   let category1 = ProjectCategoryData[0].slug

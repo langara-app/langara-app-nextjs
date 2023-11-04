@@ -5,8 +5,8 @@ import Slider from "react-slick";
 import AlumniIntro from "./AlumniIntro";
 import useWindowWidth from "../Hooks/useWindowWidth";
 
-import rightArrow from "../../assets/rightArrow.svg"
-import leftArrow from "../../assets/leftArrow.svg"
+import rightArrow from "../../assets/rightArrow.svg";
+import leftArrow from "../../assets/leftArrow.svg";
 
 function NextArrow(props) {
   const { className, style, onClick } = props;
@@ -45,15 +45,25 @@ const AlumniSlider = ({ data }) => {
     arrows: true,
     autoplay: false,
     nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />
+    prevArrow: <PrevArrow />,
   };
 
   return (
     <AlumniSliderContainer>
       <Slider {...settings}>
-        {data.map((alumna, index) =>
-          <AlumniIntro {...alumna.acf} key={index} />
-        )}
+        {data.map((alumna, index) => {
+          return (
+            <>
+              <AlumniIntro {...alumna.acf} key={index} />
+              <DescriptionBlock>
+                <div>{alumna.acf.alumni_name}</div>
+                <div>
+                  {alumna.acf.job_position} at {alumna.acf.company}
+                </div>
+              </DescriptionBlock>
+            </>
+          );
+        })}
       </Slider>
     </AlumniSliderContainer>
   );
@@ -70,21 +80,39 @@ const AlumniSliderContainer = styled.div`
     gap: 1.25rem;
   }
 
-  .slick-prev{
+  .slick-prev {
     left: -50px;
   }
 
-  .slick-next{
+  .slick-next {
     right: -50px;
   }
 
-  .slick-prev, .slick-next{
+  .slick-prev,
+  .slick-next {
     width: 40px;
     height: 40px;
   }
 
   .slick-disabled {
     visibility: hidden;
+  }
+`;
+
+const DescriptionBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+
+  div:nth-child(1) {
+    font-weight: bold;
+    font-size: 1.25rem;
+  }
+
+  div:nth-child(2) {
+    font-size: 0.875rem;
+    color: #37474f;
+    line-height: 1.25rem;
   }
 `;
 

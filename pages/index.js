@@ -31,17 +31,20 @@ export async function getStaticProps() {
   //   const data = getHomeData();
 
   const res = await fetch(
-    "https://api.langara-app.ca/wp-json/acf/v3/pages/356"
+    "http://localhost/langara-wmdd/wp-json/acf/v3/pages/356"
+    // "https://api.langara-app.ca/wp-json/acf/v3/pages/356"
   );
   const data = await res.json();
 
   const alumniData = await fetch(
-    "https://api.langara-app.ca/wp-json/acf/v3/alumni"
+    "http://localhost/langara-wmdd/wp-json/acf/v3/alumni"
+    // "https://api.langara-app.ca/wp-json/acf/v3/alumni"
   );
   const alumni = await alumniData.json();
-
+  
   const workData = await fetch(
-    "https://api.langara-app.ca/wp-json/wp/v2/projects?per_page=5"
+    "http://localhost/langara-wmdd/wp-json/wp/v2/projects?per_page=5"
+    // "https://api.langara-app.ca/wp-json/wp/v2/projects?per_page=5"
   );
   const work = await workData.json();
 
@@ -89,12 +92,14 @@ const Home = ({ data, alumni, work, homeData }) => {
         <FieldSelector>
           <Field
             style={field === "developer" ? selectedFieldStyles : null}
-            onClick={(e) => setField("developer")}>
+            onClick={(e) => setField("developer")}
+          >
             Developer
           </Field>
           <Field
             style={field === "designer" ? selectedFieldStyles : null}
-            onClick={(e) => setField("designer")}>
+            onClick={(e) => setField("designer")}
+          >
             Designer
           </Field>
         </FieldSelector>

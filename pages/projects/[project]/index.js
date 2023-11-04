@@ -146,7 +146,8 @@ export default Project;
 
 export async function getStaticPaths() {
   const res = await fetch(
-    "https://api.langara-app.ca/wp-json/wp/v2/projects?per_page=100"
+    "http://localhost/langara-wmdd/wp-json/wp/v2/projects?per_page=100"
+    // "https://api.langara-app.ca/wp-json/wp/v2/projects?per_page=100"
   );
   const projects = await res.json();
 
@@ -162,7 +163,8 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const slug = params.project;
   const res = await fetch(
-    "https://api.langara-app.ca/wp-json/wp/v2/projects?per_page=100"
+    "http://localhost/langara-wmdd/wp-json/wp/v2/projects?per_page=100"
+    // "https://api.langara-app.ca/wp-json/wp/v2/projects?per_page=100"
   );
   const projects = await res.json();
 
