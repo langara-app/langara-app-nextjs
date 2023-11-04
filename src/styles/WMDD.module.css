@@ -1,0 +1,37 @@
+.wmdd_body {
+    text-align: center;
+    font-size: 13px;
+    font-weight: 200;
+    padding-top: 5%;
+    margin: 0 0;
+}
+.iframe {
+    width: 100vw;
+    height: 60vw;
+}
+.wmdd_image {
+    display: none;
+}
+
+@media only screen and (min-width: 768px)  {
+    .iframe {
+        width: 50vw;
+        height: 30vw;
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+    }
+    .wmdd_full_intro {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .wmdd_image {
+        width: 50vw;
+        display: inline;
+    } 
+    .wmdd_intro {
+        height: 50vh
+    }
+    .wmdd_body {
+        padding-top: 0;
+    }
+}
