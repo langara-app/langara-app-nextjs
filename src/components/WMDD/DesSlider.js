@@ -1,69 +1,66 @@
 import React from "react";
 import styled from "styled-components";
 import Slider from "react-slick";
-import { WmddData }from '../../lib/WmddData';
+import { WmddData } from "../../lib/WmddData";
 
 const DesSlider = () => {
-    const settings = {
-      dots: true,
-      infinite: false,
-      speed: 2000,
-      slidesToShow: 3,
-      slidesToScroll: 3,
-      arrows: false,
-      responsive: [
-        {
-          breakpoint: 1016,
-          settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3,
-            infinite: true,
-            dots: true
-        }
+  const settings = {
+    dots: true,
+    infinite: false,
+    speed: 2000,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    arrows: false,
+    responsive: [
+      {
+        breakpoint: 1016,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
         },
-        {
-          breakpoint: 1015,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            initialSlide: 1
-        }
       },
-    ]
-};
+      {
+        breakpoint: 1015,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1,
+        },
+      },
+    ],
+  };
 
-    const designerInfo = WmddData.designer_details;
-    const designerDetails = designerInfo.map(detail => 
-      <ContentContainer>
+  const designerInfo = WmddData.designer_details;
+  const designerDetails = designerInfo.map((detail, idx) => (
+    <>
+      <ContentContainer key={idx}>
         <Container>
-          <Number src={detail.number} width={40} height={90}/>
+          <Number src={detail.number} width={40} height={90} />
         </Container>
         <Subtitle>{detail.title}</Subtitle>
         <Body>{detail.description}</Body>
         <Arrow src={detail.arrow} />
-    </ContentContainer>
-    );
+      </ContentContainer>
+    </>
+  ));
 
-    return (
-      <DesSliderContainer>
-        <Title>Summary Of Designer Stream</Title>
-        <Slider {...settings}>
-          <SliderContainer>
-            {designerDetails[0]}
-          </SliderContainer>
-          <SliderContainer>
-            {designerDetails[1]}
-          </SliderContainer>
-          <SliderContainer>
-            {designerDetails[2]}
-          </SliderContainer>
-        </Slider>
-      </DesSliderContainer>
-)};
+  return (
+    <DesSliderContainer>
+      <Title>Summary Of Designer Stream</Title>
+      <Slider {...settings}>
+        <SliderContainer>{designerDetails[0]}</SliderContainer>
+        <SliderContainer>{designerDetails[1]}</SliderContainer>
+        <SliderContainer>{designerDetails[2]}</SliderContainer>
+      </Slider>
+    </DesSliderContainer>
+  );
+};
 
 const Container = styled.div`
   height: 30px;
-  background-color: #EFFDFB;
+  background-color: #effdfb;
 `;
 const Number = styled.img`
   position: absolute;
@@ -98,7 +95,7 @@ const Title = styled.h1`
   }
 `;
 const Subtitle = styled.h2`
-  color: #C36448;
+  color: #c36448;
   padding-top: 20px;
   font-size: 24px;
   padding: 0 60px;
@@ -120,15 +117,14 @@ const DesSliderContainer = styled.div`
     font-size: 11px !important;
   }
   .slick-dots li.slick-active button:before {
-    color: #675D51 !important;
-
+    color: #675d51 !important;
   }
   .slick-slide div {
     outline: none;
   }
 `;
 const ContentContainer = styled.div`
-  background-color: #FFF2A8;
+  background-color: #fff2a8;
   width: 308px;
   height: 428px;
   margin-left: auto;
@@ -139,7 +135,7 @@ const ContentContainer = styled.div`
     height: 300px;
   }
   @media only screen and (min-width: 1015px) {
-    width: 308px; 
+    width: 308px;
     height: 428px;
   }
 `;
