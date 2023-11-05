@@ -1,118 +1,344 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
+// packages imports
+import Head from "next/head";
+import { useState } from "react";
+import styled from "styled-components";
+import { Slide } from "react-awesome-reveal";
 
-const inter = Inter({ subsets: ['latin'] })
+// constants and styling
+import styles from "../styles/home/home.module.scss";
+import { HomeData } from "../lib/HomeData";
+import { CommonStyling } from "../lib/CommonStyling";
 
-export default function Home() {
-  return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/pages/index.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+// components imports
+import HomeHeader from "../components/Header/HomeHeader";
+import AlumniSlider from "../components/Alumni/AlumniSlider";
+import AdminBox from "../components/AdminBox";
+import Button from "../components/ReusableElements/Button";
+import useWindowWidth from "../components/Hooks/useWindowWidth";
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+export async function getStaticProps() {
+  // Instead of the file system,
+  // fetch post data from an external API endpoint
+  // const data = getHomeData();
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+  const res = await fetch(
+    "https://api.langara-app.ca/wp-json/acf/v3/pages/356"
+  );
+  const data = await res.json();
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
+  const alumniData = await fetch(
+    "https://api.langara-app.ca/wp-json/acf/v3/alumni"
+  );
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+  const alumni = await alumniData.json();
+
+  const workData = await fetch(
+    "https://api.langara-app.ca/wp-json/wp/v2/projects?per_page=5"
+  );
+  const work = await workData.json();
+
+  const homeData = await HomeData;
+
+  return { props: { data, alumni, work, homeData } };
 }
+
+const Home = ({ data, alumni, work, homeData }) => {
+  const width = useWindowWidth();
+  const [field, setField] = useState("developer");
+
+  const newAlumni = [];
+
+  newAlumni.push(alumni[2])
+  newAlumni.push(alumni[4])
+  newAlumni.push(alumni[3])
+  newAlumni.push(alumni[1])
+  newAlumni.push(alumni[0])
+
+
+  const selectedFieldStyles = {
+    color: "#DE3F21",
+    borderBottom: "2px solid #DE3F21",
+    fontWeight: "bold",
+  };
+
+  return (
+    <div>
+      <Head>
+        <title>{HomeData.tabName.title}</title>
+      </Head>
+      <HomeHeader
+        type={"home"}
+        title={homeData.header.title}
+        desc={homeData.header}
+        btnText={"Get to know WMDD"}
+        page={"home"}
+      />
+
+      <CareerPath>
+        <div style={{ textAlign: "center" }}>
+          <CareerTitle>
+            {HomeData.careerPath.title}
+          </CareerTitle>
+          <CareerDesc>{HomeData.careerPath.description}</CareerDesc>
+        </div>
+        <FieldSelector>
+          <Field
+            style={
+              field === "developer" ? selectedFieldStyles : null
+            }
+            onClick={(e) => setField("developer")}
+          >
+            Developer
+          </Field>
+          <Field
+            style={
+              field === "designer" ? selectedFieldStyles : null
+            }
+            onClick={(e) => setField("designer")}
+          >
+            Designer
+          </Field>
+        </FieldSelector>
+        {field === "developer" ? (
+          <div style={{ width: "100%" }}>
+            <Slide ssrFadeout left>
+              <Cards>
+                {HomeData.careerPath.developer.map((career, index) => (
+                  <Card key={index}>
+                    <IllustrationImage
+                      src={career.image}
+                      alt="illustration"
+                    />
+                    <b>{career.title}</b>
+                    <p>{career.description}</p>
+                  </Card>
+                ))}
+              </Cards>
+            </Slide>
+          </div>
+        ) : (
+          <section style={{ width: "100%" }}>
+            <Slide ssrFadeout right>
+              <Cards>
+                {HomeData.careerPath.designer.map((career, index) => (
+                  <Card key={index}>
+                    <IllustrationImage
+                      src={career.image}
+                      alt="illustration"
+                    />
+                    <b>{career.title}</b>
+                    <p>{career.description}</p>
+                  </Card>
+                ))}
+              </Cards>
+            </Slide>
+          </section>
+        )}
+      </CareerPath>
+
+
+      <Gradute>
+        <GraduateImg src={HomeData.graduate.image} />
+
+        <GradDescWrapper>
+          <GradTitle>{HomeData.graduate.title}</GradTitle>
+          <GradDesc>{HomeData.graduate.desc}</GradDesc>
+          <ButtonWrapper>
+            <Button
+              text={"See Student Work"}
+              font={CommonStyling.body2FontSize.split('r')[0]}
+              color={"white"}
+              bcg={"#DE3F21"}
+              section={"joinWMDD"}
+              borderColor={"transparent"}
+              to={"project"}
+            />
+          </ButtonWrapper>
+        </GradDescWrapper>
+      </Gradute>
+      <AlumniSection>
+        <article style={{ textAlign: "center" }}>
+          <h2>{HomeData.alumni.title}</h2>
+          <p>{HomeData.alumni.description}</p>
+        </article>
+        <AlumniSlider data={newAlumni} />
+      </AlumniSection>
+      <AdminBox />
+    </div>
+  );
+};
+
+const AlumniSection = styled.section`
+  background-color: #ffffff;
+  padding: 3rem 5.4vw;
+
+  article{
+    h2{
+      font-size: ${CommonStyling.h2FontSize};
+      line-height: ${CommonStyling.h2LineHeight};
+      margin: 0;
+      margin-bottom: 1rem;
+    }
+    p {
+      font-size: ${CommonStyling.body1FontSize};
+      line-height: ${CommonStyling.body1LineHeight};
+      margin: 0 0 2rem 0;
+    }
+  }
+
+  @media screen and (min-width: 768px){
+    padding: 4rem 13.5vw 5rem 13.5vw;
+  }
+`;
+
+const CareerPath = styled.section`
+  padding: 2vh 5.4vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  background-color: #f3fbff;
+
+  @media screen and (min-width: 768px) {
+    padding: 2vh 13.5vw;
+  }
+`;
+
+const CareerTitle = styled.h2`
+font-size: ${CommonStyling.h2FontSize};
+line-height: ${CommonStyling.h2LineHeight};
+color: rgba(38, 50, 56, 1);
+font-weight: 700;
+
+@media screen and (min-width: 768px) {
+  margin: 0;
+}
+`
+const CareerDesc = styled.p`
+margin: 0;
+font-size: ${CommonStyling.body1FontSize};
+font-weight: 400;
+line-height: ${CommonStyling.body1LineHeight};
+color: rgba(38, 50, 56, 1);
+@media screen and (min-width: 768px) {
+  padding-top: 1.5vh;
+}
+
+`;
+
+const Gradute = styled.div`
+padding: 7.8vh 4.1vw 9.7vh;
+background-color: #f3fbff;
+
+@media screen and (min-width: 768px){
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 10vh 13.5vw 10.9vh 13.5vw;
+  gap: 2vw;
+}
+`;
+
+const GraduateImg = styled.img`
+width: 100%;
+object-fit: contain;
+
+@media screen and (min-width: 768px){
+  max-width: 477px;
+}
+`;
+
+const GradDescWrapper = styled.div`
+padding-top: 4.8vh;
+`
+
+const GradTitle = styled.h2`
+  margin: 0;
+  font-size: ${CommonStyling.h2FontSize};
+  color: rgba(33, 38, 58, 1);
+  line-height: ${CommonStyling.h2LineHeight};
+  font-weight: 700;
+`
+
+const GradDesc = styled.p`
+  font-size: ${CommonStyling.body1FontSize};
+  font-weight: 400;
+  line-height: ${CommonStyling.body1LineHeight};
+  color: rgba(33, 38, 58, 1);
+  margin: 0;
+  padding-top: 2vh;
+
+  @media screen and (min-width: 768px) {
+    padding-top: 1.5vh;
+  }
+`
+
+const ButtonWrapper = styled.div`
+  padding-top: 4.8vh;
+
+  @media screen and (min-width: 768px){
+    padding-top: 3.6vh;
+  }
+`
+
+const Cards = styled.div`
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  overflow: hidden;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
+`;
+
+const Card = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #ffffff;
+  padding: 2rem;
+  border: 1px solid #b0bec5;
+
+  b{
+    font-size: 1rem;
+    padding-top: 1rem;
+  }
+
+  p{
+    line-height: 1.25rem;
+    margin: 0;
+    padding-top: 1.6vh;
+    font-weight: 400;
+    font-size: 0.875rem;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 30vw;
+  }
+`;
+
+const IllustrationImage = styled.img``;
+
+const FieldSelector = styled.div`
+width: 100%;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+padding: 4.9vh 0vw;
+font-size: 1.25rem;
+line-height: 1.875rem;
+
+@media screen and (min-width: 768px) {
+  padding: 3vh 10vw;
+  justify-content: space-around;
+}
+`;
+
+const Field = styled.span`
+cursor: pointer;
+padding-bottom: 8px;
+`;
+
+export default Home;

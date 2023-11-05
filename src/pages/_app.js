@@ -26,6 +26,8 @@ function MyApp({ Component, pageProps }) {
       <MenuBar />
       {/* <Component {...pageProps} />
       <Footer /> */}
+      <Component {...pageProps} />
+      <Footer />
     </>
   );
 }
