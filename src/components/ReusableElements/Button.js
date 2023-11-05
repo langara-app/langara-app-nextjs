@@ -19,10 +19,10 @@ const Button = ({
   return (
     <BtnElement
       margin={margin}
-      font={font}
+      fontSize={font}
       size={size}
       color={color}
-      bcg={bcg}
+      data-bcg={bcg}
       layout={layout}
       section={section}
       borderColor={borderColor}
@@ -30,7 +30,7 @@ const Button = ({
 
       {to === "overview" ? (
         <Link href={"/program-overview"}>
-          <a> {text}</a>
+          {text}
         </Link>
       ) : (
         <a href={link} target="_blank">{text ? text : "Apply"}</a>
@@ -44,7 +44,7 @@ const BtnElement = styled.button`
   text-align: center;
   text-decoration: none;
   display: block;
-  font-size: ${({ font }) => font}rem;
+  font-size: ${({ fontSize }) => fontSize}rem;
   cursor: pointer;
   border-radius: 4px;
 
@@ -54,7 +54,7 @@ const BtnElement = styled.button`
   margin: ${({ margin }) => margin}rem auto;
   font-family: ${CommonStyling.primaryFontFamily};
   border: 2px solid ${({ borderColor }) => borderColor ? borderColor : ({ color }) => color};
-  background-color: ${({ bcg }) => bcg};
+  background-color: ${(all) => all["data-bcg"]};
   color: ${({ color }) => color};
 
   a {

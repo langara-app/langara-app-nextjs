@@ -3,7 +3,7 @@ import Link from "next/link";
 import { slide as Menu } from "react-burger-menu";
 import styles from "../styles/MenuBar.module.css";
 import { MenuData } from "../lib/MenuData";
-import Button from "../components/ReusableElements/Button"
+import Button from "../components/ReusableElements/Button";
 
 import logo from "../assets/logo.svg";
 import logowhite from "../assets/logo-white.svg";
@@ -35,13 +35,11 @@ const MenuBar = () => {
     <MobileMenuContainer>
       <div>
         <Link href="/">
-          <a>
-            <img
-              className={styles.langara_logo}
-              src={logo}
-              alt="Langara College Logo"
-            />
-          </a>
+          <img
+            className={styles.langara_logo}
+            src={logo}
+            alt="Langara College Logo"
+          />
         </Link>
       </div>
       <Menu
@@ -55,54 +53,62 @@ const MenuBar = () => {
       >
         <div>
           <Link href="/">
-            <a>
-              <img
-                className={styles.langara_logo_in_menu}
-                src={logowhite}
-                alt="Langara College Logo"
-              />
-            </a>
+            <img
+              className={styles.langara_logo_in_menu}
+              src={logowhite}
+              alt="Langara College Logo"
+            />
           </Link>
         </div>
         {MenuData.map((menu, index) => (
-          <Link href={menu.link} key={index}>
+          <Link href={menu.link} key={index} legacyBehavior>
             <MenuLink className="menu-item" onClick={openMenu}>
               {menu.title}
             </MenuLink>
           </Link>
         ))}
-        <Button link={"https://langara.ca/admissions/apply-to-langara/index.html"} text="Apply" bcg="#FFFFFF" color="#DE3F21" font={CommonStyling.body2FontSize.split('r')[0]}></Button>
+        <Button
+          link={"https://langara.ca/admissions/apply-to-langara/index.html"}
+          text="Apply"
+          bcg="#FFFFFF"
+          color="#DE3F21"
+          font={CommonStyling.body2FontSize.split("r")[0]}
+        ></Button>
       </Menu>
     </MobileMenuContainer>
   ) : (
     <div className={styles.container}>
       <div>
         <Link href="/">
-          <a>
-            <img
-              className={styles.langara_logo}
-              src={logo}
-              alt="Langara College Logo"
-            />
-          </a>
+          <img
+            className={styles.langara_logo}
+            src={logo}
+            alt="Langara College Logo"
+          />
         </Link>
       </div>
       <div className={styles.menues}>
         {MenuData.map((menu, index) => (
-          <Link href={menu.link} key={index}>
+          <Link href={menu.link} key={index} legacyBehavior>
             <MenuLinkWeb
               className={index + 1}
               onClick={(e) => {
                 setCat(e.target);
               }}
-              number={index + 1}
+              color={index + 1}
               checked={checkedIndex}
             >
               {menu.title}
             </MenuLinkWeb>
           </Link>
         ))}
-        <Button link={"https://langara.ca/admissions/apply-to-langara/index.html"} text="Apply" bcg="#DE3F21" color="#FFFFFF" font={CommonStyling.body2FontSize.split('r')[0]}></Button>
+        <Button
+          link={"https://langara.ca/admissions/apply-to-langara/index.html"}
+          text="Apply"
+          bcg="#DE3F21"
+          color="#FFFFFF"
+          font={CommonStyling.body2FontSize.split("r")[0]}
+        ></Button>
       </div>
     </div>
   );
@@ -124,8 +130,7 @@ const MenuLinkWeb = styled.a`
   margin-left: 3.5vw;
   font-weight: 400;
   font-size: ${CommonStyling.body2FontSize};
-  color: ${({ number, checked }) =>
-    number === checked ? "#c36448" : "#263238"};
+  color: ${({ color, checked }) => (color === checked ? "#c36448" : "#263238")};
   cursor: pointer;
 `;
 
@@ -135,7 +140,7 @@ const MobileMenuContainer = styled.div`
   padding: 24px;
   text-align: center;
   background-color: #ffffff;
-  border-bottom: 1px solid #CFD8DC;
+  border-bottom: 1px solid #cfd8dc;
 
   /* Position and sizing of burger button */
   .bm-burger-button {
@@ -182,7 +187,7 @@ const MobileMenuContainer = styled.div`
 
   /* General sidebar styles */
   .bm-menu {
-    background-color: #DE3F21;
+    background-color: #de3f21;
     padding: 2.5em 1.5em 0;
   }
 
