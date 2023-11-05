@@ -36,11 +36,9 @@ const NewsEventsInvidivual = ({ event }) => {
         <title>{HomeData.tabName.title}</title>
       </Head>
       <Link href={`/news-and-events/`}>
-        <a>
           <span className="events-title">
             {NewsAndEvents.singleEventPage.title}
           </span>
-        </a>
       </Link>
       <EventDetails>
         {event.acf.section1_title !== "" ? (

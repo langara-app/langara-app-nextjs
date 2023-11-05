@@ -36,12 +36,10 @@ const NewsEvents = ({ news_events }) => {
         {news_events.map((news) => (
           <Post key={news.id}>
             <Link href={`/news-and-events/${news.slug}`}>
-              <a>
                 <Image
                   src={news.acf.article_image}
                   alt={`${news.title.rendered} Banner`}
                 />
-              </a>
             </Link>
             <PostDetails>
               <h2 className="title">{news.title.rendered}</h2>
