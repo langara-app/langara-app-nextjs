@@ -35,19 +35,15 @@ const Project = ({ project }) => {
       <div className="actionContainer">
         {data.acf.project_proposal_file ? (
           <Link href={data.acf.project_proposal_file}>
-            <a>
               <img src={ProjectData.ProjectDetails.downloadProposalIcon} />
               {ProjectData.ProjectDetails.downloadProposal}
-            </a>
           </Link>
         ) : (null)}
 
         {data.acf.project_site_link ? (
           <Link href={data.acf.project_site_link}>
-            <a>
               <img src={ProjectData.ProjectDetails.seeLiveProjectIcon} />
               {ProjectData.ProjectDetails.seeLiveProject}
-            </a>
           </Link>
         ) : (null)}
 
