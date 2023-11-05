@@ -31,7 +31,7 @@ export async function getStaticProps() {
   //   const data = getHomeData();
 
   const res = await fetch(
-   `${process.env.NEXT_API}/acf/v3/pages/356`
+    `${process.env.NEXT_API}/acf/v3/pages/356`
     // "https://api.langara-app.ca/wp-json/acf/v3/pages/356"
   );
   const data = await res.json();
@@ -41,7 +41,7 @@ export async function getStaticProps() {
     // "https://api.langara-app.ca/wp-json/acf/v3/alumni"
   );
   const alumni = await alumniData.json();
-  
+
   const workData = await fetch(
     `${process.env.NEXT_API}/wp/v2/projects?per_page=5`
     // "https://api.langara-app.ca/wp-json/wp/v2/projects?per_page=5"
@@ -85,10 +85,10 @@ const Home = ({ data, alumni, work, homeData }) => {
       />
 
       <CareerPath>
-        <div style={{ textAlign: "center" }}>
+        <CareerTitleDesc>
           <CareerTitle>{HomeData.careerPath.title}</CareerTitle>
           <CareerDesc>{HomeData.careerPath.description}</CareerDesc>
-        </div>
+        </CareerTitleDesc>
         <FieldSelector>
           <Field
             style={field === "developer" ? selectedFieldStyles : null}
@@ -155,10 +155,10 @@ const Home = ({ data, alumni, work, homeData }) => {
         </GradDescWrapper>
       </Gradute>
       <AlumniSection>
-        <article style={{ textAlign: "center" }}>
+        <AlumniSectionArticle>
           <h2>{HomeData.alumni.title}</h2>
           <p>{HomeData.alumni.description}</p>
-        </article>
+        </AlumniSectionArticle>
         <AlumniSlider data={newAlumni} />
       </AlumniSection>
       <AdminBox />
@@ -189,6 +189,14 @@ const AlumniSection = styled.section`
   }
 `;
 
+const AlumniSectionArticle = styled.article`
+  text-align: center;
+
+  @media screen and (max-width: 768px) {
+    text-align: left;
+  }
+`;
+
 const CareerPath = styled.section`
   padding: 2vh 5.4vw;
   display: flex;
@@ -199,6 +207,14 @@ const CareerPath = styled.section`
 
   @media screen and (min-width: 768px) {
     padding: 2vh 13.5vw;
+  }
+`;
+
+const CareerTitleDesc = styled.div`
+  text-align: center;
+
+  @media screen and (max-width: 768px) {
+    text-align: left;
   }
 `;
 
