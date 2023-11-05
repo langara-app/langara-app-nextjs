@@ -10,11 +10,11 @@ import { HomeData } from "../../lib/HomeData";
 
 export async function getStaticProps() {
   const cats = await fetch(
-    "https://api.langara-app.ca/wp-json/wp/v2/categories"
+    `${process.env.BASE_URL}/wp-json/wp/v2/categories`
   ).then((result) => result.json());
 
   const faqs = await fetch(
-    "https://api.langara-app.ca/wp-json/wp/v2/faq?per_page=100"
+    `${process.env.BASE_URL}/wp-json/wp/v2/faq?per_page=100`
   ).then((result) => result.json());
 
   const faqLists = cats.map((cat) =>

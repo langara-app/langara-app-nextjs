@@ -9,7 +9,7 @@ import { CommonStyling } from '../../lib/CommonStyling'
 import { HomeData } from "../../lib/HomeData";
 
 export async function getStaticPaths() {
-  const res = await fetch("https://api.langara-app.ca/wp-json/wp/v2/news-and-events")
+  const res = await fetch(`${process.env.BASE_URL}/wp-json/wp/v2/news-and-events`)
   const news_events = await res.json();
 
   return {
@@ -19,7 +19,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const res = await fetch("https://api.langara-app.ca/wp-json/wp/v2/news-and-events")
+  const res = await fetch(`${process.env.BASE_URL}/wp-json/wp/v2/news-and-events`)
   const news_events = await res.json();
 
   return {

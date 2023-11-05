@@ -23,18 +23,18 @@ export async function getStaticProps() {
   // const data = getHomeData();
 
   const res = await fetch(
-    "https://api.langara-app.ca/wp-json/acf/v3/pages/356"
+    `${process.env.BASE_URL}/wp-json/acf/v3/pages/356`
   );
   const data = await res.json();
 
   const alumniData = await fetch(
-    "https://api.langara-app.ca/wp-json/acf/v3/alumni"
+    `${process.env.BASE_URL}/wp-json/acf/v3/alumni`
   );
 
   const alumni = await alumniData.json();
 
   const workData = await fetch(
-    "https://api.langara-app.ca/wp-json/wp/v2/projects?per_page=5"
+    `${process.env.BASE_URL}/wp-json/wp/v2/projects?per_page=5`
   );
   const work = await workData.json();
 
