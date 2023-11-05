@@ -40,6 +40,7 @@ export async function getStaticProps() {
       faqLists: filteredFaqLists.reverse(),
       questionCat: filteredCat.reverse(),
     },
+    revalidate: 60 * 60 * 24 * 10,
   };
 }
 

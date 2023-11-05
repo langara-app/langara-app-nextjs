@@ -37,7 +37,10 @@ export async function getStaticProps() {
 
   const homeData = await HomeData;
 
-  return { props: { data, alumni, work, homeData } };
+  return {
+    props: { data, alumni, work, homeData },
+    revalidate: 60 * 60 * 24 * 10,
+  };
 }
 
 const Home = ({ data, alumni, work, homeData }) => {

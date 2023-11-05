@@ -160,6 +160,6 @@ export async function getStaticProps({ params }) {
     props: {
       project: projects.filter((project) => project.slug === slug),
     },
-    revalidate: 1,
+    revalidate: 60 * 60 * 24 * 10,
   };
 }

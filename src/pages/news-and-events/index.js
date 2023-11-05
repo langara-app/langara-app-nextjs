@@ -15,7 +15,7 @@ export async function getStaticProps() {
 
   const news_events = await res.json();
 
-  return { props: { news_events } };
+  return { props: { news_events }, revalidate: 60 * 60 * 24 * 10, };
 }
 
 const NewsEvents = ({ news_events }) => {
