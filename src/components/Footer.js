@@ -19,8 +19,8 @@ const Footer = () => {
         </Logo>
         {MenuData.map((menu, index) => {
           if (index != 0) {
-            return (<Link href={menu.link} key={index}>
-              <a className="menu-item">{menu.title}</a>
+            return (<Link href={menu.link} key={index} className="menu-item">
+              {menu.title}
             </Link>)
           }
         })}
@@ -47,8 +47,8 @@ const Footer = () => {
         <div style={{ display: "flex", gap: "1.5rem" }}>
           {MenuData.map((menu, index) => {
             if (index != 0) {
-              return (<Link href={menu.link} key={index}>
-                <a className="menu-item">{menu.title}</a>
+              return (<Link href={menu.link} key={index} className="menu-item">
+                {menu.title}
               </Link>)
             }
           })}
