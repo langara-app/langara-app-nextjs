@@ -6,6 +6,10 @@ const nextConfig = withImages({
     // handle image imports in variables
     disableStaticImages: true,
   },
+  compiler: {
+    // Enables the styled-components SWC transform
+    styledComponents: true
+  },
   reactStrictMode: true,
 });
 
