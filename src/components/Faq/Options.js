@@ -42,6 +42,7 @@ const Options = ({ data, onClick }) => {
           className={index + 1}
           data-number={index + 1}
           checked={checkedIndex}
+          data-haidren={q.categorySlug}
         >
           {q.categoryName}
         </CategoryName>
@@ -58,7 +59,7 @@ const CategoryName = styled.p`
   font-weight: ${(allProps) =>
     allProps["data-number"] === allProps["checked"] ? 600 : 200};
   border-bottom: ${(allProps) =>
-    allProps["number"] === allProps["checked"] ? "3px solid #DE3F21" : "none"};
+    allProps["data-number"] === allProps["checked"] ? "3px solid #DE3F21" : "none"};
   padding: 0.8rem;
   cursor: pointer;
   margin-bottom: 2.8vh;
