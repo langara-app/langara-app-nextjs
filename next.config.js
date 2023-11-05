@@ -3,6 +3,8 @@ const withImages = require("next-images");
 const nextConfig = withImages({
   images: {
     domains: ["api.langara-app.ca"],
+    // handle image imports in variables
+    disableStaticImages: true,
   },
   reactStrictMode: true,
 });
