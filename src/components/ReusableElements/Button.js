@@ -24,8 +24,8 @@ const Button = ({
       color={color}
       data-bcg={bcg}
       layout={layout}
-      section={section}
-      borderColor={borderColor}
+      data-section={section}
+      data-bordercolor={borderColor}
     >
 
       {to === "overview" ? (
@@ -53,8 +53,8 @@ const BtnElement = styled.button`
 
   margin: ${({ margin }) => margin}rem auto;
   font-family: ${CommonStyling.primaryFontFamily};
-  border: 2px solid ${({ borderColor }) => borderColor ? borderColor : ({ color }) => color};
-  background-color: ${(all) => all["data-bcg"]};
+  border: 2px solid ${(allProps) => allProps["data-bordercolor"] ? allProps["data-bordercolor"] : ({ color }) => color};
+  background-color: ${(allProps) => allProps["data-bcg"]};
   color: ${({ color }) => color};
 
   a {
@@ -64,25 +64,25 @@ const BtnElement = styled.button`
 
   /* @media only screen and (min-width: 768px) {
     margin: ${({ layout }) => (layout === "desktop" ? 0 : (30 / 1366) * 100)}vw
-      ${({ section }) => (section === "joinWMDD" ? (500 / 1366) * 100 : 0)}vw;
-    margin-top: ${({ section }) =>
-    section === "project" || "alumni" ? (20 / 1366) * 100 : 0}vw;
+      ${(allProps) => (allProps['data-section'] === "joinWMDD" ? (500 / 1366) * 100 : 0)}vw;
+    margin-top: ${(allProps) =>
+    allProps['data-section'] === "project" || "alumni" ? (20 / 1366) * 100 : 0}vw;
 
-    margin-right: ${({ layout, section }) =>
-    layout === "desktop"
+    margin-right: ${(allProps) =>
+    allProps['layout'] === "desktop"
       ? (315 / 1366) * 100
-      : section === "joinWMDD"
+      : allProps['data-section'] === "joinWMDD"
         ? (500 / 1366) * 100
         : (120 / 1366) * 100}vw;
 
-    font-size: ${({ section }) =>
-    section === "joinWMDD" ? (18 / 1366) * 100 : (24 / 1366) * 100}vw;
+    font-size: ${(allProps) =>
+    allProps['data-section'] === "joinWMDD" ? (18 / 1366) * 100 : (24 / 1366) * 100}vw;
 
     a {
-      padding: ${({ layout, section }) =>
-    layout === "desktop" ? (10 / 1366) * 100 : (12 / 1366) * 100}vw
-        ${({ section }) =>
-    section === "joinWMDD" ? (10 / 1366) * 100 : (34 / 1366) * 100}vw;
+      padding: ${(allProps) =>
+    allProps['layout'] === "desktop" ? (10 / 1366) * 100 : (12 / 1366) * 100}vw
+        ${(allProps) =>
+    allProps['data-section'] === "joinWMDD" ? (10 / 1366) * 100 : (34 / 1366) * 100}vw;
     }
   } */
 `;
