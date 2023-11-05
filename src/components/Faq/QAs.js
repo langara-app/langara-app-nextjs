@@ -8,9 +8,8 @@ import {
   Typography,
 } from "@mui/material";
 
-
 import { IoIosArrowDown } from "react-icons/io";
-import { CommonStyling } from '../../lib/CommonStyling';
+import { CommonStyling } from "../../lib/CommonStyling";
 
 const QAs = ({ data }) => {
   // console.log(data)
@@ -42,7 +41,7 @@ const QAs = ({ data }) => {
 };
 
 const QAContainer = styled.div`
-  border: 1px solid #B0BEC5;
+  border: 1px solid #b0bec5;
   font-size: 1.5rem;
   border-radius: 4px;
   background-color: white;
@@ -71,7 +70,7 @@ const QAContainer = styled.div`
   .MuiAccordionSummary-content {
     margin: 2rem 0 2rem 0;
   }
-  .MuiAccordionSummary-content.Mui-expanded{
+  .MuiAccordionSummary-content.Mui-expanded {
     margin: 2rem 0 2rem 0;
   }
   .MuiAccordionDetails-root {
@@ -82,7 +81,7 @@ const QAContainer = styled.div`
   p,
   a {
     font-weight: 200;
-    color: #263238;;
+    color: #263238;
     margin: 0;
   }
 
@@ -95,13 +94,12 @@ const QAContainer = styled.div`
     font-weight: 700;
     font-size: ${CommonStyling.body2FontSize};
     line-height: 30px;
-    color: #DE3F21;
+    color: #de3f21;
     padding: 0 2rem;
     padding-bottom: 2rem;
   }
 
   @media only screen and (min-width: 768px) {
-
     .MuiAccordionSummary-content {
     }
 

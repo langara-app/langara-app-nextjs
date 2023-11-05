@@ -1,132 +1,132 @@
 /* index.js --> news and events */
 .news_title {
-    color: #C36448;
-    line-height: 1.25;
-    margin: 0 10%;
-    margin-bottom: 30px;
-    text-align: center;
+  color: #c36448;
+  line-height: 1.25;
+  margin: 0 10%;
+  margin-bottom: 30px;
+  text-align: center;
 }
 .news_body {
-    text-align: left;
+  text-align: left;
 }
 .title {
-    margin: 0;
-    color: #C36448;
-    font-weight: 600;
-    font-size: 24px;
-    line-height: 1.25;
+  margin: 0;
+  color: #c36448;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.25;
 }
 .description {
-    font-size: 15px;
-    font-weight: 200;
+  font-size: 15px;
+  font-weight: 200;
 }
 .events_content_individual {
-    padding: 0 2.5rem;
-    margin-bottom: 50px;
+  padding: 0 2.5rem;
+  margin-bottom: 50px;
 }
 .events_date {
-    font-size: 13px;
-    font-weight: 200;
+  font-size: 13px;
+  font-weight: 200;
 }
 .readmore_button {
-    text-align: center;
-    width: 172px;
-    height: 46px;
-    margin-left: auto;
-    margin-right: auto;
-    border: 2px solid #675D51;
-    background-color: white;
-    margin-top: 30px;
+  text-align: center;
+  width: 172px;
+  height: 46px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid #675d51;
+  background-color: white;
+  margin-top: 30px;
 }
 .readmore_button_text {
-    font-size: 22px;
-    font-weight: 600;
-    margin: 0;
-    margin-top: 5px;
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0;
+  margin-top: 5px;
 }
 
 /* [slug].js --> news and events single */
 .news_events_single_content {
-    background-color: white;
-    font-size: 14px;
-    font-weight: 200;
-    padding: 0 2.5rem;
-    padding-bottom: 2rem;
-    padding-top: 40px;
+  background-color: white;
+  font-size: 14px;
+  font-weight: 200;
+  padding: 0 2.5rem;
+  padding-bottom: 2rem;
+  padding-top: 40px;
 }
 .event_image_single {
-    max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
 }
 .article1_title {
-    font-size: 32px;
-    line-height: 1.25;
+  font-size: 32px;
+  line-height: 1.25;
 }
 .article4_title {
-    font-size: 13px;
-    border-top: 1px solid #D6D6D6;
-    padding-top: 30px;
+  font-size: 13px;
+  border-top: 1px solid #d6d6d6;
+  padding-top: 30px;
 }
 .article4 {
-    font-size: 13px;
-    font-weight: 200;
+  font-size: 13px;
+  font-weight: 200;
 }
 
-@media only screen and (min-width: 768px)  {
-    .events_content {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        text-align: left;
-        gap: 6%;
-        margin-bottom: 80px;
-    }
-    .events_content_individual {
-        padding-left: 0;
-        margin-top: auto;
-        margin-bottom: auto;
-    }
-    .events_image {
-        padding-left: 2.5rem;
-        margin-top: auto;
-        margin-bottom: auto;
-        width: 466px;
-        height: 244px;
-        margin-left: auto;
-    }
-    .news_title {
-        margin-bottom: 50px;
-    }
-    .readmore_button {
-        margin-left: 0;
-        margin-right: 0;
-    }
+@media only screen and (min-width: 768px) {
+  .events_content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: left;
+    gap: 6%;
+    margin-bottom: 80px;
+  }
+  .events_content_individual {
+    padding-left: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .events_image {
+    padding-left: 2.5rem;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 466px;
+    height: 244px;
+    margin-left: auto;
+  }
+  .news_title {
+    margin-bottom: 50px;
+  }
+  .readmore_button {
+    margin-left: 0;
+    margin-right: 0;
+  }
 
-    /* news and events single page */
-    .article1_title {
-        font-size: 45px;
-    }
-    .event_image_single {
-        width: 642px;
-        height: auto;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .single_content {
-        width: 621px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+  /* news and events single page */
+  .article1_title {
+    font-size: 45px;
+  }
+  .event_image_single {
+    width: 642px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .single_content {
+    width: 621px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
-@media only screen and (min-width: 1000px)  {
-    .description,
-    .events_date {
-        font-size: 15px;
-    }
-    .events_content {
-        padding: 0 5%;
-    }
-    .events_content_individual {
-        width: 446px;
-    }
+@media only screen and (min-width: 1000px) {
+  .description,
+  .events_date {
+    font-size: 15px;
+  }
+  .events_content {
+    padding: 0 5%;
+  }
+  .events_content_individual {
+    width: 446px;
+  }
 }

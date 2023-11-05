@@ -5,7 +5,7 @@ import Button from "../ReusableElements/Button";
 import ScrollArrow from "../ReusableElements/ScrollArrow";
 import useWindowWidth from "../Hooks/useWindowWidth";
 import homeImg from "../../assets/home.svg";
-import topImg from "../../assets/img/wmdd/HomeImage.png"
+import topImg from "../../assets/img/wmdd/HomeImage.png";
 
 import { Link } from "react-scroll";
 import { CommonStyling } from "../../lib/CommonStyling";
@@ -51,7 +51,7 @@ const HeaderContainer = styled.div`
   justify-content: flex-start;
   align-items: left;
   background: url(${({ img }) => img});
-  background-color: #F3FBFF;
+  background-color: #f3fbff;
   position: relative;
   padding-top: 5.7vh;
   padding-left: 5.2vw;
@@ -64,12 +64,10 @@ const HeaderContainer = styled.div`
     padding: 5.5vh 13.5vw;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-    "pic desc";
+    grid-template-areas: "pic desc";
     justify-content: unset;
     align-items: center;
     height: unset;
-
   }
 
   /* &::after {
@@ -115,15 +113,15 @@ const HeaderP = styled.p`
 `;
 
 const HeaderQ = styled.p`
-margin: 0;
-font-size: ${CommonStyling.body1FontSize};
-font-weight: 400;
-line-height: ${CommonStyling.body1LineHeight};
+  margin: 0;
+  font-size: ${CommonStyling.body1FontSize};
+  font-weight: 400;
+  line-height: ${CommonStyling.body1LineHeight};
 
-@media only screen and (min-width: 768px) {
-  text-align: left;
-  margin-bottom: 0;
-}
+  @media only screen and (min-width: 768px) {
+    text-align: left;
+    margin-bottom: 0;
+  }
 `;
 
 const ButtonArrowContainer = styled.div`
@@ -147,16 +145,16 @@ const HomeImageContainer = styled.div`
 `;
 
 const HomeImg = styled.img`
-padding-top: 5.7vh;
-width: 100%;
-@media only screen and (min-width: 768px) {
-  padding-top: 0;
-  display: block;
+  padding-top: 5.7vh;
   width: 100%;
-  height: auto;
-  padding-right: 1.6vw;
-  margin: 0 auto;
-}
-`
+  @media only screen and (min-width: 768px) {
+    padding-top: 0;
+    display: block;
+    width: 100%;
+    height: auto;
+    padding-right: 1.6vw;
+    margin: 0 auto;
+  }
+`;
 
 export default HomeHeader;

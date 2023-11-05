@@ -2,11 +2,7 @@ import React, { useRef } from "react";
 import styled from "styled-components";
 
 const AlumniIntro = (props) => {
-  const {
-    image,
-    name,
-    title
-  } = props;
+  const { image, name, title } = props;
 
   return (
     <Card>

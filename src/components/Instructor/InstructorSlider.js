@@ -5,8 +5,8 @@ import Slider from "react-slick";
 import InstructionIntro from "../Instructor/InstructorIntro";
 import useWindowWidth from "../Hooks/useWindowWidth";
 
-import rightArrow from "../../assets/rightArrow.svg"
-import leftArrow from "../../assets/leftArrow.svg"
+import rightArrow from "../../assets/rightArrow.svg";
+import leftArrow from "../../assets/leftArrow.svg";
 
 function NextArrow(props) {
   // console.log(props)
@@ -46,13 +46,15 @@ const InstructorSlider = ({ data }) => {
     arrows: true,
     autoplay: false,
     nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />
+    prevArrow: <PrevArrow />,
   };
 
   return (
     <InstructorSliderContainer>
       <Slider {...settings}>
-        {data.map((instructor, index) => (<InstructionIntro {...instructor} key={index} />))}
+        {data.map((instructor, index) => (
+          <InstructionIntro {...instructor} key={index} />
+        ))}
       </Slider>
     </InstructorSliderContainer>
   );
@@ -69,15 +71,16 @@ const InstructorSliderContainer = styled.div`
     gap: 1.25rem;
   }
 
-  .slick-prev{
+  .slick-prev {
     left: -50px;
   }
 
-  .slick-next{
+  .slick-next {
     right: -50px;
   }
 
-  .slick-prev, .slick-next{
+  .slick-prev,
+  .slick-next {
     width: 40px;
     height: 40px;
   }

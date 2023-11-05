@@ -1,3 +1,3 @@
 export const Faq = {
-    title: 'WMDD FAQ'
+  title: "WMDD FAQ",
 };

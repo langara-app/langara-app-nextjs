@@ -1,18 +1,18 @@
 import React from "react";
 import styled from "styled-components";
-import { WmddData } from '../../lib/WmddData';
-import instructorTylerCropped from '../../assets/img/wmdd/instructorTylerCropped.jpg';
+import { WmddData } from "../../lib/WmddData";
+import instructorTylerCropped from "../../assets/img/wmdd/instructorTylerCropped.jpg";
 
 const AfterProgram = () => {
   return (
     <Container>
-        <AfterProgramContainer>
-          <Title>{WmddData.complete_program.title}</Title>
-          <InstructorImage src={instructorTylerCropped}  />
-        </AfterProgramContainer>
-        <Body>{WmddData.complete_program.description}</Body>
+      <AfterProgramContainer>
+        <Title>{WmddData.complete_program.title}</Title>
+        <InstructorImage src={instructorTylerCropped} />
+      </AfterProgramContainer>
+      <Body>{WmddData.complete_program.description}</Body>
     </Container>
-  )
+  );
 };
 
 const Container = styled.div`
@@ -27,13 +27,13 @@ const Container = styled.div`
 const AfterProgramContainer = styled.div``;
 
 const InstructorImage = styled.img`
- max-width: 100%;
- height: auto;
+  max-width: 100%;
+  height: auto;
 `;
 const Title = styled.h1`
   color: white;
   font-size: 32px;
-  background-color: #C36448;
+  background-color: #c36448;
   padding-top: 50px;
   padding-bottom: 20px;
   margin-bottom: 0;
@@ -51,7 +51,7 @@ const Body = styled.p`
   margin-bottom: 0;
   padding-bottom: 2.5rem;
   font-size: 15px;
-   
+
   @media only screen and (min-width: 768px) {
     margin-top: auto;
     margin-bottom: auto;

@@ -17,8 +17,6 @@ import Head from "next/head";
 import MenuBar from "../components/MenuBar";
 import Footer from "../components/Footer";
 
-
-
 function MyApp({ Component, pageProps }) {
   return (
     <>

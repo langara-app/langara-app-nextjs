@@ -1,27 +1,32 @@
 import React from "react";
 import styled from "styled-components";
-import { WmddData } from '../../lib/WmddData';
-import styles from '../../styles/WMDD.module.css';
+import { WmddData } from "../../lib/WmddData";
+import styles from "../../styles/WMDD.module.css";
 
 const ProgramCurriculum = () => {
   const curriculumInfo = WmddData.curriculum;
-  const curriculumDetails = curriculumInfo.map((curriculum, index) => 
-      <div key={index}>
-        <p>{curriculum.description}</p>
-      </div>
-  );
+  const curriculumDetails = curriculumInfo.map((curriculum, index) => (
+    <div key={index}>
+      <p>{curriculum.description}</p>
+    </div>
+  ));
 
   return (
     <Container>
-        <Title>Program Curriculum</Title>
-            <Body>
-                <Movie className="intro-movie">
-                    <iframe frameBorder="0" className={styles.iframe} src="https://www.youtube.com/embed/BTciK1vJ8QY?rel=0" title="intro-movie"></iframe>
-                </Movie>
-            </Body>
-            <Details>{curriculumDetails}</Details>
+      <Title>Program Curriculum</Title>
+      <Body>
+        <Movie className="intro-movie">
+          <iframe
+            frameBorder="0"
+            className={styles.iframe}
+            src="https://www.youtube.com/embed/BTciK1vJ8QY?rel=0"
+            title="intro-movie"
+          ></iframe>
+        </Movie>
+      </Body>
+      <Details>{curriculumDetails}</Details>
     </Container>
-  )
+  );
 };
 
 const Container = styled.div`

@@ -6,7 +6,7 @@ import Head from "next/head";
 
 import { ProjectData } from "../../../lib/ProjectData";
 
-import { CommonStyling } from '../../../lib/CommonStyling'
+import { CommonStyling } from "../../../lib/CommonStyling";
 import { HomeData } from "../../../lib/HomeData";
 
 const Project = ({ project }) => {
@@ -22,31 +22,30 @@ const Project = ({ project }) => {
         <title>{HomeData.tabName.title}</title>
       </Head>
       <div className="titleWrapper">
-        {data.categories_slugs == 'native-app' ? (
+        {data.categories_slugs == "native-app" ? (
           <p className="singleTitle">{ProjectCategoryData[0].title}</p>
-        ) : data.categories_slugs == 'data-visualization' ? (
+        ) : data.categories_slugs == "data-visualization" ? (
           <p className="singleTitle">{ProjectCategoryData[1].title}</p>
-        ) : data.categories_slugs == 'hybrid' ? (
+        ) : data.categories_slugs == "hybrid" ? (
           <p className="singleTitle">{ProjectCategoryData[2].title}</p>
-        ) : (null)}
+        ) : null}
         <h1 className="projectTitle">{data.acf.name_of_the_project}</h1>
       </div>
 
       <div className="actionContainer">
         {data.acf.project_proposal_file ? (
           <Link href={data.acf.project_proposal_file}>
-              <img src={ProjectData.ProjectDetails.downloadProposalIcon} />
-              {ProjectData.ProjectDetails.downloadProposal}
+            <img src={ProjectData.ProjectDetails.downloadProposalIcon} />
+            {ProjectData.ProjectDetails.downloadProposal}
           </Link>
-        ) : (null)}
+        ) : null}
 
         {data.acf.project_site_link ? (
           <Link href={data.acf.project_site_link}>
-              <img src={ProjectData.ProjectDetails.seeLiveProjectIcon} />
-              {ProjectData.ProjectDetails.seeLiveProject}
+            <img src={ProjectData.ProjectDetails.seeLiveProjectIcon} />
+            {ProjectData.ProjectDetails.seeLiveProject}
           </Link>
-        ) : (null)}
-
+        ) : null}
       </div>
 
       <ImageContainer>
@@ -64,25 +63,24 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   padding: 4.9vh 4.1vw 9.7vh 4.1vw;
 
-
-  .projectTitle{
+  .projectTitle {
     font-size: 2.375rem;
     text-align: left;
     margin: 0;
     padding-top: 1vh;
   }
 
-  .singleTitle{
+  .singleTitle {
     margin: 0;
     font-family: ${CommonStyling.secondaryFontFamily};
     font-weight: 400;
     font-size: 0.875rem;
   }
 
-  .actionContainer{
+  .actionContainer {
     padding-top: 4.9vh;
     display: flex;
     flex-direction: column;
@@ -90,7 +88,7 @@ const Container = styled.div`
     font-size: 1.25rem;
   }
 
-  a{
+  a {
     display: flex;
     gap: 0.5rem;
   }
@@ -98,11 +96,10 @@ const Container = styled.div`
   @media only screen and (min-width: 768px) {
     padding: 7.3vh 25.7vw 10.9vh 25.7vw;
 
-    .actionContainer{
+    .actionContainer {
       flex-direction: row;
     }
-}
-
+  }
 `;
 
 const ImageContainer = styled.div`
@@ -111,7 +108,6 @@ const ImageContainer = styled.div`
   padding-top: 2.9vh;
 
   @media only screen and (min-width: 768px) {
-
   }
 `;
 
@@ -120,7 +116,6 @@ const ImageElement = styled.img`
   height: auto;
   margin: 0;
 `;
-
 
 const ProjectContents = styled.div`
   background-color: white;
@@ -134,7 +129,6 @@ const ProjectContents = styled.div`
   }
 
   @media only screen and (min-width: 768px) {
-
   }
 `;
 
@@ -142,7 +136,7 @@ export default Project;
 
 export async function getStaticPaths() {
   const res = await fetch(
-    `${process.env.BASE_URL}/wp-json/wp/v2/projects?per_page=100`
+    `${process.env.BASE_URL}/wp-json/wp/v2/projects?per_page=100`,
   );
   const projects = await res.json();
 
@@ -158,7 +152,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const slug = params.project;
   const res = await fetch(
-    `${process.env.BASE_URL}/wp-json/wp/v2/projects?per_page=100`
+    `${process.env.BASE_URL}/wp-json/wp/v2/projects?per_page=100`,
   );
   const projects = await res.json();
 

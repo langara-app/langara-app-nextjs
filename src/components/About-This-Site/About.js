@@ -1,67 +1,64 @@
 import React from "react";
 import styled from "styled-components";
-import { AboutThisSiteData } from '../../lib/AboutThisSiteData';
+import { AboutThisSiteData } from "../../lib/AboutThisSiteData";
 import Link from "next/link";
 
 const AboutThisSite = () => {
-
-    const team = AboutThisSiteData.team;
-    const teamDetails = team.map((member, index) => 
-      <MemberWrapper key={index}>
-        <MemberImage src={member.image} />
-        <MemberName>{member.name}</MemberName>
-        <MemberDetails>{member.title}</MemberDetails>
-        <MemberDetails>{member.year}</MemberDetails>
-        <Link href={member.linkedIn}>
-                <a>
-                    <MemberLinkedIn>Link to LinkedIn</MemberLinkedIn>
-                </a>
-          </Link>
-      </MemberWrapper>
-    );
+  const team = AboutThisSiteData.team;
+  const teamDetails = team.map((member, index) => (
+    <MemberWrapper key={index}>
+      <MemberImage src={member.image} />
+      <MemberName>{member.name}</MemberName>
+      <MemberDetails>{member.title}</MemberDetails>
+      <MemberDetails>{member.year}</MemberDetails>
+      <Link href={member.linkedIn}>
+        <a>
+          <MemberLinkedIn>Link to LinkedIn</MemberLinkedIn>
+        </a>
+      </Link>
+    </MemberWrapper>
+  ));
 
   return (
     <Wrapper>
-        <IntroWrapper>
-          <Title>{AboutThisSiteData.header.title}</Title>
-          <Paragraph>{AboutThisSiteData.header.description}</Paragraph>
-          <Paragraph>{AboutThisSiteData.header.description2}</Paragraph>
-        </IntroWrapper>
-        
-        <TeamWrapper>
-          <TeamTitle>Our Team</TeamTitle>
-          <Team>
-            {teamDetails}
-          </Team>
-        </TeamWrapper>
+      <IntroWrapper>
+        <Title>{AboutThisSiteData.header.title}</Title>
+        <Paragraph>{AboutThisSiteData.header.description}</Paragraph>
+        <Paragraph>{AboutThisSiteData.header.description2}</Paragraph>
+      </IntroWrapper>
 
-        <Des_Wrapper>
-          <DesTitle>{AboutThisSiteData.wireframe.title}</DesTitle>
-          <DesParagraph>{AboutThisSiteData.wireframe.description}</DesParagraph>
-          <ButtonWrapper>
-            <DesButton>
-              <Link href={AboutThisSiteData.wireframe.button}>
-                <a>
-                    <ButtonDetails>Link to Mockup</ButtonDetails>
-                </a>
-              </Link>
-            </DesButton>
-          </ButtonWrapper>
-        </Des_Wrapper>
+      <TeamWrapper>
+        <TeamTitle>Our Team</TeamTitle>
+        <Team>{teamDetails}</Team>
+      </TeamWrapper>
 
-        <Dev_Wrapper>
-          <DevTitle>{AboutThisSiteData.development.title}</DevTitle>
-          <DevParagraph>{AboutThisSiteData.development.description}</DevParagraph>
-          <ButtonWrapper>
-            <DevButton>
-              <Link href={AboutThisSiteData.development.button}>
-                <a>
-                    <ButtonDetails>Link to GitHub</ButtonDetails>
-                </a>
-              </Link>
-            </DevButton>
-          </ButtonWrapper>
-        </Dev_Wrapper>
+      <Des_Wrapper>
+        <DesTitle>{AboutThisSiteData.wireframe.title}</DesTitle>
+        <DesParagraph>{AboutThisSiteData.wireframe.description}</DesParagraph>
+        <ButtonWrapper>
+          <DesButton>
+            <Link href={AboutThisSiteData.wireframe.button}>
+              <a>
+                <ButtonDetails>Link to Mockup</ButtonDetails>
+              </a>
+            </Link>
+          </DesButton>
+        </ButtonWrapper>
+      </Des_Wrapper>
+
+      <Dev_Wrapper>
+        <DevTitle>{AboutThisSiteData.development.title}</DevTitle>
+        <DevParagraph>{AboutThisSiteData.development.description}</DevParagraph>
+        <ButtonWrapper>
+          <DevButton>
+            <Link href={AboutThisSiteData.development.button}>
+              <a>
+                <ButtonDetails>Link to GitHub</ButtonDetails>
+              </a>
+            </Link>
+          </DevButton>
+        </ButtonWrapper>
+      </Dev_Wrapper>
     </Wrapper>
   );
 };
@@ -78,10 +75,10 @@ const MemberWrapper = styled.div`
 const MemberImage = styled.img`
   width: 128px;
   height: 128px;
-  border-radius: 50%
+  border-radius: 50%;
 `;
 const MemberName = styled.h3`
-  color: #C36448;
+  color: #c36448;
   font-weight: 400;
   font-size: 20px;
   margin-bottom: 0;
@@ -108,12 +105,12 @@ const MemberLinkedIn = styled.p`
   }
 `;
 const TeamWrapper = styled.div`
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   text-align: center;
   width: 100%;
   padding-bottom: 20px;
 `;
- const Team = styled.div`
+const Team = styled.div`
   @media only screen and (min-width: 768px) {
     width: 750px;
     margin-left: auto;
@@ -123,7 +120,7 @@ const TeamWrapper = styled.div`
   }
 `;
 const Title = styled.h1`
-  color: #C36448;
+  color: #c36448;
   font-size: 32px;
   text-align: center;
   margin-bottom: 50px;
@@ -137,15 +134,15 @@ const Title = styled.h1`
   }
 `;
 const Paragraph = styled.p`
-    font-weight: 200;
-    font-size: 15px;
+  font-weight: 200;
+  font-size: 15px;
 
-    @media only screen and (min-width: 768px) {
-      width: 725px;
-      margin-left: auto;
-      margin-right: auto;
-      font-size: ${(19 / 1366) * 100}vw;
-    }
+  @media only screen and (min-width: 768px) {
+    width: 725px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: ${(19 / 1366) * 100}vw;
+  }
 `;
 const TeamTitle = styled.h2`
   font-size: 32px;
@@ -161,17 +158,17 @@ const TeamTitle = styled.h2`
   }
 `;
 const Des_Wrapper = styled.div`
-  background-color: #675D51;
+  background-color: #675d51;
   padding-top: 5px;
   padding-bottom: 50px;
 `;
 const Dev_Wrapper = styled.div`
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   padding-top: 5px;
   padding-bottom: 50px;
 `;
 const DevTitle = styled.h2`
-  color: #C36448;
+  color: #c36448;
   font-size: 32px;
   text-align: center;
 
@@ -184,7 +181,7 @@ const DevTitle = styled.h2`
   }
 `;
 const DesTitle = styled.h2`
-  color: #FFF2A8;
+  color: #fff2a8;
   font-size: 32px;
   text-align: center;
 
@@ -197,7 +194,7 @@ const DesTitle = styled.h2`
   }
 `;
 const DesParagraph = styled.p`
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 15px;
   font-weight: 200;
   margin: 0 32px;
@@ -222,13 +219,13 @@ const DevParagraph = styled.p`
   }
 `;
 const DesButton = styled.div`
-  color: #FFFFFF;
+  color: #ffffff;
   text-align: center;
   width: 200px;
   height: 53px;
   margin-left: auto;
   margin-right: auto;
-  border: 2px solid #FFFFFF;
+  border: 2px solid #ffffff;
   margin-top: 30px;
   font-size: 20px;
 
@@ -242,7 +239,7 @@ const DevButton = styled.div`
   height: 53px;
   margin-left: auto;
   margin-right: auto;
-  border: 2px solid #675D51;
+  border: 2px solid #675d51;
   margin-top: 30px;
   font-size: 20px;
 
@@ -255,11 +252,10 @@ const ButtonDetails = styled.p`
   font-weight: 600;
 `;
 const ButtonWrapper = styled.div`
-
-@media only screen and (min-width: 768px) {
-  width: 725px;
-  margin-left: auto;
-  margin-right: auto;
-}
+  @media only screen and (min-width: 768px) {
+    width: 725px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 `;
 const Wrapper = styled.section``;

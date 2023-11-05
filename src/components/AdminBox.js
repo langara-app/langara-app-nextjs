@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Button from "../components/ReusableElements/Button";
 import useWindowWidth from "./Hooks/useWindowWidth";
-import btmImage from '../assets/img/wmdd/Homebtm.png'
+import btmImage from "../assets/img/wmdd/Homebtm.png";
 
 import { HomeData } from "../lib/HomeData";
 import { CommonStyling } from "../lib/CommonStyling";
@@ -18,7 +18,7 @@ const AdminBox = () => {
         <ButtonWrapper>
           <Button
             text={"Explore Program Overview"}
-            font={CommonStyling.body2FontSize.split('r')[0]}
+            font={CommonStyling.body2FontSize.split("r")[0]}
             color={"#37474F"}
             bcg={"white"}
             section={"joinWMDD"}
@@ -34,7 +34,7 @@ const AdminBox = () => {
 const ButtonWrapper = styled.div`
   /* width: 80%; */
 
-  @media only screen and (min-width: 768px){
+  @media only screen and (min-width: 768px) {
     /* width: auto; */
   }
 `;
@@ -46,11 +46,11 @@ const AdmissionContainer = styled.div`
   padding: 8vh 5.4vw;
   background-color: rgba(222, 63, 33, 1);
   padding-bottom: 70px;
-  color: #FFFFFF;
+  color: #ffffff;
   align-items: flex-start;
   gap: 2rem;
 
-  @media only screen and (min-width: 768px){
+  @media only screen and (min-width: 768px) {
     padding: 7vh 13.5vw;
     display: flex;
     flex-direction: row;
@@ -88,9 +88,9 @@ const BtmImg = styled.img`
   width: 100%;
   padding-bottom: 2.5rem;
 
-  @media only screen and (min-width: 768px){
+  @media only screen and (min-width: 768px) {
     max-width: 429px;
   }
-`
+`;
 
 export default AdminBox;

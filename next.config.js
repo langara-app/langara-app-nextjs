@@ -9,12 +9,12 @@ const nextConfig = withImages({
   compiler: {
     // https://stackoverflow.com/questions/51791163/warning-prop-classname-did-not-match-when-using-styled-components-with-seman
     // Enables the styled-components SWC transform
-    styledComponents: true
+    styledComponents: true,
   },
   reactStrictMode: true,
 });
 
-module.exports = nextConfig
+module.exports = nextConfig;
 
 // Previous custom babel configs
 // {

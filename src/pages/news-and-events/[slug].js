@@ -5,11 +5,13 @@ import { NewsAndEvents } from "../../lib/NewsAndEvents";
 
 import styled from "styled-components";
 
-import { CommonStyling } from '../../lib/CommonStyling'
+import { CommonStyling } from "../../lib/CommonStyling";
 import { HomeData } from "../../lib/HomeData";
 
 export async function getStaticPaths() {
-  const res = await fetch(`${process.env.BASE_URL}/wp-json/wp/v2/news-and-events`)
+  const res = await fetch(
+    `${process.env.BASE_URL}/wp-json/wp/v2/news-and-events`,
+  );
   const news_events = await res.json();
 
   return {
@@ -19,7 +21,9 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const res = await fetch(`${process.env.BASE_URL}/wp-json/wp/v2/news-and-events`)
+  const res = await fetch(
+    `${process.env.BASE_URL}/wp-json/wp/v2/news-and-events`,
+  );
   const news_events = await res.json();
 
   return {
@@ -36,9 +40,9 @@ const NewsEventsInvidivual = ({ event }) => {
         <title>{HomeData.tabName.title}</title>
       </Head>
       <Link href={`/news-and-events/`}>
-          <span className="events-title">
-            {NewsAndEvents.singleEventPage.title}
-          </span>
+        <span className="events-title">
+          {NewsAndEvents.singleEventPage.title}
+        </span>
       </Link>
       <EventDetails>
         {event.acf.section1_title !== "" ? (
@@ -48,7 +52,8 @@ const NewsEventsInvidivual = ({ event }) => {
           src={event.acf.article_image}
           alt={`${event.title.rendered} Banner`}
           width={1200}
-          height={600} />
+          height={600}
+        />
         <article>
           {event.acf.section1_article !== "" ? (
             <p
@@ -120,7 +125,7 @@ const NewsEventsInvidivual = ({ event }) => {
         </article>
       </EventDetails>
     </SingleEventPageContainer>
-  )
+  );
 };
 
 const SingleEventPageContainer = styled.div`
@@ -129,13 +134,13 @@ const SingleEventPageContainer = styled.div`
   padding: 4.2vh 5.4vw;
   color: #263238;
 
-  .events-title{
+  .events-title {
     font-family: ${CommonStyling.secondaryFontFamily};
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 18px;
-    color: #37474F;
+    color: #37474f;
     cursor: pointer;
   }
 
@@ -145,8 +150,7 @@ const SingleEventPageContainer = styled.div`
 `;
 
 const EventDetails = styled.section`
-
-  .section-title{
+  .section-title {
     font-weight: 700;
     font-size: 38px;
     line-height: 50px;
@@ -159,10 +163,10 @@ const EventDetails = styled.section`
     font-weight: 400;
     font-size: 20px;
     line-height: 30px;
-  };
+  }
 
-  .article-link{
-    color: #DE3F21;
+  .article-link {
+    color: #de3f21;
     font-weight: 700;
     font-size: 20px;
     line-height: 30px;

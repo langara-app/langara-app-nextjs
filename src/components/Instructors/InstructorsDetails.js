@@ -1,24 +1,20 @@
 import React from "react";
 import styled from "styled-components";
-import {InstructorData} from '../../lib/InstructorData';
+import { InstructorData } from "../../lib/InstructorData";
 
 const InstructorsIntro = () => {
-    const instructors = InstructorData.instructors;
-    const instructorDetails = instructors.map((instructor, index) => (
-      <FullWrapper key={index}>
-        <InstructorImage src={instructor.image} />
-        <DetailsWrapper>
-          <InstructorName>{instructor.name}</InstructorName>
-          <Paragraph>{instructor.title}</Paragraph>
-        </DetailsWrapper>
-      </FullWrapper>
-    ));
+  const instructors = InstructorData.instructors;
+  const instructorDetails = instructors.map((instructor, index) => (
+    <FullWrapper key={index}>
+      <InstructorImage src={instructor.image} />
+      <DetailsWrapper>
+        <InstructorName>{instructor.name}</InstructorName>
+        <Paragraph>{instructor.title}</Paragraph>
+      </DetailsWrapper>
+    </FullWrapper>
+  ));
 
-  return (
-    <Wrapper>
-        {instructorDetails}
-    </Wrapper>
-  );
+  return <Wrapper>{instructorDetails}</Wrapper>;
 };
 
 export default InstructorsIntro;
@@ -32,20 +28,20 @@ const FullWrapper = styled.div`
   margin-left: auto;
   margin-right: auto;
   width: 315px;
-  
+
   @media only screen and (min-width: 768px) {
     width: 330px;
-}
-@media only screen and (min-width: 1000px) {
-  width: 350px;
-}
+  }
+  @media only screen and (min-width: 1000px) {
+    width: 350px;
+  }
 `;
 const DetailsWrapper = styled.div`
   font-size: 15px;
 
   @media only screen and (min-width: 768px) {
-      /*font-size: ${(20 / 1365) * 100}vw;*/
-      font-size: 18px;
+    /*font-size: ${(20 / 1365) * 100}vw;*/
+    font-size: 18px;
   }
 `;
 const InstructorImage = styled.img`
@@ -56,7 +52,7 @@ const InstructorImage = styled.img`
   @media only screen and (min-width: 1000px) {
     width: 100px;
     height: 100px;
-}
+  }
 `;
 const InstructorName = styled.p`
   font-weight: 700;

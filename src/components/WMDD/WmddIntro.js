@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import ataglance from '../../assets/ataglance.svg';
+import ataglance from "../../assets/ataglance.svg";
 
 const WmddIntro = ({ title, desc, subtitle }) => {
   return (
@@ -54,7 +54,7 @@ const Paragraph = styled.p`
   line-height: 1.4;
   font-weight: 200;
   font-size: 15px;
- 
+
   @media only screen and (min-width: 768px) {
     font-size: ${(19 / 1365) * 100}vw;
   }

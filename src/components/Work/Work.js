@@ -10,7 +10,7 @@ function Work({ data }) {
             style={{ width: "20%", display: "block", height: "auto" }}
             key={index}
           />
-        ) : null
+        ) : null,
       )}
     </div>
   );

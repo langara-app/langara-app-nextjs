@@ -19,21 +19,27 @@ const Footer = () => {
         </Logo>
         {MenuData.map((menu, index) => {
           if (index != 0) {
-            return (<Link href={menu.link} key={index} className="menu-item">
-              {menu.title}
-            </Link>)
+            return (
+              <Link href={menu.link} key={index} className="menu-item">
+                {menu.title}
+              </Link>
+            );
           }
         })}
-        <a href="https://langara.ca/programs-and-courses/programs/web-and-mobile-app/admission-requirements.html" target="_blank">Apply</a>
-        <a href={HomeData.footer.contactLink}>
-          Contact
+        <a
+          href="https://langara.ca/programs-and-courses/programs/web-and-mobile-app/admission-requirements.html"
+          target="_blank"
+        >
+          Apply
         </a>
+        <a href={HomeData.footer.contactLink}>Contact</a>
       </LinkWrapper>
       <CopyRight>
-        <span>
-          &copy; 2022 Langara College. All rights reserved.
-        </span>
-        <a href="https://langara.ca/about-langara/records-management-and-privacy/privacy/privacy-statement.html" target="_blank">
+        <span>&copy; 2022 Langara College. All rights reserved.</span>
+        <a
+          href="https://langara.ca/about-langara/records-management-and-privacy/privacy/privacy-statement.html"
+          target="_blank"
+        >
           Privacy Policy
         </a>
       </CopyRight>
@@ -47,22 +53,30 @@ const Footer = () => {
         <div style={{ display: "flex", gap: "1.5rem" }}>
           {MenuData.map((menu, index) => {
             if (index != 0) {
-              return (<Link href={menu.link} key={index} className="menu-item">
-                {menu.title}
-              </Link>)
+              return (
+                <Link href={menu.link} key={index} className="menu-item">
+                  {menu.title}
+                </Link>
+              );
             }
           })}
-          <a href="https://langara.ca/programs-and-courses/programs/web-and-mobile-app/admission-requirements.html" target="_blank">Apply</a>
+          <a
+            href="https://langara.ca/programs-and-courses/programs/web-and-mobile-app/admission-requirements.html"
+            target="_blank"
+          >
+            Apply
+          </a>
           <a href={HomeData.footer.contactLink} target="_blank">
             Contact
           </a>
         </div>
       </LinkWrapper>
       <CopyRight>
-        <span>
-          &copy; 2022 Langara College. All rights reserved.
-        </span>
-        <a href="https://langara.ca/about-langara/records-management-and-privacy/privacy/privacy-statement.html" target="_blank">
+        <span>&copy; 2022 Langara College. All rights reserved.</span>
+        <a
+          href="https://langara.ca/about-langara/records-management-and-privacy/privacy/privacy-statement.html"
+          target="_blank"
+        >
           Privacy Policy
         </a>
       </CopyRight>
@@ -71,11 +85,11 @@ const Footer = () => {
 };
 
 const Container = styled.div`
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  color: #21263A;
+  color: #21263a;
   font-weight: 300;
 `;
 
@@ -94,7 +108,7 @@ const LinkWrapper = styled.div`
 `;
 
 const FlexContainer = styled.div`
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
   display: flex;
   flex-direction: column;
 `;
@@ -116,9 +130,9 @@ const CopyRight = styled.div`
   display: flex;
   flex-direction: column;
   font-size: ${CommonStyling.body3FontSize};
-  border-top: 1px solid #CFD8DC;
+  border-top: 1px solid #cfd8dc;
   width: 100%;
-  color: #546E7A;
+  color: #546e7a;
   align-items: center;
   gap: 1rem;
   font-family: ${CommonStyling.secondaryFontFamily};

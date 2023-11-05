@@ -1,64 +1,70 @@
-import frontend from '../assets/img/wmdd/frontend.svg';
-import mobile from '../assets/img/wmdd/mobile.svg';
-import backend from '../assets/img/wmdd/backend.svg';
-import design from '../assets/img/wmdd/design.svg';
-import uiux from '../assets/img/wmdd/uiux.svg';
-import audio_video from '../assets/img/wmdd/audio_video.svg';
-import graduate from '../assets/img/wmdd/graduate.png'
+import frontend from "../assets/img/wmdd/frontend.svg";
+import mobile from "../assets/img/wmdd/mobile.svg";
+import backend from "../assets/img/wmdd/backend.svg";
+import design from "../assets/img/wmdd/design.svg";
+import uiux from "../assets/img/wmdd/uiux.svg";
+import audio_video from "../assets/img/wmdd/audio_video.svg";
+import graduate from "../assets/img/wmdd/graduate.png";
 
 export const HomeData = {
   tabName: {
-    title: "Langara. Web and Mobile App Design and Development Program"
+    title: "Langara. Web and Mobile App Design and Development Program",
   },
   header: {
     title: "Web and Mobile App Design and Development Program",
-    description1:
-      "Your career in the technology industry starts here.",
+    description1: "Your career in the technology industry starts here.",
     description2:
       "Learn how to design and develop real-world web and mobile applications—from start to finish!",
   },
   careerPath: {
-    title: 'What is your career path?',
-    description: "Students will specialize in advanced development or design, learning the technical and communication skills for jobs in freelance, small business or corporate environments.",
+    title: "What is your career path?",
+    description:
+      "Students will specialize in advanced development or design, learning the technical and communication skills for jobs in freelance, small business or corporate environments.",
     developer: [
       {
         image: frontend,
         title: "Front-End Development",
-        description: "Become comfortable with the fundamentals HTML, CSS, JavaScript, and jQuery and advance to web and mobile frameworks, such as React and React Native."
+        description:
+          "Become comfortable with the fundamentals HTML, CSS, JavaScript, and jQuery and advance to web and mobile frameworks, such as React and React Native.",
       },
       {
         image: mobile,
         title: "Mobile Development",
-        description: "Become familiar the fundamentals of object-oriented programming with Java and get experience working with Native Android & iOS development."
+        description:
+          "Become familiar the fundamentals of object-oriented programming with Java and get experience working with Native Android & iOS development.",
       },
       {
         image: backend,
         title: "Back-End Development",
-        description: "Be introduced to databases, server-side scripting, as well as cloud and security technologies, including how to set up your own server on AWS and host your projects."
-      }
+        description:
+          "Be introduced to databases, server-side scripting, as well as cloud and security technologies, including how to set up your own server on AWS and host your projects.",
+      },
     ],
     designer: [
       {
         image: design,
         title: "Web Design",
-        description: "Learn design theories, elements and methodologies to apply advanced color theory and typography techniques, as well as software to create and modify 3D graphics."
+        description:
+          "Learn design theories, elements and methodologies to apply advanced color theory and typography techniques, as well as software to create and modify 3D graphics.",
       },
       {
         image: uiux,
         title: "UI & UX Design",
-        description: "Work with the principles of UX design, including information architecture, user research, interaction design, usability testing, wireframes and mockups."
+        description:
+          "Work with the principles of UX design, including information architecture, user research, interaction design, usability testing, wireframes and mockups.",
       },
       {
         image: audio_video,
         title: "Audio & Video Production",
-        description: "Build multimedia components—like video, audio, soundtracks, dynamic graphics, and 3D prototyping—for both marketing and communication strategies."
-      }
-    ]
+        description:
+          "Build multimedia components—like video, audio, soundtracks, dynamic graphics, and 3D prototyping—for both marketing and communication strategies.",
+      },
+    ],
   },
   graduate: {
     title: "Graduate with the skills the industry is looking for",
     image: graduate,
-    desc: "Our students work together in teams of developers and designers to produce amazing applications with the guidance from their instructors."
+    desc: "Our students work together in teams of developers and designers to produce amazing applications with the guidance from their instructors.",
   },
   projects: {
     title: "Student Projects",
@@ -77,6 +83,7 @@ export const HomeData = {
   },
   footer: {
     contactDesc: "Want to ask something? Click here",
-    contactLink: "https://langara.ca/programs-and-courses/programs/web-and-mobile-app/contact.html",
+    contactLink:
+      "https://langara.ca/programs-and-courses/programs/web-and-mobile-app/contact.html",
   },
 };

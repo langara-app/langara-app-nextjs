@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Select from "react-dropdown-select";
 import useWindowWidth from "../Hooks/useWindowWidth";
 import styled from "styled-components";
-import { CommonStyling } from '../../lib/CommonStyling';
+import { CommonStyling } from "../../lib/CommonStyling";
 
 const Options = ({ data, onClick }) => {
   const width = useWindowWidth();
@@ -53,9 +53,12 @@ const Options = ({ data, onClick }) => {
 const CategoryName = styled.p`
   text-align: center;
   font-size: ${CommonStyling.body1FontSize};
-  color: ${(allProps) => allProps['data-number'] === allProps['checked'] ? "#DE3F21" : "#37474F"};
-  font-weight: ${(allProps) => (allProps['data-number'] === allProps['checked'] ? 600 : 200)};
-  border-bottom: ${(allProps) => allProps['number'] === allProps['checked'] ? "3px solid #DE3F21" : "none"};
+  color: ${(allProps) =>
+    allProps["data-number"] === allProps["checked"] ? "#DE3F21" : "#37474F"};
+  font-weight: ${(allProps) =>
+    allProps["data-number"] === allProps["checked"] ? 600 : 200};
+  border-bottom: ${(allProps) =>
+    allProps["number"] === allProps["checked"] ? "3px solid #DE3F21" : "none"};
   padding: 0.8rem;
   cursor: pointer;
   margin-bottom: 2.8vh;

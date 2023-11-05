@@ -32,7 +32,7 @@ const Paragraph = styled.p`
   font-weight: 200;
   font-size: 15px;
   padding: 0 2.5rem;
- 
+
   @media only screen and (min-width: 768px) {
     font-size: ${(19 / 1365) * 100}vw;
     margin-left: 5%;
