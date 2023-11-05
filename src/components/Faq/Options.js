@@ -40,7 +40,7 @@ const Options = ({ data, onClick }) => {
           }}
           id={q.categorySlug}
           className={index + 1}
-          number={index + 1}
+          data-number={index + 1}
           checked={checkedIndex}
         >
           {q.categoryName}
@@ -53,9 +53,9 @@ const Options = ({ data, onClick }) => {
 const CategoryName = styled.p`
   text-align: center;
   font-size: ${CommonStyling.body1FontSize};
-  color: ${({ number, checked }) => number === checked ? "#DE3F21" : "#37474F"};
-  font-weight: ${({ number, checked }) => (number === checked ? 600 : 200)};
-  border-bottom: ${({ number, checked }) => number === checked ? "3px solid #DE3F21" : "none"};
+  color: ${(allProps) => allProps['data-number'] === allProps['checked'] ? "#DE3F21" : "#37474F"};
+  font-weight: ${(allProps) => (allProps['data-number'] === allProps['checked'] ? 600 : 200)};
+  border-bottom: ${(allProps) => allProps['number'] === allProps['checked'] ? "3px solid #DE3F21" : "none"};
   padding: 0.8rem;
   cursor: pointer;
   margin-bottom: 2.8vh;

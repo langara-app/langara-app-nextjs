@@ -13,7 +13,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { CommonStyling } from '../../lib/CommonStyling';
 
 const QAs = ({ data }) => {
-  console.log(data)
+  // console.log(data)
   return (
     <QAContainer>
       {data.map((q, index) => (
