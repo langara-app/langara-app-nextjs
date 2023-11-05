@@ -9,7 +9,7 @@ import rightArrow from "../../assets/rightArrow.svg"
 import leftArrow from "../../assets/leftArrow.svg"
 
 function NextArrow(props) {
-  console.log(props)
+  // console.log(props)
   const { className, style, onClick } = props;
   return (
     <img
