@@ -40,11 +40,11 @@ const ProgramOverview = () => {
               <WmddTitle>{WmddData.header.title}</WmddTitle>
               <Header1>{WmddData.header.subtitle}</Header1>
               <Header2>{WmddData.header.description}</Header2>
-              <Link href="https://www.youtube.com/watch?v=BTciK1vJ8QY">
-                <a target="_blank">
+              
+                <a  href="https://www.youtube.com/watch?v=BTciK1vJ8QY" target="_blank">
                   <WmddImg src={placeholder} alt="Program Overview Image" />
                 </a>
-              </Link>
+              
             </div>
           ) : (
             <div>
@@ -56,11 +56,11 @@ const ProgramOverview = () => {
         </WmddWebLeft>
         {width < 768 ? null : (
           <WmddImageContainer>
-            <Link href="https://www.youtube.com/watch?v=BTciK1vJ8QY">
-              <a target="_blank">
+            
+              <a target="_blank" href="https://www.youtube.com/watch?v=BTciK1vJ8QY">
                 <WmddImg src={placeholder} alt="Program Overview Image" />
               </a>
-            </Link>
+            
           </WmddImageContainer>
         )}
       </WmddContainer>
@@ -505,36 +505,5 @@ const ProgramDetails = styled.div`
     cursor: pointer;
   }
 `;
-
-// const Video = styled.iframe`
-//   width: 100%;
-//   height: 100%;
-//   position: absolute;
-//   visibility: hidden;
-//   z-index: 5;
-//   @media screen and (min-width: 768px) {
-//     top: 50%;
-//     transform: translateY(-50%);
-//     height: 18vw;
-//   }
-// `;
-
-// const VideoBlock = styled.div`
-//   padding-top: 5.7vh;
-//   border-radius: 4px;
-//   width: 100%;
-//   height: 28rem;
-//   position: relative;
-//   cursor: pointer;
-
-//   @media only screen and (min-width: 768px) {
-//     padding-top: 0;
-//     display: block;
-//     width: 100%;
-//     height: 6rem;
-//     margin: 0 auto;
-//     margin-right: 1.6vw;
-//   }
-// `;
 
 export default ProgramOverview;
