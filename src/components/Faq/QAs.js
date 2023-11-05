@@ -1,12 +1,19 @@
 import React from "react";
 import styled from "styled-components";
-import MuiAccordion from "@material-ui/core/Accordion";
-import MuiAccordionDetails from "@material-ui/core/AccordionDetails";
-import MuiAccordionSummary from "@material-ui/core/AccordionSummary";
+
+import {
+  Accordion as MuiAccordion,
+  AccordionDetails as MuiAccordionDetails,
+  AccordionSummary as MuiAccordionSummary,
+  Typography,
+} from "@mui/material";
+
+
 import { IoIosArrowDown } from "react-icons/io";
 import { CommonStyling } from '../../lib/CommonStyling';
 
 const QAs = ({ data }) => {
+  console.log(data)
   return (
     <QAContainer>
       {data.map((q, index) => (

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
+    "@mui/material": "^5.14.16",
     "gray-matter": "^4.0.3",
     "next": "14.0.1",
     "next-images": "^1.8.5",

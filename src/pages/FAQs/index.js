@@ -4,7 +4,7 @@ import Head from "next/head";
 import useWindowWidth from "../../components/Hooks/useWindowWidth"
 
 import Options from "../../components/Faq/Options";
-// import QAs from "../../components/Faq/QAs";
+import QAs from "../../components/Faq/QAs";
 import { Faq } from "../../lib/Faq"
 import { HomeData } from "../../lib/HomeData";
 
@@ -72,12 +72,12 @@ const FAQ = ({ faqLists, questionCat }) => {
       {width < 768 ? questionCat.map(qc =>
         <div key={qc.categorySlug}>
           <CategoryTitle >{qc.categoryName}</CategoryTitle>
-          {/* <QAs data={getFilteredArr(qc.categorySlug)} /> */}
+          <QAs data={getFilteredArr(qc.categorySlug)} />
         </div>
       ) :
         <>
           <Options data={questionCat} onClick={onSlugSet} />
-          {/* <QAs data={filteredArr} /> */}
+          <QAs data={filteredArr} />
         </>
       }
     </FaqContainer >
