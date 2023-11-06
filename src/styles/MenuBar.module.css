@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  border-bottom: 1px solid #cfd8dc;
+}
+
+.langara_logo {
+  height: 41.65px;
+  width: 87.9px;
+}
+
+.langara_logo_in_menu {
+  height: 60px;
+  width: auto;
+  position: absolute;
+  top: 29px;
+  left: 25px;
+}
+
+.menues {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+}
+
+.menues button {
+  margin: 0;
+  margin-left: 3.5vw;
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    padding: 1.3vw 13.5vw;
+  }
+
+  .langara_logo {
+    height: 41.65px;
+    width: 87.9px;
+  }
+
+  .menuItem {
+    margin-left: 7.5vw;
+    font-weight: 300;
+  }
+}

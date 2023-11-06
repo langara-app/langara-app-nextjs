@@ -1,0 +1,28 @@
+html,
+body {
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+  font-family:
+    Ubuntu,
+    -apple-system,
+    Roboto,
+    Kanit,
+    sans-serif;
+  color: #263238;
+  background-color: #ffffff;
+}
+
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --swiper-theme-color: #675d51 !important;
+}

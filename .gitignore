@@ -5,6 +5,9 @@
 /package-lock.json
 /.pnp
 .pnp.js
+/.pnp
+.pnp.js
+.yarn/install-state.gz
 
 # testing
 /coverage
@@ -30,9 +33,14 @@ yarn-error.log*
 .env.development.local
 .env.test.local
 .env.production.local
+.env
+.env*.local
 
 # vercel
 .vercel
 
 # Local Netlify folder
 .netlify
+# typescript
+*.tsbuildinfo
+next-env.d.ts
