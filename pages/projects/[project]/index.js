@@ -141,7 +141,6 @@ export default Project;
 export async function getStaticPaths() {
   const res = await fetch(
     `${process.env.NEXT_API}/wp/v2/projects?per_page=100`
-    // "https://api.langara-app.ca/wp-json/wp/v2/projects?per_page=100"
   );
   const projects = await res.json();
 
@@ -158,7 +157,6 @@ export async function getStaticProps({ params }) {
   const slug = params.project;
   const res = await fetch(
     `${process.env.NEXT_API}/wp/v2/projects?per_page=100`
-    // "https://api.langara-app.ca/wp-json/wp/v2/projects?per_page=100"
   );
   const projects = await res.json();
 
