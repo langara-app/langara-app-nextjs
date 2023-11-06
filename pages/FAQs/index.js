@@ -46,9 +46,11 @@ export async function getStaticProps() {
 const FAQ = ({ faqLists, questionCat }) => {
   const [catSlug, setCatSlug] = useState(questionCat[0].categorySlug);
   const width = useWindowWidth();
+  const [expanded, setExpanded] = useState(null);
 
   const onSlugSet = (value) => {
     setCatSlug(value);
+    setExpanded(null);
   };
 
   const filteredArr = faqLists.find(
@@ -75,7 +77,7 @@ const FAQ = ({ faqLists, questionCat }) => {
       ) : (
         <>
           <Options data={questionCat} onClick={onSlugSet} />
-          <QAs data={filteredArr} />
+          <QAs data={filteredArr} expanded={expanded} setExpanded={setExpanded}/>
         </>
       )}
     </FaqContainer>
@@ -95,7 +97,7 @@ const FaqContainer = styled.div`
 const FAQHeader = styled.h1`
   padding: 5vh 0 0 0;
   font-weight: 700;
-  font-size: 56px;
+  font-size: 2.5rem;
   line-height: 64px;
   text-align: center;
 
