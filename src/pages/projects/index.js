@@ -42,7 +42,7 @@ const Projects = ({ projectLists }) => {
       <Container>
         <div className="descWrapper">
           <p className="term4">{ProjectCategoryData[0].term}</p>
-          <h2 className="title">{ProjectCategoryData[0].title}</h2>
+          <h1 className="title">{ProjectCategoryData[0].title}</h1>
           <p className="desc">{ProjectCategoryData[0].description}</p>
         </div>
 
@@ -58,7 +58,7 @@ const Projects = ({ projectLists }) => {
 
         <div className="descWrapper">
           <p className="term3">{ProjectCategoryData[1].term}</p>
-          <h2 className="title">{ProjectCategoryData[1].title}</h2>
+          <h1 className="title">{ProjectCategoryData[1].title}</h1>
           <p className="desc">{ProjectCategoryData[1].description}</p>
         </div>
 
@@ -74,7 +74,7 @@ const Projects = ({ projectLists }) => {
 
         <div className="descWrapper">
           <p className="term2">{ProjectCategoryData[2].term}</p>
-          <h2 className="title">{ProjectCategoryData[2].title}</h2>
+          <h1 className="title">{ProjectCategoryData[2].title}</h1>
           <p className="desc">{ProjectCategoryData[2].description}</p>
         </div>
 
@@ -113,7 +113,7 @@ const Container = styled.div`
   }
 
   .title {
-    font-size: 2.375rem;
+    font-size: 2.5rem;
     margin: 0;
     padding-top: 1vh;
   }
@@ -167,7 +167,7 @@ const Container = styled.div`
 
       @media only screen and (min-width: 768px) {
         display: grid;
-        grid-template-areas: "1fr 1fr 1fr";
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 24px;
       }
     }

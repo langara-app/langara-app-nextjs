@@ -55,11 +55,11 @@ const CategoryName = styled.p`
   text-align: center;
   font-size: ${CommonStyling.body1FontSize};
   color: ${(allProps) =>
-    allProps["data-number"] === allProps["checked"] ? "#DE3F21" : "#37474F"};
+    allProps["data-number"] === allProps["checked"] ? "#F15A22" : "#37474F"};
   font-weight: ${(allProps) =>
     allProps["data-number"] === allProps["checked"] ? 600 : 200};
   border-bottom: ${(allProps) =>
-    allProps["data-number"] === allProps["checked"] ? "3px solid #DE3F21" : "none"};
+    allProps["data-number"] === allProps["checked"] ? "3px solid #F15A22" : "none"};
   padding: 0.8rem;
   cursor: pointer;
   margin-bottom: 2.8vh;

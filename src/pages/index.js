@@ -56,8 +56,8 @@ const Home = ({ data, alumni, work, homeData }) => {
   newAlumni.push(alumni[0]);
 
   const selectedFieldStyles = {
-    color: "#DE3F21",
-    borderBottom: "2px solid #DE3F21",
+    color: "#F15A22",
+    borderBottom: "2px solid #F15A22",
     fontWeight: "bold",
   };
 
@@ -75,10 +75,10 @@ const Home = ({ data, alumni, work, homeData }) => {
       />
 
       <CareerPath>
-        <div style={{ textAlign: "center" }}>
+       <CareerTitleDesc>
           <CareerTitle>{HomeData.careerPath.title}</CareerTitle>
           <CareerDesc>{HomeData.careerPath.description}</CareerDesc>
-        </div>
+        </CareerTitleDesc>
         <FieldSelector>
           <Field
             style={field === "developer" ? selectedFieldStyles : null}
@@ -135,19 +135,21 @@ const Home = ({ data, alumni, work, homeData }) => {
               text={"See Student Work"}
               font={CommonStyling.body2FontSize.split("r")[0]}
               color={"white"}
-              bcg={"#DE3F21"}
+              bcg={"#F15A22"}
               section={"joinWMDD"}
               borderColor={"transparent"}
               to={"project"}
+              hover={true}
+              mobile={true}
             />
           </ButtonWrapper>
         </GradDescWrapper>
       </Gradute>
       <AlumniSection>
-        <article style={{ textAlign: "center" }}>
+      <AlumniSectionArticle>
           <h2>{HomeData.alumni.title}</h2>
           <p>{HomeData.alumni.description}</p>
-        </article>
+        </AlumniSectionArticle>
         <AlumniSlider data={newAlumni} />
       </AlumniSection>
       <AdminBox />
@@ -178,6 +180,13 @@ const AlumniSection = styled.section`
   }
 `;
 
+const AlumniSectionArticle = styled.article`
+  text-align: center;
+  @media screen and (max-width: 768px) {
+    text-align: left;
+  }
+`;
+
 const CareerPath = styled.section`
   padding: 2vh 5.4vw;
   display: flex;
@@ -191,16 +200,23 @@ const CareerPath = styled.section`
   }
 `;
 
+const CareerTitleDesc = styled.div`
+  text-align: center;
+  @media screen and (max-width: 768px) {
+    text-align: left;
+  }
+`;
+
 const CareerTitle = styled.h2`
   font-size: ${CommonStyling.h2FontSize};
   line-height: ${CommonStyling.h2LineHeight};
   color: rgba(38, 50, 56, 1);
   font-weight: 700;
-
   @media screen and (min-width: 768px) {
     margin: 0;
   }
 `;
+
 const CareerDesc = styled.p`
   margin: 0;
   font-size: ${CommonStyling.body1FontSize};
@@ -215,7 +231,6 @@ const CareerDesc = styled.p`
 const Gradute = styled.div`
   padding: 7.8vh 4.1vw 9.7vh;
   background-color: #f3fbff;
-
   @media screen and (min-width: 768px) {
     display: flex;
     flex-direction: row-reverse;
@@ -227,7 +242,6 @@ const Gradute = styled.div`
 const GraduateImg = styled.img`
   width: 100%;
   object-fit: contain;
-
   @media screen and (min-width: 768px) {
     max-width: 477px;
   }
@@ -260,9 +274,14 @@ const GradDesc = styled.p`
 
 const ButtonWrapper = styled.div`
   padding-top: 4.8vh;
-
   @media screen and (min-width: 768px) {
     padding-top: 3.6vh;
+  }
+  @media screen and (max-width: 425px) {
+    .btn {
+      width: 100%;
+      border: 1px solid red;
+    }
   }
 `;
 
@@ -314,7 +333,6 @@ const FieldSelector = styled.div`
   padding: 4.9vh 0vw;
   font-size: 1.25rem;
   line-height: 1.875rem;
-
   @media screen and (min-width: 768px) {
     padding: 3vh 10vw;
     justify-content: space-around;

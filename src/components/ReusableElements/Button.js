@@ -15,6 +15,8 @@ const Button = ({
   to,
   link,
   borderColor,
+  hover,
+  mobile,
 }) => {
   return (
     <BtnElement
@@ -26,6 +28,8 @@ const Button = ({
       layout={layout}
       data-section={section}
       data-bordercolor={borderColor}
+      hover={hover}
+      mobile={mobile}
     >
       {to === "overview" ? (
         <Link href={"/program-overview"}>{text}</Link>
@@ -95,6 +99,20 @@ const BtnElement = styled.button`
       : (34 / 1366) * 100}vw;
     }
   } */
+
+  ${({ hover }) =>
+    hover &&
+    `
+    &:hover {
+      color: #f15a22;
+      background-color: #ffffff;
+      box-shadow: 0px 0px 0px 1px #f15a22 inset;
+    }
+  `}
+
+   @media screen and (max-width: 426px) {
+    ${({ mobile }) => mobile && `width: 100%`}
+  }
 `;
 
 export default Button;

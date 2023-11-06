@@ -167,7 +167,7 @@ const EventDetails = styled.section`
   }
 
   .article-link {
-    color: #de3f21;
+    color: #F15A22;
     font-weight: 700;
     font-size: 20px;
     line-height: 30px;
