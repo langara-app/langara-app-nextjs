@@ -30,14 +30,21 @@ export async function getStaticProps() {
   // fetch post data from an external API endpoint
   //   const data = getHomeData();
 
-  const res = await fetch(`${process.env.NEXT_API}/acf/v3/pages/356`);
+  const res = await fetch(
+    `${process.env.NEXT_API}/acf/v3/pages/356`
+    // "https://api.langara-app.ca/wp-json/acf/v3/pages/356"
+  );
   const data = await res.json();
 
-  const alumniData = await fetch(`${process.env.NEXT_API}/acf/v3/alumni`);
+  const alumniData = await fetch(
+    `${process.env.NEXT_API}/acf/v3/alumni`
+    // "https://api.langara-app.ca/wp-json/acf/v3/alumni"
+  );
   const alumni = await alumniData.json();
 
   const workData = await fetch(
     `${process.env.NEXT_API}/wp/v2/projects?per_page=5`
+    // "https://api.langara-app.ca/wp-json/wp/v2/projects?per_page=5"
   );
   const work = await workData.json();
 

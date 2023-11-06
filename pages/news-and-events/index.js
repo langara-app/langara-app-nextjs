@@ -9,7 +9,10 @@ import styled from "styled-components";
 import { HomeData } from "../../lib/HomeData";
 
 export async function getStaticProps() {
-  const res = await fetch(`${process.env.NEXT_API}/wp/v2/news-and-events`);
+  const res = await fetch(
+    `${process.env.NEXT_API}/wp/v2/news-and-events`
+    // "https://api.langara-app.ca/wp-json/wp/v2/news-and-events"
+  );
 
   const news_events = await res.json();
 
