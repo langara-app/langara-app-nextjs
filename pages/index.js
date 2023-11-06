@@ -150,6 +150,7 @@ const Home = ({ data, alumni, work, homeData }) => {
               borderColor={"transparent"}
               to={"project"}
               hover
+              mobile
             />
           </ButtonWrapper>
         </GradDescWrapper>
@@ -290,6 +291,13 @@ const ButtonWrapper = styled.div`
 
   @media screen and (min-width: 768px) {
     padding-top: 3.6vh;
+  }
+
+  @media screen and (max-width: 425px) {
+    .btn {
+      width: 100%;
+      border: 1px solid red;
+    }
   }
 `;
 

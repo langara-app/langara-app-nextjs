@@ -24,6 +24,7 @@ const AdminBox = () => {
             section={"joinWMDD"}
             borderColor={"transparent"}
             to={"overview"}
+            mobile
           />
         </ButtonWrapper>
       </AdminBoxDetails>

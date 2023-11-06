@@ -16,6 +16,7 @@ const Button = ({
   link,
   borderColor,
   hover,
+  mobile,
 }) => {
   return (
     <BtnElement
@@ -27,7 +28,9 @@ const Button = ({
       layout={layout}
       section={section}
       borderColor={borderColor}
-      hover={hover}>
+      hover={hover}
+      mobile={mobile}
+    >
       {to === "overview" ? (
         <Link href={"/program-overview"}>
           <a> {text}</a>
@@ -73,7 +76,7 @@ const BtnElement = styled.button`
       background-color: #ffffff;
       box-shadow: 0px 0px 0px 1px #f15a22 inset;
     }
-  `}/* @media only screen and (min-width: 768px) {
+  `} /* @media only screen and (min-width: 768px) {
     margin: ${({ layout }) => (layout === "desktop" ? 0 : (30 / 1366) * 100)}vw
       ${({ section }) => (section === "joinWMDD" ? (500 / 1366) * 100 : 0)}vw;
     margin-top: ${({ section }) =>
@@ -96,6 +99,10 @@ const BtnElement = styled.button`
     section === "joinWMDD" ? (10 / 1366) * 100 : (34 / 1366) * 100}vw;
     }
   } */
+
+  @media screen and (max-width: 425px) {
+    ${({ mobile }) => mobile && `width: 100%`}
+  }
 `;
 
 export default Button;
