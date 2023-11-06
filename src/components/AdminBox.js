@@ -19,11 +19,13 @@ const AdminBox = () => {
           <Button
             text={"Explore Program Overview"}
             font={CommonStyling.body2FontSize.split("r")[0]}
-            color={"#37474F"}
-            bcg={"white"}
+            color={"#FFFFFF"}
+            bcg={"#F15A22"}
             section={"joinWMDD"}
             borderColor={"transparent"}
             to={"overview"}
+            mobile={true}
+            hover={true}
           />
         </ButtonWrapper>
       </AdminBoxDetails>
@@ -44,9 +46,9 @@ const AdmissionContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   padding: 8vh 5.4vw;
-  background-color: rgba(222, 63, 33, 1);
+  color: rgba(222, 63, 33, 1);
   padding-bottom: 70px;
-  color: #ffffff;
+  background-color: #ffffff;
   align-items: flex-start;
   gap: 2rem;
 

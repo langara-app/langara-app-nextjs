@@ -47,9 +47,10 @@ export async function getStaticProps() {
 const FAQ = ({ faqLists, questionCat }) => {
   const [catSlug, setCatSlug] = useState(questionCat[0].categorySlug);
   const width = useWindowWidth();
-
+  const [expanded, setExpanded] = useState(null);
   const onSlugSet = (value) => {
     setCatSlug(value);
+    setExpanded(null);
   };
 
   const filteredArr = faqLists.find(
@@ -70,13 +71,13 @@ const FAQ = ({ faqLists, questionCat }) => {
         questionCat.map((qc) => (
           <div key={qc.categorySlug}>
             <CategoryTitle>{qc.categoryName}</CategoryTitle>
-            <QAs data={getFilteredArr(qc.categorySlug)} />
+            <QAs data={getFilteredArr(qc.categorySlug)} expanded={expanded} setExpanded={setExpanded} />
           </div>
         ))
       ) : (
         <>
           <Options data={questionCat} onClick={onSlugSet} />
-          <QAs data={filteredArr} />
+          <QAs data={filteredArr} expanded={expanded} setExpanded={setExpanded}/>
         </>
       )}
     </FaqContainer>
@@ -96,7 +97,7 @@ const FaqContainer = styled.div`
 const FAQHeader = styled.h1`
   padding: 5vh 0 0 0;
   font-weight: 700;
-  font-size: 56px;
+  font-size: 2.5rem;
   line-height: 64px;
   text-align: center;
 
@@ -111,7 +112,7 @@ const CategoryTitle = styled.div`
   font-size: 20px;
   line-height: 30px;
   text-align: center;
-  color: #de3f21;
+  color: #F15A22;
   padding: 8.5vh 20vw 3.4vh 20vw;
 `;
 

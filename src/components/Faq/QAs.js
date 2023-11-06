@@ -1,29 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-
-import {
-  Accordion as MuiAccordion,
-  AccordionDetails as MuiAccordionDetails,
-  AccordionSummary as MuiAccordionSummary,
-  Typography,
-} from "@mui/material";
-
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
 import { IoIosArrowDown } from "react-icons/io";
 import { CommonStyling } from "../../lib/CommonStyling";
+import useWindowWidth from "../../components/Hooks/useWindowWidth";
 
-const QAs = ({ data }) => {
-  // console.log(data)
+const QAs = ({ data, expanded, setExpanded }) => {
+  const width = useWindowWidth();
+
+  const handleChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : null);
+  };
+
   return (
     <QAContainer>
       {data.map((q, index) => (
-        <MuiAccordion key={index}>
-          <MuiAccordionSummary
+        <Accordion
+          key={index}
+          onChange={handleChange(index)}
+          expanded={expanded === index}
+        >
+          <AccordionSummary
             style={{ borderBotomWidth: "1px" }}
             expandIcon={<IoIosArrowDown />}
           >
             {q.acf.question}
-          </MuiAccordionSummary>
-          <MuiAccordionDetails>
+          </AccordionSummary>
+          <AccordionDetails>
             <p
               dangerouslySetInnerHTML={{
                 __html: q.acf.answer,
@@ -33,8 +38,8 @@ const QAs = ({ data }) => {
             <a href={q.acf.link}>
               {q.acf.link !== undefined ? "More details" : null}
             </a>
-          </MuiAccordionDetails>
-        </MuiAccordion>
+          </AccordionDetails>
+        </Accordion>
       ))}
     </QAContainer>
   );
@@ -55,6 +60,7 @@ const QAContainer = styled.div`
 
   .MuiPaper-root {
     /* background-color: unset; */
+    margin-bottom: 0
   }
 
   .MuiAccordion-root.Mui-expanded {
@@ -76,6 +82,7 @@ const QAContainer = styled.div`
   .MuiAccordionDetails-root {
     flex-direction: column;
     padding: 0;
+    margin-bottom: 2rem;
   }
 
   p,
@@ -94,7 +101,7 @@ const QAContainer = styled.div`
     font-weight: 700;
     font-size: ${CommonStyling.body2FontSize};
     line-height: 30px;
-    color: #de3f21;
+    color: #F15A22;
     padding: 0 2rem;
     padding-bottom: 2rem;
   }

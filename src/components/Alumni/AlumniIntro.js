@@ -26,27 +26,29 @@ const AlumniIntro = (props) => {
 
   return (
     <Card>
-      <VideoBlock>
-        <ProfileImage
-          src={profile_image}
-          onClick={(e) => handleImageClick(e)}
-        />
-        <PlayIcon
-          src={playIcon}
-          onClick={(e) => handleImageClick(e)}
-        ></PlayIcon>
-        <Video
-          src={movie_link}
-          ref={profVidRef}
-          allow="autoplay; encrypted-media"
-        ></Video>
-      </VideoBlock>
-      <DepartmentBlock>
-        <span>{stream + " Stream"}</span>
-        <span> ∙ </span>
-        <span>{graduation_year}</span>
-      </DepartmentBlock>
-      <Comment>{comment}</Comment>
+      <Top>
+        <VideoBlock>
+          <ProfileImage
+            src={profile_image}
+            onClick={(e) => handleImageClick(e)}
+          />
+          <PlayIcon
+            src={playIcon}
+            onClick={(e) => handleImageClick(e)}
+          ></PlayIcon>
+          <Video
+            src={movie_link}
+            ref={profVidRef}
+            allow="autoplay; encrypted-media"
+          ></Video>
+        </VideoBlock>
+        <DepartmentBlock>
+          <span>{stream + " Stream"}</span>
+          <span> ∙ </span>
+          <span>{graduation_year}</span>
+        </DepartmentBlock>
+        <Comment>{comment}</Comment>
+      </Top>
       <DescriptionBlock>
         <div>{alumni_name}</div>
         <div>
@@ -57,7 +59,13 @@ const AlumniIntro = (props) => {
   );
 };
 
-const Card = styled.div``;
+const Card = styled.div`
+  height: 100% !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+const Top = styled.div``;
 
 const Comment = styled.p`
   line-height: 1.5rem;
@@ -125,5 +133,4 @@ const DescriptionBlock = styled.div`
     line-height: 1.25rem;
   }
 `;
-
 export default AlumniIntro;

@@ -67,13 +67,12 @@ const MenuBar = () => {
             </MenuLink>
           </Link>
         ))}
-        <Button
+         <Button
           link={"https://langara.ca/admissions/apply-to-langara/index.html"}
           text="Apply"
           bcg="#FFFFFF"
-          color="#DE3F21"
-          font={CommonStyling.body2FontSize.split("r")[0]}
-        ></Button>
+          color="#F15A22"
+          font={CommonStyling.body2FontSize.split("r")[0]}></Button>
       </Menu>
     </MobileMenuContainer>
   ) : (
@@ -102,13 +101,13 @@ const MenuBar = () => {
             </MenuLinkWeb>
           </Link>
         ))}
-        <Button
+       <Button
           link={"https://langara.ca/admissions/apply-to-langara/index.html"}
           text="Apply"
-          bcg="#DE3F21"
+          bcg="#F15A22"
           color="#FFFFFF"
-          font={CommonStyling.body2FontSize.split("r")[0]}
-        ></Button>
+          hover={true}
+          font={CommonStyling.body2FontSize.split("r")[0]}></Button>
       </div>
     </div>
   );
@@ -187,7 +186,7 @@ const MobileMenuContainer = styled.div`
 
   /* General sidebar styles */
   .bm-menu {
-    background-color: #de3f21;
+    background-color: #F15A22;
     padding: 2.5em 1.5em 0;
   }
 

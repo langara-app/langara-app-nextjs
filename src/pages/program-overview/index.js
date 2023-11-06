@@ -513,7 +513,7 @@ const ProgramDetails = styled.div`
     font-size: 1rem;
     line-height: 1.5px;
     text-align: center;
-    color: #de3f21;
+    color: #F15A22;
     margin: 2rem;
     cursor: pointer;
   }
