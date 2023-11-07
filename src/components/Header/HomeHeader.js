@@ -90,7 +90,7 @@ const HeaderLeftWeb = styled.div`
 const HomeTitle = styled.h1`
   margin: 0;
   font-size: ${CommonStyling.body2FontSize};
-  line-height: ${CommonStyling.body3LineHeight};
+  line-height: ${CommonStyling.body2LineHeight};
   font-weight: 400;
   font-family: ${CommonStyling.secondaryFontFamily};
 

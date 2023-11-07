@@ -21,5 +21,5 @@ export const CommonStyling = {
   buttonLineHeight: "140%",
 
   h2FontSizeV2: "2rem",
-  h2LineHeightV2: "140%",
+  h2LineHeightV2: "100%",
 };
