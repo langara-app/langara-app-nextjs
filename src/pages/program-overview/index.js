@@ -312,8 +312,8 @@ const WmddWebLeft = styled.div`
 
 const WmddTitle = styled.h1`
   margin: 0;
-  font-size: 0.85rem;
-  line-height: 18px;
+  font-size: ${CommonStyling.body2FontSize};
+  line-height: ${CommonStyling.body3LineHeight};
   font-weight: 400;
   font-family: ${CommonStyling.secondaryFontFamily};
 
@@ -513,7 +513,7 @@ const ProgramDetails = styled.div`
     font-size: 1rem;
     line-height: 1.5px;
     text-align: center;
-    color: #F15A22;
+    color: #f15a22;
     margin: 2rem;
     cursor: pointer;
   }

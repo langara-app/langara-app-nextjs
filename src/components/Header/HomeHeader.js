@@ -89,13 +89,13 @@ const HeaderLeftWeb = styled.div`
 
 const HomeTitle = styled.h1`
   margin: 0;
-  font-size: ${CommonStyling.body3FontSize};
+  font-size: ${CommonStyling.body2FontSize};
   line-height: ${CommonStyling.body3LineHeight};
   font-weight: 400;
   font-family: ${CommonStyling.secondaryFontFamily};
 
   @media only screen and (min-width: 768px) {
-    font-size: ${CommonStyling.body3FontSize};
+    font-size: ${CommonStyling.body2FontSize};
   }
 `;
 

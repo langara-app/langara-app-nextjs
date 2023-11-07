@@ -47,7 +47,8 @@ const BtnElement = styled.button`
   text-align: center;
   text-decoration: none;
   display: block;
-  font-size: ${({ fontSize }) => fontSize}rem;
+  font-size: ${({ fontSize }) =>
+    fontSize ? `${fontSize}rem` : CommonStyling.buttonFontSize};
   cursor: pointer;
   border-radius: 8px;
 
@@ -67,6 +68,7 @@ const BtnElement = styled.button`
   a {
     padding: 12px 32px;
     display: block;
+    font-size: ${CommonStyling.buttonFontSize};
   }
 
   /* @media only screen and (min-width: 768px) {
