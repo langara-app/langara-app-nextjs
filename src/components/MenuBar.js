@@ -5,13 +5,14 @@ import styles from "../styles/MenuBar.module.css";
 import { MenuData } from "../lib/MenuData";
 import Button from "../components/ReusableElements/Button";
 
-import logo from "../assets/logo.svg";
+import logo2 from "../assets/logo2.svg";
 import logowhite from "../assets/logo-white.svg";
 import hamburger from "../assets/hamburger.svg";
 
 import useWindowWidth from "./Hooks/useWindowWidth";
 import styled from "styled-components";
 import { CommonStyling } from "../lib/CommonStyling";
+import Image from "next/image";
 
 const MenuBar = () => {
   const width = useWindowWidth();
@@ -35,10 +36,12 @@ const MenuBar = () => {
     <MobileMenuContainer>
       <div>
         <Link href="/">
-          <img
+          <Image
             className={styles.langara_logo}
-            src={logo}
+            src={logo2}
             alt="Langara College Logo"
+            width={32}
+            height={32}
           />
         </Link>
       </div>
@@ -53,10 +56,12 @@ const MenuBar = () => {
       >
         <div>
           <Link href="/">
-            <img
+            <Image
               className={styles.langara_logo_in_menu}
               src={logowhite}
               alt="Langara College Logo"
+              width={32}
+              height={32}
             />
           </Link>
         </div>
@@ -67,22 +72,25 @@ const MenuBar = () => {
             </MenuLink>
           </Link>
         ))}
-         <Button
+        <Button
           link={"https://langara.ca/admissions/apply-to-langara/index.html"}
           text="Apply"
           bcg="#FFFFFF"
           color="#F15A22"
-          font={CommonStyling.body2FontSize.split("r")[0]}></Button>
+          font={CommonStyling.body2FontSize.split("r")[0]}
+        ></Button>
       </Menu>
     </MobileMenuContainer>
   ) : (
     <div className={styles.container}>
       <div>
         <Link href="/">
-          <img
+          <Image
             className={styles.langara_logo}
-            src={logo}
+            src={logo2}
             alt="Langara College Logo"
+            width={32}
+            height={32}
           />
         </Link>
       </div>
@@ -101,13 +109,14 @@ const MenuBar = () => {
             </MenuLinkWeb>
           </Link>
         ))}
-       <Button
+        <Button
           link={"https://langara.ca/admissions/apply-to-langara/index.html"}
           text="Apply"
           bcg="#F15A22"
           color="#FFFFFF"
           hover={true}
-          font={CommonStyling.body2FontSize.split("r")[0]}></Button>
+          font={CommonStyling.body2FontSize.split("r")[0]}
+        ></Button>
       </div>
     </div>
   );
@@ -186,7 +195,7 @@ const MobileMenuContainer = styled.div`
 
   /* General sidebar styles */
   .bm-menu {
-    background-color: #F15A22;
+    background-color: #f15a22;
     padding: 2.5em 1.5em 0;
   }
 
