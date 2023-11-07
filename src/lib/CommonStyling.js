@@ -5,8 +5,8 @@ export const CommonStyling = {
   h1FontSize: "2.5rem",
   h1LineHeight: "100%",
 
-  h2FontSize: "2.2rem",
-  h2LineHeight: "140%",
+  h2FontSize: "2rem",
+  h2LineHeight: "100%",
 
   body1FontSize: "1.25rem",
   body1LineHeight: "140%",
@@ -19,7 +19,4 @@ export const CommonStyling = {
 
   buttonFontSize: "1.25rem",
   buttonLineHeight: "140%",
-
-  h2FontSizeV2: "2rem",
-  h2LineHeightV2: "100%",
 };

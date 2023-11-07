@@ -174,8 +174,8 @@ const AlumniSectionArticle = styled.article`
 `;
 
 const AlumniTitle = styled.h2`
-  font-size: ${CommonStyling.h2FontSizeV2};
-  line-height: ${CommonStyling.h2LineHeightV2};
+  font-size: ${CommonStyling.h2FontSize};
+  line-height: ${CommonStyling.h2LineHeight};
 `;
 
 const AlumniDesc = styled.p`
@@ -204,8 +204,8 @@ const CareerTitleDesc = styled.div`
 `;
 
 const CareerTitle = styled.h2`
-  font-size: ${CommonStyling.h2FontSizeV2};
-  line-height: ${CommonStyling.h2LineHeightV2};
+  font-size: ${CommonStyling.h2FontSize};
+  line-height: ${CommonStyling.h2LineHeight};
   color: rgba(38, 50, 56, 1);
   font-weight: 700;
   @media screen and (min-width: 768px) {
@@ -249,9 +249,9 @@ const GradDescWrapper = styled.div`
 
 const GradTitle = styled.h2`
   margin: 0;
-  font-size: ${CommonStyling.h2FontSizeV2};
+  font-size: ${CommonStyling.h2FontSize};
   color: rgba(33, 38, 58, 1);
-  line-height: ${CommonStyling.h2LineHeightV2};
+  line-height: ${CommonStyling.h2LineHeight};
   font-weight: 700;
 `;
 

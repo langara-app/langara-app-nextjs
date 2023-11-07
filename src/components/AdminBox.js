@@ -64,8 +64,8 @@ const AdminTitle = styled.h2`
   margin: 0;
   text-align: left;
   font-weight: bold;
-  font-size: ${CommonStyling.h2FontSizeV2};
-  line-height: ${CommonStyling.h2LineHeightV2};
+  font-size: ${CommonStyling.h2FontSize};
+  line-height: ${CommonStyling.h2LineHeight};
   @media only screen and (min-width: 768px) {
   }
 `;

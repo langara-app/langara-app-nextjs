@@ -180,7 +180,7 @@ const NextStepContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   padding: 9.8vh 5.4vw;
-  background-color: rgba(222, 63, 33, 1);
+  background-color: #f15a22;
   color: #ffffff;
   align-items: flex-start;
 
