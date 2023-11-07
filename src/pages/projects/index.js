@@ -100,8 +100,10 @@ const Container = styled.div`
     padding-top: 9.5vh;
     font-family: ${CommonStyling.secondaryFontFamily};
     margin: 0;
-    font-size: 0.875rem;
     color: rgba(55, 71, 79, 1);
+
+    font-size: ${CommonStyling.body2FontSize} !important;
+    line-height: ${CommonStyling.body2LineHeight};
   }
 
   .term3,
@@ -109,19 +111,15 @@ const Container = styled.div`
     color: rgba(55, 71, 79, 1);
     padding-top: 10vh;
     font-family: ${CommonStyling.secondaryFontFamily};
-    font-size: 0.875rem;
+    font-size: ${CommonStyling.body2FontSize} !important;
+    line-height: ${CommonStyling.body2LineHeight};
   }
 
   .title {
-    font-size: 2.5rem;
+    font-size: ${CommonStyling.h1FontSize} !important;
+    line-height: ${CommonStyling.h1LineHeight};
     margin: 0;
     padding-top: 1vh;
-  }
-
-  @media only screen and (min-width: 768px) {
-    .title:nth-child(2) {
-      width: 50%;
-    }
   }
 
   .desc {
@@ -140,13 +138,18 @@ const Container = styled.div`
   }
 
   @media only screen and (min-width: 768px) {
+    .title:nth-child(2) {
+      width: 50%;
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
     padding: 0 13.3vw 9.8vh 13.4vw;
 
     .term4 {
       padding-top: 9.3vh;
       font-family: ${CommonStyling.secondaryFontFamily};
       margin: 0;
-      font-size: 0.875rem;
     }
 
     .term3,
