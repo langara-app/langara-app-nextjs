@@ -49,7 +49,7 @@ const BtnElement = styled.button`
   display: block;
   font-size: ${({ fontSize }) => fontSize}rem;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 8px;
 
   font-weight: ${({ size }) =>
     size === "med" ? "bold" : size === "big" ? "bold" : "600"};
@@ -108,9 +108,17 @@ const BtnElement = styled.button`
       background-color: #ffffff;
       box-shadow: 0px 0px 0px 1px #f15a22 inset;
     }
+
+    &:active {
+      border-color: #c23c0a;
+      background-color: #ffffff;
+      a {
+        color: #c23c0a;
+      }
+    }
   `}
 
-   @media screen and (max-width: 426px) {
+  @media screen and (max-width: 426px) {
     ${({ mobile }) => mobile && `width: 100%`}
   }
 `;

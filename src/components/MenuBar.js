@@ -136,9 +136,9 @@ const MenuLink = styled.a`
 
 const MenuLinkWeb = styled.a`
   margin-left: 3.5vw;
-  font-weight: 400;
+  font-weight: ${({ color, checked }) => (color === checked ? 700 : 400)};
   font-size: ${CommonStyling.body2FontSize};
-  color: ${({ color, checked }) => (color === checked ? "#c36448" : "#263238")};
+  color: ${({ color, checked }) => (color === checked ? "#F15A22" : "#263238")};
   cursor: pointer;
 `;
 
