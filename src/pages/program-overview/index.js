@@ -50,7 +50,7 @@ const ProgramOverview = () => {
             </div>
           ) : (
             <div>
-              <WmddTitle>{WmddData.header.title}</WmddTitle>
+              <WmddTitle>{WmddData.header.title} </WmddTitle>
               <Header1>{WmddData.header.subtitle}</Header1>
               <Header2>{WmddData.header.description}</Header2>
             </div>
@@ -180,7 +180,7 @@ const NextStepContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   padding: 9.8vh 5.4vw;
-  background-color: rgba(222, 63, 33, 1);
+  background-color: #f15a22;
   color: #ffffff;
   align-items: flex-start;
 
@@ -312,8 +312,8 @@ const WmddWebLeft = styled.div`
 
 const WmddTitle = styled.h1`
   margin: 0;
-  font-size: 0.85rem;
-  line-height: 18px;
+  font-size: ${CommonStyling.body2FontSize} !important;
+  line-height: ${CommonStyling.body2LineHeight};
   font-weight: 400;
   font-family: ${CommonStyling.secondaryFontFamily};
 
@@ -513,7 +513,7 @@ const ProgramDetails = styled.div`
     font-size: 1rem;
     line-height: 1.5px;
     text-align: center;
-    color: #F15A22;
+    color: #f15a22;
     margin: 2rem;
     cursor: pointer;
   }

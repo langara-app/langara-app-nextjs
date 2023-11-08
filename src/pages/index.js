@@ -75,7 +75,7 @@ const Home = ({ data, alumni, work, homeData }) => {
       />
 
       <CareerPath>
-       <CareerTitleDesc>
+        <CareerTitleDesc>
           <CareerTitle>{HomeData.careerPath.title}</CareerTitle>
           <CareerDesc>{HomeData.careerPath.description}</CareerDesc>
         </CareerTitleDesc>
@@ -146,9 +146,9 @@ const Home = ({ data, alumni, work, homeData }) => {
         </GradDescWrapper>
       </Gradute>
       <AlumniSection>
-      <AlumniSectionArticle>
-          <h2>{HomeData.alumni.title}</h2>
-          <p>{HomeData.alumni.description}</p>
+        <AlumniSectionArticle>
+          <AlumniTitle>{HomeData.alumni.title}</AlumniTitle>
+          <AlumniDesc>{HomeData.alumni.description}</AlumniDesc>
         </AlumniSectionArticle>
         <AlumniSlider data={newAlumni} />
       </AlumniSection>
@@ -161,20 +161,6 @@ const AlumniSection = styled.section`
   background-color: #ffffff;
   padding: 3rem 5.4vw;
 
-  article {
-    h2 {
-      font-size: ${CommonStyling.h2FontSize};
-      line-height: ${CommonStyling.h2LineHeight};
-      margin: 0;
-      margin-bottom: 1rem;
-    }
-    p {
-      font-size: ${CommonStyling.body1FontSize};
-      line-height: ${CommonStyling.body1LineHeight};
-      margin: 0 0 2rem 0;
-    }
-  }
-
   @media screen and (min-width: 768px) {
     padding: 4rem 13.5vw 5rem 13.5vw;
   }
@@ -185,6 +171,16 @@ const AlumniSectionArticle = styled.article`
   @media screen and (max-width: 768px) {
     text-align: left;
   }
+`;
+
+const AlumniTitle = styled.h2`
+  font-size: ${CommonStyling.h2FontSize};
+  line-height: ${CommonStyling.h2LineHeight};
+`;
+
+const AlumniDesc = styled.p`
+  font-size: ${CommonStyling.body1FontSize};
+  line-height: ${CommonStyling.body1LineHeight};
 `;
 
 const CareerPath = styled.section`

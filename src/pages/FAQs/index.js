@@ -7,6 +7,7 @@ import Options from "../../components/Faq/Options";
 import QAs from "../../components/Faq/QAs";
 import { Faq } from "../../lib/Faq";
 import { HomeData } from "../../lib/HomeData";
+import { CommonStyling } from "../../lib/CommonStyling";
 
 export async function getStaticProps() {
   const cats = await fetch(
@@ -71,13 +72,21 @@ const FAQ = ({ faqLists, questionCat }) => {
         questionCat.map((qc) => (
           <div key={qc.categorySlug}>
             <CategoryTitle>{qc.categoryName}</CategoryTitle>
-            <QAs data={getFilteredArr(qc.categorySlug)} expanded={expanded} setExpanded={setExpanded} />
+            <QAs
+              data={getFilteredArr(qc.categorySlug)}
+              expanded={expanded}
+              setExpanded={setExpanded}
+            />
           </div>
         ))
       ) : (
         <>
           <Options data={questionCat} onClick={onSlugSet} />
-          <QAs data={filteredArr} expanded={expanded} setExpanded={setExpanded}/>
+          <QAs
+            data={filteredArr}
+            expanded={expanded}
+            setExpanded={setExpanded}
+          />
         </>
       )}
     </FaqContainer>
@@ -97,8 +106,8 @@ const FaqContainer = styled.div`
 const FAQHeader = styled.h1`
   padding: 5vh 0 0 0;
   font-weight: 700;
-  font-size: 2.5rem;
-  line-height: 64px;
+  font-size: ${CommonStyling.h1FontSize} !important;
+  line-height: ${CommonStyling.h1LineHeight};
   text-align: center;
 
   @media only screen and (min-width: 768px) {
@@ -112,7 +121,7 @@ const CategoryTitle = styled.div`
   font-size: 20px;
   line-height: 30px;
   text-align: center;
-  color: #F15A22;
+  color: #f15a22;
   padding: 8.5vh 20vw 3.4vh 20vw;
 `;
 

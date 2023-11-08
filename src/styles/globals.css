@@ -1,38 +1,16 @@
-@font-face {
-  font-family: "Arial";
-  src: url("./fonts/arial/arial_bold.ttf") format("truetype");
-  font-weight: 700;
-}
-
-@font-face {
-  font-family: "Adelle";
-  font-weight: 600;
-  src: local("Adelle_Semibold"),
-    url("./fonts/adelle/Adelle_Semibold.otf") format("opentype");
-}
-
-@font-face {
-  font-family: "Adelle";
-  font-weight: 400;
-  src: local("Adelle_Reg"),
-    url("./fonts/adelle/Adelle_Reg.otf") format("opentype");
-}
-
 html,
 body {
   overflow-x: hidden;
   padding: 0;
   margin: 0;
   font-family:
-    Adelle,
+    Ubuntu,
     -apple-system,
-    Roboto,
     Kanit,
     sans-serif;
   color: #263238;
   background-color: #ffffff;
 }
-
 
 a {
   color: inherit;

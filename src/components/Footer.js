@@ -2,11 +2,12 @@ import React from "react";
 import Link from "next/link";
 import styled from "styled-components";
 import useWindowWidth from "./Hooks/useWindowWidth";
-import logo from "../assets/logo.svg";
+import logo2 from "../assets/logo2.svg";
 
 import { HomeData } from "../lib/HomeData";
 import { MenuData } from "../lib/MenuData";
 import { CommonStyling } from "../lib/CommonStyling";
+import Image from "next/image";
 
 const Footer = () => {
   const width = useWindowWidth();
@@ -15,7 +16,7 @@ const Footer = () => {
     <Container>
       <LinkWrapper>
         <Logo>
-          <img src={logo} style={{ display: "block", width: "100%" }} />
+          <Image src={logo2} width={87.9} height={41.65} alt="Logo" />
         </Logo>
         {MenuData.map((menu, index) => {
           if (index != 0) {
@@ -48,7 +49,7 @@ const Footer = () => {
     <FlexContainer>
       <LinkWrapper>
         <Logo>
-          <img src={logo} style={{ display: "block", width: "100%" }} />
+          <Image src={logo2} width={87.9} height={41.65} alt="Logo" />
         </Logo>
         <div style={{ display: "flex", gap: "1.5rem" }}>
           {MenuData.map((menu, index) => {

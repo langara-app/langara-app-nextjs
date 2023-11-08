@@ -19,8 +19,8 @@ const AdminBox = () => {
           <Button
             text={"Explore Program Overview"}
             font={CommonStyling.body2FontSize.split("r")[0]}
-            color={"#FFFFFF"}
-            bcg={"#F15A22"}
+            color={"#F15A22"}
+            bcg={"#FFFFFF"}
             section={"joinWMDD"}
             borderColor={"transparent"}
             to={"overview"}
@@ -46,9 +46,9 @@ const AdmissionContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   padding: 8vh 5.4vw;
-  color: rgba(222, 63, 33, 1);
+  color: #ffffff;
   padding-bottom: 70px;
-  background-color: #ffffff;
+  background-color: #f15a22;
   align-items: flex-start;
   gap: 2rem;
 

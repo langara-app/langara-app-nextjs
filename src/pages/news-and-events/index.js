@@ -71,8 +71,8 @@ const PageHeader = styled.div`
   h1 {
     margin: 0;
     font-weight: 700;
-    font-size: 56px;
-    line-height: 64px;
+    font-size: ${CommonStyling.h1FontSize} !important;
+    line-height: ${CommonStyling.h1LineHeight};
     color: #263238;
     padding-bottom: 2vh;
   }
@@ -80,6 +80,7 @@ const PageHeader = styled.div`
   p {
     margin: 0;
     font-size: ${CommonStyling.body1FontSize};
+    line-height: ${CommonStyling.body1LineHeight};
     line-height: 30px;
   }
 `;
