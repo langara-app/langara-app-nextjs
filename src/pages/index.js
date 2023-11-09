@@ -57,7 +57,6 @@ const Home = ({ data, alumni, work, homeData }) => {
 
   const selectedFieldStyles = {
     color: "#F15A22",
-    borderBottom: "2px solid #F15A22",
     fontWeight: "bold",
   };
 
@@ -75,24 +74,26 @@ const Home = ({ data, alumni, work, homeData }) => {
       />
 
       <CareerPath>
-        <CareerTitleDesc>
-          <CareerTitle>{HomeData.careerPath.title}</CareerTitle>
-          <CareerDesc>{HomeData.careerPath.description}</CareerDesc>
-        </CareerTitleDesc>
-        <FieldSelector>
-          <Field
-            style={field === "developer" ? selectedFieldStyles : null}
-            onClick={(e) => setField("developer")}
-          >
-            Developer
-          </Field>
-          <Field
-            style={field === "designer" ? selectedFieldStyles : null}
-            onClick={(e) => setField("designer")}
-          >
-            Designer
-          </Field>
-        </FieldSelector>
+        <CareerHeader>
+          <CareerTitleDesc>
+            <CareerTitle>{HomeData.careerPath.title}</CareerTitle>
+            <CareerDesc>{HomeData.careerPath.description}</CareerDesc>
+          </CareerTitleDesc>
+          <FieldSelector>
+            <Field
+              style={field === "developer" ? selectedFieldStyles : null}
+              onClick={(e) => setField("developer")}
+            >
+              Developer
+            </Field>
+            <Field
+              style={field === "designer" ? selectedFieldStyles : null}
+              onClick={(e) => setField("designer")}
+            >
+              Designer
+            </Field>
+          </FieldSelector>
+        </CareerHeader>
         {field === "developer" ? (
           <div style={{ width: "100%" }}>
             <Slide ssrFadeout left>
@@ -191,17 +192,25 @@ const CareerPath = styled.section`
   overflow: hidden;
   background-color: ${CommonStyling.backgroundColor};
   border-radius: 32px 32px 0 0;
-  // position: absolute;
-  // bottom: -38vh;
-  // left: 0;
-  // right: 0;
+
   @media screen and (min-width: 768px) {
     padding: 2vh 13.5vw;
   }
 `;
 
+const CareerHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  @media screen and (min-width: 769px) {
+    flex-direction: row;
+  }
+`;
+
 const CareerTitleDesc = styled.div`
-  text-align: center;
+  // text-align: center;
   @media screen and (max-width: 768px) {
     text-align: left;
   }
@@ -329,19 +338,28 @@ const FieldSelector = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
+
+  // justify-content: space-between;
   padding: 4.9vh 0vw;
   font-size: 1.25rem;
   line-height: 1.875rem;
-  @media screen and (min-width: 768px) {
-    padding: 3vh 10vw;
-    justify-content: space-around;
+  @media screen and (min-width: 769px) {
+    padding: 3vh 0;
+    // justify-content: space-around;
+    justify-content: end;
   }
 `;
 
 const Field = styled.span`
   cursor: pointer;
-  padding-bottom: 8px;
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  padding-right: 10px;
+
+  &:last-child {
+    border-right: none;
+    padding-left: 10px;
+  }
 `;
 
 export default Home;

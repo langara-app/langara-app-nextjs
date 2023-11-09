@@ -59,7 +59,7 @@ const HeaderContainer = styled.div`
   justify-content: flex-start;
   align-items: center;
   padding: 2vh 5.4vw;
-
+  // gap: 0.75rem;
   @media only screen and (min-width: 768px) {
     padding: 2vh 13.5vw;
   }
@@ -83,7 +83,9 @@ const DownArrow = styled.img`
 const ContentContainer = styled.div`
   text-align: left;
   max-width: 100vw;
-
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
   @media only screen and (min-width: 768px) {
     max-width: 50vw;
     position: relative;
@@ -112,15 +114,15 @@ const HomeTitle = styled.h1`
 `;
 
 const HeaderP = styled.p`
-  margin-top: 0.5rem;
   font-weight: 700;
-  font-size: ${CommonStyling.h1FontSize};
-  color:;
-  margin-bottom: 1.5rem;
-  line-height: ${CommonStyling.h1LineHeight};
-
+  font-size: ${CommonStyling.h2FontSize};
+  color: ${CommonStyling.backgroundColor};
+  line-height: ${CommonStyling.h2LineHeight};
+  margin: 0;
   @media only screen and (min-width: 768px) {
     text-align: left;
+    font-size: ${CommonStyling.h1FontSize};
+    line-height: ${CommonStyling.h1LineHeight};
   }
 `;
 
