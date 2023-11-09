@@ -29,13 +29,24 @@ const HomeHeader = ({ type, title, desc, btnText, img, page }) => {
         <HeaderP>{desc.description1}</HeaderP>
         <HeaderQ>{desc.description2}</HeaderQ>
       </ContentContainer>
-
       <Link>
         <DownArrow src={downArrow} alt="downArrow" />
       </Link>
+      <Box />
     </HeaderContainer>
   );
 };
+
+const Box = styled.div`
+  height: 20px;
+  width: 100%;
+  border-radius: 32px 32px 0 0;
+  background-color: ${CommonStyling.backgroundColor};
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+`;
 
 const HeaderContainer = styled.div`
   background: url(${({ img }) => img});
@@ -52,7 +63,6 @@ const HeaderContainer = styled.div`
   @media only screen and (min-width: 768px) {
     padding: 2vh 13.5vw;
   }
-
   position: relative;
 `;
 
@@ -60,10 +70,14 @@ const DownArrow = styled.img`
   height: 12px;
   width: 24px;
   position: absolute;
-  bottom: 5%;
+  bottom: 20%;
   left: 50%;
   transform: translateX(-50%);
   cursor: pointer;
+
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const ContentContainer = styled.div`

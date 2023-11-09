@@ -189,8 +189,12 @@ const CareerPath = styled.section`
   flex-direction: column;
   align-items: center;
   overflow: hidden;
-  background-color: #f3fbff;
-
+  background-color: ${CommonStyling.backgroundColor};
+  border-radius: 32px 32px 0 0;
+  // position: absolute;
+  // bottom: -38vh;
+  // left: 0;
+  // right: 0;
   @media screen and (min-width: 768px) {
     padding: 2vh 13.5vw;
   }
