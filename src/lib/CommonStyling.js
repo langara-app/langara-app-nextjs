@@ -19,4 +19,9 @@ export const CommonStyling = {
 
   buttonFontSize: "1.25rem",
   buttonLineHeight: "140%",
+
+  primaryColor: "#F15A22",
+  shadeColor: "#C23C0A",
+  backgroundColor: "#FFFFFF",
+  contrastColor: "#070707",
 };

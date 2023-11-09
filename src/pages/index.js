@@ -206,7 +206,7 @@ const CareerTitleDesc = styled.div`
 const CareerTitle = styled.h2`
   font-size: ${CommonStyling.h2FontSize};
   line-height: ${CommonStyling.h2LineHeight};
-  color: rgba(38, 50, 56, 1);
+  color: ${CommonStyling.contrastColor};
   font-weight: 700;
   @media screen and (min-width: 768px) {
     margin: 0;
@@ -218,7 +218,7 @@ const CareerDesc = styled.p`
   font-size: ${CommonStyling.body1FontSize};
   font-weight: 400;
   line-height: ${CommonStyling.body1LineHeight};
-  color: rgba(38, 50, 56, 1);
+  color: ${CommonStyling.contrastColor};
   @media screen and (min-width: 768px) {
     padding-top: 1.5vh;
   }
