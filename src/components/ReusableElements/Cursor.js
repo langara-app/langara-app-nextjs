@@ -81,7 +81,7 @@ const CursorContainer = styled.div`
   pointer-events: none;
   z-index: 9999;
   transition: transform 200ms ease;
-  cursor: pointer;
+  cursor: pointer, auto;
   background-color: transparent;
   animation: ${pulse} 2s infinite;
 

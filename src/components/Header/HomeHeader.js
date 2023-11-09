@@ -7,6 +7,7 @@ import useWindowWidth from "../Hooks/useWindowWidth";
 import homeImg from "../../assets/home.svg";
 import topImg from "../../assets/img/wmdd/homeHero.png";
 import square from "../../assets/rectangle.svg";
+import downArrow from "../../assets/downArrow.svg";
 
 import { Link } from "react-scroll";
 import { CommonStyling } from "../../lib/CommonStyling";
@@ -28,6 +29,10 @@ const HomeHeader = ({ type, title, desc, btnText, img, page }) => {
         <HeaderP>{desc.description1}</HeaderP>
         <HeaderQ>{desc.description2}</HeaderQ>
       </ContentContainer>
+
+      <Link>
+        <DownArrow src={downArrow} alt="downArrow" />
+      </Link>
     </HeaderContainer>
   );
 };
@@ -47,6 +52,18 @@ const HeaderContainer = styled.div`
   @media only screen and (min-width: 768px) {
     padding: 2vh 13.5vw;
   }
+
+  position: relative;
+`;
+
+const DownArrow = styled.img`
+  height: 12px;
+  width: 24px;
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
 `;
 
 const ContentContainer = styled.div`
@@ -65,12 +82,6 @@ const Square = styled.img`
   @media only screen and (min-width: 768px) {
     position: absolute;
     left: -91px;
-  }
-`;
-
-const HeaderLeftWeb = styled.div`
-  @media only screen and (min-width: 768px) {
-    grid-area: desc;
   }
 `;
 
