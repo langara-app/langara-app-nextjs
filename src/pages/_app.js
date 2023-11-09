@@ -1,4 +1,3 @@
-
 // import styles
 import "../styles/globals.css";
 
@@ -14,11 +13,13 @@ import "slick-carousel/slick/slick-theme.css";
 import Head from "next/head";
 import MenuBar from "../components/MenuBar";
 import Footer from "../components/Footer";
+import Cursor from "../components/ReusableElements/Cursor";
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head></Head>
+      <Cursor />
       <MenuBar />
       {/* <Component {...pageProps} />
       <Footer /> */}
