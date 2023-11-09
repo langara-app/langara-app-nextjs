@@ -326,19 +326,22 @@ const Card = styled.div`
   align-items: flex-start;
   background-color: #ffffff;
   padding: 2rem;
-  border: 1px solid #b0bec5;
+
+  border-radius: 1rem;
+  border: 2px solid ${CommonStyling.primaryColor};
 
   b {
-    font-size: 1rem;
+    font-size: ${CommonStyling.body1FontSize};
     padding-top: 1rem;
+    color: ${CommonStyling.primaryColor};
+    font-weight: 700;
   }
 
   p {
-    line-height: 1.25rem;
     margin: 0;
-    padding-top: 1.6vh;
+    padding-top: 0.5rem;
     font-weight: 400;
-    font-size: 0.875rem;
+    font-size: ${CommonStyling.body2FontSize};
   }
 
   @media screen and (min-width: 768px) {
