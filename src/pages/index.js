@@ -191,10 +191,11 @@ const CareerPath = styled.section`
   align-items: center;
   overflow: hidden;
   background-color: ${CommonStyling.backgroundColor};
-  border-radius: 32px 32px 0 0;
 
   @media screen and (min-width: 768px) {
-    padding: 2vh 13.5vw;
+    // padding: 2vh 13.5vw;
+    max-width: 80vw;
+    margin: auto;
   }
 `;
 
@@ -204,15 +205,26 @@ const CareerHeader = styled.div`
   align-items: center;
   justify-content: space-between;
 
+  gap: 2.625rem;
+
+  margin-bottom: 5.25vh;
+  margin-top: 12.75vh;
+
   @media screen and (min-width: 769px) {
     flex-direction: row;
+    margin-top: 24.75vh;
+    margin-bottom: 3.5vh;
   }
 `;
 
 const CareerTitleDesc = styled.div`
-  // text-align: center;
-  @media screen and (max-width: 768px) {
-    text-align: left;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  @media screen and (min-width: 768px) {
+    gap: 1rem;
   }
 `;
 
@@ -221,8 +233,10 @@ const CareerTitle = styled.h2`
   line-height: ${CommonStyling.h2LineHeight};
   color: ${CommonStyling.contrastColor};
   font-weight: 700;
+  margin: 0;
   @media screen and (min-width: 768px) {
-    margin: 0;
+    font-size: ${CommonStyling.h1FontSize};
+    line-height: ${CommonStyling.h1LineHeight};
   }
 `;
 
@@ -233,7 +247,7 @@ const CareerDesc = styled.p`
   line-height: ${CommonStyling.body1LineHeight};
   color: ${CommonStyling.contrastColor};
   @media screen and (min-width: 768px) {
-    padding-top: 1.5vh;
+    // padding-top: 1.5vh;
   }
 `;
 
