@@ -28,7 +28,6 @@ const MenuBar = () => {
   };
 
   const setCat = (values) => {
-    console.log(values.className);
     setCheckedIndex(scrutinizer(values.className));
   };
 

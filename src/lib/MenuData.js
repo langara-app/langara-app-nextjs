@@ -8,7 +8,7 @@ export const MenuData = [
     link: "/program-overview",
   },
   // {
-  //   title: "Faculty",
+  //   title: "New Student",
   //   link: "/instructors",
   // },
   // {
