@@ -125,7 +125,7 @@ const Home = ({ data, alumni, work, homeData }) => {
         )}
       </CareerPath>
 
-      <Gradute>
+      <Graduate>
         <GradDescWrapper>
           <GradTitle>{HomeData.graduate.title}</GradTitle>
           <GradDesc>{HomeData.graduate.desc}</GradDesc>
@@ -143,9 +143,13 @@ const Home = ({ data, alumni, work, homeData }) => {
             />
           </ButtonWrapper>
         </GradDescWrapper>
-        <GraduateImg src={HomeData.graduate.image} />
+
+        <ImageDiv>
+          <GraduateImg src={HomeData.graduate.image} />
+        </ImageDiv>
         <Box />
-      </Gradute>
+      </Graduate>
+
       <AlumniSection>
         <AlumniSectionArticle>
           <AlumniTitle>{HomeData.alumni.title}</AlumniTitle>
@@ -157,17 +161,6 @@ const Home = ({ data, alumni, work, homeData }) => {
     </div>
   );
 };
-
-const Box = styled.div`
-  height: 20px;
-  width: 100%;
-  border-radius: 32px 32px 0 0;
-  background-color: ${CommonStyling.backgroundColor};
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-`;
 
 const AlumniSection = styled.section`
   background-color: ${CommonStyling.backgroundColor};
@@ -266,39 +259,64 @@ const CareerDesc = styled.p`
   }
 `;
 
-const Gradute = styled.div`
-  background-color: #f2f2f2;
-
+const Graduate = styled.div`
   border-top-left-radius: 32px;
   border-top-right-radius: 32px;
 
   @media screen and (min-width: 768px) {
     display: flex;
-    flex-direction: row;
-    // padding: 10vh 13.5vw 10.9vh 13.5vw;
-    gap: 2vw;
-    padding: unset;
   }
 
   position: relative;
 `;
 
-const GraduateImg = styled.img`
+const Box = styled.div`
+  height: 20px;
   width: 100%;
-  object-fit: contain;
-  @media screen and (min-width: 768px) {
-    max-width: 477px;
+  border-radius: 32px 32px 0 0;
+  background-color: ${CommonStyling.backgroundColor};
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+`;
+const ImageDiv = styled.div`
+  line-height: 0%;
+  width: 100%;
+  border-top-right-radius: 32px;
+
+  @media only screen and (min-width: 768px) {
+    max-width: 50vw;
+  }
+`;
+const GraduateImg = styled.img`
+  object-fit: cover;
+  width: 100%;
+  max-height: 60vh;
+  max-width: 100vw;
+
+  @media only screen and (min-width: 768px) {
+    object-position: 70% 30%;
     border-top-right-radius: 32px;
+    max-height: 100vh;
+    height: 100%;
   }
 `;
 
 const GradDescWrapper = styled.div`
   padding: 7.8vh 4.1vw 9.7vh;
+  border-top-right-radius: 32px;
+  border-top-left-radius: 32px;
 
+  background-color: #f2f2f2;
   @media screen and (min-width: 768px) {
-    padding-left: 9.65vw;
-    padding-right: 3.75vw;
-    margin: auto;
+    padding: 19.79vh 5.5556vw;
+    max-width: 50vw;
+    border-top-right-radius: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 `;
 
@@ -371,13 +389,11 @@ const FieldSelector = styled.div`
   flex-direction: row;
   justify-content: center;
 
-  // justify-content: space-between;
   padding: 4.9vh 0vw;
   font-size: 1.25rem;
   line-height: 1.875rem;
   @media screen and (min-width: 769px) {
     padding: 3vh 0;
-    // justify-content: space-around;
     justify-content: end;
   }
 `;

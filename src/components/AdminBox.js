@@ -57,15 +57,18 @@ const ImageDiv = styled.div`
 
 const BtmImg = styled.img`
   object-fit: cover;
-  height: 100%;
+  height: 60vh;
   max-width: 100vw;
+  width: 100%;
   border-top-left-radius: 32px;
   border-top-right-radius: 32px;
+  object-position: 95%;
 
   @media only screen and (min-width: 768px) {
     max-width: 50vw;
     border-top-right-radius: 0px;
     object-position: 70% 30%;
+    height: 100%;
   }
 `;
 
