@@ -117,12 +117,10 @@ const HeaderP = styled.p`
   font-weight: 700;
   font-size: ${CommonStyling.h2FontSize};
   color: ${CommonStyling.backgroundColor};
-  line-height: ${CommonStyling.h2LineHeight};
   margin: 0;
   @media only screen and (min-width: 768px) {
     text-align: left;
     font-size: ${CommonStyling.h1FontSize};
-    line-height: ${CommonStyling.h1LineHeight};
   }
 `;
 

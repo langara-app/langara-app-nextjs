@@ -170,29 +170,33 @@ const Box = styled.div`
 `;
 
 const AlumniSection = styled.section`
-  background-color: #ffffff;
-  padding: 3rem 5.4vw;
+  background-color: ${CommonStyling.backgroundColor};
+  margin: 3rem 5.4vw;
+  color: ${CommonStyling.contrastColor};
 
   @media screen and (min-width: 768px) {
-    padding: 4rem 13.5vw 5rem 13.5vw;
+    margin: 10.97vh 12.5vw;
   }
 `;
 
 const AlumniSectionArticle = styled.article`
-  text-align: center;
-  @media screen and (max-width: 768px) {
-    text-align: left;
-  }
+  text-align: left;
+  margin-bottom: 2rem;
 `;
 
 const AlumniTitle = styled.h2`
   font-size: ${CommonStyling.h2FontSize};
-  line-height: ${CommonStyling.h2LineHeight};
+  margin: 0;
+  padding-bottom: 1rem;
+  @media screen and (min-width: 768px) {
+    font-size: ${CommonStyling.h1FontSize};
+  }
 `;
 
 const AlumniDesc = styled.p`
   font-size: ${CommonStyling.body1FontSize};
   line-height: ${CommonStyling.body1LineHeight};
+  margin: 0;
 `;
 
 const CareerPath = styled.section`
@@ -243,13 +247,11 @@ const CareerTitleDesc = styled.div`
 
 const CareerTitle = styled.h2`
   font-size: ${CommonStyling.h2FontSize};
-  line-height: ${CommonStyling.h2LineHeight};
   color: ${CommonStyling.contrastColor};
   font-weight: 700;
   margin: 0;
   @media screen and (min-width: 768px) {
     font-size: ${CommonStyling.h1FontSize};
-    line-height: ${CommonStyling.h1LineHeight};
   }
 `;
 
@@ -309,6 +311,7 @@ const GradTitle = styled.h2`
 
 const GradDesc = styled.p`
   font-size: ${CommonStyling.body1FontSize};
+  line-height: ${CommonStyling.body1LineHeight}
   font-weight: 400;
   color: ${CommonStyling.contrastColor};
   margin: 0;
