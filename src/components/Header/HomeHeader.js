@@ -106,7 +106,6 @@ const HomeTitle = styled.h1`
   font-size: ${CommonStyling.body2FontSize};
   line-height: ${CommonStyling.body2LineHeight};
   font-weight: 400;
-  font-family: ${CommonStyling.secondaryFontFamily};
 
   @media only screen and (min-width: 768px) {
     font-size: ${CommonStyling.body2FontSize};
