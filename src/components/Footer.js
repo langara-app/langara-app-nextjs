@@ -8,6 +8,7 @@ import { HomeData } from "../lib/HomeData";
 import { MenuData } from "../lib/MenuData";
 import { CommonStyling } from "../lib/CommonStyling";
 import Image from "next/image";
+import Button from "../components/ReusableElements/Button";
 
 const Footer = () => {
   const width = useWindowWidth();
@@ -19,24 +20,27 @@ const Footer = () => {
           <Image src={logo2} width={87.9} height={41.65} alt="Logo" />
         </Logo>
         {MenuData.map((menu, index) => {
-          if (index != 0) {
-            return (
-              <Link href={menu.link} key={index} className="menu-item">
-                {menu.title}
-              </Link>
-            );
-          }
+          return (
+            <Link
+              href={menu.link}
+              key={index}
+              className="menu-item"
+              style={{ paddingLeft: "10px" }}
+            >
+              {menu.title}
+            </Link>
+          );
         })}
-        <a
-          href="https://langara.ca/programs-and-courses/programs/web-and-mobile-app/admission-requirements.html"
-          target="_blank"
-        >
-          Apply
-        </a>
-        <a href={HomeData.footer.contactLink}>Contact</a>
+        <Button
+          link={"https://langara.ca/admissions/apply-to-langara/index.html"}
+          text="Apply"
+          color="#FFFFFF"
+          bcg="#F15A22"
+          font={CommonStyling.body2FontSize.split("r")[0]}
+        />
       </LinkWrapper>
       <CopyRight>
-        <span>&copy; 2022 Langara College. All rights reserved.</span>
+        <span>&copy; 2023 Langara College. All rights reserved.</span>
         <a
           href="https://langara.ca/about-langara/records-management-and-privacy/privacy/privacy-statement.html"
           target="_blank"
@@ -51,25 +55,24 @@ const Footer = () => {
         <Logo>
           <Image src={logo2} width={87.9} height={41.65} alt="Logo" />
         </Logo>
-        <div style={{ display: "flex", gap: "1.5rem" }}>
+        <div style={{ display: "flex", gap: "1.5rem", alignItems: "center" }}>
           {MenuData.map((menu, index) => {
-            if (index != 0) {
-              return (
-                <Link href={menu.link} key={index} className="menu-item">
-                  {menu.title}
-                </Link>
-              );
-            }
+            return (
+              <Link href={menu.link} key={index} className="menu-item">
+                {menu.title}
+              </Link>
+            );
           })}
-          <a
-            href="https://langara.ca/programs-and-courses/programs/web-and-mobile-app/admission-requirements.html"
-            target="_blank"
-          >
-            Apply
-          </a>
           <a href={HomeData.footer.contactLink} target="_blank">
             Contact
           </a>
+          <Button
+            link={"https://langara.ca/admissions/apply-to-langara/index.html"}
+            text="Apply"
+            color="#FFFFFF"
+            bcg="#F15A22"
+            font={CommonStyling.body2FontSize.split("r")[0]}
+          />
         </div>
       </LinkWrapper>
       <CopyRight>
@@ -91,20 +94,21 @@ const Container = styled.div`
   flex-direction: column;
   align-items: flex-start;
   color: #21263a;
-  font-weight: 300;
+  padding: 16px 48px;
 `;
 
 const LinkWrapper = styled.div`
-  padding: 4vh 5.4vw;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
+
+  padding: 1rem 0;
+
   @media only screen and (min-width: 768px) {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 4vh 13.5vw;
   }
 `;
 
@@ -112,6 +116,10 @@ const FlexContainer = styled.div`
   background-color: #f5f5f5;
   display: flex;
   flex-direction: column;
+
+  @media screen and (min-width: 768px) {
+    padding: 1rem 3rem;
+  }
 `;
 
 const Logo = styled.div`
@@ -127,7 +135,6 @@ const Logo = styled.div`
 `;
 
 const CopyRight = styled.div`
-  padding: 2vh 6vw;
   display: flex;
   flex-direction: column;
   font-size: ${CommonStyling.body3FontSize};
@@ -136,12 +143,12 @@ const CopyRight = styled.div`
   color: #546e7a;
   align-items: center;
   gap: 1rem;
-  font-family: ${CommonStyling.secondaryFontFamily};
-
+  padding-top: 0;
+  padding-bottom: 8px;
   @media only screen and (min-width: 768px) {
     flex-direction: row;
     justify-content: space-between;
-    padding: 2vh 13.5vw;
+    padding-top: 10px;
   }
 `;
 

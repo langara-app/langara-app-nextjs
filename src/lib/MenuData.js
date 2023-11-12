@@ -1,14 +1,14 @@
 export const MenuData = [
-  {
-    title: "Home",
-    link: "/",
-  },
+  // {
+  //   title: "Home",
+  //   link: "/",
+  // },
   {
     title: "Program Overview",
     link: "/program-overview",
   },
   // {
-  //   title: "Faculty",
+  //   title: "New Student",
   //   link: "/instructors",
   // },
   // {

@@ -44,10 +44,9 @@ const AlumniIntro = (props) => {
         </VideoBlock>
         <DepartmentBlock>
           <span>{stream + " Stream"}</span>
-          <span> ∙ </span>
           <span>{graduation_year}</span>
         </DepartmentBlock>
-        <Comment>{comment}</Comment>
+        <Comment>&quot;{comment}&quot;</Comment>
       </Top>
       <DescriptionBlock>
         <div>{alumni_name}</div>
@@ -68,15 +67,14 @@ const Card = styled.div`
 const Top = styled.div``;
 
 const Comment = styled.p`
-  line-height: 1.5rem;
-  margin: 0 0 2rem 0;
+  font-size: ${CommonStyling.body2FontSize};
+  line-height: ${CommonStyling.body2LineHeight};
+  font-weight: 400;
+  padding: 0 1rem;
+  margin: 0;
 `;
 
 const VideoBlock = styled.div`
-  box-shadow: 5px -5px #00adf8;
-  border: 1px solid #000000;
-  background-color: #000000;
-  border-radius: 4px;
   height: 40vw;
   width: 100%;
   position: relative;
@@ -84,6 +82,10 @@ const VideoBlock = styled.div`
 
   @media only screen and (min-width: 768px) {
     height: 12vw;
+  }
+
+  & > iframe {
+    border-radius: 16px;
   }
 `;
 
@@ -102,6 +104,7 @@ const ProfileImage = styled.img`
   object-fit: cover;
   position: absolute;
   z-index: 2;
+  border-radius: 16px;
 `;
 
 const Video = styled.iframe`
@@ -111,26 +114,32 @@ const Video = styled.iframe`
 `;
 
 const DepartmentBlock = styled.div`
-  padding: 1rem 0;
-  font-family: ${CommonStyling.secondaryFontFamily};
-  color: #546e7a;
-  font-size: 0.875rem;
+  padding: 0.5rem 0 1rem 0;
+  color: ${CommonStyling.primaryColor};
+  font-size: ${CommonStyling.body2FontSize};
+  line-height: ${CommonStyling.body2LineHeight};
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const DescriptionBlock = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.5rem;
+  padding-top: 1.5rem;
 
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin: 0;
   div:nth-child(1) {
-    font-weight: bold;
-    font-size: 1.25rem;
+    font-weight: 700;
+    font-size: ${CommonStyling.body1FontSize};
   }
 
   div:nth-child(2) {
-    font-size: 0.875rem;
-    color: #37474f;
-    line-height: 1.25rem;
+    font-size: ${CommonStyling.body2FontSize};
+    max-width: 70%;
   }
 `;
 export default AlumniIntro;

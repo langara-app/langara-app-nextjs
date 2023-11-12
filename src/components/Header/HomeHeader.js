@@ -5,10 +5,13 @@ import Button from "../ReusableElements/Button";
 import ScrollArrow from "../ReusableElements/ScrollArrow";
 import useWindowWidth from "../Hooks/useWindowWidth";
 import homeImg from "../../assets/home.svg";
-import topImg from "../../assets/img/wmdd/HomeImage.png";
+import topImg from "../../assets/img/wmdd/homeHero.png";
+import square from "../../assets/rectangle.svg";
+import downArrow from "../../assets/downArrow.svg";
 
 import { Link } from "react-scroll";
 import { CommonStyling } from "../../lib/CommonStyling";
+import Image from "next/image";
 
 const HomeHeader = ({ type, title, desc, btnText, img, page }) => {
   const [scrollTo, setScrollTo] = useState("home");
@@ -19,71 +22,82 @@ const HomeHeader = ({ type, title, desc, btnText, img, page }) => {
   }, [type]);
 
   return (
-    <HeaderContainer img={img}>
-      <HeaderLeftWeb>
-        {width < 768 ? (
-          <div>
-            <HomeTitle>{title}</HomeTitle>
-            <HeaderP>{desc.description1}</HeaderP>
-            <HeaderQ>{desc.description2}</HeaderQ>
-            <HomeImg src={topImg} alt="WMDD Top Image" />
-          </div>
-        ) : (
-          <div>
-            <HomeTitle>{title}</HomeTitle>
-            <HeaderP>{desc.description1}</HeaderP>
-            <HeaderQ>{desc.description2}</HeaderQ>
-          </div>
-        )}
-      </HeaderLeftWeb>
-      {width < 768 ? null : (
-        <HomeImageContainer>
-          <HomeImg src={topImg} alt="WMDD Top Image" />
-        </HomeImageContainer>
-      )}
+    <HeaderContainer img={topImg}>
+      <ContentContainer>
+        <Square src={square} alt="rectangle" />
+        <HomeTitle>{title}</HomeTitle>
+        <HeaderP>{desc.description1}</HeaderP>
+        <HeaderQ>{desc.description2}</HeaderQ>
+      </ContentContainer>
+      <Link>
+        <DownArrow src={downArrow} alt="downArrow" />
+      </Link>
+      <Box />
     </HeaderContainer>
   );
 };
 
-const HeaderContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: left;
-  background: url(${({ img }) => img});
-  background-color: #f3fbff;
-  position: relative;
-  padding-top: 5.7vh;
-  padding-left: 5.2vw;
-  padding-right: 4.4vw;
-  color: rgba(55, 71, 79, 1);
-  text-align: left;
-
-  @media only screen and (min-width: 768px) {
-    /* For everything bigger than 768px */
-    padding: 5.5vh 13.5vw;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: "pic desc";
-    justify-content: unset;
-    align-items: center;
-    height: unset;
-  }
-
-  /* &::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100vh;
-      width: 100%;
-      background: rgba(241, 90, 34, 0.3);
-      display: block; */
+const Box = styled.div`
+  height: 20px;
+  width: 100%;
+  border-radius: 32px 32px 0 0;
+  background-color: ${CommonStyling.backgroundColor};
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 `;
 
-const HeaderLeftWeb = styled.div`
+const HeaderContainer = styled.div`
+  background: url(${({ img }) => img});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 80vh;
+  color: ${CommonStyling.backgroundColor};
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 2vh 5.4vw;
+  // gap: 0.75rem;
   @media only screen and (min-width: 768px) {
-    grid-area: desc;
+    padding: 2vh 13.5vw;
+  }
+  position: relative;
+`;
+
+const DownArrow = styled.img`
+  height: 12px;
+  width: 24px;
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }
+`;
+
+const ContentContainer = styled.div`
+  text-align: left;
+  max-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  @media only screen and (min-width: 768px) {
+    max-width: 50vw;
+    position: relative;
+  }
+`;
+const Square = styled.img`
+  width: 61px;
+  height: 61px;
+
+  @media only screen and (min-width: 768px) {
+    position: absolute;
+    left: -91px;
   }
 `;
 
@@ -92,7 +106,6 @@ const HomeTitle = styled.h1`
   font-size: ${CommonStyling.body2FontSize};
   line-height: ${CommonStyling.body2LineHeight};
   font-weight: 400;
-  font-family: ${CommonStyling.secondaryFontFamily};
 
   @media only screen and (min-width: 768px) {
     font-size: ${CommonStyling.body2FontSize};
@@ -100,15 +113,13 @@ const HomeTitle = styled.h1`
 `;
 
 const HeaderP = styled.p`
-  margin-top: 0.5rem;
   font-weight: 700;
-  font-size: ${CommonStyling.h1FontSize};
-  color: rgba(38, 50, 56, 1);
-  margin-bottom: 1.5rem;
-  line-height: ${CommonStyling.h1LineHeight};
-
+  font-size: ${CommonStyling.h2FontSize};
+  color: ${CommonStyling.backgroundColor};
+  margin: 0;
   @media only screen and (min-width: 768px) {
     text-align: left;
+    font-size: ${CommonStyling.h1FontSize};
   }
 `;
 

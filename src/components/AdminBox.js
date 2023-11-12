@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Button from "../components/ReusableElements/Button";
 import useWindowWidth from "./Hooks/useWindowWidth";
-import btmImage from "../assets/img/wmdd/Homebtm.png";
+import btmImage from "../assets/img/wmdd/homeBottom.png";
 
 import { HomeData } from "../lib/HomeData";
 import { CommonStyling } from "../lib/CommonStyling";
@@ -11,7 +11,9 @@ const AdminBox = () => {
   const width = useWindowWidth();
   return (
     <AdmissionContainer>
-      <BtmImg src={btmImage}></BtmImg>
+      <ImageDiv>
+        <BtmImg src={btmImage} />
+      </ImageDiv>
       <AdminBoxDetails>
         <AdminTitle>{HomeData.lastMessage.title}</AdminTitle>
         <AdminDescription>{HomeData.lastMessage.description}</AdminDescription>
@@ -33,65 +35,81 @@ const AdminBox = () => {
   );
 };
 
-const ButtonWrapper = styled.div`
-  /* width: 80%; */
-
-  @media only screen and (min-width: 768px) {
-    /* width: auto; */
-  }
-`;
-
 const AdmissionContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 8vh 5.4vw;
   color: #ffffff;
-  padding-bottom: 70px;
-  background-color: #f15a22;
-  align-items: flex-start;
-  gap: 2rem;
 
   @media only screen and (min-width: 768px) {
-    padding: 7vh 13.5vw;
     display: flex;
     flex-direction: row;
-    align-items: center;
+  }
+`;
+
+const ImageDiv = styled.div`
+  line-height: 0%;
+
+  @media only screen and (min-width: 768px) {
+    max-width: 50vw;
+  }
+`;
+
+const BtmImg = styled.img`
+  object-fit: cover;
+  height: 60vh;
+  max-width: 100vw;
+  width: 100%;
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
+  object-position: 95%;
+
+  @media only screen and (min-width: 768px) {
+    max-width: 50vw;
+    border-top-right-radius: 0px;
+    object-position: 70% 30%;
+    height: 100%;
+  }
+`;
+
+const AdminBoxDetails = styled.div`
+  background-color: ${CommonStyling.primaryColor};
+
+  padding: 3rem 5.4vw;
+  @media screen and (min-width: 768px) {
+    padding: 19.79vh 5.5556vw;
+    max-width: 50vw;
+    border-top-right-radius: 32px;
   }
 `;
 
 const AdminTitle = styled.h2`
   margin: 0;
-  text-align: left;
+  padding-top: 4.7222vh;
   font-weight: bold;
-  font-size: ${CommonStyling.h2FontSize};
-  line-height: ${CommonStyling.h2LineHeight};
+  font-size: ${CommonStyling.h1FontSize};
   @media only screen and (min-width: 768px) {
+    padding-top: unset;
   }
 `;
+
 const AdminDescription = styled.p`
-  text-align: left;
-  font-weight: 200;
+  font-weight: 400;
   font-size: ${CommonStyling.body1FontSize};
   line-height: ${CommonStyling.body1LineHeight};
-  padding-top: 1rem;
-  padding-bottom: 2.5rem;
   margin: 0;
+  padding-top: 0.5rem;
+  padding-bottom: 2.5rem;
+
   @media only screen and (min-width: 768px) {
+    padding-top: 1rem;
   }
 `;
 
-const AdminBoxDetails = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const BtmImg = styled.img`
-  width: 100%;
-  padding-bottom: 2.5rem;
-
+const ButtonWrapper = styled.div`
   @media only screen and (min-width: 768px) {
-    max-width: 429px;
+    display: flex;
+    justify-content: center;
   }
 `;
 

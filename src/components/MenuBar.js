@@ -7,7 +7,7 @@ import Button from "../components/ReusableElements/Button";
 
 import logo2 from "../assets/logo2.svg";
 import logowhite from "../assets/logo-white.svg";
-import hamburger from "../assets/hamburger.svg";
+import hamburger from "../assets/hamburgerMenu.svg";
 
 import useWindowWidth from "./Hooks/useWindowWidth";
 import styled from "styled-components";
@@ -28,7 +28,6 @@ const MenuBar = () => {
   };
 
   const setCat = (values) => {
-    console.log(values.className);
     setCheckedIndex(scrutinizer(values.className));
   };
 
@@ -145,24 +144,24 @@ const MenuLinkWeb = styled.a`
 const MobileMenuContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 24px;
+  align-items: center;
+  padding: 16px 32px;
   text-align: center;
   background-color: #ffffff;
   border-bottom: 1px solid #cfd8dc;
 
   /* Position and sizing of burger button */
   .bm-burger-button {
-    /* position: absolute; */
     position: absolute;
-    width: 36px;
-    height: 30px;
+    width: 20px;
+    height: 18px;
     right: 25px;
     top: 34px;
   }
 
   /* Color/shape of burger icon bars */
   .bm-burger-bars {
-    background: #373a47;
+    background: ${CommonStyling.contrastColor};
   }
 
   /* Color/shape of burger icon bars on hover*/

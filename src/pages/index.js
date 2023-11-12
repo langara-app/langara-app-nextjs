@@ -57,7 +57,6 @@ const Home = ({ data, alumni, work, homeData }) => {
 
   const selectedFieldStyles = {
     color: "#F15A22",
-    borderBottom: "2px solid #F15A22",
     fontWeight: "bold",
   };
 
@@ -75,24 +74,26 @@ const Home = ({ data, alumni, work, homeData }) => {
       />
 
       <CareerPath>
-        <CareerTitleDesc>
-          <CareerTitle>{HomeData.careerPath.title}</CareerTitle>
-          <CareerDesc>{HomeData.careerPath.description}</CareerDesc>
-        </CareerTitleDesc>
-        <FieldSelector>
-          <Field
-            style={field === "developer" ? selectedFieldStyles : null}
-            onClick={(e) => setField("developer")}
-          >
-            Developer
-          </Field>
-          <Field
-            style={field === "designer" ? selectedFieldStyles : null}
-            onClick={(e) => setField("designer")}
-          >
-            Designer
-          </Field>
-        </FieldSelector>
+        <CareerHeader>
+          <CareerTitleDesc>
+            <CareerTitle>{HomeData.careerPath.title}</CareerTitle>
+            <CareerDesc>{HomeData.careerPath.description}</CareerDesc>
+          </CareerTitleDesc>
+          <FieldSelector>
+            <Field
+              style={field === "developer" ? selectedFieldStyles : null}
+              onClick={(e) => setField("developer")}
+            >
+              Developer
+            </Field>
+            <Field
+              style={field === "designer" ? selectedFieldStyles : null}
+              onClick={(e) => setField("designer")}
+            >
+              Designer
+            </Field>
+          </FieldSelector>
+        </CareerHeader>
         {field === "developer" ? (
           <div style={{ width: "100%" }}>
             <Slide ssrFadeout left>
@@ -124,9 +125,7 @@ const Home = ({ data, alumni, work, homeData }) => {
         )}
       </CareerPath>
 
-      <Gradute>
-        <GraduateImg src={HomeData.graduate.image} />
-
+      <Graduate>
         <GradDescWrapper>
           <GradTitle>{HomeData.graduate.title}</GradTitle>
           <GradDesc>{HomeData.graduate.desc}</GradDesc>
@@ -144,7 +143,13 @@ const Home = ({ data, alumni, work, homeData }) => {
             />
           </ButtonWrapper>
         </GradDescWrapper>
-      </Gradute>
+
+        <ImageDiv>
+          <GraduateImg src={HomeData.graduate.image} />
+        </ImageDiv>
+        <Box />
+      </Graduate>
+
       <AlumniSection>
         <AlumniSectionArticle>
           <AlumniTitle>{HomeData.alumni.title}</AlumniTitle>
@@ -158,29 +163,33 @@ const Home = ({ data, alumni, work, homeData }) => {
 };
 
 const AlumniSection = styled.section`
-  background-color: #ffffff;
-  padding: 3rem 5.4vw;
+  background-color: ${CommonStyling.backgroundColor};
+  margin: 3rem 5.4vw;
+  color: ${CommonStyling.contrastColor};
 
   @media screen and (min-width: 768px) {
-    padding: 4rem 13.5vw 5rem 13.5vw;
+    margin: 10.97vh 12.5vw;
   }
 `;
 
 const AlumniSectionArticle = styled.article`
-  text-align: center;
-  @media screen and (max-width: 768px) {
-    text-align: left;
-  }
+  text-align: left;
+  margin-bottom: 2rem;
 `;
 
 const AlumniTitle = styled.h2`
   font-size: ${CommonStyling.h2FontSize};
-  line-height: ${CommonStyling.h2LineHeight};
+  margin: 0;
+  padding-bottom: 1rem;
+  @media screen and (min-width: 768px) {
+    font-size: ${CommonStyling.h1FontSize};
+  }
 `;
 
 const AlumniDesc = styled.p`
   font-size: ${CommonStyling.body1FontSize};
   line-height: ${CommonStyling.body1LineHeight};
+  margin: 0;
 `;
 
 const CareerPath = styled.section`
@@ -189,27 +198,53 @@ const CareerPath = styled.section`
   flex-direction: column;
   align-items: center;
   overflow: hidden;
-  background-color: #f3fbff;
+  background-color: ${CommonStyling.backgroundColor};
+  padding-bottom: 8.33vh;
 
   @media screen and (min-width: 768px) {
-    padding: 2vh 13.5vw;
+    // padding: 2vh 13.5vw;
+    max-width: 80vw;
+    margin: auto;
+    padding-bottom: 8.75vh;
+  }
+`;
+
+const CareerHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 2.625rem;
+
+  margin-bottom: 5.25vh;
+  margin-top: 12.75vh;
+
+  @media screen and (min-width: 769px) {
+    flex-direction: row;
+    margin-top: 24.75vh;
+    margin-bottom: 3.5vh;
   }
 `;
 
 const CareerTitleDesc = styled.div`
-  text-align: center;
-  @media screen and (max-width: 768px) {
-    text-align: left;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  @media screen and (min-width: 768px) {
+    gap: 1rem;
   }
 `;
 
 const CareerTitle = styled.h2`
   font-size: ${CommonStyling.h2FontSize};
-  line-height: ${CommonStyling.h2LineHeight};
-  color: rgba(38, 50, 56, 1);
+  color: ${CommonStyling.contrastColor};
   font-weight: 700;
+  margin: 0;
   @media screen and (min-width: 768px) {
-    margin: 0;
+    font-size: ${CommonStyling.h1FontSize};
   }
 `;
 
@@ -218,67 +253,91 @@ const CareerDesc = styled.p`
   font-size: ${CommonStyling.body1FontSize};
   font-weight: 400;
   line-height: ${CommonStyling.body1LineHeight};
-  color: rgba(38, 50, 56, 1);
+  color: ${CommonStyling.contrastColor};
   @media screen and (min-width: 768px) {
-    padding-top: 1.5vh;
+    // padding-top: 1.5vh;
   }
 `;
 
-const Gradute = styled.div`
-  padding: 7.8vh 4.1vw 9.7vh;
-  background-color: #f3fbff;
+const Graduate = styled.div`
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
+
   @media screen and (min-width: 768px) {
     display: flex;
-    flex-direction: row-reverse;
-    padding: 10vh 13.5vw 10.9vh 13.5vw;
-    gap: 2vw;
   }
+
+  position: relative;
 `;
 
-const GraduateImg = styled.img`
+const Box = styled.div`
+  height: 20px;
   width: 100%;
-  object-fit: contain;
-  @media screen and (min-width: 768px) {
-    max-width: 477px;
+  border-radius: 32px 32px 0 0;
+  background-color: ${CommonStyling.backgroundColor};
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+`;
+const ImageDiv = styled.div`
+  line-height: 0%;
+  width: 100%;
+  border-top-right-radius: 32px;
+
+  @media only screen and (min-width: 768px) {
+    max-width: 50vw;
+  }
+`;
+const GraduateImg = styled.img`
+  object-fit: cover;
+  width: 100%;
+  max-height: 60vh;
+  max-width: 100vw;
+
+  @media only screen and (min-width: 768px) {
+    object-position: 70% 30%;
+    border-top-right-radius: 32px;
+    max-height: 100vh;
+    height: 100%;
   }
 `;
 
 const GradDescWrapper = styled.div`
-  padding-top: 4.8vh;
+  padding: 7.8vh 4.1vw 9.7vh;
+  border-top-right-radius: 32px;
+  border-top-left-radius: 32px;
+
+  background-color: #f2f2f2;
+  @media screen and (min-width: 768px) {
+    padding: 19.79vh 5.5556vw;
+    max-width: 50vw;
+    border-top-right-radius: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
 
 const GradTitle = styled.h2`
-  margin: 0;
-  font-size: ${CommonStyling.h2FontSize};
-  color: rgba(33, 38, 58, 1);
-  line-height: ${CommonStyling.h2LineHeight};
+  font-size: ${CommonStyling.h1FontSize};
+  color: ${CommonStyling.contrastColor};
   font-weight: 700;
+  margin: 0;
 `;
 
 const GradDesc = styled.p`
   font-size: ${CommonStyling.body1FontSize};
+  line-height: ${CommonStyling.body1LineHeight}
   font-weight: 400;
-  line-height: ${CommonStyling.body1LineHeight};
-  color: rgba(33, 38, 58, 1);
+  color: ${CommonStyling.contrastColor};
   margin: 0;
-  padding-top: 2vh;
-
-  @media screen and (min-width: 768px) {
-    padding-top: 1.5vh;
-  }
+  padding-top: 1rem;
 `;
 
 const ButtonWrapper = styled.div`
-  padding-top: 4.8vh;
-  @media screen and (min-width: 768px) {
-    padding-top: 3.6vh;
-  }
-  @media screen and (max-width: 425px) {
-    .btn {
-      width: 100%;
-      border: 1px solid red;
-    }
-  }
+  padding-top: 2rem;
 `;
 
 const Cards = styled.div`
@@ -299,19 +358,22 @@ const Card = styled.div`
   align-items: flex-start;
   background-color: #ffffff;
   padding: 2rem;
-  border: 1px solid #b0bec5;
+
+  border-radius: 1rem;
+  border: 2px solid ${CommonStyling.primaryColor};
 
   b {
-    font-size: 1rem;
+    font-size: ${CommonStyling.body1FontSize};
     padding-top: 1rem;
+    color: ${CommonStyling.primaryColor};
+    font-weight: 700;
   }
 
   p {
-    line-height: 1.25rem;
     margin: 0;
-    padding-top: 1.6vh;
+    padding-top: 0.5rem;
     font-weight: 400;
-    font-size: 0.875rem;
+    font-size: ${CommonStyling.body2FontSize};
   }
 
   @media screen and (min-width: 768px) {
@@ -325,19 +387,26 @@ const FieldSelector = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
+
   padding: 4.9vh 0vw;
   font-size: 1.25rem;
   line-height: 1.875rem;
-  @media screen and (min-width: 768px) {
-    padding: 3vh 10vw;
-    justify-content: space-around;
+  @media screen and (min-width: 769px) {
+    padding: 3vh 0;
+    justify-content: end;
   }
 `;
 
 const Field = styled.span`
   cursor: pointer;
-  padding-bottom: 8px;
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  padding-right: 10px;
+
+  &:last-child {
+    border-right: none;
+    padding-left: 10px;
+  }
 `;
 
 export default Home;
