@@ -96,7 +96,7 @@ const Home = ({ data, alumni, work, homeData }) => {
         </CareerHeader>
         {field === "developer" ? (
           <div style={{ width: "100%" }}>
-            <Slide ssrFadeout left>
+            <Slide ssrFadeout left direction="left">
               <Cards>
                 {HomeData.careerPath.developer.map((career, index) => (
                   <Card key={index}>
@@ -110,7 +110,7 @@ const Home = ({ data, alumni, work, homeData }) => {
           </div>
         ) : (
           <section style={{ width: "100%" }}>
-            <Slide ssrFadeout right>
+            <Slide ssrFadeout right direction="right">
               <Cards>
                 {HomeData.careerPath.designer.map((career, index) => (
                   <Card key={index}>
