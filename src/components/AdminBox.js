@@ -3,16 +3,28 @@ import styled from "styled-components";
 import Button from "../components/ReusableElements/Button";
 import useWindowWidth from "./Hooks/useWindowWidth";
 import btmImage from "../assets/img/wmdd/homeBottom.png";
+import btmImage1920 from "../assets/img/wmdd/homeBtm1920.png";
+import btmImage1440 from "../assets/img/wmdd/homeBtm1440.png";
 
 import { HomeData } from "../lib/HomeData";
 import { CommonStyling } from "../lib/CommonStyling";
 
 const AdminBox = () => {
   const width = useWindowWidth();
+
+  const srcImage = () => {
+    if (width > 1440) {
+      return btmImage1920;
+    } else if (width <= 1440 && width > 768) {
+      return btmImage1440;
+    } else {
+      return btmImage;
+    }
+  };
   return (
     <AdmissionContainer>
       <ImageDiv>
-        <BtmImg src={btmImage} />
+        <BtmImg src={srcImage()} />
       </ImageDiv>
       <AdminBoxDetails>
         <AdminTitle>{HomeData.lastMessage.title}</AdminTitle>
@@ -62,13 +74,17 @@ const BtmImg = styled.img`
   width: 100%;
   border-top-left-radius: 32px;
   border-top-right-radius: 32px;
-  object-position: 95%;
 
   @media only screen and (min-width: 768px) {
     max-width: 50vw;
     border-top-right-radius: 0px;
-    object-position: 70% 30%;
+    // object-position: 70% 30%;
+    object-position: center;
     height: 100%;
+  }
+
+  @media only screen and (max-width: 768px) {
+    object-position: 80%;
   }
 `;
 
