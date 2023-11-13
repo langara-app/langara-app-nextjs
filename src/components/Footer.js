@@ -110,6 +110,12 @@ const LinkWrapper = styled.div`
     justify-content: space-between;
     align-items: center;
   }
+
+  .menu-item {
+    &:hover {
+      color: ${CommonStyling.primaryColor};
+    }
+  }
 `;
 
 const FlexContainer = styled.div`

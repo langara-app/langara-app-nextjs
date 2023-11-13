@@ -131,6 +131,10 @@ const MenuLink = styled.a`
   @media only screen and (min-width: 768px) {
     color: #6b6156;
   }
+
+  &:hover {
+    color: ${CommonStyling.primaryColor};
+  }
 `;
 
 const MenuLinkWeb = styled.a`
@@ -139,6 +143,10 @@ const MenuLinkWeb = styled.a`
   font-size: ${CommonStyling.body2FontSize};
   color: ${({ color, checked }) => (color === checked ? "#F15A22" : "#263238")};
   cursor: pointer;
+
+  &:hover {
+    color: ${CommonStyling.primaryColor};
+  }
 `;
 
 const MobileMenuContainer = styled.div`
