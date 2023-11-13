@@ -7,7 +7,6 @@ import useWindowWidth from "../Hooks/useWindowWidth";
 import homeImg from "../../assets/home.svg";
 import topImg from "../../assets/img/wmdd/homeHero.png";
 import square from "../../assets/rectangle.svg";
-import downArrow from "../../assets/downArrow.svg";
 
 import { Link } from "react-scroll";
 import { CommonStyling } from "../../lib/CommonStyling";
@@ -29,9 +28,6 @@ const HomeHeader = ({ type, title, desc, btnText, img, page }) => {
         <HeaderP>{desc.description1}</HeaderP>
         <HeaderQ>{desc.description2}</HeaderQ>
       </ContentContainer>
-      <Link>
-        <DownArrow src={downArrow} alt="downArrow" />
-      </Link>
       <Box />
     </HeaderContainer>
   );
