@@ -7,10 +7,10 @@ export const MenuData = [
     title: "Program Overview",
     link: "/program-overview",
   },
-  // {
-  //   title: "New Student",
-  //   link: "/instructors",
-  // },
+  {
+    title: "New Student",
+    link: "/",
+  },
   // {
   //   title: "Alumni Voices",
   //   link: "/alumni",
