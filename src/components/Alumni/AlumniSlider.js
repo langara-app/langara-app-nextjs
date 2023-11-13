@@ -75,12 +75,27 @@ const AlumniSliderContainer = styled.div`
 
   .slick-slide {
     height: inherit !important;
+
+    // for the first slide
+    img {
+      object-position: 70% 30%;
+    }
   }
 
   .slick-slide + div {
     height: 100%;
     display: flex;
     justify-content: space-between;
+
+    // in between first and last slide
+    img {
+      object-position: 90% 10%;
+    }
+  }
+
+  // for last slide
+  .slick-slide + div:last-child img:first-child {
+    object-position: unset;
   }
 
   .slick-current {
