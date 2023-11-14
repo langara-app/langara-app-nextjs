@@ -14,7 +14,7 @@ export const HomeData = {
     title: "Web and Mobile App Design and Development Program",
     description1: "Your career in the technology industry starts here",
     description2:
-      "Learn how to design and develop real-world web and mobile applications - from start to finish!",
+      "Learn how to design and develop real-world web and mobile applications – from start to finish!",
   },
   careerPath: {
     title: "What is your career path?",
