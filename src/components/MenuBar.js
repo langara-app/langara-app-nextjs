@@ -185,8 +185,8 @@ const MobileMenuContainer = styled.div`
 
   /* Color/shape of close button cross */
   .bm-cross {
-    width: 5px !important;
-    height: 28px !important;
+    width: 2px !important;
+    height: 25px !important;
     background: white;
   }
 
