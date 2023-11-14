@@ -179,8 +179,8 @@ const MobileMenuContainer = styled.div`
 
   /* Position and sizing of clickable cross button */
   .bm-cross-button {
-    right: 30px !important;
-    top: 30px !important;
+    right: 25px !important;
+    top: 25px !important;
   }
 
   /* Color/shape of close button cross */
