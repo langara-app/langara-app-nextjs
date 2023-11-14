@@ -1,3 +1,4 @@
+import { CommonStyling } from "@/lib/CommonStyling";
 import { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
 
@@ -74,7 +75,7 @@ const pulse = keyframes`
 const CursorContainer = styled.div`
   width: 20px;
   height: 20px;
-  border: 2px solid #f15a22;
+  border: 2px solid ${CommonStyling.shadeColor};
   border-radius: 100%;
   position: fixed;
   transform: translate(-50%, -50%);
@@ -89,7 +90,7 @@ const CursorContainer = styled.div`
     clicked &&
     `
     transform: translate(-50%, -50%) scale(1.5);
-    background-color: #f15a22;
+    background-color: ${CommonStyling.shadeColor};
   `}
 
   ${({ hidden }) =>

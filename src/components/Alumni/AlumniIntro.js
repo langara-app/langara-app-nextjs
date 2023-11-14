@@ -87,6 +87,8 @@ const VideoBlock = styled.div`
   & > iframe {
     border-radius: 16px;
   }
+
+  
 `;
 
 const PlayIcon = styled.img`

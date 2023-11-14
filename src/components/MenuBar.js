@@ -131,6 +131,10 @@ const MenuLink = styled.a`
   @media only screen and (min-width: 768px) {
     color: #6b6156;
   }
+
+  &:hover {
+    color: ${CommonStyling.primaryColor};
+  }
 `;
 
 const MenuLinkWeb = styled.a`
@@ -139,6 +143,10 @@ const MenuLinkWeb = styled.a`
   font-size: ${CommonStyling.body2FontSize};
   color: ${({ color, checked }) => (color === checked ? "#F15A22" : "#263238")};
   cursor: pointer;
+
+  &:hover {
+    color: ${CommonStyling.primaryColor};
+  }
 `;
 
 const MobileMenuContainer = styled.div`
@@ -171,14 +179,14 @@ const MobileMenuContainer = styled.div`
 
   /* Position and sizing of clickable cross button */
   .bm-cross-button {
-    right: 30px !important;
-    top: 30px !important;
+    right: 25px !important;
+    top: 25px !important;
   }
 
   /* Color/shape of close button cross */
   .bm-cross {
-    width: 5px !important;
-    height: 28px !important;
+    width: 2px !important;
+    height: 25px !important;
     background: white;
   }
 
