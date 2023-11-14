@@ -13,10 +13,18 @@ const AdminBox = () => {
   const width = useWindowWidth();
 
   const srcImage = () => {
-    if (width > 1440) {
+    if (width >= 1920) {
       return btmImage1920;
-    } else if (width <= 1440 && width > 768) {
+    } else if (width < 1920 && width >= 1440) {
       return btmImage1440;
+    } else if (width < 1440 && width >= 1024) {
+      return btmImage;
+    } else if (width < 1024 && width >= 768) {
+      return btmImage;
+    } else if (width < 768 && width >= 695) {
+      return btmImage1440;
+    } else if (width < 669 && width > 425) {
+      return btmImage;
     } else {
       return btmImage;
     }
@@ -78,19 +86,39 @@ const BtmImg = styled.img`
   @media only screen and (min-width: 768px) {
     max-width: 50vw;
     border-top-right-radius: 0px;
-    // object-position: 70% 30%;
-    object-position: center;
     height: 100%;
   }
 
-  @media only screen and (max-width: 768px) {
+  @media screen and (max-width: 1439px) and (min-width: 1155px) {
+    object-position: right;
+  }
+  @media screen and (max-width: 1154px) and (min-width: 870px) {
+    object-position: 90%;
+  }
+
+  @media screen and (max-width: 869px) and (min-width: 768px) {
+    object-position: 80%;
+  }
+  @media screen and (max-width: 768) and (min-width: 695px) {
+    object-position: 80%;
+  }
+
+  @media screen and (max-width: 694px) and (min-width: 527px) {
+    object-position: right;
+  }
+
+  @media screen and (max-width: 526px) and (min-width: 425px) {
+    object-position: 85%;
+  }
+
+  @media screen and (max-width: 424px) and (min-width: 0px) {
     object-position: 80%;
   }
 `;
 
 const AdminBoxDetails = styled.div`
   background-color: ${CommonStyling.primaryColor};
-
+  width: 100%;
   padding: 3rem 5.4vw;
   @media screen and (min-width: 768px) {
     padding: 19.79vh 5.5556vw;
