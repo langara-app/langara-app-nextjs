@@ -4,6 +4,7 @@
   align-items: center;
   background-color: #ffffff;
   border-bottom: 1px solid #cfd8dc;
+  min-height: 75px;
 }
 
 .langara_logo {

@@ -1,3 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 html,
 body {
   overflow-x: hidden;
@@ -11,6 +16,7 @@ body {
   color: #263238;
   background-color: #ffffff;
   cursor: none;
+  padding-right: 0 !important;
 }
 
 a {
