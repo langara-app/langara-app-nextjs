@@ -8,6 +8,9 @@ export const CommonStyling = {
   h2FontSize: "2rem",
   h2LineHeight: "100%",
 
+  h3FontSize: "1.5rem",
+  h3LineHeight: "100%",
+
   body1FontSize: "1.25rem",
   body1LineHeight: "140%",
 

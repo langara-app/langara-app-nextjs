@@ -10,6 +10,8 @@ import { HomeData } from "../../lib/HomeData";
 
 // import assets
 import mainBackgroundImage from "@/assets/projects/mainBackgroundImage.png";
+import arrowLeft from "@/assets/projects/arrow_left.svg";
+import arrowRight from "@/assets/projects/arrow_right.svg";
 
 const ProjectCategoryData = ProjectData.ProjectCategoryData;
 
@@ -45,18 +47,38 @@ const Projects = ({ projectLists }) => {
       {/* Display Student Projects Cards */}
       <Container mainBackgroundImage={mainBackgroundImage}>
         <section className="projects-wrapper first-container">
-          <div className="project-information">
-            <div className="descWrapper">
-              <h2 className="term4">
-                <span>{ProjectCategoryData[0].term}</span>
-              </h2>
-              <h1 className="title">{ProjectCategoryData[0].title}</h1>
-              <p className="desc">{ProjectCategoryData[0].description}</p>
+          <div className="section-info">
+            <div className="project-information">
+              <div className="descWrapper">
+                <h2 className="term4">
+                  <span>{ProjectCategoryData[0].term}</span>
+                </h2>
+                <h1 className="title">{ProjectCategoryData[0].title}</h1>
+                <p className="desc">{ProjectCategoryData[0].description}</p>
+              </div>
+              <div className="filterWrapper">button to filter the projects</div>
             </div>
-            <div className="filterWrapper">button to filter the projects</div>
+            <div className="projects-card-wrapper">
+              <div>
+                {projectLists
+                  .filter(
+                    (p) =>
+                      p.categories_slugs[0] === ProjectCategoryData[0].slug,
+                  )
+                  .map((project, index) => (
+                    <ProjectIntro {...project} key={index} />
+                  ))}
+              </div>
+              <div className="meta">
+                <button>
+                  <img src={arrowLeft} />
+                </button>
+                <button>
+                  <img src={arrowRight} />
+                </button>
+              </div>
+            </div>
           </div>
-
-          <div className="projects-card-wrapper">multiple project cards</div>
 
           {/* <div className="projects">
           {projectLists
@@ -72,15 +94,30 @@ const Projects = ({ projectLists }) => {
           <div className="project-information">
             <div className="descWrapper">
               <h2 className="term4">
-                <span>{ProjectCategoryData[0].term}</span>
+                <span>{ProjectCategoryData[1].term}</span>
               </h2>
-              <h1 className="title">{ProjectCategoryData[0].title}</h1>
+              <h1 className="title">{ProjectCategoryData[1].title}</h1>
               <p className="desc">{ProjectCategoryData[1].description}</p>
             </div>
             <div className="filterWrapper">button to filter the projects</div>
           </div>
 
-          <div className="projects-card-wrapper">multiple project cards</div>
+          <div className="projects-card-wrapper">
+            <div>
+              {projectLists
+                .filter(
+                  (p) => p.categories_slugs[0] === ProjectCategoryData[0].slug,
+                )
+                .map((project, index) => (
+                  <ProjectIntro {...project} key={index} />
+                ))}
+            </div>
+
+            <div className="meta">
+              <button>Left</button>
+              <button>Right</button>
+            </div>
+          </div>
 
           {/* <div className="projects">
           {projectLists
@@ -96,10 +133,10 @@ const Projects = ({ projectLists }) => {
           <div className="project-information">
             <div className="descWrapper">
               <h2 className="term4">
-                <span>{ProjectCategoryData[0].term}</span>
+                <span>{ProjectCategoryData[2].term}</span>
               </h2>
-              <h1 className="title">{ProjectCategoryData[0].title}</h1>
-              <p className="desc">{ProjectCategoryData[0].description}</p>
+              <h1 className="title">{ProjectCategoryData[2].title}</h1>
+              <p className="desc">{ProjectCategoryData[2].description}</p>
             </div>
             <div className="filterWrapper">button to filter the projects</div>
           </div>
@@ -117,7 +154,7 @@ const Projects = ({ projectLists }) => {
           </div> */}
         </section>
       </Container>
-
+      {/* 
       <Containerr>
         <div className="descWrapper">
           <p className="term4">{ProjectCategoryData[0].term}</p>
@@ -166,28 +203,39 @@ const Projects = ({ projectLists }) => {
               <ProjectIntro {...project} key={index} />
             ))}
         </div>
-      </Containerr>
+      </Containerr> */}
     </div>
   );
 };
 
 const Container = styled.div`
+
+  .section-info {
+    
+    max-width: 1600px;
+    margin: 0 auto;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
   .projects-wrapper.first-container {
     background: url(${({ mainBackgroundImage }) => mainBackgroundImage});
     background-size: cover;
     background-position: center;
   }
   .projects-wrapper {
-    height: 80vh;
+    min-height: 90vh;
     padding-top: 2.5rem;
-    padding-bottom: 2.5rem;
     display: flex;
     flex-direction: column;
+    background-color: gray;
   }
 
   .project-information {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -206,7 +254,39 @@ const Container = styled.div`
     align-self: flex-end;
   }
   .projects-card-wrapper {
-    background-color: red;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    position: relative;
+  }
+
+  // slider
+  .projects-card-wrapper > div {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1.5rem;
+  }
+
+  .meta {
+    max-width: 100vw;
+    
+    position: absolute;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  .meta button {
+    z-index: 2;
+    background-color: green;
+  }
+  .meta button:first-child {
+    margin-left: 1rem;
+  }
+  .meta button:last-child {
+    margin-right: 2rem;
   }
 
   .project-information h1 {
@@ -227,7 +307,8 @@ const Container = styled.div`
   }
 
   // the first one
-  .first-container .project-information h1, .first-container .project-information p {
+  .first-container .project-information h1,
+  .first-container .project-information p {
     color: ${CommonStyling.backgroundColor};
   }
 
@@ -252,7 +333,11 @@ const Container = styled.div`
     font-size: ${CommonStyling.body1FontSize};
     line-height: ${CommonStyling.body1LineHeight} + 10;
     color: ${CommonStyling.contrastColor};
-    letter-spacing: .2px
+    letter-spacing: 0.2px;
+  }
+
+  .projects-card-wrapper p {
+    color: ${CommonStyling.contrastColor};
   }
 
   @media only screen and (max-width: 768px) {

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
-import ProjectButton from "../ReusableElements/ProjectButton";
 import useWindowWidth from "../../components/Hooks/useWindowWidth";
 import { CommonStyling } from "../../lib/CommonStyling";
 
@@ -12,71 +11,57 @@ const ProjectIntro = (props) => {
 
   return (
     <Container>
-      <Link href={`/projects/${slug}`}>
-        <div className="card">
+      <div className="card">
+        <Link href={`/projects/${slug}`}>
           <div className="imgWrap">
             <img src={acf.app_picture} alt="project image" />
           </div>
-          <p className="projectTitle">{acf.name_of_the_project}</p>
-          <p className="projectDesc">{acf.app_short_description}</p>
-        </div>
-      </Link>
+          <div className="imgTextWrap">
+            <p className="projectTitle">{acf.name_of_the_project}</p>
+            <p className="projectDesc">{acf.app_short_description}</p>
+          </div>
+        </Link>
+      </div>
     </Container>
   );
 };
 
 const Container = styled.div`
-  overflow: hidden;
+  .card {
+    width: 260px;
+    height: 450px;
+    border-radius: 1rem;
+    background-color: ${CommonStyling.backgroundColor};
+  }
+
+  .imgTextWrap {
+    padding: 1rem;
+  }
+
+  .imgTextWrap > .projectTitle {
+    color: ${CommonStyling.primaryColor};
+    font-size: ${CommonStyling.h3FontSize};
+  }
+
+  p.projectDesc {
+    font-size: ${CommonStyling.body2FontSize};
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 5; /* Set the number of lines to display */
+  }
 
   .imgWrap {
-    max-width: 358px;
-    height: 236px;
-
-    @media only screen and (min-width: 768px) {
-      max-width: 100%;
-    }
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      overflow: hidden;
-      border-top-left-radius: 4px;
-      border-top-right-radius: 4px;
-    }
-  }
-
-  .card {
-    width: 358px;
-    height: 399px;
-    border-radius: 4px;
-    border: 1px solid #b0bec5;
-    background-color: #ffffff;
-  }
-
-  .projectTitle {
-    padding: 32px 32px 8px 32px;
-    font-size: ${CommonStyling.body1FontSize};
-    line-height: ${CommonStyling.body1LineHeight};
-    font-weight: 700;
-    margin: 0;
-  }
-
-  .projectDesc {
     overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    margin: 0 32px 32px 32px;
-    font-size: ${CommonStyling.body2FontSize};
-    line-height: ${CommonStyling.body2LineHeight};
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
   }
 
-  @media only screen and (min-width: 768px) {
-    .card {
-      width: 100%;
-      cursor: pointer;
-    }
+  .imgWrap img {
+    display: block;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    transform: scale(1.5);
   }
 `;
 
