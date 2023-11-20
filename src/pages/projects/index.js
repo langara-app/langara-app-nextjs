@@ -11,8 +11,8 @@ import { HomeData } from "../../lib/HomeData";
 // import components: carousel
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-
 import ProjectCarousel from "@/components/Project/ProjectCarousel"
+import FilterBy from "@/components/ReusableElements/FilterBySelect";
 
 // import assets
 import mainBackgroundImage from "@/assets/projects/mainBackgroundImage.png";
@@ -102,7 +102,9 @@ const Projects = ({ projectLists, nativeApps, dataVisualization, hybridApps }) =
                 <h1 className="title">{ProjectCategoryData[0].title}</h1>
                 <p className="desc">{ProjectCategoryData[0].description}</p>
               </div>
-              <div className="filterWrapper">button to filter the projects</div>
+              <div className="filterWrapper">
+              <FilterBy />
+              </div>
             </div>
             <div className="projects-card-wrapper">
               <div>
@@ -241,6 +243,8 @@ const Projects = ({ projectLists, nativeApps, dataVisualization, hybridApps }) =
 
 const Container = styled.div`
 
+
+
   .section-info {
     
     // max-width: 1600px;
@@ -262,6 +266,11 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     background-color: gray;
+  }
+
+  div[role="combobox"] {
+    padding: 0 !important;
+    padding-right: .5rem !important;
   }
 
   .project-information {
