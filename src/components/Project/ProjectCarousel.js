@@ -125,7 +125,6 @@ const ProjectCarousel = ({ carouselData }) => {
 };
 
 const Container = styled.div`
-  background-color: green;
   max-width: 1600px;
   margin: 0 auto;
 `;

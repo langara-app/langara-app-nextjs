@@ -8,6 +8,12 @@ import ProjectIntro from "../../components/Project/ProjectIntro";
 import { CommonStyling } from "../../lib/CommonStyling";
 import { HomeData } from "../../lib/HomeData";
 
+// import components: carousel
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+
+import ProjectCarousel from "@/components/Project/ProjectCarousel"
+
 // import assets
 import mainBackgroundImage from "@/assets/projects/mainBackgroundImage.png";
 import arrowLeft from "@/assets/projects/arrow_left.svg";
@@ -24,12 +30,52 @@ export async function getServerSideProps() {
   let category2 = ProjectCategoryData[1].slug;
   let category3 = ProjectCategoryData[2].slug;
 
+
+  const projectLists = projects.filter((project) =>
+    project.categories_slugs[0] === category1 || category2 || category3);
+
+  // console.log(projectLists)
+  console.log(category1)
+
+  const nativeApps = projects.filter((project) =>
+    project.categories_slugs[0] === category1)
+    .map(allData => {
+      return {
+        slug: allData.slug,
+        picture: allData.acf.app_picture,
+        name: allData.acf.name_of_the_project,
+        description: allData.acf.app_short_description,
+      }
+    })
+  
+  const dataVisualization = projects.filter((project) =>
+    project.categories_slugs[0] === category2)
+    .map(allData => {
+      return {
+        slug: allData.slug,
+        picture: allData.acf.app_picture,
+        name: allData.acf.name_of_the_project,
+        description: allData.acf.app_short_description,
+      }
+    })
+  
+  const hybridApps = projects.filter((project) =>
+    project.categories_slugs[0] === category3)
+    .map(allData => {
+      return {
+        slug: allData.slug,
+        picture: allData.acf.app_picture,
+        name: allData.acf.name_of_the_project,
+        description: allData.acf.app_short_description,
+      }
+    })
+
   return {
     props: {
-      projectLists: projects.filter(
-        (project) =>
-          project.categories_slugs[0] === category1 || category2 || category3,
-      ),
+      nativeApps,
+      dataVisualization,
+      hybridApps,
+      projectLists: projectLists,
       category1: category1,
       category2: category2,
       category3: category3,
@@ -37,7 +83,7 @@ export async function getServerSideProps() {
   };
 }
 
-const Projects = ({ projectLists }) => {
+const Projects = ({ projectLists, nativeApps, dataVisualization, hybridApps }) => {
   return (
     <div>
       <Head>
@@ -60,22 +106,7 @@ const Projects = ({ projectLists }) => {
             </div>
             <div className="projects-card-wrapper">
               <div>
-                {projectLists
-                  .filter(
-                    (p) =>
-                      p.categories_slugs[0] === ProjectCategoryData[0].slug,
-                  )
-                  .map((project, index) => (
-                    <ProjectIntro {...project} key={index} />
-                  ))}
-              </div>
-              <div className="meta">
-                <button>
-                  <img src={arrowLeft} />
-                </button>
-                <button>
-                  <img src={arrowRight} />
-                </button>
+                <ProjectCarousel carouselData={nativeApps} />
               </div>
             </div>
           </div>
@@ -102,7 +133,7 @@ const Projects = ({ projectLists }) => {
             <div className="filterWrapper">button to filter the projects</div>
           </div>
 
-          <div className="projects-card-wrapper">
+          {/* <div className="projects-card-wrapper">
             <div>
               {projectLists
                 .filter(
@@ -117,7 +148,7 @@ const Projects = ({ projectLists }) => {
               <button>Left</button>
               <button>Right</button>
             </div>
-          </div>
+          </div> */}
 
           {/* <div className="projects">
           {projectLists
@@ -212,8 +243,8 @@ const Container = styled.div`
 
   .section-info {
     
-    max-width: 1600px;
-    margin: 0 auto;
+    // max-width: 1600px;
+    // margin: 0 auto;
     
     display: flex;
     flex-direction: column;
@@ -242,7 +273,6 @@ const Container = styled.div`
   }
 
   .descWrapper {
-    // background-color: green;
     max-width: 50%;
     display: flex;
     flex-direction: column;
@@ -250,43 +280,12 @@ const Container = styled.div`
   }
 
   .filterWrapper {
-    background-color: purple;
     align-self: flex-end;
   }
+
   .projects-card-wrapper {
-    flex: 1;
-    display: flex;
-    align-items: center;
     padding-left: 3rem;
     padding-right: 3rem;
-    position: relative;
-  }
-
-  // slider
-  .projects-card-wrapper > div {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 1.5rem;
-  }
-
-  .meta {
-    max-width: 100vw;
-    
-    position: absolute;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: space-between;
-  }
-  .meta button {
-    z-index: 2;
-    background-color: green;
-  }
-  .meta button:first-child {
-    margin-left: 1rem;
-  }
-  .meta button:last-child {
-    margin-right: 2rem;
   }
 
   .project-information h1 {
@@ -340,11 +339,23 @@ const Container = styled.div`
     color: ${CommonStyling.contrastColor};
   }
 
+  @media only screen and (min-width: 1672px) {
+    .project-information {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
   @media only screen and (max-width: 768px) {
+
     .project-information {
       display: unset;
       flex-direction: unset;
       justify-content: unset;
+      padding-left: 1rem;
+      padding-right: 1rem;
     }
 
     .descWrapper {
@@ -353,6 +364,11 @@ const Container = styled.div`
 
     .filterWrapper {
       align-self: unset;
+    }
+
+    .projects-card-wrapper {
+      padding-left: 1rem;
+      padding-right: 1rem;
     }
   }
 `;
