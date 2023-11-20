@@ -9,9 +9,9 @@ import { CommonStyling } from "../../lib/CommonStyling";
 import { HomeData } from "../../lib/HomeData";
 
 // import components: carousel
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
-import ProjectCarousel from "@/components/Project/ProjectCarousel"
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import ProjectCarousel from "@/components/Project/ProjectCarousel";
 import FilterBy from "@/components/ReusableElements/FilterBySelect";
 
 // import assets
@@ -30,45 +30,46 @@ export async function getServerSideProps() {
   let category2 = ProjectCategoryData[1].slug;
   let category3 = ProjectCategoryData[2].slug;
 
-
-  const projectLists = projects.filter((project) =>
-    project.categories_slugs[0] === category1 || category2 || category3);
+  const projectLists = projects.filter(
+    (project) =>
+      project.categories_slugs[0] === category1 || category2 || category3,
+  );
 
   // console.log(projectLists)
-  console.log(category1)
+  console.log(category1);
 
-  const nativeApps = projects.filter((project) =>
-    project.categories_slugs[0] === category1)
-    .map(allData => {
+  const nativeApps = projects
+    .filter((project) => project.categories_slugs[0] === category1)
+    .map((allData) => {
       return {
         slug: allData.slug,
         picture: allData.acf.app_picture,
         name: allData.acf.name_of_the_project,
         description: allData.acf.app_short_description,
-      }
-    })
-  
-  const dataVisualization = projects.filter((project) =>
-    project.categories_slugs[0] === category2)
-    .map(allData => {
+      };
+    });
+
+  const dataVisualization = projects
+    .filter((project) => project.categories_slugs[0] === category2)
+    .map((allData) => {
       return {
         slug: allData.slug,
         picture: allData.acf.app_picture,
         name: allData.acf.name_of_the_project,
         description: allData.acf.app_short_description,
-      }
-    })
-  
-  const hybridApps = projects.filter((project) =>
-    project.categories_slugs[0] === category3)
-    .map(allData => {
+      };
+    });
+
+  const hybridApps = projects
+    .filter((project) => project.categories_slugs[0] === category3)
+    .map((allData) => {
       return {
         slug: allData.slug,
         picture: allData.acf.app_picture,
         name: allData.acf.name_of_the_project,
         description: allData.acf.app_short_description,
-      }
-    })
+      };
+    });
 
   return {
     props: {
@@ -83,7 +84,12 @@ export async function getServerSideProps() {
   };
 }
 
-const Projects = ({ projectLists, nativeApps, dataVisualization, hybridApps }) => {
+const Projects = ({
+  projectLists,
+  nativeApps,
+  dataVisualization,
+  hybridApps,
+}) => {
   return (
     <div>
       <Head>
@@ -103,7 +109,7 @@ const Projects = ({ projectLists, nativeApps, dataVisualization, hybridApps }) =
                 <p className="desc">{ProjectCategoryData[0].description}</p>
               </div>
               <div className="filterWrapper">
-              <FilterBy />
+                <FilterBy />
               </div>
             </div>
             <div className="projects-card-wrapper">
@@ -112,165 +118,79 @@ const Projects = ({ projectLists, nativeApps, dataVisualization, hybridApps }) =
               </div>
             </div>
           </div>
-
-          {/* <div className="projects">
-          {projectLists
-            .filter(
-              (p) => p.categories_slugs[0] === ProjectCategoryData[0].slug,
-            )
-            .map((project, index) => (
-              <ProjectIntro {...project} key={index} />
-            ))}
-          </div> */}
         </section>
+        {/* Third Term */}
         <section className="projects-wrapper">
-          <div className="project-information">
-            <div className="descWrapper">
-              <h2 className="term4">
-                <span>{ProjectCategoryData[1].term}</span>
-              </h2>
-              <h1 className="title">{ProjectCategoryData[1].title}</h1>
-              <p className="desc">{ProjectCategoryData[1].description}</p>
+          <div className="section-info">
+            <div className="project-information">
+              <div className="descWrapper">
+                <h2 className="term4">
+                  <span>{ProjectCategoryData[1].term}</span>
+                </h2>
+                <h1 className="title">{ProjectCategoryData[1].title}</h1>
+                <p className="desc">{ProjectCategoryData[1].description}</p>
+              </div>
+              <div className="filterWrapper">
+                <FilterBy />
+              </div>
             </div>
-            <div className="filterWrapper">button to filter the projects</div>
+            <div className="projects-card-wrapper">
+              <div>
+                <ProjectCarousel carouselData={dataVisualization} />
+              </div>
+            </div>
           </div>
-
-          {/* <div className="projects-card-wrapper">
-            <div>
-              {projectLists
-                .filter(
-                  (p) => p.categories_slugs[0] === ProjectCategoryData[0].slug,
-                )
-                .map((project, index) => (
-                  <ProjectIntro {...project} key={index} />
-                ))}
-            </div>
-
-            <div className="meta">
-              <button>Left</button>
-              <button>Right</button>
-            </div>
-          </div> */}
-
-          {/* <div className="projects">
-          {projectLists
-            .filter(
-              (p) => p.categories_slugs[0] === ProjectCategoryData[0].slug,
-            )
-            .map((project, index) => (
-              <ProjectIntro {...project} key={index} />
-            ))}
-          </div> */}
         </section>
+        {/* Second Term */}
         <section className="projects-wrapper">
-          <div className="project-information">
-            <div className="descWrapper">
-              <h2 className="term4">
-                <span>{ProjectCategoryData[2].term}</span>
-              </h2>
-              <h1 className="title">{ProjectCategoryData[2].title}</h1>
-              <p className="desc">{ProjectCategoryData[2].description}</p>
+          <div className="section-info">
+            <div className="project-information">
+              <div className="descWrapper">
+                <h2 className="term4">
+                  <span>{ProjectCategoryData[2].term}</span>
+                </h2>
+                <h1 className="title">{ProjectCategoryData[2].title}</h1>
+                <p className="desc">{ProjectCategoryData[2].description}</p>
+              </div>
+              <div className="filterWrapper">
+                <FilterBy />
+              </div>
             </div>
-            <div className="filterWrapper">button to filter the projects</div>
+            <div className="projects-card-wrapper">
+              <div>
+                <ProjectCarousel carouselData={hybridApps} />
+              </div>
+            </div>
           </div>
-
-          <div className="projects-card-wrapper">multiple project cards</div>
-
-          {/* <div className="projects">
-          {projectLists
-            .filter(
-              (p) => p.categories_slugs[0] === ProjectCategoryData[0].slug,
-            )
-            .map((project, index) => (
-              <ProjectIntro {...project} key={index} />
-            ))}
-          </div> */}
         </section>
       </Container>
-      {/* 
-      <Containerr>
-        <div className="descWrapper">
-          <p className="term4">{ProjectCategoryData[0].term}</p>
-          <h1 className="title">{ProjectCategoryData[0].title}</h1>
-          <p className="desc">{ProjectCategoryData[0].description}</p>
-        </div>
-
-        <div className="projects">
-          {projectLists
-            .filter(
-              (p) => p.categories_slugs[0] === ProjectCategoryData[0].slug,
-            )
-            .map((project, index) => (
-              <ProjectIntro {...project} key={index} />
-            ))}
-        </div>
-
-        <div className="descWrapper">
-          <p className="term3">{ProjectCategoryData[1].term}</p>
-          <h1 className="title">{ProjectCategoryData[1].title}</h1>
-          <p className="desc">{ProjectCategoryData[1].description}</p>
-        </div>
-
-        <div className="projects">
-          {projectLists
-            .filter(
-              (p) => p.categories_slugs[0] === ProjectCategoryData[1].slug,
-            )
-            .map((project, index) => (
-              <ProjectIntro {...project} key={index} />
-            ))}
-        </div>
-
-        <div className="descWrapper">
-          <p className="term2">{ProjectCategoryData[2].term}</p>
-          <h1 className="title">{ProjectCategoryData[2].title}</h1>
-          <p className="desc">{ProjectCategoryData[2].description}</p>
-        </div>
-
-        <div className="projects">
-          {projectLists
-            .filter(
-              (p) => p.categories_slugs[0] === ProjectCategoryData[2].slug,
-            )
-            .map((project, index) => (
-              <ProjectIntro {...project} key={index} />
-            ))}
-        </div>
-      </Containerr> */}
     </div>
   );
 };
 
 const Container = styled.div`
-
-
-
   .section-info {
-    
-    // max-width: 1600px;
-    // margin: 0 auto;
-    
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 4rem;
   }
 
   .projects-wrapper.first-container {
     background: url(${({ mainBackgroundImage }) => mainBackgroundImage});
     background-size: cover;
     background-position: center;
+    min-height: 90vh;
   }
   .projects-wrapper {
-    min-height: 90vh;
+    min-height: 100vh;
     padding-top: 2.5rem;
     display: flex;
     flex-direction: column;
-    background-color: gray;
   }
 
   div[role="combobox"] {
     padding: 0 !important;
-    padding-right: .5rem !important;
+    padding-right: 0.5rem !important;
   }
 
   .project-information {
@@ -358,7 +278,6 @@ const Container = styled.div`
   }
 
   @media only screen and (max-width: 768px) {
-
     .project-information {
       display: unset;
       flex-direction: unset;
