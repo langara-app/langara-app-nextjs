@@ -8,6 +8,9 @@ import ProjectIntro from "../../components/Project/ProjectIntro";
 import { CommonStyling } from "../../lib/CommonStyling";
 import { HomeData } from "../../lib/HomeData";
 
+// import assets
+import mainBackgroundImage from "@/assets/projects/mainBackgroundImage.png";
+
 const ProjectCategoryData = ProjectData.ProjectCategoryData;
 
 export async function getServerSideProps() {
@@ -39,7 +42,83 @@ const Projects = ({ projectLists }) => {
         <title>{HomeData.tabName.title}</title>
       </Head>
 
-      <Container>
+      {/* Display Student Projects Cards */}
+      <Container mainBackgroundImage={mainBackgroundImage}>
+        <section className="projects-wrapper first-container">
+          <div className="project-information">
+            <div className="descWrapper">
+              <h2 className="term4">
+                <span>{ProjectCategoryData[0].term}</span>
+              </h2>
+              <h1 className="title">{ProjectCategoryData[0].title}</h1>
+              <p className="desc">{ProjectCategoryData[0].description}</p>
+            </div>
+            <div className="filterWrapper">button to filter the projects</div>
+          </div>
+
+          <div className="projects-card-wrapper">multiple project cards</div>
+
+          {/* <div className="projects">
+          {projectLists
+            .filter(
+              (p) => p.categories_slugs[0] === ProjectCategoryData[0].slug,
+            )
+            .map((project, index) => (
+              <ProjectIntro {...project} key={index} />
+            ))}
+          </div> */}
+        </section>
+        <section className="projects-wrapper">
+          <div className="project-information">
+            <div className="descWrapper">
+              <h2 className="term4">
+                <span>{ProjectCategoryData[0].term}</span>
+              </h2>
+              <h1 className="title">{ProjectCategoryData[0].title}</h1>
+              <p className="desc">{ProjectCategoryData[1].description}</p>
+            </div>
+            <div className="filterWrapper">button to filter the projects</div>
+          </div>
+
+          <div className="projects-card-wrapper">multiple project cards</div>
+
+          {/* <div className="projects">
+          {projectLists
+            .filter(
+              (p) => p.categories_slugs[0] === ProjectCategoryData[0].slug,
+            )
+            .map((project, index) => (
+              <ProjectIntro {...project} key={index} />
+            ))}
+          </div> */}
+        </section>
+        <section className="projects-wrapper">
+          <div className="project-information">
+            <div className="descWrapper">
+              <h2 className="term4">
+                <span>{ProjectCategoryData[0].term}</span>
+              </h2>
+              <h1 className="title">{ProjectCategoryData[0].title}</h1>
+              <p className="desc">{ProjectCategoryData[0].description}</p>
+            </div>
+            <div className="filterWrapper">button to filter the projects</div>
+          </div>
+
+          <div className="projects-card-wrapper">multiple project cards</div>
+
+          {/* <div className="projects">
+          {projectLists
+            .filter(
+              (p) => p.categories_slugs[0] === ProjectCategoryData[0].slug,
+            )
+            .map((project, index) => (
+              <ProjectIntro {...project} key={index} />
+            ))}
+          </div> */}
+        </section>
+      </Container>
+
+      <Containerr>
         <div className="descWrapper">
           <p className="term4">{ProjectCategoryData[0].term}</p>
           <h1 className="title">{ProjectCategoryData[0].title}</h1>
@@ -87,14 +166,115 @@ const Projects = ({ projectLists }) => {
               <ProjectIntro {...project} key={index} />
             ))}
         </div>
-      </Container>
+      </Containerr>
     </div>
   );
 };
 
 const Container = styled.div`
+  .projects-wrapper.first-container {
+    background: url(${({ mainBackgroundImage }) => mainBackgroundImage});
+    background-size: cover;
+    background-position: center;
+  }
+  .projects-wrapper {
+    height: 80vh;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-information {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .descWrapper {
+    // background-color: green;
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .filterWrapper {
+    background-color: purple;
+    align-self: flex-end;
+  }
+  .projects-card-wrapper {
+    background-color: red;
+  }
+
+  .project-information h1 {
+    font-size: ${CommonStyling.h1FontSize};
+    line-height: ${CommonStyling.h1LineHeight};
+    letter-spacing: 1px;
+    font-weight: 600;
+    color: ${CommonStyling.contrastColor};
+  }
+
+  .project-information h2 {
+    font-size: ${CommonStyling.h2FontSize};
+    line-height: ${CommonStyling.h2LineHeight};
+    font-weight: 600;
+    color: ${CommonStyling.primaryColor};
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+  }
+
+  // the first one
+  .first-container .project-information h1, .first-container .project-information p {
+    color: ${CommonStyling.backgroundColor};
+  }
+
+  .first-container p {
+    color: ${CommonStyling.backgroundColor};
+  }
+
+  .first-container h1 {
+    font-weight: 600;
+  }
+
+  .first-container h2 span {
+    background-color: white;
+    border-radius: 1rem;
+    padding: 0.8rem 1.2rem;
+    display: inline-block;
+  }
+
+  // the first one ends
+
+  .project-information p {
+    font-size: ${CommonStyling.body1FontSize};
+    line-height: ${CommonStyling.body1LineHeight} + 10;
+    color: ${CommonStyling.contrastColor};
+    letter-spacing: .2px
+  }
+
+  @media only screen and (max-width: 768px) {
+    .project-information {
+      display: unset;
+      flex-direction: unset;
+      justify-content: unset;
+    }
+
+    .descWrapper {
+      max-width: unset;
+    }
+
+    .filterWrapper {
+      align-self: unset;
+    }
+  }
+`;
+
+const Containerr = styled.div`
   padding: 0 4.1vw 9vh 4.1vw;
-  background-color: #f3fbff;
+  background-color: grey;
 
   .term4 {
     padding-top: 9.5vh;
