@@ -284,6 +284,12 @@ const Container = styled.div`
       justify-content: unset;
       padding-left: 1rem;
       padding-right: 1rem;
+      display : flex;
+      flex-direction : column;
+      gap : 2rem;
+    }
+    .project-information .filterWrapper {
+      align-self: end;
     }
 
     .descWrapper {
@@ -297,6 +303,11 @@ const Container = styled.div`
     .projects-card-wrapper {
       padding-left: 1rem;
       padding-right: 1rem;
+    }
+  }
+  @media only screen and (max-width: 600px) {
+    .project-information .filterWrapper {
+      align-self: center;
     }
   }
 `;
