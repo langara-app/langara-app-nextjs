@@ -21,7 +21,7 @@ export async function getStaticProps() {
   );
   const news_events = await res.json();
 
-  const filteredInfo = news_events.map((news) => {
+  let filteredInfo = news_events.map((news) => {
     return {
       id: news.id,
       slug: news.slug,
@@ -33,6 +33,11 @@ export async function getStaticProps() {
       galleryLink: null,
     };
   });
+
+  // multiple cards in filteredInfo
+  filteredInfo = Array(10).fill(filteredInfo[0]);
+
+
 
   // create past dummy data
   const pastNews = {

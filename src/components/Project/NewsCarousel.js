@@ -17,61 +17,67 @@ const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
     breakpoint: { max: 4000, min: 1500 },
-    items: 4,
+    items: 3,
   },
   desktop: {
-    breakpoint: { max: 1500, min: 1200 },
+    breakpoint: { max: 1500, min: 1380 },
     items: 3,
   },
 
   tablet: {
-    breakpoint: { max: 1200, min: 950 },
+    breakpoint: { max: 1380, min: 1074 },
     items: 2,
   },
   tabletTwo: {
-    breakpoint: { max: 950, min: 900 },
+    breakpoint: { max: 1074, min: 980 },
     items: 2,
     partialVisibilityGutter: 100,
   },
   tabletThree: {
-    breakpoint: { max: 900, min: 850 },
+    breakpoint: { max: 980, min: 930 },
     items: 2,
     // partialVisible={true}
     partialVisibilityGutter: 80,
   },
   tabletFour: {
-    breakpoint: { max: 850, min: 766 },
+    breakpoint: { max: 930, min: 800 },
     items: 2,
     partialVisibilityGutter: 10,
     // partialVisible={true}
     // partialVisibilityGutter: 10,
   },
   tabletFive: {
-    breakpoint: { max: 766, min: 660 },
+    breakpoint: { max: 800, min: 750 },
     items: 2,
     // partialVisible={true}
     partialVisibilityGutter: 10,
   },
 
   tabletSix: {
-    breakpoint: { max: 660, min: 600 },
+    breakpoint: { max: 750, min: 690 },
     items: 2,
   },
 
   tabletSeven: {
-    breakpoint: { max: 600, min: 500 },
+    breakpoint: { max: 690, min: 590 },
     items: 1,
-    partialVisibilityGutter: 100,
+    partialVisibilityGutter: 220,
+  },
+
+  tabletEight: {
+    breakpoint: { max: 590, min: 500 },
+    items: 1,
+    partialVisibilityGutter: 70,
   },
 
   mobileOne: {
-    breakpoint: { max: 500, min: 380 },
+    breakpoint: { max: 500, min: 420 },
     items: 1,
     partialVisibilityGutter: 50,
   },
 
   mobile: {
-    breakpoint: { max: 380, min: 0 },
+    breakpoint: { max: 420, min: 0 },
     items: 1,
   }
 };
@@ -86,15 +92,16 @@ const NewsCarousel = ({ carouselData }) => {
 
 
   useEffect(() => {
-    if (windowWidth < 950) {
+    if (windowWidth < 1074) {
       setIsCenterMode(false);
       setIsPartialVisible(true);
     } else {
       setIsCenterMode(true);
       setIsPartialVisible(false);
     }
-  },[windowWidth]);
-
+  }, [windowWidth]);
+  
+  if(!windowWidth) return null;
 
 
   return (
@@ -106,14 +113,14 @@ const NewsCarousel = ({ carouselData }) => {
           renderButtonGroupOutside={true}
           swipeable={true}
           responsive={responsive}
-          infinite={true}
+          infinite={false}
           autoPlaySpeed={1000}
           customTransition="all .5s linear"
           transitionDuration={500}
           containerClass="carousel-container"
           arrows={true}
-          removeArrowOnDeviceType={["mobile"]}
-          slidesToSlide={1}
+          removeArrowOnDeviceType={[""]}
+          slidesToSlide={1.5}
 
         >
           {carouselData.map((newsData, idx) => {
