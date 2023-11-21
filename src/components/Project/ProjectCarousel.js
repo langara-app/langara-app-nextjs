@@ -76,7 +76,7 @@ const responsive = {
 };
 
 
-const ProjectCarousel = ({ carouselData }) => {
+const ProjectCarousel = ({ carouselData, showCardOutline }) => {
 
 
   const windowWidth = useWindowWidth();
@@ -116,7 +116,7 @@ const ProjectCarousel = ({ carouselData }) => {
 
         >
           {carouselData.map((projectData, idx) => {
-            return <ProjectCard key={idx} {...projectData} />;
+            return <ProjectCard key={idx} cardData={projectData} showOutline={showCardOutline} />;
           })}
         </Carousel>
       </div>
