@@ -61,7 +61,6 @@ const InstructorSlider = ({ data }) => {
 };
 
 const InstructorSliderContainer = styled.div`
-  background-color: white;
   margin: 0 2rem;
 
   .slick-track {
