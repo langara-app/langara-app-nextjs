@@ -41,12 +41,16 @@ const InstructorSlider = ({ data }) => {
     infinite: false,
     autoplaySpeed: 7000,
     speed: 1000,
-    slidesToShow: width > 768 ? 5 : 2,
-    slidesToScroll: width > 768 ? 5 : 2,
-    arrows: true,
+    slidesToShow: width > 767 ? 5 : 1.75,
+    slidesToScroll: width > 767 ? 5 : 1.75,
+    arrows: width > 768 ? true : false,
+    centerPadding: "0",
     autoplay: false,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
+    centerMode: width > 768 ? false : true,
+    centerPadding: "80px",
+    initialSlide: 0,
   };
 
   return (
@@ -61,7 +65,10 @@ const InstructorSlider = ({ data }) => {
 };
 
 const InstructorSliderContainer = styled.div`
-  margin: 0 2rem;
+  // margin: 0 2rem;
+  @media only screen and (min-width: 768px) {
+    padding: 0 13.5vw 0 13.5vw;
+  }
 
   .slick-track {
     padding: 10px 0;

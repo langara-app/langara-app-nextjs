@@ -199,7 +199,7 @@ const PageContainer = styled.div``;
 
 const TopSection = styled.section`
   background: url(${({ mainBackgroundImage }) => mainBackgroundImage});
-  padding-top: 15.35vh;
+  padding-top: 9.362vh;
   padding-bottom: 15.35vh;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
@@ -208,7 +208,7 @@ const TopSection = styled.section`
   position: relative;
 
   @media only screen and (min-width: 768px) {
-    padding: 5.5vh 13.5vw 8.5vh 13.5vw;
+    padding: 15.319vh 13.5vw 15.319vh 13.5vw;
   }
 `;
 const WmddContainer = styled.div`
@@ -317,8 +317,8 @@ const ProgramInfo = styled.div`
 const MiddleSection = styled.section`
   background-color: ${CommonStyling.backgroundColor};
 
-  padding-top: 15.35vh;
-  padding-bottom: 15.35vh;
+  padding-top: 10.383vh;
+  padding-bottom: 7.404vh;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
   background-position: center;
@@ -330,9 +330,10 @@ const MiddleSection = styled.section`
   }
 
   @media only screen and (min-width: 768px) {
-    padding: 5.5vh 13.5vw 8.5vh 13.5vw;
+    padding: 25.213vh 13.5vw 21.702vh 13.5vw;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    align-items: center;
   }
 `;
 
@@ -456,13 +457,18 @@ const CurriculumTitle = styled.div`
 `;
 
 const InstructorSection = styled.section`
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
   background-color: #f2f2f2;
   border-radius: 32px 32px 0px 0px;
 
   article {
-    padding-top: 15.35vh;
+    padding-top: 9.319vh;
+    // padding-bottom: 2.789vh;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    @media only screen and (min-width: 768px) {
+      padding: 18.191vh 13.5vw 0 13.5vw;
+    }
+
     h2 {
       font-size: ${CommonStyling.h1FontSize};
       line-height: ${CommonStyling.h1LineHeight};
@@ -479,10 +485,6 @@ const InstructorSection = styled.section`
       line-height: ${CommonStyling.body2LineHeight};
       color: #000;
     }
-  }
-
-  @media only screen and (min-width: 768px) {
-    padding: 5.5vh 13.5vw 8.5vh 13.5vw;
   }
 `;
 
