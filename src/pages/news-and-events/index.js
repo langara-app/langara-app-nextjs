@@ -29,6 +29,7 @@ export async function getStaticProps() {
         slug: news.slug,
         name: news.title.rendered,
         event_date: news.acf.event_date,
+        event_year: news.acf.event_date.split("/")[2],
         event_start_time: news.acf.event_start_time,
         event_end_time: news.acf.event_end_time,
         event_location: news.acf.event_location,
@@ -69,13 +70,27 @@ export async function getStaticProps() {
   futureEvents.sort(sortByDateTime);
   pastEvents.sort(sortByDateTime).reverse();
 
+  const pastEventsUniqueYears = [...new Set(pastEvents.map((event) => event.event_year))];
+
   return {
-    props: { currentEvents: futureEvents, pastEvents: pastEvents },
+    props: { currentEvents: futureEvents, allPastEvents: pastEvents, pastEventsUniqueYears },
     revalidate: 60 * 60 * 24 * 10,
   };
 }
 
-const NewsEvents = ({ currentEvents, pastEvents }) => {
+const NewsEvents = ({ currentEvents, allPastEvents, pastEventsUniqueYears }) => {
+
+  const [pastEvents, setPastEvents] = React.useState(allPastEvents);
+
+  function filterByYear(year) {
+    if(year === "All") {
+      setPastEvents(allPastEvents);
+      return;
+    } else {
+      const filteredEvents = allPastEvents.filter((event) => event.event_year === year);
+      setPastEvents(filteredEvents);
+    }
+  }
 
   return (
     <div>
@@ -108,7 +123,11 @@ const NewsEvents = ({ currentEvents, pastEvents }) => {
                 <h2>
                   <span>Past Events</span>
                 </h2>
-                <div>{/* <FilterBy /> */}</div>
+                <div><FilterBy
+                filterByYear={(year) => {
+                  filterByYear(year);
+                }}
+                  years={pastEventsUniqueYears} /></div>
               </div>
             </div>
             <div className="event-card-wrapper">
