@@ -31,11 +31,12 @@ const ProgramOverview = () => {
     profVidRef.current.src = `${profVidRef.current.src}&autoplay=1&controls=1`;
   };
 
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOption, setSelectedOption] = useState("Term 1");
   const handleChange = (event) => {
     setSelectedOption(event.target.value);
   };
 
+  console.log(selectedOption[selectedOption.length - 1]);
   const options = [
     { value: "Term 1", label: "Term 1" },
     { value: "Term 2", label: "Term 2" },
@@ -111,6 +112,44 @@ const ProgramOverview = () => {
             onChange={handleChange}
             options={options}
           />
+          <Curriculum>
+            <div className="curriculum">
+              <CurriculumTitle>
+                <h3>Developer</h3>
+
+                <ul>
+                  {WmddData.developerSubjects
+                    .filter(
+                      (s) =>
+                        s.term == selectedOption[selectedOption.length - 1],
+                    )
+                    .map((res, idx) => (
+                      <CurriculumList key={idx} common={res.common}>
+                        {res.course}
+                      </CurriculumList>
+                    ))}
+                </ul>
+              </CurriculumTitle>
+              <CurriculumTitle>
+                <h3>Designer</h3>
+                <ul>
+                  {WmddData.designerSubjects
+                    .filter(
+                      (s) =>
+                        s.term == selectedOption[selectedOption.length - 1],
+                    )
+                    .map((res, idx) => (
+                      <CurriculumList key={idx} common={res.common}>
+                        {res.course}
+                      </CurriculumList>
+                    ))}
+                </ul>
+              </CurriculumTitle>
+            </div>
+            <CommonClass>
+              Common courses between Developers and Designers
+            </CommonClass>
+          </Curriculum>
         </MidRight>
       </MiddleSection>
       {/*
@@ -366,7 +405,48 @@ const MidLeft = styled.div`
 const MidRight = styled.div`
   .MuiFormControl-root {
     width: 100%;
+    margin-bottom: 3rem;
   }
+`;
+
+const Curriculum = styled.div`
+  padding: 0 16px;
+  .curriculum {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    ul {
+      padding-left: 1rem;
+    }
+  }
+`;
+
+const CurriculumList = styled.li`
+  margin: 0.5rem 0;
+  list-style-type: disc;
+  font-weight: 400;
+  font-size: ${CommonStyling.body2FontSize};
+  line-height: ${CommonStyling.body2LineHeight};
+  &::marker {
+    color: ${(props) =>
+      props.common ? CommonStyling.primaryColor : "rgba(7, 7, 7, 0.2)"};
+  }
+`;
+
+const CommonClass = styled.li`
+  margin-top: 26px;
+  color: rgba(7, 7, 7, 0.2);
+  font-size: ${CommonStyling.body3FontSize};
+  line-height: ${CommonStyling.body3LineHeight};
+  &::marker {
+    color: ${CommonStyling.primaryColor};
+  }
+`;
+
+const CurriculumTitle = styled.div`
+  font-size: ${CommonStyling.h3FontSize};
+  line-height: ${CommonStyling.h3LineHeight};
+  font-weight: 700;
 `;
 
 const NextStepContainer = styled.div`
