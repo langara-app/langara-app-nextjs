@@ -80,15 +80,13 @@ const VideoBlock = styled.div`
   position: relative;
   cursor: pointer;
 
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 769px) {
     height: 12vw;
   }
 
   & > iframe {
     border-radius: 16px;
   }
-
-  
 `;
 
 const PlayIcon = styled.img`
