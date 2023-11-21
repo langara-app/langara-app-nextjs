@@ -66,7 +66,6 @@ export async function getStaticProps() {
 }
 
 const NewsEvents = ({ currentEvents, pastEvents }) => {
-  console.log(pastEvents);
 
   return (
     <div>

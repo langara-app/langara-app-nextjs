@@ -72,17 +72,14 @@ const responsive = {
   mobile: {
     breakpoint: { max: 380, min: 0 },
     items: 1,
-  }
+  },
 };
 
-
 const ProjectCarousel = ({ carouselData, showCardOutline }) => {
-
-
   const windowWidth = useWindowWidth();
   const [isCenterMode, setIsCenterMode] = useState(false);
   const [isPartialVisible, setIsPartialVisible] = useState(false);
-
+  const [isInfinite, setIsInfinite] = useState(true);
 
   useEffect(() => {
     if (windowWidth < 950) {
@@ -92,9 +89,9 @@ const ProjectCarousel = ({ carouselData, showCardOutline }) => {
       setIsCenterMode(true);
       setIsPartialVisible(false);
     }
-  },[windowWidth]);
+  }, [windowWidth]);
 
-
+  if (!windowWidth) return null;
 
   return (
     <Container>
@@ -113,10 +110,15 @@ const ProjectCarousel = ({ carouselData, showCardOutline }) => {
           arrows={true}
           removeArrowOnDeviceType={["mobile"]}
           slidesToSlide={1}
-
         >
           {carouselData.map((projectData, idx) => {
-            return <ProjectCard key={idx} cardData={projectData} showOutline={showCardOutline} />;
+            return (
+              <ProjectCard
+                key={idx}
+                cardData={projectData}
+                showOutline={showCardOutline}
+              />
+            );
           })}
         </Carousel>
       </div>

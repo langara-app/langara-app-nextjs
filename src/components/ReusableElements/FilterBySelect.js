@@ -91,18 +91,28 @@ const options = [
   { value: "option2", label: "Option 2" },
   { value: "option3", label: "Option 3" },
 ];
-const FilterBy = () => {
+const FilterBy = ({ filterByYear, years }) => {
   const [selectedOption, setSelectedOption] = React.useState("");
+
+  // year options
+  const yearsOption = years.map((year) => {
+    return { value: year, label: year };
+  });
+  yearsOption.unshift({ value: "All", label: "All" });
+
+  // handle  change and propagate
   const handleChange = (event) => {
     setSelectedOption(event.target.value);
+    filterByYear(event.target.value);
   };
+
   return (
     <div>
       <CustomSelect
         label="All"
         value={selectedOption}
         onChange={handleChange}
-        options={options}
+        options={yearsOption}
       />
     </div>
   );
