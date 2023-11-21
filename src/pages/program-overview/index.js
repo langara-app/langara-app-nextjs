@@ -14,6 +14,8 @@ import Button from "../../components/ReusableElements/Button";
 import { CommonStyling } from "../../lib/CommonStyling";
 import { HomeData } from "../../lib/HomeData";
 
+import mainBackgroundImage from "@/assets/news-and-events/mainBackgroundImage.png";
+
 const ProgramOverview = () => {
   const width = useWindowWidth();
 
@@ -33,40 +35,51 @@ const ProgramOverview = () => {
         <title>{HomeData.tabName.title}</title>
       </Head>
 
-      <WmddContainer>
-        <WmddWebLeft>
-          {width < 768 ? (
-            <div>
-              <WmddTitle>{WmddData.header.title}</WmddTitle>
-              <Header1>{WmddData.header.subtitle}</Header1>
-              <Header2>{WmddData.header.description}</Header2>
+      <TopSection mainBackgroundImage={mainBackgroundImage}>
+        <WmddContainer>
+          <WmddWebLeft>
+            {width < 768 ? (
+              <div>
+                <WmddTitle>{WmddData.header.title}</WmddTitle>
+                <Header1>{WmddData.header.subtitle}</Header1>
+                <Header2>{WmddData.header.description}</Header2>
 
+                <a
+                  href="https://www.youtube.com/watch?v=BTciK1vJ8QY"
+                  target="_blank"
+                >
+                  <WmddImg src={placeholder} alt="Program Overview Image" />
+                </a>
+              </div>
+            ) : (
+              <div>
+                <WmddTitle>{WmddData.header.title} </WmddTitle>
+                <Header1>{WmddData.header.subtitle}</Header1>
+                <Header2>{WmddData.header.description}</Header2>
+              </div>
+            )}
+          </WmddWebLeft>
+          {width < 768 ? null : (
+            <WmddImageContainer>
               <a
-                href="https://www.youtube.com/watch?v=BTciK1vJ8QY"
                 target="_blank"
+                href="https://www.youtube.com/watch?v=BTciK1vJ8QY"
               >
                 <WmddImg src={placeholder} alt="Program Overview Image" />
               </a>
-            </div>
-          ) : (
-            <div>
-              <WmddTitle>{WmddData.header.title} </WmddTitle>
-              <Header1>{WmddData.header.subtitle}</Header1>
-              <Header2>{WmddData.header.description}</Header2>
-            </div>
+            </WmddImageContainer>
           )}
-        </WmddWebLeft>
-        {width < 768 ? null : (
-          <WmddImageContainer>
-            <a
-              target="_blank"
-              href="https://www.youtube.com/watch?v=BTciK1vJ8QY"
-            >
-              <WmddImg src={placeholder} alt="Program Overview Image" />
-            </a>
-          </WmddImageContainer>
-        )}
-      </WmddContainer>
+        </WmddContainer>
+        <ProgramInfo>
+          {WmddData.programInfo.map((i, index) => (
+            <InfoBlock key={index}>
+              <div>{i.field}</div>
+              <div>{i.value}</div>
+            </InfoBlock>
+          ))}
+        </ProgramInfo>
+      </TopSection>
+      {/*
       <ProgramInfo>
         {WmddData.programInfo.map((i, index) => (
           <InfoBlock key={index}>
@@ -166,13 +179,129 @@ const ProgramOverview = () => {
             />
           </ButtonWrapper>
         </NextStepDetails>
-      </NextStepContainer>
+      </NextStepContainer> */}
     </PageContainer>
   );
 };
 
-const PageContainer = styled.div`
-  background-color: #f3fbff;
+const PageContainer = styled.div``;
+
+const TopSection = styled.section`
+  background: url(${({ mainBackgroundImage }) => mainBackgroundImage});
+  padding-top: 15.35vh;
+  padding-bottom: 15.35vh;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  background-position: center;
+  background-size: cover;
+
+  @media only screen and (min-width: 768px) {
+    padding: 5.5vh 13.5vw 8.5vh 13.5vw;
+  }
+`;
+const WmddContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  color: ${CommonStyling.backgroundColor};
+  text-align: left;
+  gap: 2rem;
+
+  @media only screen and (min-width: 768px) {
+    /* For everything bigger than 768px */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: unset;
+    align-items: unset;
+    height: unset;
+  }
+`;
+
+const WmddWebLeft = styled.div`
+  @media only screen and (min-width: 768px) {
+    display: flex;
+    align-items: center;
+    // grid-area: desc;
+  }
+`;
+
+const WmddTitle = styled.h1`
+  margin: 0;
+  font-size: ${CommonStyling.body2FontSize} !important;
+  line-height: ${CommonStyling.body2LineHeight};
+  font-weight: 400;
+  font-family: ${CommonStyling.primaryFontFamily};
+  margin-bottom: 1rem;
+`;
+
+const Header1 = styled.p`
+  font-weight: 700;
+  font-size: ${CommonStyling.h1FontSize};
+  margin-bottom: 1rem;
+  line-height: ${CommonStyling.h1LineHeight};
+
+  @media only screen and (min-width: 768px) {
+    text-align: left;
+    margin-bottom: 1.5rem;
+  }
+`;
+
+const Header2 = styled.p`
+  font-size: ${CommonStyling.body1FontSize};
+  font-weight: 400;
+  line-height: ${CommonStyling.body1LineHeight};
+
+  @media only screen and (min-width: 768px) {
+    text-align: left;
+  }
+`;
+
+const WmddImageContainer = styled.div`
+  @media only screen and (min-width: 768px) {
+    // grid-area: pic;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    a {
+      flex: 1;
+    }
+  }
+`;
+
+const InfoBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  background-color: ${CommonStyling.backgroundColor};
+  border-radius: 0.5rem;
+  div:nth-child(1) {
+    font-weight: 400;
+    font-size: ${CommonStyling.body2FontSize};
+    line-height: ${CommonStyling.body2LineHeight};
+    color: ${CommonStyling.primaryColor};
+  }
+
+  div:nth-child(2) {
+    font-size: ${CommonStyling.body1FontSize};
+    line-height: ${CommonStyling.body1LineHeight};
+    font-weight: 700;
+    color: ${CommonStyling.contrastColor};
+  }
+`;
+
+const WmddImg = styled.img`
+  width: 100%;
+  cursor: pointer;
+  margin: 2rem 0;
+  object-fit: contain;
+`;
+
+const ProgramInfo = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  padding-top: 2rem;
 `;
 
 const NextStepContainer = styled.div`
@@ -276,97 +405,6 @@ const KickDesc = styled.p`
   }
 `;
 
-const WmddContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  background: url(${({ img }) => img});
-  background-color: #f3fbff;
-  position: relative;
-  padding-top: 5.7vh;
-  padding-left: 5.2vw;
-  padding-right: 4.4vw;
-  color: rgba(55, 71, 79, 1);
-  text-align: left;
-  gap: 2rem;
-
-  @media only screen and (min-width: 768px) {
-    /* For everything bigger than 768px */
-    padding: 5.5vh 13.5vw 8.5vh 13.5vw;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: "pic desc";
-    justify-content: unset;
-    align-items: unset;
-    height: unset;
-  }
-`;
-
-const WmddWebLeft = styled.div`
-  @media only screen and (min-width: 768px) {
-    display: flex;
-    align-items: center;
-    grid-area: desc;
-  }
-`;
-
-const WmddTitle = styled.h1`
-  margin: 0;
-  font-size: ${CommonStyling.body2FontSize} !important;
-  line-height: ${CommonStyling.body2LineHeight};
-  font-weight: 400;
-  font-family: ${CommonStyling.secondaryFontFamily};
-
-  @media only screen and (min-width: 768px) {
-    font-size: 0.85rem;
-  }
-`;
-
-const Header1 = styled.p`
-  margin-top: 0.5rem;
-  font-weight: 700;
-  font-size: ${CommonStyling.h1FontSize};
-  color: rgba(38, 50, 56, 1);
-  margin-bottom: 1.5rem;
-  line-height: ${CommonStyling.h1LineHeight};
-
-  @media only screen and (min-width: 768px) {
-    text-align: left;
-    margin-bottom: 1.5rem;
-  }
-`;
-
-const Header2 = styled.p`
-  margin: 0;
-  font-size: ${CommonStyling.body1FontSize};
-  font-weight: 400;
-  line-height: ${CommonStyling.body1LineHeight};
-
-  @media only screen and (min-width: 768px) {
-    text-align: left;
-    margin-bottom: 0;
-  }
-`;
-
-const WmddImageContainer = styled.div`
-  @media only screen and (min-width: 768px) {
-    grid-area: pic;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    a {
-      flex: 1;
-    }
-  }
-`;
-
-const WmddImg = styled.img`
-  width: 100%;
-  cursor: pointer;
-  margin: 2rem 0;
-  object-fit: contain;
-`;
-
 const InstructorSection = styled.section`
   padding: 5vh 5.4vw;
 
@@ -388,50 +426,6 @@ const InstructorSection = styled.section`
       font-size: ${CommonStyling.body1FontSize};
       line-height: ${CommonStyling.body1LineHeight};
     }
-  }
-`;
-
-const ProgramInfo = styled.div`
-  padding: 2.3rem;
-  background-color: #ffffff;
-  border: 1px solid #b0bec5;
-  border-radius: 4px;
-  display: flex;
-  gap: 4.5vw;
-  flex-direction: column;
-
-  margin: 0 5.4vw 2vh 5.4vw;
-
-  @media only screen and (min-width: 768px) {
-    margin: 0 13.5vw 7vh 13.5vw;
-  }
-
-  @media only screen and (min-width: 768px) {
-    display: grid;
-    grid-template-areas: "1fr 1fr 1fr";
-  }
-`;
-
-const InfoBlock = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-
-  div:nth-child(1) {
-    font-family: Ubuntu Mono;
-    font-weight: 400;
-    font-size: ${CommonStyling.body3FontSize};
-    line-height: ${CommonStyling.body3LineHeight};
-    letter-spacing: 0em;
-    text-align: center;
-  }
-
-  div:nth-child(2) {
-    font-size: ${CommonStyling.body1FontSize};
-    line-height: ${CommonStyling.body1LineHeight};
-    font-weight: 700;
-    letter-spacing: 0em;
-    text-align: center;
   }
 `;
 

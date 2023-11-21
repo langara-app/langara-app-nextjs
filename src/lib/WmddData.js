@@ -2,35 +2,35 @@ import kickStart from "../assets/img/wmdd/kickStart.png";
 
 export const WmddData = {
   header: {
-    title: "Progam Overview",
+    title: "Program Overview",
     subtitle: "Web and Mobile App Design and Development",
     description:
       "Get a glimpse of the incredible experiences and knowledge awaiting you at WMDD program.",
   },
   programInfo: [
     {
-      field: "Duration",
-      value: "2-year program (16 months)",
+      field: "Basic Requirement",
+      value: "Bachelor's Degree",
     },
     {
       field: "Credential",
       value: "Post-Degree Diploma",
     },
     {
-      field: "Start dates",
+      field: "Start Dates",
       value: "September, January, May",
     },
     {
-      field: "Basic Requirement",
-      value: "Bachelor's Degree",
-    },
-    {
-      field: "Location",
-      value: "Vancouver, BC (Canada)",
+      field: "Duration",
+      value: "2-year program (16 months)",
     },
     {
       field: "Experience",
       value: "No experience required",
+    },
+    {
+      field: "Location",
+      value: "Vancouver, BC (Canada)",
     },
   ],
   complete_program: {
