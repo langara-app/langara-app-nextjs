@@ -99,7 +99,7 @@ const NewsCarousel = ({ carouselData }) => {
 
   return (
     <Container>
-      <div className="">
+      <div className="carousel-wrapper">
         <Carousel
           partialVisible={isPartialVisible}
           centerMode={isCenterMode}
@@ -126,8 +126,10 @@ const NewsCarousel = ({ carouselData }) => {
 };
 
 const Container = styled.div`
-  max-width: 1600px;
-  margin: 0 auto;
+   .carousel-wrapper {
+    max-width: 1600px;
+    margin: 0 auto;
+  }
 `;
 
 export default NewsCarousel;

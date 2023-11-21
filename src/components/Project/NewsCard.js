@@ -60,8 +60,10 @@ const Container = styled.div`
     border-radius: 1rem;
     background-color: ${CommonStyling.backgroundColor};
     border: ${(props) =>
-      props["data-cardborder"] ? "2px solid #E6E6E6" : "none"};
+  props["data-cardborder"] ? "2px solid #E6E6E6" : "none"};
+    margin-bottom: 2rem;
   }
+
   .eventTextWrap {
     border-radius: 1rem;
     height: 100%;

@@ -18,7 +18,7 @@ const ProjectCard = ({ cardData, showOutline }) => {
             <img src={picture} alt="project image" />
           </div>
           <div className="imgTextWrap">
-            <p className="projectTitle">{name}</p>
+            <h3 className="projectTitle">{name}</h3>
             <p className="projectDesc">{description}</p>
           </div>
         </Link>
@@ -44,6 +44,7 @@ const Container = styled.div`
 .imgTextWrap > .projectTitle {
   color: ${CommonStyling.primaryColor};
   font-size: ${CommonStyling.h3FontSize};
+  font-weight: 500;
   margin-bottom: .2rem;
 }
 

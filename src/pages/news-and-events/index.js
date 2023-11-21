@@ -7,139 +7,281 @@ import { NewsAndEvents } from "../../lib/NewsAndEvents";
 
 import styled from "styled-components";
 import { HomeData } from "../../lib/HomeData";
+import FilterBy from "@/components/ReusableElements/FilterBySelect";
+//import ProjectCarousel from "@/components/Project/ProjectCarousel";
+import NewsCarousel from "@/components/Project/NewsCarousel";
+import PastEventCardList from "@/components/Project/PastEventCardList";
+
+// import assets
+import mainBackgroundImage from "@/assets/news-and-events/mainBackgroundImage.png";
 
 export async function getStaticProps() {
   const res = await fetch(
     `${process.env.BASE_URL}/wp-json/wp/v2/news-and-events`,
   );
-
   const news_events = await res.json();
 
-  return { props: { news_events }, revalidate: 60 * 60 * 24 * 10, };
+  const filteredInfo = news_events.map((news) => {
+    return {
+      id: news.id,
+      slug: news.slug,
+      name: news.title.rendered,
+      date: news.event_date ?? "Wed, Dec 6, 2023",
+      time: news.event_time ?? "4:30 - 8:30 pm",
+      location: news.location ?? "T Building, Langara College, Vancouver, BC",
+      description: news.acf.excerpt,
+      galleryLink: null,
+    };
+  });
+
+  // create past dummy data
+  const pastNews = {
+    id: 0,
+    slug: "past-news",
+    name: "Past News",
+    date: "Wed, Dec 6, 2023",
+    time: "4:30 - 8:30 pm",
+    location: "T Building, Langara College, Vancouver, BC",
+    description: "This is past news",
+    galleryLink: null,
+  };
+
+  // create an array of past news
+  const pastNewsArray = [];
+  for (let i = 0; i < 10; i++) {
+    pastNewsArray.push(pastNews);
+  }
+
+  console.log(pastNewsArray);
+
+  return {
+    props: { currentEvents: filteredInfo, pastEvents: pastNewsArray },
+    revalidate: 60 * 60 * 24 * 10,
+  };
 }
 
-const NewsEvents = ({ news_events }) => {
+const NewsEvents = ({ currentEvents, pastEvents }) => {
+  console.log(pastEvents);
+
   return (
-    <PageContainer>
+    <div>
       <Head>
         <title>{HomeData.tabName.title}</title>
       </Head>
-      <PageHeader>
-        <h1>{NewsAndEvents.title}</h1>
-        <p>{NewsAndEvents.description}</p>
-      </PageHeader>
-      <Posts>
-        {news_events.map((news) => (
-          <Post key={news.id}>
-            <Link href={`/news-and-events/${news.slug}`}>
-              <Image
-                src={news.acf.article_image}
-                alt={`${news.title.rendered} Banner`}
-              />
-            </Link>
-            <PostDetails>
-              <h2 className="title">{news.title.rendered}</h2>
-              <p className="excerpt">{news.acf.excerpt}</p>
-              <span className="date">
-                {new Date(news.date).toLocaleDateString(undefined, {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
-              </span>
-            </PostDetails>
-          </Post>
-        ))}
-      </Posts>
-    </PageContainer>
+      <Container mainBackgroundImage={mainBackgroundImage}>
+        <section className="events-wrapper first-container">
+          <div className="section-info">
+            <div className="event-information">
+              <div className="section-text">
+                <h2>
+                  <span>Upcoming</span>
+                </h2>
+                <h1 className="title">{NewsAndEvents.title}</h1>
+                <p className="desc">{NewsAndEvents.description}</p>
+              </div>
+              <div className="filterWrapper">{/* <FilterBy /> */}</div>
+            </div>
+            <div className="event-card-wrapper">
+              <NewsCarousel carouselData={currentEvents} />
+            </div>
+          </div>
+        </section>
+        {/* past events */}
+        <section className="events-wrapper">
+          <div className="section-info">
+            <div className="event-information past-events-title-container">
+              <div>
+                <h2>
+                  <span>Past Events</span>
+                </h2>
+                <div>
+                  <FilterBy />
+                </div>
+              </div>
+            </div>
+            <div className="event-card-wrapper">
+              <PastEventCardList pastEvents={pastEvents} />
+            </div>
+          </div>
+        </section>
+      </Container>
+    </div>
   );
 };
 
-const PageContainer = styled.div`
-  padding: 9.8vh 5.4vw;
-  color: #263238;
-  background-color: #f3fbff;
-
-  @media only screen and (min-width: 768px) {
-    padding: 9.1vh 13.5vw;
+const Container = styled.div`
+  .section-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
   }
-`;
 
-const PageHeader = styled.div`
-  text-align: center;
-  padding-bottom: 5rem;
-  h1 {
-    margin: 0;
-    font-weight: 700;
-    font-size: ${CommonStyling.h1FontSize} !important;
+  .section-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .section-text .desc {
+    max-width: 50%;
+  }
+
+  .events-wrapper.first-container {
+    background: url(${({ mainBackgroundImage }) => mainBackgroundImage});
+    background-size: cover;
+    background-position: center;
+    min-height: 90vh;
+    padding-bottom: 2rem;
+  }
+  .events-wrapper {
+    min-height: 100vh;
+    padding-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  div[role="combobox"] {
+    padding: 0 !important;
+    padding-right: 0.5rem !important;
+  }
+
+  .event-information {
+    padding-left: 3rem;
+    padding-right: 3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .descWrapper {
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .filterWrapper {
+    align-self: flex-end;
+  }
+
+  .event-card-wrapper {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  .event-information h1 {
+    font-size: ${CommonStyling.h1FontSize};
     line-height: ${CommonStyling.h1LineHeight};
-    color: #263238;
-    padding-bottom: 2vh;
+    letter-spacing: 1px;
+    font-weight: 600;
+    color: ${CommonStyling.backgroundColor};
   }
 
-  p {
-    margin: 0;
+  .event-information h2 {
+    font-size: ${CommonStyling.h2FontSize};
+    line-height: ${CommonStyling.h2LineHeight};
+    font-weight: 600;
+    color: ${CommonStyling.primaryColor};
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+  }
+
+  // the first one
+  .first-container .event-information h1,
+  .first-container .event-information p {
+    color: ${CommonStyling.backgroundColor};
+  }
+
+  .first-container p {
+    color: ${CommonStyling.backgroundColor};
+  }
+
+  .first-container h1 {
+    font-weight: 600;
+  }
+
+  .first-container h2 span {
+    background-color: white;
+    border-radius: 1rem;
+    padding: 0.8rem 1.2rem;
+    display: inline-block;
+  }
+
+  // the first one ends
+
+  .event-information p {
     font-size: ${CommonStyling.body1FontSize};
-    line-height: ${CommonStyling.body1LineHeight};
-    line-height: 30px;
-  }
-`;
-
-const Posts = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-
-  @media only screen and (min-width: 768px) {
-    display: grid;
-    grid-template-areas: "1fr 1fr";
-  }
-`;
-
-const Post = styled.div`
-  width: 100%;
-  background: #ffffff;
-  border: 1px solid #b0bec5;
-  box-sizing: border-box;
-  border-radius: 4px;
-  min-height: fit-content;
-`;
-
-const PostDetails = styled.div`
-  padding: 2rem;
-
-  .title {
-    margin: 0;
-    padding-bottom: 0.5rem;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 30px;
+    line-height: ${CommonStyling.body1LineHeight} + 10;
+    color: ${CommonStyling.contrastColor};
+    letter-spacing: 0.2px;
   }
 
-  .excerpt {
-    margin: 0;
-    padding-bottom: 1.5rem;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
+  .event-card-wrapper p {
+    color: ${CommonStyling.contrastColor};
   }
 
-  .date {
-    font-family: ${CommonStyling.secondaryFontFamily};
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 18px;
+  @media only screen and (min-width: 1672px) {
+    .event-information {
+      max-width: 1600px;
+      margin: 0 auto;
+      width: 100%;
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
-`;
 
-const Image = styled.img`
-  cursor: pointer;
-  width: 100%;
-  height: auto;
-  object-fit: cover;
+  @media only screen and (max-width: 768px) {
+    .event-information {
+      display: unset;
+      flex-direction: unset;
+      justify-content: unset;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .event-information .filterWrapper {
+      align-self: end;
+    }
+    .descWrapper {
+      max-width: unset;
+    }
+
+    .filterWrapper {
+      align-self: unset;
+    }
+
+    .event-card-wrapper {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+  @media only screen and (max-width: 600px) {
+    .event-information .filterWrapper {
+      align-self: center;
+    }
+
+    .section-text .desc {
+      max-width: 100%;
+    }
+  }
+
+  .past-events-title-container > div {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  @media only screen and (max-width: 1080px) {
+    .past-events-title-container {
+      margin: 0 auto;
+    }
+    .past-events-title-container > div {
+      flex: 1;
+      display: unset;
+    }
+  }
 `;
 
 export default NewsEvents;
