@@ -42,10 +42,14 @@ const AlumniSlider = ({ data }) => {
     speed: 1000,
     slidesToShow: width > 768 ? 3 : 1,
     slidesToScroll: width > 768 ? 3 : 1,
-    arrows: true,
+    arrows: width > 768 ? true : false,
+    centerPadding: "0",
     autoplay: false,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
+    centerMode: width > 768 ? false : true,
+    centerPadding: "50px",
+    initialSlide: 0,
   };
 
   return (
@@ -61,7 +65,7 @@ const AlumniSlider = ({ data }) => {
 
 const AlumniSliderContainer = styled.div`
   background-color: white;
-  margin: 0 2rem;
+  // margin: 0 2rem;
   .slick-track {
     padding: 10px 0;
     display: flex !important;
@@ -120,6 +124,10 @@ const AlumniSliderContainer = styled.div`
 
   .slick-disabled {
     visibility: hidden;
+  }
+
+  @media screen and (min-width: 769px) {
+    margin: 10.97vh 12.5vw;
   }
 `;
 
