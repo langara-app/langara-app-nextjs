@@ -14,7 +14,7 @@ const PastEventCardList = ({ pastEvents }) => {
     <Container>
       <div className="pastEvents-wrapper">
         {pastEvents.map((newsData, idx) => {
-          return <NewsCard key={idx} cardData={newsData} showOutline={true} />;
+          return <NewsCard key={idx} cardData={newsData} showOutline={true} eventType={"PAST"}  />;
         })}
       </div>
     </Container>

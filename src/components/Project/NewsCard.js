@@ -14,9 +14,6 @@ import EventCardButton from "./EventCardButton.js";
 const NewsCard = ({ cardData, showOutline, eventType }) => {
   const { slug, name, description, date, time, location, galleryLink } =
     cardData;
-
-  console.log(cardData);
-
   return (
     <Container data-cardborder={showOutline}>
       <div className="card">
@@ -44,7 +41,11 @@ const NewsCard = ({ cardData, showOutline, eventType }) => {
             </div>
             {/* See Details Btn */}
             <div className="btn-wrapper">
-              <EventCardButton />
+              <EventCardButton
+                buttonText={
+                  eventType == "PAST" ? "View Gallery" : "See Details"
+                }
+              />
             </div>
           </div>
         </Link>
@@ -60,7 +61,7 @@ const Container = styled.div`
     border-radius: 1rem;
     background-color: ${CommonStyling.backgroundColor};
     border: ${(props) =>
-  props["data-cardborder"] ? "2px solid #E6E6E6" : "none"};
+      props["data-cardborder"] ? "2px solid #E6E6E6" : "none"};
     margin-bottom: 2rem;
   }
 
@@ -76,7 +77,9 @@ const Container = styled.div`
     justify-content: space-between;
   }
 
-  .date-label, .time-label, .location-label {
+  .date-label,
+  .time-label,
+  .location-label {
     font-weight: 600;
   }
 
@@ -90,7 +93,6 @@ const Container = styled.div`
   .eventMeta p {
     text-align: right;
   }
-
 
   .eventTextWrap > .eventTitle {
     color: ${CommonStyling.primaryColor};
