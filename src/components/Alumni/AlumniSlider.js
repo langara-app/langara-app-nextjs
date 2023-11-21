@@ -65,7 +65,7 @@ const AlumniSlider = ({ data }) => {
 
 const AlumniSliderContainer = styled.div`
   background-color: white;
-  margin: 0 2rem;
+  // margin: 0 2rem;
   .slick-track {
     padding: 10px 0;
     display: flex !important;
@@ -124,6 +124,10 @@ const AlumniSliderContainer = styled.div`
 
   .slick-disabled {
     visibility: hidden;
+  }
+
+  @media screen and (min-width: 769px) {
+    margin: 10.97vh 12.5vw;
   }
 `;
 
