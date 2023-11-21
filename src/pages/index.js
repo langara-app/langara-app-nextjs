@@ -291,14 +291,14 @@ const ImageDiv = styled.div`
 `;
 const GraduateImg = styled.img`
   object-fit: cover;
-  width: 100%;
-  max-height: 60vh;
+  height: 60vh;
   max-width: 100vw;
+  width: 100%;
 
   @media only screen and (min-width: 768px) {
     object-position: 70% 30%;
+    max-width: 50vw;
     border-top-right-radius: 32px;
-    max-height: 100vh;
     height: 100%;
   }
 `;
