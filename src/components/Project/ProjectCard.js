@@ -8,9 +8,10 @@ import { CommonStyling } from "../../lib/CommonStyling";
 
 
 
-const ProjectCard = ({slug, picture, name, description}) => {
+const ProjectCard = ({ cardData, showOutline }) => {
+  const {slug, picture, name, description } = cardData;
   return (
-    <Container>
+    <Container data-cardborder={showOutline}>
       <div className="card">
         <Link href={`/projects/${slug}`}>
           <div className="imgWrap">
@@ -33,6 +34,8 @@ const Container = styled.div`
   height: 450px;
   border-radius: 1rem;
   background-color: ${CommonStyling.backgroundColor};
+  border: ${props => (props['data-cardborder'] ? '2px solid #E6E6E6' : 'none')};
+
 }
 .imgTextWrap {
   padding: 1rem;

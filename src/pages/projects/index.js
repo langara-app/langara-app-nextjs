@@ -76,7 +76,6 @@ export async function getServerSideProps() {
       nativeApps,
       dataVisualization,
       hybridApps,
-      projectLists: projectLists,
       category1: category1,
       category2: category2,
       category3: category3,
@@ -85,7 +84,6 @@ export async function getServerSideProps() {
 }
 
 const Projects = ({
-  projectLists,
   nativeApps,
   dataVisualization,
   hybridApps,
@@ -136,7 +134,7 @@ const Projects = ({
             </div>
             <div className="projects-card-wrapper">
               <div>
-                <ProjectCarousel carouselData={dataVisualization} />
+                <ProjectCarousel carouselData={dataVisualization} showCardOutline={true} />
               </div>
             </div>
           </div>
@@ -158,7 +156,7 @@ const Projects = ({
             </div>
             <div className="projects-card-wrapper">
               <div>
-                <ProjectCarousel carouselData={hybridApps} />
+                <ProjectCarousel carouselData={hybridApps} showCardOutline={true} />
               </div>
             </div>
           </div>
@@ -180,12 +178,14 @@ const Container = styled.div`
     background-size: cover;
     background-position: center;
     min-height: 90vh;
+    // padding-bottom: 2rem;
   }
   .projects-wrapper {
     min-height: 100vh;
     padding-top: 2.5rem;
     display: flex;
     flex-direction: column;
+    padding-bottom: 2rem;
   }
 
   div[role="combobox"] {
@@ -308,91 +308,6 @@ const Container = styled.div`
   @media only screen and (max-width: 600px) {
     .project-information .filterWrapper {
       align-self: center;
-    }
-  }
-`;
-
-const Containerr = styled.div`
-  padding: 0 4.1vw 9vh 4.1vw;
-  background-color: grey;
-
-  .term4 {
-    padding-top: 9.5vh;
-    font-family: ${CommonStyling.secondaryFontFamily};
-    margin: 0;
-    color: rgba(55, 71, 79, 1);
-
-    font-size: ${CommonStyling.body2FontSize} !important;
-    line-height: ${CommonStyling.body2LineHeight};
-  }
-
-  .term3,
-  .term2 {
-    color: rgba(55, 71, 79, 1);
-    padding-top: 10vh;
-    font-family: ${CommonStyling.secondaryFontFamily};
-    font-size: ${CommonStyling.body2FontSize} !important;
-    line-height: ${CommonStyling.body2LineHeight};
-  }
-
-  .title {
-    font-size: ${CommonStyling.h1FontSize} !important;
-    line-height: ${CommonStyling.h1LineHeight};
-    margin: 0;
-    padding-top: 1vh;
-  }
-
-  .desc {
-    line-height: ${CommonStyling.body1LineHeight};
-    font-weight: 400;
-    margin: 0;
-    padding-top: 2.7vh;
-    padding-bottom: 3.5vh;
-    font-size: ${CommonStyling.body1FontSize};
-  }
-
-  .projects {
-    display: flex;
-    flex-direction: column;
-    gap: 0.97rem;
-  }
-
-  @media only screen and (min-width: 768px) {
-    .title:nth-child(2) {
-      width: 50%;
-    }
-  }
-
-  @media only screen and (min-width: 768px) {
-    padding: 0 13.3vw 9.8vh 13.4vw;
-
-    .term4 {
-      padding-top: 9.3vh;
-      font-family: ${CommonStyling.secondaryFontFamily};
-      margin: 0;
-    }
-
-    .term3,
-    .term2 {
-      margin: 0;
-      padding-top: 10vh;
-    }
-
-    .desc {
-      width: 50%;
-      padding-top: 2vh;
-      padding-bottom: 5.5vh;
-    }
-
-    .projects {
-      flex-direction: row;
-      flex-wrap: wrap;
-
-      @media only screen and (min-width: 768px) {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 24px;
-      }
     }
   }
 `;
