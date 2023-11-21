@@ -85,6 +85,9 @@ const CustomSelect = ({ label, value, onChange, options }) => {
     </FormControl>
   );
 };
+export {
+  CustomSelect
+}
 // Example usage
 const options = [
   { value: "option1", label: "Option 1" },

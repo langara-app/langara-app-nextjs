@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Head from "next/head";
 import styled from "styled-components";
 import useWindowWidth from "../../components/Hooks/useWindowWidth";
@@ -10,6 +10,8 @@ import InstructorSlider from "../../components/Instructor/InstructorSlider";
 
 import placeholder from "../../assets/img/wmdd/placeholder.png";
 import Button from "../../components/ReusableElements/Button";
+import BottomBox from "../../components/ReusableElements/BottomBox";
+import { CustomSelect } from "../../components/ReusableElements/FilterBySelect";
 
 import { CommonStyling } from "../../lib/CommonStyling";
 import { HomeData } from "../../lib/HomeData";
@@ -29,6 +31,17 @@ const ProgramOverview = () => {
     profVidRef.current.src = `${profVidRef.current.src}&autoplay=1&controls=1`;
   };
 
+  const [selectedOption, setSelectedOption] = useState("");
+  const handleChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
+
+  const options = [
+    { value: "Term 1", label: "Term 1" },
+    { value: "Term 2", label: "Term 2" },
+    { value: "Term 3", label: "Term 3" },
+    { value: "Term 4", label: "Term 4" },
+  ];
   return (
     <PageContainer>
       <Head>
@@ -78,16 +91,29 @@ const ProgramOverview = () => {
             </InfoBlock>
           ))}
         </ProgramInfo>
+        <BottomBox />
       </TopSection>
+      <MiddleSection>
+        <MidLeft>
+          <h2>{WmddData.programDetails.title}</h2>
+          <p>{WmddData.programDetails.description}</p>
+          <Button
+            link={WmddData.programDetails.seeAllLink}
+            text="See Details"
+            color="#FFFFFF"
+            bcg="#F15A22"
+          />
+        </MidLeft>
+        <MidRight>
+          <CustomSelect
+            label="All"
+            value={selectedOption}
+            onChange={handleChange}
+            options={options}
+          />
+        </MidRight>
+      </MiddleSection>
       {/*
-      <ProgramInfo>
-        {WmddData.programInfo.map((i, index) => (
-          <InfoBlock key={index}>
-            <div>{i.field}</div>
-            <div>{i.value}</div>
-          </InfoBlock>
-        ))}
-      </ProgramInfo>
       <ProgramDetails>
         <div>
           <h2>{WmddData.programDetails.title}</h2>
@@ -194,6 +220,7 @@ const TopSection = styled.section`
   padding-right: 1.25rem;
   background-position: center;
   background-size: cover;
+  position: relative;
 
   @media only screen and (min-width: 768px) {
     padding: 5.5vh 13.5vw 8.5vh 13.5vw;
@@ -221,7 +248,6 @@ const WmddWebLeft = styled.div`
   @media only screen and (min-width: 768px) {
     display: flex;
     align-items: center;
-    // grid-area: desc;
   }
 `;
 
@@ -258,7 +284,6 @@ const Header2 = styled.p`
 
 const WmddImageContainer = styled.div`
   @media only screen and (min-width: 768px) {
-    // grid-area: pic;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -302,6 +327,46 @@ const ProgramInfo = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1rem;
   padding-top: 2rem;
+`;
+
+const MiddleSection = styled.section`
+  background-color: ${CommonStyling.backgroundColor};
+
+  padding-top: 15.35vh;
+  padding-bottom: 15.35vh;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  background-position: center;
+  background-size: cover;
+  gap: 8.542vw;
+  @media only screen and (min-width: 768px) {
+    padding: 5.5vh 13.5vw 8.5vh 13.5vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+`;
+
+const MidLeft = styled.div`
+  color: #000;
+  h2 {
+    font-size: ${CommonStyling.h1FontSize};
+    line-height: ${CommonStyling.h1LineHeight};
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: ${CommonStyling.body1FontSize};
+    line-height: ${CommonStyling.body1LineHeight};
+    font-weight: 400;
+    margin-bottom: 2rem;
+  }
+`;
+
+const MidRight = styled.div`
+  .MuiFormControl-root {
+    width: 100%;
+  }
 `;
 
 const NextStepContainer = styled.div`
