@@ -183,72 +183,6 @@ const ProgramOverview = () => {
           </>
         )}
       </MiddleSection>
-      {/*
-      <ProgramDetails>
-        <div>
-          <h2>{WmddData.programDetails.title}</h2>
-          <p>{WmddData.programDetails.description}</p>
-        </div>
-        {width < 768 ? (
-          <div>
-            <div className="types">{WmddData.programDetails.types[0]}</div>
-            <div className="courses">
-              {WmddData.programDetails.courses.map((c, index) =>
-                index != 8 ? <div key={index}>{c}</div> : null,
-              )}
-            </div>
-            <div className="seeAll">
-              <a href={WmddData.programDetails.seeAllLink}>
-                {WmddData.programDetails.seeAll}
-              </a>
-            </div>
-            <div className="types">{WmddData.programDetails.types[1]}</div>
-            <div className="courses">
-              {WmddData.programDetails.courses.map((c, index) =>
-                index != 7 ? <div key={index}>{c}</div> : null,
-              )}
-            </div>
-            <div className="seeAll">
-              <a target="_blank" href={WmddData.programDetails.seeAllLink}>
-                {WmddData.programDetails.seeAll}
-              </a>
-            </div>
-          </div>
-        ) : (
-          <div>
-            <div className="types">
-              {WmddData.programDetails.types.map((t, index) => (
-                <div key={index}>{t}</div>
-              ))}
-            </div>
-            <div className="courses">
-              {WmddData.programDetails.courses.map((c, index) =>
-                index === 7 ? (
-                  <div className="splitCourse" key={index}>
-                    <div>{WmddData.programDetails.courses[7]}</div>
-                    <div>{WmddData.programDetails.courses[8]}</div>
-                  </div>
-                ) : index != 8 ? (
-                  <div key={index}>{c}</div>
-                ) : null,
-              )}
-            </div>
-            <div className="seeAll">
-              <a target="_blank" href={WmddData.programDetails.seeAllLink}>
-                {WmddData.programDetails.seeAll}
-              </a>
-            </div>
-          </div>
-        )}
-      </ProgramDetails>
-      <KickStart>
-        <KickImg src={WmddData.kickStart.image} />
-
-        <KickDescWrapper>
-          <KickTitle>{WmddData.kickStart.title}</KickTitle>
-          <KickDesc>{WmddData.kickStart.desc}</KickDesc>
-        </KickDescWrapper>
-      </KickStart>
 
       <InstructorSection>
         <article>
@@ -257,25 +191,6 @@ const ProgramOverview = () => {
         </article>
         <InstructorSlider data={InstructorData.instructors} />
       </InstructorSection>
-
-      <NextStepContainer>
-        <NextStepDetails>
-          <NextTitle>{WmddData.nextStep.title}</NextTitle>
-          <NextDesc>{WmddData.nextStep.desc}</NextDesc>
-
-          <ButtonWrapper>
-            <Button
-              text={"Apply now"}
-              font={CommonStyling.body2FontSize.split("r")[0]}
-              color={"#37474F"}
-              bcg={"white"}
-              section={"joinWMDD"}
-              borderColor={"transparent"}
-              link={"https://langara.ca/admissions/apply-to-langara/index.html"}
-            />
-          </ButtonWrapper>
-        </NextStepDetails>
-      </NextStepContainer> */}
     </PageContainer>
   );
 };
@@ -540,212 +455,34 @@ const CurriculumTitle = styled.div`
   font-weight: 700;
 `;
 
-const NextStepContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 9.8vh 5.4vw;
-  background-color: #f15a22;
-  color: #ffffff;
-  align-items: flex-start;
-
-  @media only screen and (min-width: 768px) {
-    padding: 7vh 13.5vw;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-`;
-
-const NextStepDetails = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const NextTitle = styled.h2`
-  margin: 0;
-  text-align: center;
-  font-weight: bold;
-  font-size: ${CommonStyling.h2FontSize};
-  line-height: ${CommonStyling.h2LineHeight};
-`;
-
-const NextDesc = styled.p`
-  text-align: center;
-  font-weight: 200;
-  font-size: ${CommonStyling.body1FontSize};
-  line-height: ${CommonStyling.body1LineHeight};
-  padding-top: 1rem;
-  padding-bottom: 4.6vh;
-  margin: 0;
-
-  @media only screen and (min-width: 768px) {
-    padding-left: 18vw;
-    padding-right: 18vw;
-  }
-`;
-
-const ButtonWrapper = styled.div`
-  margin: 0 auto;
-`;
-
-const KickStart = styled.div`
-  padding: 7.8vh 4.1vw 9.7vh;
-
-  @media screen and (min-width: 768px) {
-    display: flex;
-    flex-direction: row-reverse;
-    padding: 10vh 13.5vw 10.9vh 13.5vw;
-    gap: 2vw;
-  }
-`;
-
-const KickImg = styled.img`
-  width: 100%;
-  object-fit: contain;
-
-  @media screen and (min-width: 768px) {
-    max-width: 477px;
-  }
-`;
-
-const KickDescWrapper = styled.div`
-  padding-top: 4.8vh;
-
-  @media only screen and (min-width: 768px) {
-    padding-top: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-  }
-`;
-const KickTitle = styled.h2`
-  margin: 0;
-  font-size: ${CommonStyling.h2FontSize};
-  line-height: ${CommonStyling.h2LineHeight};
-  color: rgba(33, 38, 58, 1);
-  font-weight: 700;
-`;
-
-const KickDesc = styled.p`
-  font-size: ${CommonStyling.body1FontSize};
-  line-height: ${CommonStyling.body1LineHeight};
-  font-weight: 400;
-  color: rgba(33, 38, 58, 1);
-  margin: 0;
-  padding-top: 2vh;
-
-  @media screen and (min-width: 768px) {
-    padding-top: 1.5vh;
-  }
-`;
-
 const InstructorSection = styled.section`
-  padding: 5vh 5.4vw;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  background-color: #f2f2f2;
+  border-radius: 32px 32px 0px 0px;
 
-  @media only screen and (min-width: 768px) {
-    padding: 4rem 13.5vw 5rem 13.5vw;
-  }
-  background-color: #ffffff;
   article {
-    text-align: center;
+    padding-top: 15.35vh;
     h2 {
-      font-size: ${CommonStyling.h2FontSize};
-      line-height: ${CommonStyling.h2LineHeight};
+      font-size: ${CommonStyling.h1FontSize};
+      line-height: ${CommonStyling.h1LineHeight};
+      font-weight: 700;
       margin: 0;
+      color: ${CommonStyling.contrastColor};
+      margin-bottom: 1rem;
     }
     p {
       margin: 0;
       margin-top: 1vh;
-      margin-bottom: 2vh;
-      font-size: ${CommonStyling.body1FontSize};
-      line-height: ${CommonStyling.body1LineHeight};
+      margin-bottom: 2rem;
+      font-size: ${CommonStyling.body2FontSize};
+      line-height: ${CommonStyling.body2LineHeight};
+      color: #000;
     }
   }
-`;
-
-const ProgramDetails = styled.div`
-  margin: 5vh 5.4vw 2vh 5.4vw;
 
   @media only screen and (min-width: 768px) {
-    margin: 2vh 13.5vw;
-  }
-
-  > div:nth-child(1) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-
-    h2 {
-      font-size: ${CommonStyling.h2FontSize};
-      line-height: ${CommonStyling.h2LineHeight};
-      font-weight: 700;
-      margin: 0;
-    }
-    p {
-      font-size: ${CommonStyling.body1FontSize};
-      line-height: ${CommonStyling.body1LineHeight};
-      font-weight: 400;
-      margin: 0;
-      margin-bottom: 3rem;
-      padding-top: 1.5vh;
-    }
-  }
-
-  .types {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    font-size: 1.25rem;
-    line-height: 1.875rem;
-    font-weight: 700;
-    letter-spacing: 0em;
-    text-align: center;
-    margin-bottom: 1rem;
-  }
-
-  .courses {
-    background-color: #ffffff;
-    border: 1px solid #b0bec5;
-    margin-bottom: 1rem;
-    > div {
-      width: 100%;
-      padding: 1.2rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
-    > div:nth-child(n) {
-      border-top: 1px solid #b0bec5;
-    }
-    > div:nth-child(1) {
-      border-top: none;
-    }
-    .splitCourse {
-      padding: 0;
-      display: flex;
-      flex-direction: row;
-      div {
-        width: 50%;
-        padding: 1.2rem;
-      }
-      div:nth-child(2) {
-        border-left: 1px solid #b0bec5;
-      }
-    }
-  }
-
-  .seeAll {
-    font-weight: 700;
-    font-size: 1rem;
-    line-height: 1.5px;
-    text-align: center;
-    color: #f15a22;
-    margin: 2rem;
-    cursor: pointer;
+    padding: 5.5vh 13.5vw 8.5vh 13.5vw;
   }
 `;
 
