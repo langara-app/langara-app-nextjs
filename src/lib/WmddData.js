@@ -144,4 +144,27 @@ export const WmddData = {
       common: false,
     },
   ],
+
+  featuredSubjects: [
+    {
+      term: "Term I",
+      course: "Graphic Design for Web",
+      stream: "Developers & Designers",
+    },
+    {
+      term: "Term II",
+      course: "Content Management Systems",
+      stream: "Developers & Designers",
+    },
+    {
+      term: "Term III",
+      course: "Integrated Project 2",
+      stream: "Developers & Designers",
+    },
+    {
+      term: "Term IV",
+      course: "Capstone Project",
+      stream: "Developers & Designers",
+    },
+  ],
 };

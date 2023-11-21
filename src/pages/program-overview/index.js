@@ -95,62 +95,93 @@ const ProgramOverview = () => {
         <BottomBox />
       </TopSection>
       <MiddleSection>
-        <MidLeft>
-          <h2>{WmddData.programDetails.title}</h2>
-          <p>{WmddData.programDetails.description}</p>
-          <Button
-            link={WmddData.programDetails.seeAllLink}
-            text="See Details"
-            color="#FFFFFF"
-            bcg="#F15A22"
-          />
-        </MidLeft>
-        <MidRight>
-          <CustomSelect
-            label="All"
-            value={selectedOption}
-            onChange={handleChange}
-            options={options}
-          />
-          <Curriculum>
-            <div className="curriculum">
-              <CurriculumTitle>
-                <h3>Developer</h3>
+        {width > 768 ? (
+          <>
+            <MidLeft>
+              <h1>{WmddData.programDetails.title}</h1>
+              <p>{WmddData.programDetails.description}</p>
+              <Button
+                link={WmddData.programDetails.seeAllLink}
+                text="See Details"
+                color="#FFFFFF"
+                bcg="#F15A22"
+              />
+            </MidLeft>
+            <MidRight>
+              <CustomSelect
+                label="All"
+                value={selectedOption}
+                onChange={handleChange}
+                options={options}
+              />
+              <Curriculum>
+                <div className="curriculum">
+                  <CurriculumTitle>
+                    <h3>Developer</h3>
 
-                <ul>
-                  {WmddData.developerSubjects
-                    .filter(
-                      (s) =>
-                        s.term == selectedOption[selectedOption.length - 1],
-                    )
-                    .map((res, idx) => (
-                      <CurriculumList key={idx} common={res.common}>
-                        {res.course}
-                      </CurriculumList>
-                    ))}
-                </ul>
-              </CurriculumTitle>
-              <CurriculumTitle>
-                <h3>Designer</h3>
-                <ul>
-                  {WmddData.designerSubjects
-                    .filter(
-                      (s) =>
-                        s.term == selectedOption[selectedOption.length - 1],
-                    )
-                    .map((res, idx) => (
-                      <CurriculumList key={idx} common={res.common}>
-                        {res.course}
-                      </CurriculumList>
-                    ))}
-                </ul>
-              </CurriculumTitle>
-            </div>
-            <CommonClass>
-              Common courses between Developers and Designers
-            </CommonClass>
-          </Curriculum>
-        </MidRight>
+                    <ul>
+                      {WmddData.developerSubjects
+                        .filter(
+                          (s) =>
+                            s.term == selectedOption[selectedOption.length - 1],
+                        )
+                        .map((res, idx) => (
+                          <CurriculumList key={idx} common={res.common}>
+                            {res.course}
+                          </CurriculumList>
+                        ))}
+                    </ul>
+                  </CurriculumTitle>
+                  <CurriculumTitle>
+                    <h3>Designer</h3>
+                    <ul>
+                      {WmddData.designerSubjects
+                        .filter(
+                          (s) =>
+                            s.term == selectedOption[selectedOption.length - 1],
+                        )
+                        .map((res, idx) => (
+                          <CurriculumList key={idx} common={res.common}>
+                            {res.course}
+                          </CurriculumList>
+                        ))}
+                    </ul>
+                  </CurriculumTitle>
+                </div>
+                <CommonClass>
+                  Common courses between Developers and Designers
+                </CommonClass>
+              </Curriculum>
+            </MidRight>{" "}
+          </>
+        ) : (
+          <>
+            <MidTop>
+              <h1>{WmddData.programDetails.title}</h1>
+              <p>{WmddData.programDetails.description}</p>
+              <Button
+                link={WmddData.programDetails.seeAllLink}
+                text="See Details"
+                color="#FFFFFF"
+                bcg="#F15A22"
+              />
+            </MidTop>
+            <MidBot>
+              <ul>
+                {WmddData.featuredSubjects.map((f) => (
+                  <div className="wrapper" key={f.course}>
+                    <div className="circle"></div>
+                    <div>
+                      <p className="term">{f.term}</p>
+                      <li className="course">{f.course}</li>
+                      <p className="stream">{f.stream}</p>
+                    </div>
+                  </div>
+                ))}
+              </ul>
+            </MidBot>
+          </>
+        )}
       </MiddleSection>
       {/*
       <ProgramDetails>
@@ -378,6 +409,11 @@ const MiddleSection = styled.section`
   background-position: center;
   background-size: cover;
   gap: 8.542vw;
+
+  .mid-top {
+    font-size:;
+  }
+
   @media only screen and (min-width: 768px) {
     padding: 5.5vh 13.5vw 8.5vh 13.5vw;
     display: grid;
@@ -387,7 +423,7 @@ const MiddleSection = styled.section`
 
 const MidLeft = styled.div`
   color: #000;
-  h2 {
+  h1 {
     font-size: ${CommonStyling.h1FontSize};
     line-height: ${CommonStyling.h1LineHeight};
     font-weight: 700;
@@ -402,6 +438,61 @@ const MidLeft = styled.div`
   }
 `;
 
+const MidTop = styled.div`
+  color: #000;
+  h1 {
+    font-size: ${CommonStyling.h2FontSize};
+    line-height: ${CommonStyling.h2LineHeight};
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: ${CommonStyling.body1FontSize};
+    line-height: ${CommonStyling.body1LineHeight};
+    font-weight: 400;
+    margin-bottom: 2rem;
+  }
+  button {
+    width: 100%;
+    margin-bottom: 64px;
+  }
+`;
+const MidBot = styled.div`
+  .wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .circle {
+    height: 15px;
+    width: 15px;
+    background-color: ${CommonStyling.primaryColor};
+    border-radius: 50%;
+  }
+
+  .term {
+    font-size: ${CommonStyling.body2FontSize};
+    line-height: ${CommonStyling.body2LineHeight};
+    color: ${CommonStyling.primaryColor};
+  }
+
+  .course {
+    font-size: ${CommonStyling.body1FontSize};
+    line-height: ${CommonStyling.body1LineHeight};
+    color: ${CommonStyling.contrastColor};
+    font-weight: 700;
+  }
+
+  .stream {
+    font-size: ${CommonStyling.body2FontSize};
+    line-height: ${CommonStyling.body2LineHeight};
+    color: ${CommonStyling.contrastColor};
+    opacity: 0.5;
+  }
+`;
 const MidRight = styled.div`
   .MuiFormControl-root {
     width: 100%;
