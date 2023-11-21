@@ -42,10 +42,14 @@ const AlumniSlider = ({ data }) => {
     speed: 1000,
     slidesToShow: width > 768 ? 3 : 1,
     slidesToScroll: width > 768 ? 3 : 1,
-    arrows: true,
+    arrows: width > 768 ? true : false,
+    centerPadding: "0",
     autoplay: false,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
+    centerMode: width > 768 ? false : true,
+    centerPadding: "50px",
+    initialSlide: 0,
   };
 
   return (
