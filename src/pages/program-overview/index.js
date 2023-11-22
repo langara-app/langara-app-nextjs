@@ -1,8 +1,7 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Head from "next/head";
 import styled from "styled-components";
 import useWindowWidth from "../../components/Hooks/useWindowWidth";
-import Link from "next/link";
 
 import { WmddData } from "../../lib/WmddData";
 import { InstructorData } from "../../lib/InstructorData";
@@ -15,8 +14,10 @@ import { CustomSelect } from "../../components/ReusableElements/FilterBySelect";
 
 import { CommonStyling } from "../../lib/CommonStyling";
 import { HomeData } from "../../lib/HomeData";
-
+import ReactPlayer from "react-player/youtube";
 import mainBackgroundImage from "@/assets/news-and-events/mainBackgroundImage.png";
+import placeholder1 from "../../assets/img/placeholder1.jpg";
+import mobilePlaceholder from "../../assets/img/mobilePlaceholder.png";
 
 const ProgramOverview = () => {
   const width = useWindowWidth();
@@ -36,13 +37,21 @@ const ProgramOverview = () => {
     setSelectedOption(event.target.value);
   };
 
-  console.log(selectedOption[selectedOption.length - 1]);
   const options = [
     { value: "Term 1", label: "Term 1" },
     { value: "Term 2", label: "Term 2" },
     { value: "Term 3", label: "Term 3" },
     { value: "Term 4", label: "Term 4" },
   ];
+
+  const [hasWindow, setHasWindow] = useState(false);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setHasWindow(true);
+    }
+  }, []);
+  const url = "https://youtu.be/jB5kt2GPND0?si=mk9aJu4t8v0IQykn";
+
   return (
     <PageContainer>
       <Head>
@@ -51,38 +60,25 @@ const ProgramOverview = () => {
 
       <TopSection mainBackgroundImage={mainBackgroundImage}>
         <WmddContainer>
-          <WmddWebLeft>
-            {width < 768 ? (
-              <div>
-                <WmddTitle>{WmddData.header.title}</WmddTitle>
-                <Header1>{WmddData.header.subtitle}</Header1>
-                <Header2>{WmddData.header.description}</Header2>
-
-                <a
-                  href="https://www.youtube.com/watch?v=BTciK1vJ8QY"
-                  target="_blank"
-                >
-                  <WmddImg src={placeholder} alt="Program Overview Image" />
-                </a>
-              </div>
-            ) : (
-              <div>
-                <WmddTitle>{WmddData.header.title} </WmddTitle>
-                <Header1>{WmddData.header.subtitle}</Header1>
-                <Header2>{WmddData.header.description}</Header2>
-              </div>
-            )}
-          </WmddWebLeft>
-          {width < 768 ? null : (
-            <WmddImageContainer>
-              <a
-                target="_blank"
-                href="https://www.youtube.com/watch?v=BTciK1vJ8QY"
-              >
-                <WmddImg src={placeholder} alt="Program Overview Image" />
-              </a>
-            </WmddImageContainer>
-          )}
+          {hasWindow ? (
+            <>
+              <WmddWebLeft>
+                <div>
+                  <WmddTitle>{WmddData.header.title} </WmddTitle>
+                  <Header1>{WmddData.header.subtitle}</Header1>
+                  <Header2>{WmddData.header.description}</Header2>
+                </div>
+              </WmddWebLeft>
+              <WmddImageContainer>
+                <ReactPlayer
+                  url={url}
+                  width={"100%"}
+                  height={"400px"}
+                  light={width >= 768 ? placeholder1 : mobilePlaceholder}
+                />
+              </WmddImageContainer>
+            </>
+          ) : null}
         </WmddContainer>
         <ProgramInfo>
           {WmddData.programInfo.map((i, index) => (
@@ -300,13 +296,8 @@ const Header2 = styled.p`
 `;
 
 const WmddImageContainer = styled.div`
-  @media only screen and (min-width: 768px) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    a {
-      flex: 1;
-    }
+  .react-player__preview {
+    border-radius: 32px;
   }
 `;
 
