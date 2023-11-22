@@ -39,14 +39,50 @@ const InstructorSlider = ({ data }) => {
   const settings = {
     dots: false,
     infinite: false,
-    autoplaySpeed: 7000,
     speed: 1000,
-    slidesToShow: width > 768 ? 5 : 2,
-    slidesToScroll: width > 768 ? 5 : 2,
-    arrows: true,
-    autoplay: false,
+    autoplaySpeed: 7000,
+    autoplay: true,
+    slidesToShow: 5,
+    slidesToScroll: 5,
+    initialSlide: 0,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1100,
+        settings: {
+          slidesToShow: 3.5,
+          slidesToScroll: 3.5,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 890,
+        settings: {
+          slidesToShow: 3.5,
+          slidesToScroll: 3.5,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 658,
+        settings: {
+          slidesToShow: 2.2,
+          slidesToScroll: 2.2,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 426,
+        settings: {
+          slidesToShow: 1.55,
+          slidesToScroll: 1.55,
+          dots: false,
+          centerPadding: "25vw",
+          centerMode: true,
+        },
+      },
+    ],
   };
 
   return (
@@ -61,14 +97,20 @@ const InstructorSlider = ({ data }) => {
 };
 
 const InstructorSliderContainer = styled.div`
-  background-color: white;
-  margin: 0 2rem;
+  // margin: 0 2rem;
+  @media only screen and (min-width: 769px) {
+    padding: 0 13.5vw 0 13.5vw;
+  }
 
   .slick-track {
     padding: 10px 0;
-    display: flex;
+    display: flex !important;
     flex-direction: row;
     gap: 1.25rem;
+  }
+
+  .slick-slider {
+    height: 100%;
   }
 
   .slick-prev {

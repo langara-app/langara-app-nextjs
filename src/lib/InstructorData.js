@@ -28,27 +28,27 @@ export const InstructorData = {
   },
   instructors: [
     {
-      image: jason,
+      image: reza_e,
       name: "Jason Madar",
       title: "Instructor, Program Coordinator",
     },
     {
-      image: jesica,
+      image: reza_e,
       name: "Jesica Ortega Nava",
       title: "Instructor, Assistant Coordinator",
     },
     {
-      image: reza_a,
+      image: reza_e,
       name: "Reza Abbasi",
       title: "Instructor",
     },
     {
-      image: denis,
+      image: reza_e,
       name: "Denis Billette",
       title: "Instructor",
     },
     {
-      image: paul,
+      image: reza_e,
       name: "Paul Brassard",
       title: "Instructor",
     },
@@ -58,79 +58,121 @@ export const InstructorData = {
       title: "Instructor",
     },
     {
-      image: tito,
+      image: reza_e,
+      name: "Jeffrey Ellis",
+      title: "Instructor",
+    },
+    {
+      image: reza_e,
       name: "Tito Ferradans",
       title: "Instructor",
     },
     {
-      image: tyler,
+      image: reza_e,
       name: "Tyler Higgs",
       title: "Instructor",
     },
     {
-      image: paul_l,
-      name: "Paul Lam",
-      title: "Instructional Assistant",
-    },
-    {
-      image: sara,
+      image: reza_e,
       name: "Sara McIntyre",
       title: "Instructor",
     },
+
     {
-      image: kevin,
+      image: reza_e,
       name: "Kevin McMillian",
       title: "Instructor",
     },
     {
-      image: josue,
+      image: reza_e,
       name: "Josué Menjivar",
       title: "Instructor",
     },
     {
-      image: jordan,
+      image: reza_e,
       name: "Jordan Miller",
       title: "Instructor",
     },
     {
-      image: jean,
-      name: "Jean Nguyen",
-      title: "Instructional Assistant",
-    },
-    {
-      image: tomoko,
+      image: reza_e,
       name: "Tomoko Okochi",
       title: "Instructor",
     },
     {
-      image: rodrigo,
-      name: "Rodrigo Ornellas",
-      title: "Instructional Assistant",
+      image: reza_e,
+      name: "Derek Tam",
+      title: "Instructor",
     },
     {
-      image: trista,
-      name: "Trista Townsend",
-      title: "Instructional Assistant",
+      image: reza_e,
+      name: "Jacob Tran",
+      title: "Instructor",
     },
     {
-      image: peter,
+      image: reza_e,
+      name: "Marinela Poso",
+      title: "Instructor",
+    },
+    {
+      image: reza_e,
       name: "Peter Vysek",
       title: "Instructor",
     },
     {
-      image: richard,
+      image: reza_e,
       name: "Richard Wong",
       title: "Instructor",
     },
     {
-      image: lu,
+      image: reza_e,
       name: "Lu Yu",
       title: "Instructor",
     },
     {
-      image: ira,
+      image: reza_e,
       name: "Ira Zhang",
       title: "Instructor",
+    },
+
+    {
+      image: reza_e,
+      name: "Valentina Abanina",
+      title: "Instructional Assistant",
+    },
+    {
+      image: reza_e,
+      name: "Karen Jeong",
+      title: "Instructional Assistant",
+    },
+    {
+      image: reza_e,
+      name: "Paul Lam",
+      title: "Instructional Assistant",
+    },
+    {
+      image: reza_e,
+      name: "Jean Nguyen",
+      title: "Instructional Assistant",
+    },
+    {
+      image: reza_e,
+      name: "Merry Nguyen",
+      title: "Instructional Assistant",
+    },
+    {
+      image: reza_e,
+      name: "Rodrigo Ornellas",
+      title: "Instructional Assistant",
+    },
+    {
+      image: reza_e,
+      name: "Trista Townsend",
+      title: "Instructional Assistant",
+    },
+    {
+      image: reza_e,
+      name: "Amandeep Singh",
+      title: "Instructional Assistant",
     },
   ],
 };

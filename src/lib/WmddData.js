@@ -2,35 +2,35 @@ import kickStart from "../assets/img/wmdd/kickStart.png";
 
 export const WmddData = {
   header: {
-    title: "Progam Overview",
+    title: "Program Overview",
     subtitle: "Web and Mobile App Design and Development",
     description:
       "Get a glimpse of the incredible experiences and knowledge awaiting you at WMDD program.",
   },
   programInfo: [
     {
-      field: "Duration",
-      value: "2-year program (16 months)",
+      field: "Basic Requirement",
+      value: "Bachelor's Degree",
     },
     {
       field: "Credential",
       value: "Post-Degree Diploma",
     },
     {
-      field: "Start dates",
+      field: "Start Dates",
       value: "September, January, May",
     },
     {
-      field: "Basic Requirement",
-      value: "Bachelor's Degree",
-    },
-    {
-      field: "Location",
-      value: "Vancouver, BC (Canada)",
+      field: "Duration",
+      value: "2-year program (16 months)",
     },
     {
       field: "Experience",
       value: "No experience required",
+    },
+    {
+      field: "Location",
+      value: "Vancouver, BC (Canada)",
     },
   ],
   complete_program: {
@@ -69,4 +69,102 @@ export const WmddData = {
       "https://langara.ca/programs-and-courses/programs/web-and-mobile-app/program-curriculum.html",
     seeAll: "+ See all courses",
   },
+
+  developerSubjects: [
+    { term: 1, course: "Graphic Design for Web", common: true },
+    { term: 1, course: "Graphics Techniques Fundamentals", common: true },
+    { term: 1, course: "HTML/CSS I", common: true },
+    { term: 1, course: "Introduction to Web Programming", common: true },
+    { term: 1, course: "Introduction to User Experience Design", common: true },
+
+    { term: 2, course: "HTML/CSS II", common: true },
+    { term: 2, course: "Content Management Systems", common: true },
+    { term: 2, course: "Web Programming II", common: false },
+    { term: 2, course: "Integrated Project", common: true },
+    {
+      term: 2,
+      course: "Communications for Technical Professions",
+      common: true,
+    },
+
+    { term: 3, course: "Introduction to Database Technologies", common: false },
+    {
+      term: 3,
+      course: "Object-Oriented Design and Programming",
+      common: false,
+    },
+    { term: 3, course: "Full-Stack Web Development", common: false },
+    { term: 3, course: "Industry and Business Strategies", common: true },
+    { term: 3, course: "Project 2", common: true },
+
+    { term: 4, course: "Native Android App Development", common: false },
+    { term: 4, course: "Native iOS App Development", common: false },
+    {
+      term: 4,
+      course: "Security and Cloud and Server Administration",
+      common: false,
+    },
+    { term: 4, course: "Capstone Project", common: true },
+    {
+      term: 4,
+      course: "Advanced Topics for Web and Mobile Developers",
+      common: false,
+    },
+  ],
+  designerSubjects: [
+    { term: 1, course: "Graphic Design for Web", common: true },
+    { term: 1, course: "Graphics Techniques Fundamentals", common: true },
+    { term: 1, course: "HTML/CSS I", common: true },
+    { term: 1, course: "Introduction to Web Programming", common: true },
+    { term: 1, course: "Introduction to User Experience Design", common: true },
+
+    { term: 2, course: "HTML/CSS II", common: true },
+    { term: 2, course: "Content Management Systems", common: true },
+    { term: 2, course: "Advanced Typography", common: false },
+    { term: 2, course: "Integrated Project", common: true },
+    {
+      term: 2,
+      course: "Communications for Technical Professions",
+      common: true,
+    },
+
+    { term: 3, course: "Advanced Graphics Design", common: false },
+    { term: 3, course: "3D Design and Prototyping", common: false },
+    { term: 3, course: "Advanced User Experience Design", common: false },
+    { term: 3, course: "Industry and Business Strategies", common: true },
+    { term: 3, course: "Project 2", common: true },
+
+    { term: 4, course: "Advanced Graphics Techniques", common: false },
+    { term: 4, course: "Audio/Video Production", common: false },
+    { term: 4, course: "Game Design Foundations", common: false },
+    { term: 4, course: "Capstone Project", common: true },
+    {
+      term: 4,
+      course: "Advanced Topics for Web and Mobile Designers",
+      common: false,
+    },
+  ],
+
+  featuredSubjects: [
+    {
+      term: "Term I",
+      course: "Graphic Design for Web",
+      stream: "Developers & Designers",
+    },
+    {
+      term: "Term II",
+      course: "Content Management Systems",
+      stream: "Developers & Designers",
+    },
+    {
+      term: "Term III",
+      course: "Integrated Project 2",
+      stream: "Developers & Designers",
+    },
+    {
+      term: "Term IV",
+      course: "Capstone Project",
+      stream: "Developers & Designers",
+    },
+  ],
 };
