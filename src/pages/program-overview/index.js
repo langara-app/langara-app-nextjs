@@ -167,18 +167,50 @@ const ProgramOverview = () => {
               />
             </MidTop>
             <MidBot>
-              <ul>
-                {WmddData.featuredSubjects.map((f) => (
-                  <div className="wrapper" key={f.course}>
-                    <div className="circle"></div>
-                    <div>
-                      <p className="term">{f.term}</p>
-                      <li className="course">{f.course}</li>
-                      <p className="stream">{f.stream}</p>
-                    </div>
-                  </div>
-                ))}
-              </ul>
+              <CustomSelect
+                label="All"
+                value={selectedOption}
+                onChange={handleChange}
+                options={options}
+              />
+              <div className="curriculum-mobile">
+                <CurriculumTitleMobile style={{ marginBottom: "32px" }}>
+                  <h3>Developer</h3>
+
+                  <ul>
+                    {WmddData.developerSubjects
+                      .filter(
+                        (s) =>
+                          s.term == selectedOption[selectedOption.length - 1],
+                      )
+                      .map((res, idx) => (
+                        <CurriculumList key={idx} common={res.common}>
+                          {res.course}
+                        </CurriculumList>
+                      ))}
+                  </ul>
+                </CurriculumTitleMobile>
+                <CurriculumTitleMobile>
+                  <h3>Designer</h3>
+                  <ul>
+                    {WmddData.designerSubjects
+                      .filter(
+                        (s) =>
+                          s.term == selectedOption[selectedOption.length - 1],
+                      )
+                      .map((res, idx) => (
+                        <CurriculumList key={idx} common={res.common}>
+                          {res.course}
+                        </CurriculumList>
+                      ))}
+                  </ul>
+                </CurriculumTitleMobile>
+                <ul className="common">
+                  <li className="common-mobile">
+                    Common courses between Developers and Designers
+                  </li>
+                </ul>
+              </div>
             </MidBot>
           </>
         )}
@@ -379,38 +411,26 @@ const MidTop = styled.div`
   }
 `;
 const MidBot = styled.div`
-  .wrapper {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
+  .MuiFormControl-root {
+    width: 100%;
+    margin-bottom: 3rem;
   }
 
-  .circle {
-    height: 15px;
-    width: 15px;
-    background-color: ${CommonStyling.primaryColor};
-    border-radius: 50%;
+  ul {
+    padding-left: 1.25rem;
   }
 
-  .term {
-    font-size: ${CommonStyling.body2FontSize};
-    line-height: ${CommonStyling.body2LineHeight};
-    color: ${CommonStyling.primaryColor};
-  }
-
-  .course {
-    font-size: ${CommonStyling.body1FontSize};
-    line-height: ${CommonStyling.body1LineHeight};
-    color: ${CommonStyling.contrastColor};
-    font-weight: 700;
-  }
-
-  .stream {
-    font-size: ${CommonStyling.body2FontSize};
-    line-height: ${CommonStyling.body2LineHeight};
-    color: ${CommonStyling.contrastColor};
-    opacity: 0.5;
+  .common {
+    padding-left: 1.15rem;
+    list-style: disc;
+    .common-mobile {
+      color: rgba(7, 7, 7, 0.2);
+      font-size: ${CommonStyling.body3FontSize};
+      line-height: ${CommonStyling.body3LineHeight};
+    }
+    .common-mobile::marker {
+      color: ${CommonStyling.primaryColor};
+    }
   }
 `;
 const MidRight = styled.div`
@@ -455,6 +475,12 @@ const CommonClass = styled.li`
 `;
 
 const CurriculumTitle = styled.div`
+  font-size: ${CommonStyling.h3FontSize};
+  line-height: ${CommonStyling.h3LineHeight};
+  font-weight: 700;
+`;
+
+const CurriculumTitleMobile = styled.div`
   font-size: ${CommonStyling.h3FontSize};
   line-height: ${CommonStyling.h3LineHeight};
   font-weight: 700;
