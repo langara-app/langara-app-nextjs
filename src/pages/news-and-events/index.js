@@ -20,53 +20,91 @@ export async function getStaticProps() {
     `${process.env.BASE_URL}/wp-json/wp/v2/news-and-events`,
   );
   const news_events = await res.json();
+  console.log(`${process.env.BASE_URL}/wp-json/wp/v2/news-and-events`);
 
-  let filteredInfo = news_events.map((news) => {
-    return {
-      id: news.id,
-      slug: news.slug,
-      name: news.title.rendered,
-      date: news.event_date ?? "Wed, Dec 6, 2023",
-      time: news.event_time ?? "4:30 - 8:30 pm",
-      location: news.location ?? "T Building, Langara College, Vancouver, BC",
-      description: news.acf.excerpt,
-      galleryLink: null,
-    };
+  const events = news_events
+    .filter((news) => {
+      return news.acf.event_date;
+    })
+    .map((news) => {
+      return {
+        id: news.id,
+        slug: news.slug,
+        name: news.title.rendered,
+        event_date: news.acf.event_date,
+        event_year: news.acf.event_date.split("/")[2],
+        event_start_time: news.acf.event_start_time,
+        event_end_time: news.acf.event_end_time,
+        event_location: news.acf.event_location,
+        description: news.acf.excerpt,
+        galleryLink: null,
+      };
+    });
+
+  // Get the current date and time
+  const currentDateTime = new Date();
+
+  // Separate events into past and current
+  const pastEvents = events.filter((event) => {
+    const [day, month, year] = event.event_date.split("/");
+    const eventDateTime = new Date(
+      `${year}-${month}-${day} ${event.event_start_time}`,
+    );
+    return eventDateTime < currentDateTime;
   });
 
-  // multiple cards in filteredInfo
-  filteredInfo = Array(10).fill(filteredInfo[0]);
+  const futureEvents = events.filter((event) => {
+    const [day, month, year] = event.event_date.split("/");
+    const eventDateTime = new Date(
+      `${year}-${month}-${day} ${event.event_start_time}`,
+    );
+    return eventDateTime >= currentDateTime;
+  });
 
-
-
-  // create past dummy data
-  const pastNews = {
-    id: 0,
-    slug: "past-news",
-    name: "Past News",
-    date: "Wed, Dec 6, 2023",
-    time: "4:30 - 8:30 pm",
-    location: "T Building, Langara College, Vancouver, BC",
-    description: "This is past news",
-    galleryLink: null,
+  // Sort events based on date and time
+  const sortByDateTime = (a, b) => {
+    const [dayA, monthA, yearA] = a.event_date.split("/");
+    const [dayB, monthB, yearB] = b.event_date.split("/");
+    const dateA = new Date(`${yearA}-${monthA}-${dayA} ${a.event_start_time}`);
+    const dateB = new Date(`${yearB}-${monthB}-${dayB} ${b.event_start_time}`);
+    return dateA - dateB;
   };
 
-  // create an array of past news
-  const pastNewsArray = [];
-  for (let i = 0; i < 10; i++) {
-    pastNewsArray.push(pastNews);
-  }
+  futureEvents.sort(sortByDateTime);
+  pastEvents.sort(sortByDateTime).reverse();
 
-  console.log(pastNewsArray);
+  const pastEventsUniqueYears = [
+    ...new Set(pastEvents.map((event) => event.event_year)),
+  ];
 
   return {
-    props: { currentEvents: filteredInfo, pastEvents: pastNewsArray },
+    props: {
+      currentEvents: futureEvents,
+      allPastEvents: pastEvents,
+      pastEventsUniqueYears,
+    },
     revalidate: 60 * 60 * 24 * 10,
   };
 }
 
-const NewsEvents = ({ currentEvents, pastEvents }) => {
-  console.log(pastEvents);
+const NewsEvents = ({
+  currentEvents,
+  allPastEvents,
+  pastEventsUniqueYears,
+}) => {
+  const [pastEvents, setPastEvents] = React.useState(allPastEvents);
+
+  function filterByYear(year) {
+    if (year === "All") {
+      setPastEvents(allPastEvents);
+      return;
+    } else {
+      const filteredEvents = allPastEvents.filter(
+        (event) => event.event_year === year,
+      );
+      setPastEvents(filteredEvents);
+    }
+  }
 
   return (
     <div>
@@ -86,10 +124,18 @@ const NewsEvents = ({ currentEvents, pastEvents }) => {
               </div>
               <div className="filterWrapper">{/* <FilterBy /> */}</div>
             </div>
-            <div className="event-card-wrapper">
-              <NewsCarousel carouselData={currentEvents} />
-            </div>
+            {currentEvents.length > 0 && (
+              <div className="event-card-wrapper">
+                <NewsCarousel carouselData={currentEvents} />
+              </div>
+            )}
           </div>
+          {/* No Upcoming Events */}
+          {!currentEvents.length && (
+            <div className="no-info">
+              <p>No Upcoming Events</p>
+            </div>
+          )}
         </section>
         {/* past events */}
         <section className="events-wrapper">
@@ -99,15 +145,32 @@ const NewsEvents = ({ currentEvents, pastEvents }) => {
                 <h2>
                   <span>Past Events</span>
                 </h2>
-                <div>
-                  <FilterBy />
-                </div>
+
+                {pastEvents.length > 0 && (
+                  <div>
+                    <FilterBy
+                      filterByYear={(year) => {
+                        filterByYear(year);
+                      }}
+                      years={pastEventsUniqueYears}
+                    />
+                  </div>
+                )}
               </div>
             </div>
-            <div className="event-card-wrapper">
-              <PastEventCardList pastEvents={pastEvents} />
-            </div>
+
+            {pastEvents.length > 0 && (
+              <div className="event-card-wrapper">
+                <PastEventCardList pastEvents={pastEvents} />
+              </div>
+            )}
           </div>
+          {/* No Upcoming Events */}
+          {!pastEvents.length && (
+            <div className="no-info">
+              <p>No Past Events</p>
+            </div>
+          )}
         </section>
       </Container>
     </div>
@@ -172,6 +235,38 @@ const Container = styled.div`
   .event-card-wrapper {
     padding-left: 3rem;
     padding-right: 3rem;
+  }
+
+  .no-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .no-info p {
+    color: ${CommonStyling.contrastColor};
+    font-size: ${CommonStyling.body1FontSize};
+    line-height: ${CommonStyling.body1LineHeight};
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    text-align: center;
+  }
+
+  .event-card-wrapper.no-events {
+    color: ${CommonStyling.backgroundColor};
+    font-size: ${CommonStyling.body1FontSize};
+    line-height: ${CommonStyling.body1LineHeight};
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    background-color: green;
+  }
+
+  .no-events > .no-events-messsaage {
+    // flex: 1;
   }
 
   .event-information h1 {

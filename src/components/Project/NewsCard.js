@@ -7,48 +7,66 @@ import { CommonStyling } from "../../lib/CommonStyling";
 // import components
 import EventCardButton from "./EventCardButton.js";
 
+// Split and convert into Wed, Dec 7, 2021 format
+function formatDate(dateString) {
+  var dateComponents = dateString.split("/");
+  var dateObject = new Date(`${dateComponents[1]+"/"+dateComponents[0]+"/"+dateComponents[2]}`);
+  var daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  var formattedDate = daysOfWeek[dateObject.getDay()] + ', ' + months[dateObject.getMonth()] + ' ' + dateObject.getDate() + ', ' + dateObject.getFullYear();
+  return formattedDate
+}
+
+
 // eventType is either Past or Current
 // showOutline is a boolean that determines whether or not to show the outline
 // cardData is an object that contains the data for the card
 
 const NewsCard = ({ cardData, showOutline, eventType }) => {
-  const { slug, name, description, date, time, location, galleryLink } =
-    cardData;
+  const {
+    slug,
+    name,
+    description,
+    event_date,
+    event_start_time,
+    event_end_time,
+    event_location,
+    galleryLink,
+  } = cardData;
   return (
     <Container data-cardborder={showOutline}>
       <div className="card">
-        <Link href={`/events/${slug}`}>
-          {/* <div className="imgWrap">
+        {/* <div className="imgWrap">
             <img src={picture} alt="project image" />
           </div> */}
-          <div className="eventTextWrap">
-            <h3 className="eventTitle">{name}</h3>
-            <p className="eventDesc">{description}</p>
-            {/* event meta info */}
-            <div className="eventMeta">
-              <div>
-                <p className="date-label">Date: </p>
-                <p className="event-date">{date}</p>
-              </div>
-              <div>
-                <p className="time-label">Time: </p>
-                <p className="event-time">{time}</p>
-              </div>
-              <div>
-                <p className="location-label">Location: </p>
-                <p className="event-location">{location}</p>
-              </div>
+        <div className="eventTextWrap">
+          <h3 className="eventTitle">{name}</h3>
+          <p className="eventDesc">{description}</p>
+          {/* event meta info */}
+          <div className="eventMeta">
+            <div>
+              <p className="date-label">Date: </p>
+              <p className="event-date">{formatDate(event_date)}</p>
             </div>
-            {/* See Details Btn */}
-            <div className="btn-wrapper">
-              <EventCardButton
-                buttonText={
-                  eventType == "PAST" ? "View Gallery" : "See Details"
-                }
-              />
+            <div>
+              <p className="time-label">Time: </p>
+              <p className="event-time">
+                {event_start_time} - {event_end_time}
+              </p>
+            </div>
+            <div>
+              <p className="location-label">Location: </p>
+              <p className="event-location">{event_location}</p>
             </div>
           </div>
-        </Link>
+          {/* See Details Btn */}
+          <div className="btn-wrapper">
+            <EventCardButton
+              to={eventType == "PAST" ? galleryLink : `/news-and-events/${slug}`}
+              buttonText={eventType == "PAST" ? "View Gallery" : "See Details"}
+            />
+          </div>
+        </div>
       </div>
     </Container>
   );

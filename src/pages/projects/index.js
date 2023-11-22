@@ -3,21 +3,16 @@ import Head from "next/head";
 import styled from "styled-components";
 
 import { ProjectData } from "../../lib/ProjectData";
-import ProjectIntro from "../../components/Project/ProjectIntro";
 
 import { CommonStyling } from "../../lib/CommonStyling";
 import { HomeData } from "../../lib/HomeData";
 
 // import components: carousel
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
 import ProjectCarousel from "@/components/Project/ProjectCarousel";
 import FilterBy from "@/components/ReusableElements/FilterBySelect";
 
 // import assets
 import mainBackgroundImage from "@/assets/projects/mainBackgroundImage.png";
-import arrowLeft from "@/assets/projects/arrow_left.svg";
-import arrowRight from "@/assets/projects/arrow_right.svg";
 
 const ProjectCategoryData = ProjectData.ProjectCategoryData;
 
@@ -30,14 +25,6 @@ export async function getServerSideProps() {
   let category2 = ProjectCategoryData[1].slug;
   let category3 = ProjectCategoryData[2].slug;
 
-  const projectLists = projects.filter(
-    (project) =>
-      project.categories_slugs[0] === category1 || category2 || category3,
-  );
-
-  // console.log(projectLists)
-  console.log(category1);
-
   const nativeApps = projects
     .filter((project) => project.categories_slugs[0] === category1)
     .map((allData) => {
@@ -46,8 +33,13 @@ export async function getServerSideProps() {
         picture: allData.acf.app_picture,
         name: allData.acf.name_of_the_project,
         description: allData.acf.app_short_description,
+        academic_year: allData.acf.academic_year ?? allData.date.split("-")[0],
       };
     });
+
+  const nativeAppsUniqueYears = [
+    ...new Set(nativeApps.map((item) => item.academic_year)),
+  ];
 
   const dataVisualization = projects
     .filter((project) => project.categories_slugs[0] === category2)
@@ -57,8 +49,13 @@ export async function getServerSideProps() {
         picture: allData.acf.app_picture,
         name: allData.acf.name_of_the_project,
         description: allData.acf.app_short_description,
+        academic_year: allData.acf.academic_year ?? allData.date.split("-")[0],
       };
     });
+
+  const dataVisualizationUniqueYears = [
+    ...new Set(dataVisualization.map((item) => item.academic_year)),
+  ];
 
   const hybridApps = projects
     .filter((project) => project.categories_slugs[0] === category3)
@@ -68,14 +65,22 @@ export async function getServerSideProps() {
         picture: allData.acf.app_picture,
         name: allData.acf.name_of_the_project,
         description: allData.acf.app_short_description,
+        academic_year: allData.acf.academic_year ?? allData.date.split("-")[0],
       };
     });
+
+  const hybridAppsUniqueYears = [
+    ...new Set(hybridApps.map((item) => item.academic_year)),
+  ];
 
   return {
     props: {
       nativeApps,
+      nativeAppsUniqueYears,
       dataVisualization,
+      dataVisualizationUniqueYears,
       hybridApps,
+      hybridAppsUniqueYears,
       category1: category1,
       category2: category2,
       category3: category3,
@@ -85,9 +90,50 @@ export async function getServerSideProps() {
 
 const Projects = ({
   nativeApps,
+  nativeAppsUniqueYears,
   dataVisualization,
+  dataVisualizationUniqueYears,
   hybridApps,
+  hybridAppsUniqueYears,
 }) => {
+  const [filteredNativeApps, setFilteredNativeApps] =
+    React.useState(nativeApps);
+  const [filteredDataVisualization, setFilteredDataVisualization] =
+    React.useState(dataVisualization);
+  const [filteredHybridApps, setFilteredHybridApps] =
+    React.useState(hybridApps);
+
+  function filterByYear(appType, year) {
+    if (year === "All") {
+      if (appType === "nativeApps") {
+        setFilteredNativeApps(nativeApps);
+      } else if (appType === "dataVisualization") {
+        setFilteredDataVisualization(dataVisualization);
+      } else if (appType === "hybridApps") {
+        setFilteredHybridApps(hybridApps);
+      }
+      return;
+    }
+
+    // if year is not all
+    if (appType === "nativeApps") {
+      const filteredApps = nativeApps.filter(
+        (app) => app.academic_year === year,
+      );
+      setFilteredNativeApps(filteredApps);
+    } else if (appType === "dataVisualization") {
+      const filteredApps = dataVisualization.filter(
+        (app) => app.academic_year === year,
+      );
+      setFilteredDataVisualization(filteredApps);
+    } else if (appType === "hybridApps") {
+      const filteredApps = hybridApps.filter(
+        (app) => app.academic_year === year,
+      );
+      setFilteredHybridApps(filteredApps);
+    }
+  }
+
   return (
     <div>
       <Head>
@@ -107,12 +153,17 @@ const Projects = ({
                 <p className="desc">{ProjectCategoryData[0].description}</p>
               </div>
               <div className="filterWrapper">
-                <FilterBy />
+                <FilterBy
+                  filterByYear={(year) => {
+                    filterByYear("nativeApps", year);
+                  }}
+                  years={nativeAppsUniqueYears}
+                />
               </div>
             </div>
             <div className="projects-card-wrapper">
               <div>
-                <ProjectCarousel carouselData={nativeApps} />
+                <ProjectCarousel carouselData={filteredNativeApps} />
               </div>
             </div>
           </div>
@@ -129,12 +180,20 @@ const Projects = ({
                 <p className="desc">{ProjectCategoryData[1].description}</p>
               </div>
               <div className="filterWrapper">
-                <FilterBy />
+                <FilterBy
+                  filterByYear={(year) => {
+                    filterByYear("dataVisualization", year);
+                  }}
+                  years={dataVisualizationUniqueYears}
+                />
               </div>
             </div>
             <div className="projects-card-wrapper">
               <div>
-                <ProjectCarousel carouselData={dataVisualization} showCardOutline={true} />
+                <ProjectCarousel
+                  carouselData={filteredDataVisualization}
+                  showCardOutline={true}
+                />
               </div>
             </div>
           </div>
@@ -151,12 +210,20 @@ const Projects = ({
                 <p className="desc">{ProjectCategoryData[2].description}</p>
               </div>
               <div className="filterWrapper">
-                <FilterBy />
+                <FilterBy
+                  filterByYear={(year) => {
+                    filterByYear("hybridApps", year);
+                  }}
+                  years={hybridAppsUniqueYears}
+                />
               </div>
             </div>
             <div className="projects-card-wrapper">
               <div>
-                <ProjectCarousel carouselData={hybridApps} showCardOutline={true} />
+                <ProjectCarousel
+                  carouselData={filteredHybridApps}
+                  showCardOutline={true}
+                />
               </div>
             </div>
           </div>
@@ -284,9 +351,9 @@ const Container = styled.div`
       justify-content: unset;
       padding-left: 1rem;
       padding-right: 1rem;
-      display : flex;
-      flex-direction : column;
-      gap : 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
     }
     .project-information .filterWrapper {
       align-self: end;
