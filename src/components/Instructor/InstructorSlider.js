@@ -51,8 +51,8 @@ const InstructorSlider = ({ data }) => {
       {
         breakpoint: 1100,
         settings: {
-          slidesToShow: 4,
-          slidesToScroll: 4,
+          slidesToShow: 3.5,
+          slidesToScroll: 3.5,
           dots: false,
         },
       },

@@ -59,6 +59,11 @@ export const InstructorData = {
     },
     {
       image: reza_e,
+      name: "Jeffrey Ellis",
+      title: "Instructor",
+    },
+    {
+      image: reza_e,
       name: "Tito Ferradans",
       title: "Instructor",
     },
@@ -69,14 +74,10 @@ export const InstructorData = {
     },
     {
       image: reza_e,
-      name: "Paul Lam",
-      title: "Instructional Assistant",
-    },
-    {
-      image: reza_e,
       name: "Sara McIntyre",
       title: "Instructor",
     },
+
     {
       image: reza_e,
       name: "Kevin McMillian",
@@ -94,23 +95,23 @@ export const InstructorData = {
     },
     {
       image: reza_e,
-      name: "Jean Nguyen",
-      title: "Instructional Assistant",
-    },
-    {
-      image: reza_e,
       name: "Tomoko Okochi",
       title: "Instructor",
     },
     {
       image: reza_e,
-      name: "Rodrigo Ornellas",
-      title: "Instructional Assistant",
+      name: "Derek Tam",
+      title: "Instructor",
     },
     {
       image: reza_e,
-      name: "Trista Townsend",
-      title: "Instructional Assistant",
+      name: "Jacob Tran",
+      title: "Instructor",
+    },
+    {
+      image: reza_e,
+      name: "Marinela Poso",
+      title: "Instructor",
     },
     {
       image: reza_e,
@@ -131,6 +132,47 @@ export const InstructorData = {
       image: reza_e,
       name: "Ira Zhang",
       title: "Instructor",
+    },
+
+    {
+      image: reza_e,
+      name: "Valentina Abanina",
+      title: "Instructional Assistant",
+    },
+    {
+      image: reza_e,
+      name: "Karen Jeong",
+      title: "Instructional Assistant",
+    },
+    {
+      image: reza_e,
+      name: "Paul Lam",
+      title: "Instructional Assistant",
+    },
+    {
+      image: reza_e,
+      name: "Jean Nguyen",
+      title: "Instructional Assistant",
+    },
+    {
+      image: reza_e,
+      name: "Merry Nguyen",
+      title: "Instructional Assistant",
+    },
+    {
+      image: reza_e,
+      name: "Rodrigo Ornellas",
+      title: "Instructional Assistant",
+    },
+    {
+      image: reza_e,
+      name: "Trista Townsend",
+      title: "Instructional Assistant",
+    },
+    {
+      image: reza_e,
+      name: "Amandeep Singh",
+      title: "Instructional Assistant",
     },
   ],
 };
