@@ -311,7 +311,7 @@ const ProgramInfo = styled.div`
   display: grid;
   gap: 1rem;
   padding-top: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 
   @media screen and (min-width: 1919px) {
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -469,7 +469,7 @@ const InstructorSection = styled.section`
     // padding-bottom: 2.789vh;
     padding-left: 1.25rem;
     padding-right: 1.25rem;
-    @media only screen and (min-width: 768px) {
+    @media only screen and (min-width: 769px) {
       padding: 18.191vh 13.5vw 0 13.5vw;
     }
 

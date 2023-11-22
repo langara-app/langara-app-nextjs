@@ -37,34 +37,7 @@ const InstructorSlider = ({ data }) => {
   const width = useWindowWidth();
 
   const settings = {
-    // dots: false,
-    // infinite: false,
-    // autoplaySpeed: 7000,
-    // speed: 1000,
-    // slidesToShow: width > 767 ? 5 : 5,
-    // slidesToScroll: width > 767 ? 5 : 5,
-    // arrows: width > 768 ? true : false,
-    // autoplay: false,
-    // nextArrow: <NextArrow />,
-    // prevArrow: <PrevArrow />,
-    // // centerMode: width > 768 ? false : true,
-    // // centerPadding: "80px",
-    // initialSlide: 0,
-
-    // dots: false,
-    // infinite: false,
-    // autoplaySpeed: 7000,
-    // speed: 1000,
-    // slidesToShow: width > 768 ? 5 : 1.5,
-    // slidesToScroll: width > 768 ? 5 : 1.5,
-    // arrows: true,
-    // autoplay: false,
-    // nextArrow: <NextArrow />,
-    // prevArrow: <PrevArrow />,
-    // centerMode: width > 768 ? false : true,
-    // centerPadding: "20px",
-
-    dots: true,
+    dots: false,
     infinite: false,
     speed: 1000,
     autoplaySpeed: 7000,
@@ -78,10 +51,35 @@ const InstructorSlider = ({ data }) => {
       {
         breakpoint: 1100,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
+          slidesToShow: 4,
+          slidesToScroll: 4,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 890,
+        settings: {
+          slidesToShow: 3.5,
+          slidesToScroll: 3.5,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 658,
+        settings: {
+          slidesToShow: 2.2,
+          slidesToScroll: 2.2,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 426,
+        settings: {
+          slidesToShow: 1.55,
+          slidesToScroll: 1.55,
+          dots: false,
+          centerPadding: "25vw",
+          centerMode: true,
         },
       },
     ],
@@ -100,7 +98,7 @@ const InstructorSlider = ({ data }) => {
 
 const InstructorSliderContainer = styled.div`
   // margin: 0 2rem;
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 769px) {
     padding: 0 13.5vw 0 13.5vw;
   }
 
