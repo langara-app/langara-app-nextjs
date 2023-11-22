@@ -309,9 +309,13 @@ const WmddImg = styled.img`
 
 const ProgramInfo = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1rem;
   padding-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+  @media screen and (min-width: 1919px) {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
 `;
 
 const MiddleSection = styled.section`
