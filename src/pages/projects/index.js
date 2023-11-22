@@ -256,18 +256,37 @@ const Container = styled.div`
     flex-direction: column;
     padding-bottom: 2rem;
   }
+  // ============> Select Component Custom Styles
 
   div[role="combobox"] {
     padding: 0 !important;
-    padding-right: 0.5rem !important;
   }
 
+  section:nth-child(1)
+    .Mui-focused
+    div[role="combobox"]:not([aria-expanded="false"])
+    ~ .MuiOutlinedInput-notchedOutline {
+    border-color: #c23c0a !important;
+  }
+
+  div[role="combobox"]:not([aria-expanded="true"])
+    ~ .MuiOutlinedInput-notchedOutline {
+    border: 2px solid #e6e6e6 !important;
+  }
+
+  .Mui-focused
+    div[role="combobox"]:not([aria-expanded="false"])
+    ~ .MuiOutlinedInput-notchedOutline {
+    border-color: ${CommonStyling.primaryColor} !important;
+  }
+
+  // ============> Select Component Custom Styles Ends
 
   section {
     background-color: ${CommonStyling.backgroundColor};
   }
 
-  section:nth-child(2) {    
+  section:nth-child(2) {
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
   }
