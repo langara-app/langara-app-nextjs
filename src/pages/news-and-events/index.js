@@ -178,6 +178,17 @@ const NewsEvents = ({
 };
 
 const Container = styled.div`
+  background-color: ${CommonStyling.primaryColor};
+
+  section {
+    background-color: ${CommonStyling.backgroundColor};
+  }
+
+  section:nth-child(2) {
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+  }
+
   .section-info {
     display: flex;
     flex-direction: column;
