@@ -284,10 +284,6 @@ const Container = styled.div`
 
   // ============> Carousel button Custom Styles
 
-  
-
-  // section:nth-child(1) .react-multi-carousel-list button {
-
   .react-multi-carousel-list button {
     // background-color: ${CommonStyling.primaryColor} !important;
     background-color: rgba(241, 90, 34, 0.5);
