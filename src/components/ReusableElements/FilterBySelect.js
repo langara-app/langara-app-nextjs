@@ -37,13 +37,13 @@ const CustomSelect = ({ label, value, onChange, options }) => {
         sx={{
           borderRadius: "1rem",
           backgroundColor: "white",
-          padding: ".5rem 1rem",
+          // padding: ".5rem 1rem",
         }}
         value={value}
         onChange={onChange}
         displayEmpty
         inputProps={{ "aria-label": "Without label" }}
-        IconComponent={CustomArrowDownIcon}
+        IconComponent={null}
         renderValue={(selected) => {
           if (selected.length === 0) {
             return (
@@ -51,12 +51,23 @@ const CustomSelect = ({ label, value, onChange, options }) => {
                 style={{
                   display: "flex",
                   justifyContent: "space-between",
+                  padding: ".5rem 1rem",
                 }}
               >
                 <span style={{ color: "#F15A22", fontWeight: "bold" }}>
-                  Filter by term
+                  Filter by year
                 </span>
-                <span>{label}</span>{" "}
+                <span
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    gap: ".5rem",
+                  }}
+                >
+                  {label}
+                  {<CustomArrowDownIcon />}
+                </span>
               </div>
             );
           }
@@ -69,7 +80,7 @@ const CustomSelect = ({ label, value, onChange, options }) => {
               }}
             >
               <span style={{ color: "#F15A22", fontWeight: "bold" }}>
-                Filter by term
+                Filter by year
               </span>
               <span>{selected}</span>
             </div>
@@ -85,9 +96,7 @@ const CustomSelect = ({ label, value, onChange, options }) => {
     </FormControl>
   );
 };
-export {
-  CustomSelect
-}
+export { CustomSelect };
 // Example usage
 const options = [
   { value: "option1", label: "Option 1" },
