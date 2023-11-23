@@ -282,6 +282,24 @@ const Container = styled.div`
 
   // ============> Select Component Custom Styles Ends
 
+  // ============> Carousel button Custom Styles
+
+  
+
+  // section:nth-child(1) .react-multi-carousel-list button {
+
+  .react-multi-carousel-list button {
+    // background-color: ${CommonStyling.primaryColor} !important;
+    background-color: rgba(241, 90, 34, 0.5);
+  }
+
+  .react-multi-carousel-list button:hover {
+    // background-color: ${CommonStyling.primaryColor} !important;
+    background-color: rgba(241, 90, 34);
+  }
+
+  // ============> Carousel button Custom Styles Ends
+
   section {
     background-color: ${CommonStyling.backgroundColor};
   }
