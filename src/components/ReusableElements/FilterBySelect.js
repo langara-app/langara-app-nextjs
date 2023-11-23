@@ -74,16 +74,27 @@ const CustomSelect = ({ label, value, onChange, options }) => {
 
           return (
             <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-              }}
-            >
-              <span style={{ color: "#F15A22", fontWeight: "bold" }}>
-                Filter by year
-              </span>
-              <span>{selected}</span>
-            </div>
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  padding: ".5rem 1rem",
+                }}
+              >
+                <span style={{ color: "#F15A22", fontWeight: "bold" }}>
+                  Filter by year
+                </span>
+                <span
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    gap: ".5rem",
+                  }}
+                >
+                  {selected}
+                  {<CustomArrowDownIcon />}
+                </span>
+              </div>
           );
         }}
       >
