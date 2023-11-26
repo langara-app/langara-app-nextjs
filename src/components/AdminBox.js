@@ -45,7 +45,7 @@ const AdminBox = () => {
             bcg={"#FFFFFF"}
             section={"joinWMDD"}
             borderColor={"transparent"}
-            to={"overview"}
+            to={"/program-overview"}
             mobile={true}
             hover={true}
           />

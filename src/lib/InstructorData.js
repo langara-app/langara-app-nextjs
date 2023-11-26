@@ -35,7 +35,7 @@ export const InstructorData = {
     {
       image: reza_e,
       name: "Jesica Ortega Nava",
-      title: "Instructor, Assistant Coordinator",
+      title: "Instructor, Program Coordinator",
     },
     {
       image: reza_e,
