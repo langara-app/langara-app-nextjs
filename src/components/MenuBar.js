@@ -64,6 +64,11 @@ const MenuBar = () => {
             />
           </Link>
         </div>
+        <Link href={"/"} legacyBehavior>
+          <MenuLink className="menu-item" onClick={openMenu}>
+            Home
+          </MenuLink>
+        </Link>
         {MenuData.map((menu, index) => (
           <Link href={menu.link} key={index} legacyBehavior>
             <MenuLink className="menu-item" onClick={openMenu}>
@@ -94,24 +99,20 @@ const MenuBar = () => {
         </Link>
       </div>
       <div className={styles.menues}>
-        {MenuData.map((menu, index) => {
-          if (menu.link !== "/") {
-            return (
-              <Link href={menu.link} key={index} legacyBehavior>
-                <MenuLinkWeb
-                  className={index + 1}
-                  onClick={(e) => {
-                    setCat(e.target);
-                  }}
-                  color={index + 1}
-                  checked={checkedIndex}
-                >
-                  {menu.title}
-                </MenuLinkWeb>
-              </Link>
-            );
-          }
-        })}
+        {MenuData.map((menu, index) => (
+          <Link href={menu.link} key={index} legacyBehavior>
+            <MenuLinkWeb
+              className={index + 1}
+              onClick={(e) => {
+                setCat(e.target);
+              }}
+              color={index + 1}
+              checked={checkedIndex}
+            >
+              {menu.title}
+            </MenuLinkWeb>
+          </Link>
+        ))}
         <Button
           link={"https://langara.ca/admissions/apply-to-langara/index.html"}
           text="Apply"
