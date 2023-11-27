@@ -167,10 +167,12 @@ const ProgramOverview = () => {
             </MidTop>
             <MidBot>
               <CustomSelect
+                filterByText="Filter by Term"
                 label="All"
                 value={selectedOption}
                 onChange={handleChange}
                 options={options}
+                outlineColor={CommonStyling.primaryColor}
               />
               <div className="curriculum-mobile">
                 <CurriculumTitleMobile style={{ marginBottom: "32px" }}>
