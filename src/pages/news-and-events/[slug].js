@@ -151,6 +151,11 @@ const SingleEventPageContainer = styled.div`
 `;
 
 const EventDetails = styled.section`
+
+  article {
+    margin-bottom: 3rem;
+  }
+
   .section-title {
     font-weight: 700;
     font-size: 38px;
