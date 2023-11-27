@@ -26,24 +26,25 @@ const Project = ({ project }) => {
     return null;
   }
 
-  console.log(isProposalActive, data?.acf?.project_proposal_file)
-
+  console.log(isProposalActive, data?.acf?.project_proposal_file);
 
   return (
     <Container>
       <Head>
         <title>{HomeData.tabName.title}</title>
       </Head>
-      <div className="titleWrapper">
-        {data.categories_slugs == "native-app" ? (
-          <p className="singleTitle">{ProjectCategoryData[0].title}</p>
-        ) : data.categories_slugs == "data-visualization" ? (
-          <p className="singleTitle">{ProjectCategoryData[1].title}</p>
-        ) : data.categories_slugs == "hybrid" ? (
-          <p className="singleTitle">{ProjectCategoryData[2].title}</p>
-        ) : null}
-        <h1 className="projectTitle">{data.acf.name_of_the_project}</h1>
-      </div>
+      <Link href="/projects">
+        <div className="titleWrapper">
+          {data.categories_slugs == "native-app" ? (
+            <p className="singleTitle">{ProjectCategoryData[0].title}</p>
+          ) : data.categories_slugs == "data-visualization" ? (
+            <p className="singleTitle">{ProjectCategoryData[1].title}</p>
+          ) : data.categories_slugs == "hybrid" ? (
+            <p className="singleTitle">{ProjectCategoryData[2].title}</p>
+          ) : null}
+          <h1 className="projectTitle">{data.acf.name_of_the_project}</h1>
+        </div>
+      </Link>
 
       <div className="actionContainer">
         {data.acf.project_proposal_file && isProposalActive ? (
