@@ -33,8 +33,9 @@ const ProgramOverview = () => {
   };
 
   const [selectedOption, setSelectedOption] = useState("Term 1");
-  const handleChange = (event) => {
-    setSelectedOption(event.target.value);
+  const handleChange = (value) => {
+    console.log(value);
+    setSelectedOption(value);
   };
 
   const options = [
@@ -109,6 +110,7 @@ const ProgramOverview = () => {
                 value={selectedOption}
                 onChange={handleChange}
                 options={options}
+                outlineColor={CommonStyling.primaryColor}
               />
               <Curriculum>
                 <div className="curriculum">
@@ -402,9 +404,13 @@ const MidTop = styled.div`
   }
 `;
 const MidBot = styled.div`
-  .MuiFormControl-root {
-    width: 100%;
+  & > div:nth-child(1) {
     margin-bottom: 3rem;
+  }
+
+  .select-btn {
+    width: 100%;
+    padding: 1rem;
   }
 
   ul {
@@ -425,9 +431,12 @@ const MidBot = styled.div`
   }
 `;
 const MidRight = styled.div`
-  .MuiFormControl-root {
-    width: 100%;
+  & > div:nth-child(1) {
     margin-bottom: 3rem;
+  }
+  .select-btn {
+    width: 100%;
+    padding: 1rem;
   }
 `;
 

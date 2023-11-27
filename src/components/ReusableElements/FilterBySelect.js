@@ -26,8 +26,10 @@ const CustomSelect = ({ label, value, onChange, options, outlineColor }) => {
 
   useEffect(() => {
     const listenToClickingOutside = (e) => {
+
       if (e.target.className.includes("filter-select-option")) {
-        onChange(e.target.value);
+        const value = e.target.getAttribute("value");
+        onChange(value);
         setOpen(false);
       } else if (!e.target.className.includes("select-btn")) {
         setOpen(false);
@@ -126,6 +128,9 @@ const FilterBy = ({ filterByYear, years, outlineColor }) => {
 };
 
 const SelectComponent = styled.div`
+  .options-wrapper > ul {
+    padding-left: 0;
+  }
   .select-btn {
     min-width: 210px;
     background: ${CommonStyling.backgroundColor};
@@ -197,3 +202,4 @@ const SelectComponent = styled.div`
 `;
 
 export default FilterBy;
+export { CustomSelect };
