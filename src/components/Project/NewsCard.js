@@ -10,13 +10,34 @@ import EventCardButton from "./EventCardButton.js";
 // Split and convert into Wed, Dec 7, 2021 format
 function formatDate(dateString) {
   var dateComponents = dateString.split("/");
-  var dateObject = new Date(`${dateComponents[1]+"/"+dateComponents[0]+"/"+dateComponents[2]}`);
-  var daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-  var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  var formattedDate = daysOfWeek[dateObject.getDay()] + ', ' + months[dateObject.getMonth()] + ' ' + dateObject.getDate() + ', ' + dateObject.getFullYear();
-  return formattedDate
+  var dateObject = new Date(
+    `${dateComponents[1] + "/" + dateComponents[0] + "/" + dateComponents[2]}`,
+  );
+  var daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  var months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  var formattedDate =
+    daysOfWeek[dateObject.getDay()] +
+    ", " +
+    months[dateObject.getMonth()] +
+    " " +
+    dateObject.getDate() +
+    ", " +
+    dateObject.getFullYear();
+  return formattedDate;
 }
-
 
 // eventType is either Past or Current
 // showOutline is a boolean that determines whether or not to show the outline
@@ -62,8 +83,8 @@ const NewsCard = ({ cardData, showOutline, eventType }) => {
           {/* See Details Btn */}
           <div className="btn-wrapper">
             <EventCardButton
-              to={eventType == "PAST" ? galleryLink : `/news-and-events/${slug}`}
-              buttonText={eventType == "PAST" ? "View Gallery" : "See Details"}
+              to={`/news-and-events/${slug}`}
+              buttonText={"See Details"}
             />
           </div>
         </div>

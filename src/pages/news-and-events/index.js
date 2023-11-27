@@ -45,7 +45,13 @@ export async function getStaticProps() {
   const currentDateTime = new Date();
 
   // Separate events into past and current
-  const pastEvents = events.filter((event) => {
+  const pastEvents = [
+    ...events,
+    ...events,
+    ...events,
+    ...events,
+    ...events,
+  ].filter((event) => {
     const [day, month, year] = event.event_date.split("/");
     const eventDateTime = new Date(
       `${year}-${month}-${day} ${event.event_start_time}`,
@@ -77,9 +83,12 @@ export async function getStaticProps() {
     ...new Set(pastEvents.map((event) => event.event_year)),
   ];
 
+  const dummyFutureData = [...pastEvents, ...pastEvents, ...pastEvents];
+
   return {
     props: {
-      currentEvents: futureEvents,
+      currentEvents: dummyFutureData,
+      // currentEvents: futureEvents,
       allPastEvents: pastEvents,
       pastEventsUniqueYears,
     },
@@ -149,6 +158,7 @@ const NewsEvents = ({
                 {pastEvents.length > 0 && (
                   <div>
                     <FilterBy
+                      outlineColor={CommonStyling.primaryColor}
                       filterByYear={(year) => {
                         filterByYear(year);
                       }}
@@ -219,40 +229,14 @@ const Container = styled.div`
     flex-direction: column;
   }
 
-  // ============> Select Component Custom Styles
-
-  div[role="combobox"] {
-    padding: 0 !important;
-  }
-
-  section:nth-child(1)
-    .Mui-focused
-    div[role="combobox"]:not([aria-expanded="false"])
-    ~ .MuiOutlinedInput-notchedOutline {
-    border-color: #c23c0a !important;
-  }
-
-  div[role="combobox"]:not([aria-expanded="true"])
-    ~ .MuiOutlinedInput-notchedOutline {
-    border: 2px solid #e6e6e6 !important;
-  }
-
-  .Mui-focused
-    div[role="combobox"]:not([aria-expanded="false"])
-    ~ .MuiOutlinedInput-notchedOutline {
-    border-color: ${CommonStyling.primaryColor} !important;
-  }
-
-  // ============> Select Component Custom Styles Ends
-
   // ============> Carousel button Custom Styles
 
-  .react-multi-carousel-list button {
+  .react-multi-carousel-list .react-multiple-carousel__arrow {
     // background-color: ${CommonStyling.primaryColor} !important;
     background-color: rgba(241, 90, 34, 0.5);
   }
 
-  .react-multi-carousel-list button:hover {
+  .react-multi-carousel-list .react-multiple-carousel__arrow:hover {
     // background-color: ${CommonStyling.primaryColor} !important;
     background-color: rgba(241, 90, 34);
   }

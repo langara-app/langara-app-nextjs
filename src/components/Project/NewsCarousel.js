@@ -113,7 +113,7 @@ const NewsCarousel = ({ carouselData }) => {
           renderButtonGroupOutside={true}
           swipeable={true}
           responsive={responsive}
-          infinite={false}
+          infinite={true}
           autoPlaySpeed={1000}
           customTransition="all .5s linear"
           transitionDuration={500}

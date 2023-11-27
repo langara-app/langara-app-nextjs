@@ -154,6 +154,7 @@ const Projects = ({
               </div>
               <div className="filterWrapper">
                 <FilterBy
+                  outlineColor={CommonStyling.shadeColor}
                   filterByYear={(year) => {
                     filterByYear("nativeApps", year);
                   }}
@@ -181,6 +182,7 @@ const Projects = ({
               </div>
               <div className="filterWrapper">
                 <FilterBy
+                  outlineColor={CommonStyling.primaryColor}
                   filterByYear={(year) => {
                     filterByYear("dataVisualization", year);
                   }}
@@ -211,6 +213,7 @@ const Projects = ({
               </div>
               <div className="filterWrapper">
                 <FilterBy
+                  outlineColor={CommonStyling.primaryColor}
                   filterByYear={(year) => {
                     filterByYear("hybridApps", year);
                   }}
@@ -256,31 +259,6 @@ const Container = styled.div`
     flex-direction: column;
     padding-bottom: 2rem;
   }
-  // ============> Select Component Custom Styles
-
-  div[role="combobox"] {
-    padding: 0 !important;
-  }
-
-  section:nth-child(1)
-    .Mui-focused
-    div[role="combobox"]:not([aria-expanded="false"])
-    ~ .MuiOutlinedInput-notchedOutline {
-    border-color: #c23c0a !important;
-  }
-
-  div[role="combobox"]:not([aria-expanded="true"])
-    ~ .MuiOutlinedInput-notchedOutline {
-    border: 2px solid #e6e6e6 !important;
-  }
-
-  .Mui-focused
-    div[role="combobox"]:not([aria-expanded="false"])
-    ~ .MuiOutlinedInput-notchedOutline {
-    border-color: ${CommonStyling.primaryColor} !important;
-  }
-
-  // ============> Select Component Custom Styles Ends
 
   // ============> Carousel button Custom Styles
 
