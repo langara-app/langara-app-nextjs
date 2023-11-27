@@ -106,6 +106,7 @@ const ProgramOverview = () => {
             </MidLeft>
             <MidRight>
               <CustomSelect
+                filterByText="Filter by Term"
                 label="All"
                 value={selectedOption}
                 onChange={handleChange}

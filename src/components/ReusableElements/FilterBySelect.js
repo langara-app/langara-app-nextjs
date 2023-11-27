@@ -21,12 +21,18 @@ const CustomArrowDownIcon = () => (
   </svg>
 );
 
-const CustomSelect = ({ label, value, onChange, options, outlineColor }) => {
+const CustomSelect = ({
+  filterByText = "Filer by Year",
+  label,
+  value,
+  onChange,
+  options,
+  outlineColor,
+}) => {
   const [open, setOpen] = React.useState(false);
 
   useEffect(() => {
     const listenToClickingOutside = (e) => {
-
       if (e.target.className.includes("filter-select-option")) {
         const value = e.target.getAttribute("value");
         onChange(value);
@@ -61,7 +67,7 @@ const CustomSelect = ({ label, value, onChange, options, outlineColor }) => {
           }}
         >
           <span style={{ color: "#F15A22", fontWeight: "bold" }}>
-            Filter by year
+            {filterByText}
           </span>
           <span
             style={{
