@@ -31,8 +31,8 @@ const Button = ({
       hover={hover}
       mobile={mobile}
     >
-      {to === "overview" ? (
-        <Link href={"/program-overview"}>{text}</Link>
+      {to ? (
+        <Link href={to}>{text}</Link>
       ) : (
         <a href={link} target="_blank">
           {text ? text : "Apply"}

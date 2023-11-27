@@ -98,8 +98,9 @@ const InstructorSlider = ({ data }) => {
 
 const InstructorSliderContainer = styled.div`
   // margin: 0 2rem;
+  padding-bottom: 8.319vh;
   @media only screen and (min-width: 769px) {
-    padding: 0 13.5vw 0 13.5vw;
+    padding: 0 13.5vw 18.191vh 13.5vw;
   }
 
   .slick-track {

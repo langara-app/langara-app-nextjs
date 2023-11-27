@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { slide as Menu } from "react-burger-menu";
+import { usePathname } from "next/navigation";
 import styles from "../styles/MenuBar.module.css";
 import { MenuData } from "../lib/MenuData";
 import Button from "../components/ReusableElements/Button";
@@ -18,6 +19,7 @@ const MenuBar = () => {
   const width = useWindowWidth();
   const [open, setOpen] = useState(false);
   const [checkedIndex, setCheckedIndex] = useState(0);
+  const pathname = usePathname();
 
   const openMenu = () => {
     setOpen(!open);
@@ -64,6 +66,11 @@ const MenuBar = () => {
             />
           </Link>
         </div>
+        <Link href={"/"} legacyBehavior>
+          <MenuLink className="menu-item" onClick={openMenu}>
+            Home
+          </MenuLink>
+        </Link>
         {MenuData.map((menu, index) => (
           <Link href={menu.link} key={index} legacyBehavior>
             <MenuLink className="menu-item" onClick={openMenu}>
@@ -97,6 +104,7 @@ const MenuBar = () => {
         {MenuData.map((menu, index) => (
           <Link href={menu.link} key={index} legacyBehavior>
             <MenuLinkWeb
+              pathname={pathname}
               className={index + 1}
               onClick={(e) => {
                 setCat(e.target);
@@ -139,9 +147,11 @@ const MenuLink = styled.a`
 
 const MenuLinkWeb = styled.a`
   margin-left: 3.5vw;
-  font-weight: ${({ color, checked }) => (color === checked ? 700 : 400)};
+  font-weight: ${({ color, checked, pathname }) =>
+    color === checked && pathname !== "/" ? 700 : 400};
   font-size: ${CommonStyling.body2FontSize};
-  color: ${({ color, checked }) => (color === checked ? "#F15A22" : "#263238")};
+  color: ${({ color, checked, pathname }) =>
+    color === checked && pathname !== "/" ? "#F15A22" : "#263238"};
   cursor: pointer;
 
   &:hover {

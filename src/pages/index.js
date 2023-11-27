@@ -137,9 +137,10 @@ const Home = ({ data, alumni, work, homeData }) => {
               bcg={"#F15A22"}
               section={"joinWMDD"}
               borderColor={"transparent"}
-              to={"project"}
+              to={"/projects"}
               hover={true}
               mobile={true}
+              navigate={"/projects"}
             />
           </ButtonWrapper>
         </GradDescWrapper>

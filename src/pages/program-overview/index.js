@@ -75,7 +75,8 @@ const ProgramOverview = () => {
                   url={url}
                   width={"100%"}
                   height={"400px"}
-                  light={width >= 768 ? placeholder1 : mobilePlaceholder}
+                  light={placeholder1}
+                  playing
                 />
               </WmddImageContainer>
             </>
