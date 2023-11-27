@@ -79,6 +79,11 @@ const AlumniSliderContainer = styled.div`
 
   .slick-slider {
     height: 100%;
+
+    @media screen and (max-width: 768px) {
+      padding-bottom: 10vh;
+
+    }
   }
 
   .slick-slide {

@@ -6,6 +6,7 @@ import btmImage from "../assets/img/wmdd/homeBottom.png";
 import btmImage1920 from "../assets/img/wmdd/homeBtm1920.png";
 import btmImage1440 from "../assets/img/wmdd/homeBtm1440.png";
 import btmImage1366 from "../assets/img/wmdd/homeBtm1366.png";
+import btmImage2 from "../assets/img/wmdd/homeBtmImg.png";
 
 import { HomeData } from "../lib/HomeData";
 import { CommonStyling } from "../lib/CommonStyling";
@@ -20,12 +21,10 @@ const AdminBox = () => {
       return btmImage1440;
     } else if (width < 1440 && width >= 1360) {
       return btmImage1366;
-    } else if (width < 1360 && width >= 768) {
-      return btmImage;
-    } else if (width < 768 && width >= 695) {
-      return btmImage1440;
-    } else if (width < 669 && width > 425) {
-      return btmImage;
+    } else if (width < 1360 && width >= 867) {
+      return btmImage2;
+    } else if (width < 768 && width >= 425) {
+      return btmImage2;
     } else {
       return btmImage;
     }
@@ -93,22 +92,17 @@ const BtmImg = styled.img`
   @media screen and (max-width: 1439px) and (min-width: 1361px) {
     object-position: center;
   }
-  @media screen and (max-width: 1360px) and (min-width: 1361px) {
+
+  @media screen and (max-width: 1359px) and (min-width: 866px) {
     object-position: center;
   }
-  @media screen and (max-width: 1359px) and (min-width: 870px) {
-    object-position: right;
-  }
 
-  @media screen and (max-width: 869px) and (min-width: 768px) {
-    object-position: 80%;
-  }
-  @media screen and (max-width: 768) and (min-width: 695px) {
+  @media screen and (max-width: 866px) and (min-width: 768px) {
     object-position: 80%;
   }
 
   @media screen and (max-width: 694px) and (min-width: 527px) {
-    object-position: right;
+    object-position: 85%;
   }
 
   @media screen and (max-width: 526px) and (min-width: 425px) {
@@ -116,7 +110,7 @@ const BtmImg = styled.img`
   }
 
   @media screen and (max-width: 424px) and (min-width: 0px) {
-    object-position: 80%;
+    object-position: 90%;
   }
 `;
 
