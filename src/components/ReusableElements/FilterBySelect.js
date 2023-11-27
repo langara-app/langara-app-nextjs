@@ -21,14 +21,15 @@ const CustomArrowDownIcon = () => (
   </svg>
 );
 
-const CustomSelect = ({ label, value, onChange, options }) => {
+const CustomSelect = ({ label, value, onChange, options, outlineColor }) => {
   const [open, setOpen] = React.useState(false);
 
   useEffect(() => {
     const listenToClickingOutside = (e) => {
-      console.log(e.target);
-
-      if (!e.target.className.includes("select-btn")) {
+      if (e.target.className.includes("filter-select-option")) {
+        onChange(e.target.value);
+        setOpen(false);
+      } else if (!e.target.className.includes("select-btn")) {
         setOpen(false);
       }
     };
@@ -41,7 +42,7 @@ const CustomSelect = ({ label, value, onChange, options }) => {
   }, []);
 
   return (
-    <SelectComponent>
+    <SelectComponent outlineColor={outlineColor}>
       <button
         onClick={(e) => {
           e.stopPropagation();
@@ -68,7 +69,7 @@ const CustomSelect = ({ label, value, onChange, options }) => {
               gap: ".4rem",
             }}
           >
-            {label}
+            {value || label}
             {<CustomArrowDownIcon />}
           </span>
         </div>
@@ -80,7 +81,11 @@ const CustomSelect = ({ label, value, onChange, options }) => {
               <li
                 key={option.value}
                 value={option.value}
-                className={label === option.label ? "selected" : ""}
+                className={
+                  option.label == (value || label)
+                    ? "selected filter-select-option"
+                    : "filter-select-option"
+                }
               >
                 {option.label}
               </li>
@@ -92,7 +97,7 @@ const CustomSelect = ({ label, value, onChange, options }) => {
   );
 };
 
-const FilterBy = ({ filterByYear, years }) => {
+const FilterBy = ({ filterByYear, years, outlineColor }) => {
   const [selectedOption, setSelectedOption] = React.useState("");
 
   // year options
@@ -102,14 +107,15 @@ const FilterBy = ({ filterByYear, years }) => {
   yearsOption.unshift({ value: "All", label: "All" });
 
   // handle  change and propagate
-  const handleChange = (event) => {
-    setSelectedOption(event.target.value);
-    filterByYear(event.target.value);
+  const handleChange = (value) => {
+    setSelectedOption(value);
+    filterByYear(value.toString());
   };
 
   return (
     <div>
       <CustomSelect
+        outlineColor={outlineColor}
         label="All"
         value={selectedOption}
         onChange={handleChange}
@@ -127,7 +133,7 @@ const SelectComponent = styled.div`
     border-radius: 1rem;
   }
   .btn-pressed {
-    border: 2px solid ${CommonStyling.shadeColor};
+    border: 2px solid ${(props) => props["outlineColor"]};
   }
   .options-container {
     min-width: 210px;

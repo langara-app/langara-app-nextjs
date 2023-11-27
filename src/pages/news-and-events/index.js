@@ -149,6 +149,7 @@ const NewsEvents = ({
                 {pastEvents.length > 0 && (
                   <div>
                     <FilterBy
+                      outlineColor={CommonStyling.primaryColor}
                       filterByYear={(year) => {
                         filterByYear(year);
                       }}
@@ -218,32 +219,6 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
   }
-
-  // ============> Select Component Custom Styles
-
-  div[role="combobox"] {
-    padding: 0 !important;
-  }
-
-  section:nth-child(1)
-    .Mui-focused
-    div[role="combobox"]:not([aria-expanded="false"])
-    ~ .MuiOutlinedInput-notchedOutline {
-    border-color: #c23c0a !important;
-  }
-
-  div[role="combobox"]:not([aria-expanded="true"])
-    ~ .MuiOutlinedInput-notchedOutline {
-    border: 2px solid #e6e6e6 !important;
-  }
-
-  .Mui-focused
-    div[role="combobox"]:not([aria-expanded="false"])
-    ~ .MuiOutlinedInput-notchedOutline {
-    border-color: ${CommonStyling.primaryColor} !important;
-  }
-
-  // ============> Select Component Custom Styles Ends
 
   // ============> Carousel button Custom Styles
 
