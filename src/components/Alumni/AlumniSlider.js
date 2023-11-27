@@ -73,6 +73,10 @@ const AlumniSliderContainer = styled.div`
     gap: 1.25rem;
   }
 
+  .slick-track .slick-slide:last-child .react-player__preview {
+    background-position: center center !important;
+  }
+
   .slick-slider {
     height: 100%;
   }
@@ -82,7 +86,6 @@ const AlumniSliderContainer = styled.div`
 
     // for the first slide
     img {
-      object-position: 70% 30%;
     }
   }
 
@@ -92,13 +95,13 @@ const AlumniSliderContainer = styled.div`
     justify-content: space-between;
 
     // in between first and last slide
-    img {
-      object-position: 90% 10%;
-    }
+    // img {
+    //   object-position: 90% 10%;
+    // }
   }
 
   // for last slide
-  .slick-slide + div:last-child img:first-child {
+  .slick-slide + div:last-child .react_play:first-child {
     object-position: unset;
   }
 

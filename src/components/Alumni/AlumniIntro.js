@@ -1,8 +1,9 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import styled from "styled-components";
+import ReactPlayer from "react-player/youtube";
 
-import playIcon from "../../assets/img/wmdd/playIcon.svg";
-
+import playIcon from "../../assets/img/wmdd/playIcon2.svg";
+import useWindowWidth from "../Hooks/useWindowWidth";
 import { CommonStyling } from "../../lib/CommonStyling";
 
 const AlumniIntro = (props) => {
@@ -24,24 +25,28 @@ const AlumniIntro = (props) => {
     profVidRef.current.src = `${profVidRef.current.src}`;
   };
 
+  const [hasWindow, setHasWindow] = useState(false);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setHasWindow(true);
+    }
+  }, []);
+  const width = useWindowWidth();
+
   return (
     <Card>
       <Top>
-        <VideoBlock>
-          <ProfileImage
-            src={profile_image}
-            onClick={(e) => handleImageClick(e)}
-          />
-          <PlayIcon
-            src={playIcon}
-            onClick={(e) => handleImageClick(e)}
-          ></PlayIcon>
-          <Video
-            src={movie_link}
-            ref={profVidRef}
-            allow="autoplay; encrypted-media"
-          ></Video>
-        </VideoBlock>
+        <Video>
+          {hasWindow && (
+            <ReactPlayer
+              url={movie_link}
+              width={"100%"}
+              height={width >= 490 && width <= 768 ? "400px" : "300px"}
+              light={profile_image}
+              playing
+            />
+          )}
+        </Video>
         <DepartmentBlock>
           <span>{stream + " Stream"}</span>
           <span>{graduation_year}</span>
@@ -74,43 +79,23 @@ const Comment = styled.p`
   margin: 0;
 `;
 
-const VideoBlock = styled.div`
-  height: 40vw;
-  width: 100%;
-  position: relative;
-  cursor: pointer;
-
-  @media only screen and (min-width: 769px) {
-    height: 12vw;
-  }
-
-  & > iframe {
+const Video = styled.div`
+  .react-player__preview {
     border-radius: 16px;
+    background-position: unset !important;
+
+    @media screen and (max-width: 1280px) {
+      background-position: center center !important;
+    }
+
+    @media screen and (min-width: 490px) and (max-width: 768px) {
+      background-position: center 0.5% !important;
+    }
+
+    @media screen and (max-width: 490px) {
+      background-position: center 0.1% !important;
+    }
   }
-`;
-
-const PlayIcon = styled.img`
-  position: absolute;
-  z-index: 3;
-  top: 50%;
-  left: 50%;
-  transform-origin: center;
-  transform: translate(-50%, -50%);
-`;
-
-const ProfileImage = styled.img`
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-  position: absolute;
-  z-index: 2;
-  border-radius: 16px;
-`;
-
-const Video = styled.iframe`
-  width: 100%;
-  height: 100%;
-  position: absolute;
 `;
 
 const DepartmentBlock = styled.div`
