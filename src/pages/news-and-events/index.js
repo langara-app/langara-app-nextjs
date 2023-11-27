@@ -45,7 +45,13 @@ export async function getStaticProps() {
   const currentDateTime = new Date();
 
   // Separate events into past and current
-  const pastEvents = events.filter((event) => {
+  const pastEvents = [
+    ...events,
+    ...events,
+    ...events,
+    ...events,
+    ...events,
+  ].filter((event) => {
     const [day, month, year] = event.event_date.split("/");
     const eventDateTime = new Date(
       `${year}-${month}-${day} ${event.event_start_time}`,
@@ -77,9 +83,12 @@ export async function getStaticProps() {
     ...new Set(pastEvents.map((event) => event.event_year)),
   ];
 
+  const dummyFutureData = [...pastEvents, ...pastEvents, ...pastEvents];
+
   return {
     props: {
-      currentEvents: futureEvents,
+      currentEvents: dummyFutureData,
+      // currentEvents: futureEvents,
       allPastEvents: pastEvents,
       pastEventsUniqueYears,
     },
@@ -222,12 +231,12 @@ const Container = styled.div`
 
   // ============> Carousel button Custom Styles
 
-  .react-multi-carousel-list button {
+  .react-multi-carousel-list .react-multiple-carousel__arrow {
     // background-color: ${CommonStyling.primaryColor} !important;
     background-color: rgba(241, 90, 34, 0.5);
   }
 
-  .react-multi-carousel-list button:hover {
+  .react-multi-carousel-list .react-multiple-carousel__arrow:hover {
     // background-color: ${CommonStyling.primaryColor} !important;
     background-color: rgba(241, 90, 34);
   }
