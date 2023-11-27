@@ -27,4 +27,5 @@ export const CommonStyling = {
   shadeColor: "#C23C0A",
   backgroundColor: "#FFFFFF",
   contrastColor: "#070707",
+  outlineColor: "#E6E6E6",
 };
