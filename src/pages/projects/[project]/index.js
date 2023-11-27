@@ -9,6 +9,9 @@ import { ProjectData } from "../../../lib/ProjectData";
 import { CommonStyling } from "../../../lib/CommonStyling";
 import { HomeData } from "../../../lib/HomeData";
 
+// import hook to check endpoint status
+import useEndpointStatus from "@/components/Hooks/useEndpointStatus";
+
 const Project = ({ project }) => {
   const ProjectCategoryData = ProjectData.ProjectCategoryData;
 
@@ -16,31 +19,42 @@ const Project = ({ project }) => {
 
   const width = useWindowWidth();
 
+  const isSiteLinkActive = useEndpointStatus(data?.acf?.project_site_link);
+  const isProposalActive = useEndpointStatus(data?.acf?.project_proposal_file);
+
+  if (isSiteLinkActive === null || isProposalActive === null) {
+    return null;
+  }
+
+  console.log(isProposalActive, data?.acf?.project_proposal_file);
+
   return (
     <Container>
       <Head>
         <title>{HomeData.tabName.title}</title>
       </Head>
-      <div className="titleWrapper">
-        {data.categories_slugs == "native-app" ? (
-          <p className="singleTitle">{ProjectCategoryData[0].title}</p>
-        ) : data.categories_slugs == "data-visualization" ? (
-          <p className="singleTitle">{ProjectCategoryData[1].title}</p>
-        ) : data.categories_slugs == "hybrid" ? (
-          <p className="singleTitle">{ProjectCategoryData[2].title}</p>
-        ) : null}
-        <h1 className="projectTitle">{data.acf.name_of_the_project}</h1>
-      </div>
+      <Link href="/projects">
+        <div className="titleWrapper">
+          {data.categories_slugs == "native-app" ? (
+            <p className="singleTitle">{ProjectCategoryData[0].title}</p>
+          ) : data.categories_slugs == "data-visualization" ? (
+            <p className="singleTitle">{ProjectCategoryData[1].title}</p>
+          ) : data.categories_slugs == "hybrid" ? (
+            <p className="singleTitle">{ProjectCategoryData[2].title}</p>
+          ) : null}
+          <h1 className="projectTitle">{data.acf.name_of_the_project}</h1>
+        </div>
+      </Link>
 
       <div className="actionContainer">
-        {data.acf.project_proposal_file ? (
+        {data.acf.project_proposal_file && isProposalActive ? (
           <Link href={data.acf.project_proposal_file}>
             <img src={ProjectData.ProjectDetails.downloadProposalIcon} />
             {ProjectData.ProjectDetails.downloadProposal}
           </Link>
         ) : null}
 
-        {data.acf.project_site_link ? (
+        {data.acf.project_site_link && isSiteLinkActive ? (
           <Link href={data.acf.project_site_link}>
             <img src={ProjectData.ProjectDetails.seeLiveProjectIcon} />
             {ProjectData.ProjectDetails.seeLiveProject}
