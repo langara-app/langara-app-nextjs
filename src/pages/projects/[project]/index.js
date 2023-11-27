@@ -9,12 +9,25 @@ import { ProjectData } from "../../../lib/ProjectData";
 import { CommonStyling } from "../../../lib/CommonStyling";
 import { HomeData } from "../../../lib/HomeData";
 
+// import hook to check endpoint status
+import useEndpointStatus from "@/components/Hooks/useEndpointStatus";
+
 const Project = ({ project }) => {
   const ProjectCategoryData = ProjectData.ProjectCategoryData;
 
   const data = project[0];
 
   const width = useWindowWidth();
+
+  const isSiteLinkActive = useEndpointStatus(data?.acf?.project_site_link);
+  const isProposalActive = useEndpointStatus(data?.acf?.project_proposal_file);
+
+  if (isSiteLinkActive === null || isProposalActive === null) {
+    return null;
+  }
+
+  console.log(isProposalActive, data?.acf?.project_proposal_file)
+
 
   return (
     <Container>
@@ -33,14 +46,14 @@ const Project = ({ project }) => {
       </div>
 
       <div className="actionContainer">
-        {data.acf.project_proposal_file ? (
+        {data.acf.project_proposal_file && isProposalActive ? (
           <Link href={data.acf.project_proposal_file}>
             <img src={ProjectData.ProjectDetails.downloadProposalIcon} />
             {ProjectData.ProjectDetails.downloadProposal}
           </Link>
         ) : null}
 
-        {data.acf.project_site_link ? (
+        {data.acf.project_site_link && isSiteLinkActive ? (
           <Link href={data.acf.project_site_link}>
             <img src={ProjectData.ProjectDetails.seeLiveProjectIcon} />
             {ProjectData.ProjectDetails.seeLiveProject}
