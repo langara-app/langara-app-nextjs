@@ -48,14 +48,14 @@ const Project = ({ project }) => {
 
       <div className="actionContainer">
         {data.acf.project_proposal_file && isProposalActive ? (
-          <Link href={data.acf.project_proposal_file}>
+          <Link href={data.acf.project_proposal_file}  target="_blank">
             <img src={ProjectData.ProjectDetails.downloadProposalIcon} />
             {ProjectData.ProjectDetails.downloadProposal}
           </Link>
         ) : null}
 
         {data.acf.project_site_link && isSiteLinkActive ? (
-          <Link href={data.acf.project_site_link}>
+          <Link href={data.acf.project_site_link} target="_blank">
             <img src={ProjectData.ProjectDetails.seeLiveProjectIcon} />
             {ProjectData.ProjectDetails.seeLiveProject}
           </Link>
