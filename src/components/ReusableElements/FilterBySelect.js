@@ -22,7 +22,7 @@ const CustomArrowDownIcon = () => (
 );
 
 const CustomSelect = ({
-  filterByText = "Filer by Year",
+  filterByText = "Filter by Year",
   label,
   value,
   onChange,
