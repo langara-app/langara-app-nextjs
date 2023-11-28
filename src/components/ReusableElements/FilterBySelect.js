@@ -33,11 +33,7 @@ const CustomSelect = ({
 
   useEffect(() => {
     const listenToClickingOutside = (e) => {
-      if (e.target.className.includes("filter-select-option")) {
-        const value = e.target.getAttribute("value");
-        onChange(value);
-        setOpen(false);
-      } else if (!e.target.className.includes("select-btn")) {
+      if (!e.target.className.includes("select-btn")) {
         setOpen(false);
       }
     };
@@ -88,6 +84,13 @@ const CustomSelect = ({
             {options.map((option) => (
               <li
                 key={option.value}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onChange(option.value);
+                  setOpen(false);
+                }}
+
+
                 value={option.value}
                 className={
                   option.label == (value || label)
