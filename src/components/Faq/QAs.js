@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
 import { IoIosArrowDown } from "react-icons/io";
 import { CommonStyling } from "../../lib/CommonStyling";
 import useWindowWidth from "../../components/Hooks/useWindowWidth";
@@ -60,7 +60,7 @@ const QAContainer = styled.div`
 
   .MuiPaper-root {
     /* background-color: unset; */
-    margin-bottom: 0
+    margin-bottom: 0;
   }
 
   .MuiAccordion-root.Mui-expanded {
@@ -77,7 +77,7 @@ const QAContainer = styled.div`
     margin: 2rem 0 2rem 0;
   }
   .MuiAccordionSummary-content.Mui-expanded {
-    margin: 2rem 0 2rem 0;
+    // margin: 2rem 0 2rem 0;
   }
   .MuiAccordionDetails-root {
     flex-direction: column;
@@ -101,7 +101,7 @@ const QAContainer = styled.div`
     font-weight: 700;
     font-size: ${CommonStyling.body2FontSize};
     line-height: 30px;
-    color: #F15A22;
+    color: #f15a22;
     padding: 0 2rem;
     padding-bottom: 2rem;
   }
