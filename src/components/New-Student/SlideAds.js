@@ -14,6 +14,7 @@ const SliderAds = ({ slides }) => {
               alt={slide.message}
               width={100}
               height={100}
+              className="advert-images"
             />
             <div className="right">
               <div className="message">{slide.message}</div>
@@ -85,7 +86,8 @@ const SliderContainer = styled.div`
     background-color: ${CommonStyling.backgroundColor};
     justify-content: flex-start;
     padding: 1rem;
-    img {
+
+    .advert-images {
       width: 100px;
       height: 100px;
       border-radius: 1rem;

@@ -120,21 +120,39 @@ const NewStudent = () => {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <Image src={facebook} alt="facebook" width={40} height={40} />
+                <Image
+                  className="social-icon"
+                  src={facebook}
+                  alt="facebook"
+                  width={40}
+                  height={40}
+                />
               </Link>
               <Link
                 href={links.twitterX}
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <Image src={twitterX} alt="twitterX" width={40} height={40} />
+                <Image
+                  className="social-icon"
+                  src={twitterX}
+                  alt="twitterX"
+                  width={40}
+                  height={40}
+                />
               </Link>
               <Link
                 href={links.instagram}
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <Image src={instagram} alt="instagram" width={40} height={40} />
+                <Image
+                  className="social-icon"
+                  src={instagram}
+                  alt="instagram"
+                  width={40}
+                  height={40}
+                />
               </Link>
             </SocialIcons>
           </div>
@@ -146,7 +164,13 @@ const NewStudent = () => {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <Image src={youtube} alt="youtube" width={40} height={40} />
+                <Image
+                  className="social-icon"
+                  src={youtube}
+                  alt="youtube"
+                  width={40}
+                  height={40}
+                />
               </Link>
             </YtIcon>
           </div>
@@ -172,10 +196,6 @@ const TopWrapper = styled.div`
   text-align: left;
   gap: 2rem;
 
-  // margin-top: 9.362vh;
-  // margin-bottom: 15.35vh;
-  // margin-left: 1.25rem;
-  // margin-right: 1.25rem;
   background-size: cover;
   @media only screen and (min-width: 768px) {
     /* For everything bigger than 768px */
@@ -278,6 +298,11 @@ const SocialWrapper = styled.div`
   border-radius: 2rem;
   max-width: 529px;
   margin: auto;
+
+  .social-icon {
+    height: 40px;
+    width: 40px;
+  }
 `;
 const SocialTitle = styled.h1`
   margin: 0;
