@@ -72,6 +72,7 @@ const Footer = () => {
             color="#FFFFFF"
             bcg="#F15A22"
             font={CommonStyling.body2FontSize.split("r")[0]}
+            hover={true}
           />
         </div>
       </LinkWrapper>

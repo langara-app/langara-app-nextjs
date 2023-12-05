@@ -9,7 +9,7 @@ export const MenuData = [
   },
   {
     title: "New Student",
-    link: "/",
+    link: "/new-student",
   },
   // {
   //   title: "Alumni Voices",

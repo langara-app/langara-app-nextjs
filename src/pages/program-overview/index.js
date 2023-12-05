@@ -103,6 +103,7 @@ const ProgramOverview = () => {
                 text="See Details"
                 color="#FFFFFF"
                 bcg="#F15A22"
+                hover={true}
               />
             </MidLeft>
             <MidRight>
@@ -303,7 +304,7 @@ const Header2 = styled.p`
 
 const WmddImageContainer = styled.div`
   .react-player__preview {
-    border-radius: 32px;
+    border-radius: 16px;
   }
 `;
 
