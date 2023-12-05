@@ -196,6 +196,11 @@ const TopWrapper = styled.div`
   text-align: left;
   gap: 2rem;
 
+  padding-top: 9.362vh;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  background-size: cover;
+
   background-size: cover;
   @media only screen and (min-width: 768px) {
     /* For everything bigger than 768px */
