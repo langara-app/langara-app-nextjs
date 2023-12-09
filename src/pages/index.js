@@ -81,12 +81,14 @@ const Home = ({ data, alumni, work, homeData }) => {
           </CareerTitleDesc>
           <FieldSelector>
             <Field
+              className="cursor-animate"
               style={field === "developer" ? selectedFieldStyles : null}
               onClick={(e) => setField("developer")}
             >
               Developer
             </Field>
             <Field
+              className="cursor-animate"
               style={field === "designer" ? selectedFieldStyles : null}
               onClick={(e) => setField("designer")}
             >
@@ -405,7 +407,7 @@ const FieldSelector = styled.div`
 `;
 
 const Field = styled.span`
-  cursor: pointer;
+  // cursor: pointer;
   border-right: 1px solid rgba(0, 0, 0, 0.2);
   padding-right: 10px;
 

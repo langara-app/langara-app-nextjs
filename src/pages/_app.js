@@ -25,12 +25,12 @@ function MyApp({ Component, pageProps }) {
       <Head></Head>
       {/* <Cursor /> */}
       <AnimatedCursor
-        innerSize={10}
-        outerSize={12}
+        innerSize={15}
+        outerSize={25}
         color="194, 60, 10"
         outerAlpha={0.2}
         innerScale={0.7}
-        outerScale={5}
+        outerScale={2.5}
         clickables={[
           "a",
           'input[type="text"]',
@@ -42,7 +42,11 @@ function MyApp({ Component, pageProps }) {
           "select",
           "textarea",
           "button",
-          ".link",
+          "link",
+          ".cursor-animate",
+          ".react-player__preview",
+          ".filter-select-option",
+          ".slick-arrow"
         ]}
       />
       <MenuBar />
