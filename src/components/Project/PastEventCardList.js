@@ -34,7 +34,9 @@ const Container = styled.div`
   }
 
   .pastEvents-wrapper > div {
-    margin-bottom: 2rem;
+    // margin-bottom: 2rem;
+    margin: 0 auto;
+    width: fit-content;
   }
 
   @media only screen and (max-width: 1380px) {
