@@ -46,7 +46,13 @@ function MyApp({ Component, pageProps }) {
           ".cursor-animate",
           ".react-player__preview",
           ".filter-select-option",
-          ".slick-arrow"
+          ".slick-arrow",
+          ".MuiButtonBase-root",
+          "#wmdd_program_questions",
+          "#enrolled_wmdd",
+          "#post_wmdd_questions",
+          "#international_applicants",
+          "#covid",
         ]}
       />
       <MenuBar />
