@@ -16,8 +16,8 @@ const ProjectCard = ({ cardData, showOutline }) => {
               loading="lazy"
               unoptimized={true}
               src={picture}
-              width={260}
-              height={260}
+              width={280}
+              height={280}
               alt={`${name} app cover`}
             />
           </div>
@@ -33,8 +33,8 @@ const ProjectCard = ({ cardData, showOutline }) => {
 
 const Container = styled.div`
   .card {
-    width: 260px;
-    height: 450px;
+    width: 300px;
+    height: 480px;
     border-radius: 1rem;
     background-color: ${CommonStyling.backgroundColor};
     border: ${(props) =>
