@@ -33,8 +33,8 @@ const EventCardBtn = styled.button`
   transition: background-color 0.3s;
 
   &:hover {
-    background-color: ${CommonStyling.primaryColor};
-    color: ${CommonStyling.backgroundColor};
+    background-color: ${CommonStyling.backgroundColor};
+    color: ${CommonStyling.primaryColor};
   }
 `;
 
