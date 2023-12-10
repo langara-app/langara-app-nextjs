@@ -85,6 +85,9 @@ const QAContainer = styled.div`
     margin-bottom: 2rem;
   }
 
+  .Mui-expanded {
+    margin-bottom: 0 !important;
+  }
   p,
   a {
     font-weight: 200;

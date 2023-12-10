@@ -29,6 +29,7 @@ const Options = ({ data, onClick }) => {
       values={[data[0]]}
       style={{ padding: "1rem", marginBottom: "8.5vw" }}
       searchable={false}
+      className="cursor-animate"
     />
   ) : (
     <Container>
