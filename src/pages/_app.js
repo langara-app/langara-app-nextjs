@@ -14,12 +14,41 @@ import Head from "next/head";
 import MenuBar from "../components/MenuBar";
 import Footer from "../components/Footer";
 import Cursor from "../components/ReusableElements/Cursor";
+import dynamic from "next/dynamic";
 
+const AnimatedCursor = dynamic(() => import("react-animated-cursor"), {
+  ssr: false,
+});
 function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head></Head>
-      <Cursor />
+      {/* <Cursor /> */}
+      <AnimatedCursor
+        innerSize={15}
+        outerSize={25}
+        color="194, 60, 10"
+        outerAlpha={0.2}
+        innerScale={0.7}
+        outerScale={2.5}
+        clickables={[
+          "a",
+          'input[type="text"]',
+          'input[type="email"]',
+          'input[type="number"]',
+          'input[type="submit"]',
+          'input[type="image"]',
+          "label[for]",
+          "select",
+          "textarea",
+          "button",
+          "link",
+          ".cursor-animate",
+          ".react-player__preview",
+          ".filter-select-option",
+          ".slick-arrow"
+        ]}
+      />
       <MenuBar />
       {/* <Component {...pageProps} />
       <Footer /> */}
