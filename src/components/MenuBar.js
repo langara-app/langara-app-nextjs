@@ -15,23 +15,26 @@ import styled from "styled-components";
 import { CommonStyling } from "../lib/CommonStyling";
 import Image from "next/image";
 
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+
 const MenuBar = () => {
   const width = useWindowWidth();
   const [open, setOpen] = useState(false);
-  const [checkedIndex, setCheckedIndex] = useState(0);
   const pathname = usePathname();
+
+  const router = useRouter();
 
   const openMenu = () => {
     setOpen(!open);
   };
 
-  const scrutinizer = (val) => {
-    return parseInt(val.split(" ")[2]);
-  };
+  const [firstPath, setFirstPath] = useState(null);
 
-  const setCat = (values) => {
-    setCheckedIndex(scrutinizer(values.className));
-  };
+  useEffect(() => {
+    const splitFirstPath = "/" + router.asPath.split("/")[1];
+    setFirstPath(splitFirstPath);
+  }, [router]);
 
   return width < 768 ? (
     <MobileMenuContainer>
@@ -106,11 +109,14 @@ const MenuBar = () => {
             <MenuLinkWeb
               pathname={pathname}
               className={index + 1}
-              onClick={(e) => {
-                setCat(e.target);
-              }}
-              color={index + 1}
-              checked={checkedIndex}
+              color={
+                menu.link === firstPath && firstPath != "/"
+                  ? "#F15A22"
+                  : "#263238"
+              }
+              fontWeight={
+                menu.link === firstPath && firstPath != "/" ? 700 : 400
+              }
             >
               {menu.title}
             </MenuLinkWeb>
@@ -147,11 +153,9 @@ const MenuLink = styled.a`
 
 const MenuLinkWeb = styled.a`
   margin-left: 3.5vw;
-  font-weight: ${({ color, checked, pathname }) =>
-    color === checked && pathname !== "/" ? 700 : 400};
+  font-weight: ${({ fontWeight }) => fontWeight};
   font-size: ${CommonStyling.body2FontSize};
-  color: ${({ color, checked, pathname }) =>
-    color === checked && pathname !== "/" ? "#F15A22" : "#263238"};
+  color: ${({ color }) => color};
   cursor: pointer;
 
   &:hover {

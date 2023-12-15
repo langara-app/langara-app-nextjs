@@ -97,8 +97,6 @@ const generateResponsiveSettings = () => {
     const newBreakpoint = currentBreakpoint - 30;
     const breakpoint = { max: currentBreakpoint, min: newBreakpoint };
     const items =  Math.floor((newBreakpoint) / cardWidth);
-    console.log(items)
-    console.log(breakpoint)
     responsive[currentBreakpoint] = ({ breakpoint, items });
     currentBreakpoint = newBreakpoint;
   }
