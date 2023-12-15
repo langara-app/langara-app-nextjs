@@ -18,7 +18,7 @@ const SliderAds = ({ slides }) => {
             />
             <div className="right">
               <div className="message">{slide.message}</div>
-              <div className="community-type">{slide.communityType}</div>
+              <div className="community-type">{slide.communityType + index}</div>
             </div>
           </div>
         ))}
@@ -72,7 +72,7 @@ const SliderContainer = styled.div`
   }
 
   .slide-track {
-    animation: ${AnimationKeyframes} 40s linear infinite;
+    animation: ${AnimationKeyframes} 65s linear infinite;
     display: flex;
     width: calc(417px * 14);
     gap: 1rem;

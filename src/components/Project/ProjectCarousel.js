@@ -53,8 +53,6 @@ const generateResponsiveSettings = () => {
 // Generate responsiveness settings
 const responsive = generateResponsiveSettings();
 
-console.log(responsive)
-
 // console.log(responsivenessList);
 
 const ProjectCarousel = ({ carouselData, showCardOutline }) => {

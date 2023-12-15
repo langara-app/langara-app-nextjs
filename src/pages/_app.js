@@ -16,15 +16,42 @@ import Footer from "../components/Footer";
 import Cursor from "../components/ReusableElements/Cursor";
 import dynamic from "next/dynamic";
 
+import { useEffect, useState } from 'react';
+
+
 const AnimatedCursor = dynamic(() => import("react-animated-cursor"), {
   ssr: false,
 });
 function MyApp({ Component, pageProps }) {
+
+  const [enableCursor, setEnableCursor] = useState(false);
+
+  
+  useEffect(() => {
+    // Check if we are in a browser environment before accessing navigator
+    if (typeof window !== 'undefined') {
+      function isMobileDevice() {
+        const userAgent = navigator.userAgent;
+        const isMobile = /Mobi|Android/i.test(userAgent);
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.platform);
+        const isSmallScreen = window.innerWidth <= 600; // Adjust the threshold as needed
+      
+        return isMobile || isIOS;
+      }
+    
+      
+      if (!isMobileDevice()) {
+        setEnableCursor(true);
+      }
+    }
+  }, []);
+
+
   return (
     <>
       <Head></Head>
       {/* <Cursor /> */}
-      <AnimatedCursor
+      {(enableCursor && <AnimatedCursor
         innerSize={15}
         outerSize={25}
         color="194, 60, 10"
@@ -54,7 +81,7 @@ function MyApp({ Component, pageProps }) {
           "#international_applicants",
           "#covid",
         ]}
-      />
+      />)}
       <MenuBar />
       {/* <Component {...pageProps} />
       <Footer /> */}
