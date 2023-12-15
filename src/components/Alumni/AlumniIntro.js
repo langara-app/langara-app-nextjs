@@ -80,6 +80,10 @@ const Comment = styled.p`
 `;
 
 const Video = styled.div`
+  iframe {
+    border-radius: 16px;
+  }
+
   .react-player__preview {
     border-radius: 16px;
     background-position: unset !important;

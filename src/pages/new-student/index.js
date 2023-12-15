@@ -250,6 +250,10 @@ const Greetings = styled.div`
   }
 `;
 const TopVideo = styled.div`
+  iframe {
+    border-radius: 16px;
+  }
+
   height: 395px;
   .react-player__preview {
     border-radius: 16px;
