@@ -33,7 +33,8 @@ const MenuBar = () => {
 
   useEffect(() => {
     const splitFirstPath = "/" + router.asPath.split("/")[1];
-    setFirstPath(splitFirstPath);
+    const removeHash = splitFirstPath.split("#")[0];
+    setFirstPath(removeHash);
   }, [router]);
 
   return width < 768 ? (
