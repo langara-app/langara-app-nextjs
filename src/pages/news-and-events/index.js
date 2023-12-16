@@ -391,8 +391,47 @@ const Container = styled.div`
       align-self: center;
     }
 
+    // .project-information .filterWrapper button.select-btn {
+    //   width: 100%;
+    // }
+
+    .past-events-title-container {
+      margin: 0 auto;
+    }
+
+    .event-information .filterWrapper {
+      align-self: center;
+      width: 100%;
+    }
+
+    .project-information .filterWrapper button.select-btn {
+      width: 100%;
+    }
+
     .section-text .desc {
       max-width: 100%;
+    }
+
+    .past-events-title-container {
+      width: 100%;
+    }
+
+    .past-events-title-container > div {
+      display: unset !important;
+      width: 100%;
+    }
+
+    .past-events-title-container > div > div {
+      width: 100%;
+      margin-top: 3rem;
+      margin-bottom: -2rem;
+    }
+
+    .past-events-title-container h2 {
+      text-align: center;
+    }
+    .past-events-title-container button {
+      width: 100%;
     }
   }
 
@@ -405,11 +444,13 @@ const Container = styled.div`
 
   @media only screen and (max-width: 1080px) {
     .past-events-title-container {
-      margin: 0 auto;
+      //margin: 0 auto;
+      //background-color: purple;
     }
+
     .past-events-title-container > div {
-      flex: 1;
-      display: unset;
+      //flex: 1;
+      //display: unset;
     }
   }
 `;

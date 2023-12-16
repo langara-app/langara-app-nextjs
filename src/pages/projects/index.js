@@ -398,6 +398,10 @@ const Container = styled.div`
   @media only screen and (max-width: 600px) {
     .project-information .filterWrapper {
       align-self: center;
+      width: 100%;
+    }
+    .project-information .filterWrapper button.select-btn {
+      width: 100%;
     }
   }
 `;

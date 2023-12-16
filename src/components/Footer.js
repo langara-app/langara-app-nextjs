@@ -63,7 +63,7 @@ const Footer = () => {
               </Link>
             );
           })}
-          <a href={HomeData.footer.contactLink} target="_blank">
+          <a className="menu-item" href={HomeData.footer.contactLink} target="_blank">
             Contact
           </a>
           <Button

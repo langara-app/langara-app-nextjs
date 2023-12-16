@@ -303,6 +303,9 @@ const Header2 = styled.p`
 `;
 
 const WmddImageContainer = styled.div`
+  iframe {
+    border-radius: 16px;
+  }
   .react-player__preview {
     border-radius: 16px;
   }
