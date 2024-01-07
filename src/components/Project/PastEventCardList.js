@@ -25,6 +25,7 @@ const Container = styled.div`
   .pastEvents-wrapper {
     max-width: 1600px;
     margin: 0 auto;
+    row-gap: 1.5rem;
   }
 
   .pastEvents-wrapper {

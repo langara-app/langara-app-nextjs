@@ -40,7 +40,7 @@ const Footer = () => {
         />
       </LinkWrapper>
       <CopyRight>
-        <span>&copy; 2023 Langara College. All rights reserved.</span>
+        <span>&copy; {(new Date()).getFullYear()} Langara College. All rights reserved.</span>
         <a
           href="https://langara.ca/about-langara/records-management-and-privacy/privacy/privacy-statement.html"
           target="_blank"
@@ -77,7 +77,7 @@ const Footer = () => {
         </div>
       </LinkWrapper>
       <CopyRight>
-        <span>&copy; 2023 Langara College. All rights reserved.</span>
+        <span>&copy; {(new Date()).getFullYear()} Langara College. All rights reserved.</span>
         <a
           href="https://langara.ca/about-langara/records-management-and-privacy/privacy/privacy-statement.html"
           target="_blank"

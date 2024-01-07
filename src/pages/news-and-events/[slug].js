@@ -4,9 +4,13 @@ import Head from "next/head";
 import { NewsAndEvents } from "../../lib/NewsAndEvents";
 
 import styled from "styled-components";
-
+// import ReactPlayer from "react-player/youtube";
 import { CommonStyling } from "../../lib/CommonStyling";
 import { HomeData } from "../../lib/HomeData";
+import formatDate from "@/utils/dateFormatter";
+
+import dynamic from "next/dynamic";
+const ReactPlayer = dynamic(() => import("react-player/lazy"), { ssr: false });
 
 export async function getStaticPaths() {
   const res = await fetch(
@@ -35,6 +39,7 @@ export async function getStaticProps({ params }) {
 }
 
 const NewsEventsInvidivual = ({ event }) => {
+  console.log(event);
   return (
     <SingleEventPageContainer>
       <Head>
@@ -49,12 +54,20 @@ const NewsEventsInvidivual = ({ event }) => {
         {event.acf.section1_title !== "" ? (
           <h1 className="section-title">{event.acf.section1_title}</h1>
         ) : null}
-        <Image
-          src={event.acf.article_image}
-          alt={`${event.title.rendered} Banner`}
-          width={1200}
-          height={600}
-        />
+        <div>
+          {event.acf.section1_link_title == "Video Link" ? (
+            <Video>
+              <ReactPlayer url={event.acf.section1_link} />
+            </Video>
+          ) : (
+            <Image
+              src={event.acf.article_image}
+              alt={`${event.title.rendered} Banner`}
+              width={1200}
+              height={600}
+            />
+          )}
+        </div>
         <article>
           {event.acf.section1_article !== "" ? (
             <p
@@ -63,11 +76,6 @@ const NewsEventsInvidivual = ({ event }) => {
                 __html: event.acf.section1_article,
               }}
             ></p>
-          ) : null}
-          {event.acf.section1_link !== "" ? (
-            <a className="article-link" href={event.acf.section1_link}>
-              {event.acf.section1_link_title}
-            </a>
           ) : null}
         </article>
         <article>
@@ -82,11 +90,6 @@ const NewsEventsInvidivual = ({ event }) => {
               }}
             ></p>
           ) : null}
-          {event.acf.section2_link !== "" ? (
-            <a className="article2-link" href={event.acf.section2_link}>
-              {event.acf.section1_link_title}
-            </a>
-          ) : null}
         </article>
         <article>
           {event.acf.section3_title !== "" ? (
@@ -99,11 +102,6 @@ const NewsEventsInvidivual = ({ event }) => {
                 __html: event.acf.section3_article,
               }}
             ></p>
-          ) : null}
-          {event.acf.section3_link !== "" ? (
-            <a className="article-link" href={event.acf.section3_link}>
-              {event.acf.section3_link_title}
-            </a>
           ) : null}
         </article>
         <article>
@@ -118,11 +116,25 @@ const NewsEventsInvidivual = ({ event }) => {
               }}
             ></p>
           ) : null}
-          {event.acf.section4_link !== "" ? (
-            <a className="article-link" href={event.acf.section4_link}>
-              {event.acf.section4_link_title}
-            </a>
-          ) : null}
+        </article>
+        <article>
+          <h3 className="article-title">Event Details</h3>
+          <div className="eventMeta">
+            <div>
+              <p className="date-label article-para ">Date: </p>
+              <p className="event-date article-para">{formatDate(event.acf.event_date)}</p>
+            </div>
+            <div>
+              <p className="time-label article-para">Time: </p>
+              <p className="event-time article-para">
+                {event.acf.event_start_time} - {event.acf.event_end_time}
+              </p>
+            </div>
+            <div>
+              <p className="location-label article-para">Location: </p>
+              <p className="event-location article-para">{event.acf.event_location}</p>
+            </div>
+          </div>
         </article>
       </EventDetails>
     </SingleEventPageContainer>
@@ -151,9 +163,8 @@ const SingleEventPageContainer = styled.div`
 `;
 
 const EventDetails = styled.section`
-
   article {
-    margin-bottom: 3rem;
+    margin-top: 3rem;
   }
 
   .section-title {
@@ -172,7 +183,7 @@ const EventDetails = styled.section`
   }
 
   .article-link {
-    color: #F15A22;
+    color: #f15a22;
     font-weight: 700;
     font-size: 20px;
     line-height: 30px;
@@ -184,11 +195,23 @@ const EventDetails = styled.section`
     font-size: 32px;
     line-height: 48px;
   }
+
+  .eventMeta > div {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+  }
 `;
 
 const Image = styled.img`
   width: 100%;
   height: auto;
+`;
+
+const Video = styled.div`
+  div {
+    width: 100% !important;
+  }
 `;
 
 export default NewsEventsInvidivual;

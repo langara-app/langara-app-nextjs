@@ -213,7 +213,13 @@ const TopWrapper = styled.div`
   }
 `;
 
-const TopLeft = styled.div``;
+const TopLeft = styled.div`
+  @media only screen and (min-width: 1111px) {
+    height: 400px;
+    display: grid;
+    grid-template-rows: auto 1fr;
+  }
+`;
 const TopLeftTitle = styled.h1`
   margin: 0;
   font-size: ${CommonStyling.h1FontSize} !important;
@@ -248,6 +254,13 @@ const Greetings = styled.div`
     text-underline-offset: 4px;
     text-decoration-thickness: 2.5px;
   }
+
+  @media only screen and (min-width: 1111px) {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+  }
+
 `;
 const TopVideo = styled.div`
   iframe {

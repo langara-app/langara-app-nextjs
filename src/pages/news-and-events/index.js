@@ -47,10 +47,6 @@ export async function getStaticProps() {
   // Separate events into past and current
   const pastEvents = [
     ...events,
-    ...events,
-    ...events,
-    ...events,
-    ...events,
   ].filter((event) => {
     const [day, month, year] = event.event_date.split("/");
     const eventDateTime = new Date(
@@ -83,12 +79,9 @@ export async function getStaticProps() {
     ...new Set(pastEvents.map((event) => event.event_year)),
   ];
 
-  const dummyFutureData = [...pastEvents, ...pastEvents, ...pastEvents];
-
   return {
     props: {
-      currentEvents: dummyFutureData,
-      // currentEvents: futureEvents,
+      currentEvents: futureEvents,
       allPastEvents: pastEvents,
       pastEventsUniqueYears,
     },
