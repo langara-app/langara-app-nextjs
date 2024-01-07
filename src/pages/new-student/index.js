@@ -258,7 +258,7 @@ const Greetings = styled.div`
   @media only screen and (min-width: 1111px) {
     display: flex;
     flex-flow: column;
-    justify-content: center;
+    justify-content: space-evenly;
   }
 
 `;
