@@ -57,7 +57,12 @@ const NewsEventsInvidivual = ({ event }) => {
         <div>
           {event.acf.section1_link_title == "Video Link" ? (
             <Video>
-              <ReactPlayer url={event.acf.section1_link} />
+              <ReactPlayer
+                className="react-player"
+                height="100%"
+                width="100%"
+                url={event.acf.section1_link}
+              />
             </Video>
           ) : (
             <Image
@@ -122,7 +127,9 @@ const NewsEventsInvidivual = ({ event }) => {
           <div className="eventMeta">
             <div>
               <p className="date-label article-para ">Date: </p>
-              <p className="event-date article-para">{formatDate(event.acf.event_date)}</p>
+              <p className="event-date article-para">
+                {formatDate(event.acf.event_date)}
+              </p>
             </div>
             <div>
               <p className="time-label article-para">Time: </p>
@@ -132,7 +139,9 @@ const NewsEventsInvidivual = ({ event }) => {
             </div>
             <div>
               <p className="location-label article-para">Location: </p>
-              <p className="event-location article-para">{event.acf.event_location}</p>
+              <p className="event-location article-para">
+                {event.acf.event_location}
+              </p>
             </div>
           </div>
         </article>
@@ -209,8 +218,13 @@ const Image = styled.img`
 `;
 
 const Video = styled.div`
-  div {
-    width: 100% !important;
+  position: relative;
+  padding-top: 56.25%;
+
+  .react-player {
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 `;
 
