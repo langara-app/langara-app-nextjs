@@ -1,4 +1,10 @@
-import ValentinaAbanina from "@/assets/img/new-student/ValentinaAbanina.png";
+import valentina from "@/assets/img/new-student/valentina.png";
+import aleksey from "@/assets/img/new-student/aleksey.png";
+import pablo from "@/assets/img/new-student/pablo.png";
+import katrina from "@/assets/img/new-student/katrina.png";
+import taras from "@/assets/img/new-student/taras.png";
+import monica from "@/assets/img/new-student/monica.png";
+import karan from "@/assets/img/new-student/karan.png";
 
 export const NewStudentData = {
   header: {
@@ -9,55 +15,40 @@ export const NewStudentData = {
   },
   slides: [
     {
-      message: "Where I mastered pitching MVP's to stakeholders",
+      message: "Where I mastered pitching MVP's to stakeholders.",
       communityType: "Alumni",
-      image: ValentinaAbanina,
+      image: valentina,
     },
     {
-      message: "Where I mastered pitching MVP's to stakeholders",
+      message: "Alumni network crucial for post-grad success.",
       communityType: "Alumni",
-      image: ValentinaAbanina,
+      image: aleksey,
     },
     {
-      message: "Where I mastered pitching MVP's to stakeholders",
+      message: "Ignited my passion to craft interactive products.",
       communityType: "Alumni",
-      image: ValentinaAbanina,
+      image: pablo,
     },
     {
-      message: "Where I mastered pitching MVP's to stakeholders",
+      message: "Mastered UX Design, problem solving in action.",
       communityType: "Alumni",
-      image: ValentinaAbanina,
+      image: katrina,
     },
     {
-      message: "Where I mastered pitching MVP's to stakeholders",
+      message: "Best decision, prepared for the real world.",
       communityType: "Alumni",
-      image: ValentinaAbanina,
+      image: taras,
     },
     {
-      message: "Where I mastered pitching MVP's to stakeholders",
+      message: "Transformed from novice to skilled desginer.",
       communityType: "Alumni",
-      image: ValentinaAbanina,
+      image: monica,
     },
     {
-      message: "Where I mastered pitching MVP's to stakeholders",
+      message: "Innovate, adapt, develop and lead with agile mindset.",
       communityType: "Alumni",
-      image: ValentinaAbanina,
-    },
-    {
-      message: "Where I mastered pitching MVP's to stakeholders",
-      communityType: "Alumni",
-      image: ValentinaAbanina,
-    },
-    {
-      message: "Where I mastered pitching MVP's to stakeholders",
-      communityType: "Alumni",
-      image: ValentinaAbanina,
-    },
-    {
-      message: "Where I mastered pitching MVP's to stakeholders",
-      communityType: "Alumni",
-      image: ValentinaAbanina,
-    },
+      image: karan,
+    }
   ],
   explore: {
     registration: {

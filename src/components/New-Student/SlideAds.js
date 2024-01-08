@@ -18,7 +18,7 @@ const SliderAds = ({ slides }) => {
             />
             <div className="right">
               <div className="message">{slide.message}</div>
-              <div className="community-type">{slide.communityType + index}</div>
+              <div className="community-type">{slide.communityType}</div>
             </div>
           </div>
         ))}
@@ -29,7 +29,7 @@ const SliderAds = ({ slides }) => {
 
 const AnimationKeyframes = keyframes`
   0% {
-    transform: translateX(0);
+    transform: translateX(250px);
   }
   100% {
     transform: translateX(calc(-417px * 7));
