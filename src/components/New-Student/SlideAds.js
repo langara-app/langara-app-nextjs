@@ -15,6 +15,7 @@ const SliderAds = ({ slides }) => {
               width={100}
               height={100}
               className="advert-images"
+              loading="eager"
             />
             <div className="right">
               <div className="message">{slide.message}</div>
