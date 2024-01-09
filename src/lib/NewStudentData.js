@@ -40,7 +40,7 @@ export const NewStudentData = {
       image: taras,
     },
     {
-      message: "Transformed from novice to skilled desginer.",
+      message: "Transformed from novice to skilled designer.",
       communityType: "Alumni",
       image: monica,
     },
