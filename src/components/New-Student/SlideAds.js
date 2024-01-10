@@ -7,7 +7,7 @@ const SliderAds = ({ slides }) => {
   return (
     <SliderContainer>
       <div className="slide-track">
-        {slides?.map((slide, index) => (
+        {[...slides, ...slides]?.map((slide, index) => (
           <div className="slide" key={index}>
             <Image
               src={slide.image}
@@ -28,16 +28,16 @@ const SliderAds = ({ slides }) => {
   );
 };
 
-const AnimationKeyframes = keyframes`
-  0% {
-    transform: translateX(250px);
-  }
-  100% {
-    transform: translateX(calc(-417px * 7));
-  }
-`;
-
 const SliderContainer = styled.div`
+  @keyframes scrollText {
+    from {
+      transform: translateX(0%);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
   background: transparent;
   overflow: hidden;
   position: relative;
@@ -73,10 +73,14 @@ const SliderContainer = styled.div`
   }
 
   .slide-track {
-    animation: ${AnimationKeyframes} 65s linear infinite;
+    overflow: hidden;
+    height: 100%;
+    animation: scrollText 40s infinite linear;
+    margin: 0;
     display: flex;
-    width: calc(417px * 14);
     gap: 1rem;
+    justify-content: space-between;
+    width: fit-content;
   }
 
   .slide {
