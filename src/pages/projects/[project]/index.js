@@ -96,15 +96,18 @@ const Container = styled.div`
 
   .actionContainer {
     padding-top: 4.9vh;
+    padding-bottom: 2.9vh;
     display: flex;
     flex-direction: column;
     gap: 2.9vh;
     font-size: 1.25rem;
+    width: 100%;
   }
 
-  a {
+  .actionContainer a {
     display: flex;
     gap: 0.5rem;
+    align-items: center;
   }
 
   @media only screen and (min-width: 768px) {
@@ -119,10 +122,6 @@ const Container = styled.div`
 const ImageContainer = styled.div`
   width: 100%;
   height: auto;
-  padding-top: 2.9vh;
-
-  @media only screen and (min-width: 768px) {
-  }
 `;
 
 const ImageElement = styled.img`

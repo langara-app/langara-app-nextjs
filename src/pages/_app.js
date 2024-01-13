@@ -33,7 +33,7 @@ function MyApp({ Component, pageProps }) {
       function isMobileDevice() {
         const userAgent = navigator.userAgent;
         const isMobile = /Mobi|Android/i.test(userAgent);
-        const isIOS = /iPad|iPhone|iPod/.test(navigator.platform);
+        const isIOS = /iPad|iPhone|iPod|iPad/.test(navigator.platform);
         const isSmallScreen = window.innerWidth <= 600; // Adjust the threshold as needed
       
         return isMobile || isIOS;

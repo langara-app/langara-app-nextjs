@@ -14,7 +14,6 @@ const ProjectCard = ({ cardData, showOutline }) => {
           <div className="imgWrap">
             <Image
               loading="lazy"
-              unoptimized={true}
               src={picture}
               width={280}
               height={280}
@@ -32,6 +31,7 @@ const ProjectCard = ({ cardData, showOutline }) => {
 };
 
 const Container = styled.div`
+width: 300px;
   .card {
     width: 300px;
     height: 480px;
