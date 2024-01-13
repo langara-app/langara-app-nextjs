@@ -33,7 +33,8 @@ const CustomSelect = ({
 
   useEffect(() => {
     const listenToClickingOutside = (e) => {
-      if (!e.target.className.includes("select-btn")) {
+      
+      if ( !([...e.target.classList]).includes("select-btn")) {
         setOpen(false);
       }
     };
@@ -137,6 +138,9 @@ const FilterBy = ({ filterByYear, years, outlineColor }) => {
 };
 
 const SelectComponent = styled.div`
+  z-index: 10 !important;
+  position: relative;
+
   .options-wrapper > ul {
     padding-left: 0;
   }

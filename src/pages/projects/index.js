@@ -164,7 +164,11 @@ const Projects = ({
             </div>
             <div className="projects-card-wrapper">
               <div>
-                <ProjectCarousel carouselData={filteredNativeApps} />
+                <ProjectCarousel
+                  carouselData={filteredNativeApps}
+                  carouselIdx={0}
+                  showCardOutline={false}
+                />
               </div>
             </div>
           </div>
@@ -194,6 +198,7 @@ const Projects = ({
               <div>
                 <ProjectCarousel
                   carouselData={filteredDataVisualization}
+                  carouselIdx={1}
                   showCardOutline={true}
                 />
               </div>
@@ -225,6 +230,7 @@ const Projects = ({
               <div>
                 <ProjectCarousel
                   carouselData={filteredHybridApps}
+                  carouselIdx={2}
                   showCardOutline={true}
                 />
               </div>
