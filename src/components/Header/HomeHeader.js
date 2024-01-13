@@ -39,7 +39,7 @@ const Box = styled.div`
   border-radius: 32px 32px 0 0;
   background-color: ${CommonStyling.backgroundColor};
   position: absolute;
-  bottom: 0;
+  bottom: -1px;
   left: 0;
   right: 0;
 `;
