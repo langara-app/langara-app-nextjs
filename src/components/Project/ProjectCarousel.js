@@ -72,12 +72,15 @@ const ProjectCarousel = ({ carouselData, showCardOutline, carouselIdx }) => {
     const container = scrollContainer.current;
     const cardWidth = 300;
     const gap = 45;
-    const scrollAmount = cardWidth + gap;
+    // const scrollAmount = cardWidth + gap;
+    
+    const scrollAmount = window.innerWidth < 768 ? cardWidth + gap : 2 * (cardWidth + gap);
+
 
     if (direction === "left") {
-      container.scrollLeft -= 2 * scrollAmount;
+      container.scrollLeft -= scrollAmount;
     } else if (direction === "right") {
-      container.scrollLeft += 2 * scrollAmount;
+      container.scrollLeft += scrollAmount;
     }
 
     setShowLeftArrow(true);
