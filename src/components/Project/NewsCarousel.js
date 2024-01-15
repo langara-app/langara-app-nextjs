@@ -1,185 +1,262 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
-import Link from "next/link";
-import Image from "next/image";
-import useWindowWidth from "../Hooks/useWindowWidth";
 import { CommonStyling } from "../../lib/CommonStyling";
 
 // import cards
 // import ProjectCard from "./ProjectCard";
 import NewsCard from "./NewsCard";
 
-// imports
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-
-// const responsive = {
-//   superLargeDesktop: {
-//     // the naming can be any, depends on you.
-//     breakpoint: { max: 4000, min: 1500 },
-//     items: 3,
-//   },
-//   desktop: {
-//     breakpoint: { max: 1500, min: 1380 },
-//     items: 3,
-//   },
-
-//   tablet: {
-//     breakpoint: { max: 1380, min: 1074 },
-//     items: 2,
-//   },
-//   tabletTwo: {
-//     breakpoint: { max: 1074, min: 980 },
-//     items: 2,
-//     partialVisibilityGutter: 100,
-//   },
-//   tabletThree: {
-//     breakpoint: { max: 980, min: 930 },
-//     items: 2,
-//     // partialVisible={true}
-//     partialVisibilityGutter: 80,
-//   },
-//   tabletFour: {
-//     breakpoint: { max: 930, min: 800 },
-//     items: 2,
-//     partialVisibilityGutter: 10,
-//     // partialVisible={true}
-//     // partialVisibilityGutter: 10,
-//   },
-//   tabletFive: {
-//     breakpoint: { max: 800, min: 750 },
-//     items: 2,
-//     // partialVisible={true}
-//     partialVisibilityGutter: 10,
-//   },
-
-//   tabletSix: {
-//     breakpoint: { max: 750, min: 690 },
-//     items: 2,
-//   },
-
-//   tabletSeven: {
-//     breakpoint: { max: 690, min: 590 },
-//     items: 1,
-//     partialVisibilityGutter: 220,
-//   },
-
-//   tabletEight: {
-//     breakpoint: { max: 590, min: 500 },
-//     items: 1,
-//     partialVisibilityGutter: 70,
-//   },
-
-//   mobileOne: {
-//     breakpoint: { max: 500, min: 420 },
-//     items: 1,
-//     partialVisibilityGutter: 50,
-//   },
-
-//   mobile: {
-//     breakpoint: { max: 420, min: 0 },
-//     items: 1,
-//   }
-// };
+// react icon left / right
+import { FaChevronRight, FaChevronLeft } from "react-icons/fa6";
 
 
-const generateResponsiveSettings = () => {
-  const responsive = {};
-  let currentBreakpoint = 1600;
-  const cardWidth = 300;
 
-  // First item with static max value of 10000
-  responsive["beyond"] = {
-    breakpoint: { max: 10000, min: 1600 }, items: 5
-  };
-  
-  while (currentBreakpoint >= 640) {
-    const newBreakpoint = currentBreakpoint - 30;
-    const breakpoint = { max: currentBreakpoint, min: newBreakpoint };
-    const items =  Math.floor((newBreakpoint) / cardWidth);
-    responsive[currentBreakpoint] = ({ breakpoint, items });
-    currentBreakpoint = newBreakpoint;
-  }
+const NewsCarousel = ({ carouselData, carouselIdx = 0, showCardOutline = false }) => {
+  const scrollContainer = useRef(null);
 
-  const otherResp = {
-    "tab": {
-      breakpoint: { max: 610, min: 590 }, items: 2
-    },
-    "tab1": {
-      breakpoint: { max: 590, min: 520 }, items: 1.7
-    },
-    "mobile1": {
-      breakpoint: { max: 520, min: 470 }, items: 1.5
-    },
-    "mobile2": {
-      breakpoint: { max: 470, min: 0 }, items: 1
+  const [showAfter, setShowAfter] = useState(true);
+  const [showBefore, setShowBefore] = useState(false);
+  const [showLeftArrow, setShowLeftArrow] = useState(false);
+  const [showRightArrow, setShowRightArrow] = useState(false);
+
+  const handleScroll = () => {
+    const container = scrollContainer.current;
+
+    if (container) {
+      const isScrollable = container.scrollWidth > container.clientWidth;
+
+      const isAtEnd =
+        container.scrollLeft >= container.scrollWidth - container.clientWidth;
+      const isAtStart = container.scrollLeft === 0;
+
+      if (isScrollable) {
+        // at the end
+        if (isAtEnd) {
+          // Perform actions or set state when reaching the end of scroll
+          setShowAfter(false);
+          setShowBefore(true);
+          setShowRightArrow(false);
+        }
+        // at the beginning
+        if (isAtStart) {
+          // console.log('Reached the start of scroll');
+          setShowAfter(true);
+          setShowBefore(false);
+          setShowLeftArrow(false);
+        }
+        if (!isAtEnd && !isAtStart) {
+          setShowLeftArrow(true);
+          setShowRightArrow(true);
+        }
+      } else {
+        setShowAfter(false);
+        setShowBefore(false);
+        setShowLeftArrow(false);
+        setShowRightArrow(false);
+      }
     }
-  }
-
-  const allResponsive = {...responsive, ...otherResp}
-  return allResponsive;
-};
-
-// Generate responsiveness settings
-const responsive = generateResponsiveSettings();
-
-
-const NewsCarousel = ({ carouselData }) => {
-
-
-  const windowWidth = useWindowWidth();
-  const [isCenterMode, setIsCenterMode] = useState(false);
-  const [isPartialVisible, setIsPartialVisible] = useState(false);
-
+  };
 
   useEffect(() => {
-    if (windowWidth < 1074) {
-      setIsCenterMode(false);
-      setIsPartialVisible(true);
-    } else {
-      // setIsCenterMode(true);
-      // setIsPartialVisible(false);
-    }
-  }, [windowWidth]);
-  
-  if(!windowWidth) return null;
+    setShowLeftArrow(true);
+    setShowRightArrow(true);
+    handleScroll();
+  }, [carouselData]);
 
+  function scrollCarousel(event, direction) {
+    event.preventDefault();
+    const container = scrollContainer.current;
+    const cardWidth = 300;
+    const gap = 45;
+    // const scrollAmount = cardWidth + gap;
+    
+    const scrollAmount = window.innerWidth < 768 ? cardWidth + gap : 2 * (cardWidth + gap);
+
+
+    if (direction === "left") {
+      container.scrollLeft -= scrollAmount;
+    } else if (direction === "right") {
+      container.scrollLeft += scrollAmount;
+    }
+
+    setShowLeftArrow(true);
+    setShowRightArrow(true);
+  }
 
   return (
-    <Container>
-      <div className="carousel-wrapper">
-        <Carousel
-          partialVisible={isPartialVisible}
-          centerMode={isCenterMode}
-          renderButtonGroupOutside={true}
-          swipeable={true}
-          responsive={responsive}
-          infinite={true}
-          autoPlaySpeed={1000}
-          customTransition="all .5s linear"
-          transitionDuration={500}
-          containerClass="carousel-container"
-          arrows={true}
-          removeArrowOnDeviceType={[""]}
-          slidesToSlide={1}
+    <Container
+      totalCards={carouselData.length}
+      showbefore={showBefore}
+      showafter={showAfter}
+      carouselidx={carouselIdx}
+    >
+      <div className="carousel-cards-wrapper">
+        <div className="carousel-container">
+          {/* left button */}
+          {showLeftArrow && (
+            <button
+              className="nav-button nav-button-left"
+              onClick={(e) => scrollCarousel(e, "left")}
+            >
+              <FaChevronLeft />
+            </button>
+          )}
+          {/* cards */}
+          <div
+            className="carousel"
+            onScroll={handleScroll}
+            ref={scrollContainer}
+          >
+            {/* Initial set of cards */}
+            {carouselData.map((projectData, idx) => {
+              return (
+                <NewsCard
+                  key={idx}
+                  cardData={projectData}
+                  showOutline={showCardOutline}
+                />
+              );
+            })}
+          </div>
 
-        >
-          {carouselData.map((newsData, idx) => {
-            return <NewsCard key={idx} cardData={newsData} />;
-          })}
-        </Carousel>
+          {showRightArrow && (
+            <button
+              className="nav-button nav-button-right"
+              onClick={(e) => scrollCarousel(e, "right")}
+            >
+              <FaChevronRight />
+            </button>
+          )}
+        </div>
       </div>
     </Container>
   );
 };
 
 const Container = styled.div`
-   .carousel-wrapper {
+  max-width: 1600px;
+  margin: 0 auto;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -1px;
+    width: 50px;
+    height: 100%;
+    background: linear-gradient(
+      to left,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0) 20%,
+      rgba(255, 255, 255, 0) 30%,
+      ${(props) =>
+          props.carouselidx === 0 ? CommonStyling.primaryColor : "white"}
+        100%
+    );
+    z-index: 2;
+    transition: opacity 0.6s ease;
+    opacity: ${(props) => (props.showbefore ? 1 : 0)};
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -1px;
+    width: 50px;
+    height: 100%;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0) 20%,
+      rgba(255, 255, 255, 0) 30%,
+      ${(props) =>
+          props.carouselidx === 0 ? CommonStyling.primaryColor : "white"}
+        100%
+    );
+    z-index: 2;
+    transition: opacity 0.6s ease;
+    opacity: ${(props) => (props.showafter ? 1 : 0)};
+  }
+
+  .container {
     max-width: 1600px;
     margin: 0 auto;
+    margin: 0px 50px;
   }
-  .react-multi-carousel-track {
-    gap: 2rem;
+
+  /* Center the carousel using CSS Grid */
+  .carousel-container {
+    position: relative;
+  }
+
+  .carousel {
+    display: grid;
+    grid-template-columns: ${(props) => `repeat(${props.totalCards}, 300px)`};
+    gap: 45px;
+    overflow-x: auto;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    scroll-behavior: smooth;
+    z-index: 1;
+    /* Hide scrollbar for Webkit browsers (Chrome, Safari) */
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    touch-action: pan-x;
+  }
+
+  /* Style the navigation buttons */
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    color: white;
+    background-color: rgba(241, 90, 34, 0.5);
+    border: none;
+    padding: 12px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%; /* Make the buttons circular */
+    transition: background-color 0.5s ease; /* Smooth color transition */
+    z-index: 5; /* Set a higher z-index for the buttons */
+  }
+
+  .nav-button:hover {
+    background-color: rgba(241, 90, 34);
+  }
+
+  .nav-button-left {
+    left: 4.5rem;
+  }
+
+  .nav-button-right {
+    right: 4.5rem;
+  }
+
+  @media (max-width: 768px) {
+
+    .nav-button-left {
+      left: 2.75rem;
+    }
+
+    .nav-button-right {
+      right: 2.75rem;
+    }
+
+    &::before {
+      opacity: 1;
+    }
+    &::after {
+      opacity: 1;
+    }
+
+    .carousel {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
   }
 `;
 

@@ -64,6 +64,7 @@ const NewsCard = ({ cardData, showOutline, eventType }) => {
 };
 
 const Container = styled.div`
+  width: 300px;
   .card {
     width: 300px;
     height: 450px;
