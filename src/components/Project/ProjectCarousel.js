@@ -1,8 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
-import Link from "next/link";
-import Image from "next/image";
-import useWindowWidth from "../Hooks/useWindowWidth";
 import { CommonStyling } from "../../lib/CommonStyling";
 
 // import cards
