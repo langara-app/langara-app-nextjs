@@ -111,7 +111,6 @@ const CustomSelect = ({
 
 const FilterBy = ({ filterByYear, years, outlineColor }) => {
   const [selectedOption, setSelectedOption] = React.useState("");
-
   // year options
   const yearsOption = years.map((year) => {
     return { value: year, label: year };

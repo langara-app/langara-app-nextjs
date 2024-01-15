@@ -23,8 +23,6 @@ const ProjectCarousel = ({ carouselData, showCardOutline, carouselIdx }) => {
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(false);
 
-  const [counter, setCounter] = useState(0);
-
   const handleScroll = () => {
     const container = scrollContainer.current;
 
@@ -49,6 +47,10 @@ const ProjectCarousel = ({ carouselData, showCardOutline, carouselIdx }) => {
           setShowAfter(true);
           setShowBefore(false);
           setShowLeftArrow(false);
+        }
+        if (!isAtEnd && !isAtStart) {
+          setShowLeftArrow(true);
+          setShowRightArrow(true);
         }
       } else {
         setShowAfter(false);
@@ -137,47 +139,47 @@ const Container = styled.div`
   margin: 0 auto;
   position: relative;
 
-  ${(props) =>
-    props.showbefore &&
-    `
-      &::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -1px;
-        width: 50px;
-        height: 100%;
-        background: linear-gradient(
-          to left,
-          rgba(255, 255, 255, 0) 0%,
-          rgba(255, 255, 255, 0) 20%,
-          rgba(255, 255, 255, 0) 30%,
-          ${props.carouselidx === 0 ? CommonStyling.primaryColor : "white"} 100%
-        );
-        z-index: 2;
-      }
-    `}
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -1px;
+    width: 50px;
+    height: 100%;
+    background: linear-gradient(
+      to left,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0) 20%,
+      rgba(255, 255, 255, 0) 30%,
+      ${(props) =>
+          props.carouselidx === 0 ? CommonStyling.primaryColor : "white"}
+        100%
+    );
+    z-index: 2;
+    transition: opacity 0.6s ease;
+    opacity: ${(props) => (props.showbefore ? 1 : 0)};
+  }
 
-  ${(props) =>
-    props.showafter &&
-    `
-      &::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: -1px;
-        width: 50px;
-        height: 100%;
-        background: linear-gradient(
-          to right,
-          rgba(255, 255, 255, 0) 0%,
-          rgba(255, 255, 255, 0) 20%,
-          rgba(255, 255, 255, 0) 30%,
-          ${props.carouselidx === 0 ? CommonStyling.primaryColor : "white"} 100%
-        );
-        z-index: 2;
-      }
-    `}
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -1px;
+    width: 50px;
+    height: 100%;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0) 20%,
+      rgba(255, 255, 255, 0) 30%,
+      ${(props) =>
+          props.carouselidx === 0 ? CommonStyling.primaryColor : "white"}
+        100%
+    );
+    z-index: 2;
+    transition: opacity 0.6s ease;
+    opacity: ${(props) => (props.showafter ? 1 : 0)};
+  }
 
   .container {
     max-width: 1600px;
@@ -238,12 +240,27 @@ const Container = styled.div`
   @media (max-width: 768px) {
     /* Hide the navigation buttons on mobile */
     .nav-button {
-      display: none;
+      // display: none;
+    }
+
+    .nav-button-left {
+      left: 2.75rem;
+    }
+
+    .nav-button-right {
+      right: 2.75rem;
+    }
+
+    &::before {
+      opacity: 1;
+    }
+    &::after {
+      opacity: 1;
     }
 
     .carousel {
-      padding-left: 45px;
-      padding-right: 45px;
+      padding-left: 16px;
+      padding-right: 16px;
     }
   }
 `;
