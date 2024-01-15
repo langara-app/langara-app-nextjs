@@ -222,20 +222,6 @@ const Container = styled.div`
     flex-direction: column;
   }
 
-  // ============> Carousel button Custom Styles
-
-  .react-multi-carousel-list .react-multiple-carousel__arrow {
-    // background-color: ${CommonStyling.primaryColor} !important;
-    background-color: rgba(241, 90, 34, 0.5);
-  }
-
-  .react-multi-carousel-list .react-multiple-carousel__arrow:hover {
-    // background-color: ${CommonStyling.primaryColor} !important;
-    background-color: rgba(241, 90, 34);
-  }
-
-  // ============> Carousel button Custom Styles Ends
-
   .event-information {
     padding-left: 3rem;
     padding-right: 3rem;

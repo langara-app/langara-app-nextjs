@@ -1,16 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
-import Link from "next/link";
-import Image from "next/image";
-import useWindowWidth from "../Hooks/useWindowWidth";
 import { CommonStyling } from "../../lib/CommonStyling";
 
 // import cards
 import ProjectCard from "./ProjectCard";
-
-// imports
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
 
 // react icon left / right
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa6";
@@ -241,10 +234,6 @@ const Container = styled.div`
   }
 
   @media (max-width: 768px) {
-    /* Hide the navigation buttons on mobile */
-    .nav-button {
-      // display: none;
-    }
 
     .nav-button-left {
       left: 2.75rem;

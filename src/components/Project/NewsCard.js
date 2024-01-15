@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Link from "next/link";
-import useWindowWidth from "../Hooks/useWindowWidth";
 import { CommonStyling } from "../../lib/CommonStyling";
 
 // import components
@@ -64,6 +62,7 @@ const NewsCard = ({ cardData, showOutline, eventType }) => {
 };
 
 const Container = styled.div`
+  width: 300px;
   .card {
     width: 300px;
     height: 450px;
