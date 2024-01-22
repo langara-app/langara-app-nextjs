@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Link from "next/link";
 import Button from "../ReusableElements/Button";
-import Image from "next/image";
 import { CommonStyling } from "@/lib/CommonStyling";
 
 const NewStudentSection = ({

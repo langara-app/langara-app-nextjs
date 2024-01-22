@@ -9,7 +9,7 @@ import { HomeData } from "../../lib/HomeData";
 import newStudentBgImg from "@/assets/new-student/newStudentBgImg.png";
 import { CommonStyling } from "../../lib/CommonStyling";
 import ReactPlayer from "react-player/youtube";
-import placeholder1 from "../../assets/img/placeholder1.jpg";
+import placeholder1 from "@/assets/new-student/thumbnail.png";
 import registerImg from "@/assets/new-student/registerImg.png";
 import orientationImg from "@/assets/new-student/orientationImg.png";
 import bookingImg from "@/assets/new-student/bookingImg.png";
@@ -31,7 +31,7 @@ const NewStudent = () => {
       setHasWindow(true);
     }
   }, []);
-  const url = "https://youtu.be/jB5kt2GPND0?si=mk9aJu4t8v0IQykn";
+  const url = "https://www.youtube.com/watch?v=2rTbkTU7oqk";
   const { explore, social, slides } = NewStudentData;
   const { registration, orientation, booking, campusMap } = explore;
   const { links } = social;
