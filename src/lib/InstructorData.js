@@ -1,24 +1,17 @@
-import jason from "../assets/img/instructors/jason.jpeg";
-import jesica from "../assets/img/instructors/jesica.jpeg";
-import reza_a from "../assets/img/instructors/reza_a.png";
-import denis from "../assets/img/instructors/denis.jpeg";
-import paul from "../assets/img/instructors/paul.jpg";
-import reza_e from "../assets/img/instructors/reza_e.png";
-import tito from "../assets/img/instructors/tito.png";
-import tyler from "../assets/img/instructors/tyler.jpeg";
-import paul_l from "../assets/img/instructors/paul_l.jpeg";
-import sara from "../assets/img/instructors/sara.jpeg";
-import kevin from "../assets/img/instructors/kevin.png";
-import josue from "../assets/img/instructors/josue.jpg";
-import jordan from "../assets/img/instructors/jordan.jpeg";
-import jean from "../assets/img/instructors/jean.jpeg";
-import tomoko from "../assets/img/instructors/tomoko.png";
-import rodrigo from "../assets/img/instructors/rodrigo.jpg";
-import trista from "../assets/img/instructors/trista.jpeg";
-import peter from "../assets/img/instructors/peter.jpg";
-import richard from "../assets/img/instructors/richard.jpeg";
-import lu from "../assets/img/instructors/lu.jpeg";
-import ira from "../assets/img/instructors/ira.png";
+import placeholder from "@/assets/img/instructors/placeholder.png";
+import jason from "@/assets/img/instructors/jason-madar.png";
+import jesica from "@/assets/img/instructors/jesica-ortega.png";
+import josue from "@/assets/img/instructors/josue-menjivar.png";
+import richard from "@/assets/img/instructors/richard-wong.jpg";
+import reza from "@/assets/img/instructors/reza-etemadi.png";
+import peter from "@/assets/img/instructors/peter-vysek.png";
+import lu from "@/assets/img/instructors/lu-yu.png";
+import kevin from "@/assets/img/instructors/kevin-mcmillian.png";
+import tyler from "@/assets/img/instructors/typer-higgs.png";
+import ira from "@/assets/img/instructors/ira-zhang.png";
+import amandeep from "@/assets/img/instructors/amandeep-singh.png";
+import merry from "@/assets/img/instructors/merry-nguyen.png";
+import valentina from "@/assets/img/instructors/valentina-abanina.png";
 
 export const InstructorData = {
   header: {
@@ -28,150 +21,155 @@ export const InstructorData = {
   },
   instructors: [
     {
-      image: reza_e,
+      image: jason,
       name: "Jason Madar",
       title: "Instructor, Program Coordinator",
     },
     {
-      image: reza_e,
+      image: jesica,
       name: "Jesica Ortega Nava",
       title: "Instructor, Program Coordinator",
     },
     {
-      image: reza_e,
-      name: "Reza Abbasi",
+      image: josue,
+      name: "Josué Menjivar",
       title: "Instructor",
     },
     {
-      image: reza_e,
-      name: "Denis Billette",
+      image: richard,
+      name: "Richard Wong",
       title: "Instructor",
     },
     {
-      image: reza_e,
-      name: "Paul Brassard",
-      title: "Instructor",
-    },
-    {
-      image: reza_e,
+      image: reza,
       name: "Reza Etemadi",
       title: "Instructor",
     },
     {
-      image: reza_e,
-      name: "Jeffrey Ellis",
+      image: peter,
+      name: "Peter Vysek",
       title: "Instructor",
     },
     {
-      image: reza_e,
-      name: "Tito Ferradans",
+      image: lu,
+      name: "Lu Yu",
       title: "Instructor",
     },
     {
-      image: reza_e,
+      image: kevin,
+      name: "Kevin McMillian",
+      title: "Instructor",
+    },
+    {
+      image: tyler,
       name: "Tyler Higgs",
       title: "Instructor",
     },
     {
-      image: reza_e,
+      image: ira,
+      name: "Ira Zhang",
+      title: "Instructor",
+    },
+    {
+      image: amandeep,
+      name: "Amandeep Singh",
+      title: "Instructor",
+    },
+    {
+      image: merry,
+      name: "Merry Nguyen",
+      title: "Instructional Assistant",
+    },
+    {
+      image: valentina,
+      name: "Valentina Abanina",
+      title: "Instructional Assistant",
+    },
+    {
+      image: placeholder,
+      name: "Denis Billette",
+      title: "Instructor",
+    },
+    {
+      image: placeholder,
+      name: "Paul Brassard",
+      title: "Instructor",
+    },
+    {
+      image: placeholder,
+      name: "Reza Abbasi",
+      title: "Instructor",
+    },
+    {
+      image: placeholder,
+      name: "Jeffrey Ellis",
+      title: "Instructor",
+    },
+    {
+      image: placeholder,
+      name: "Tito Ferradans",
+      title: "Instructor",
+    },
+
+    {
+      image: placeholder,
       name: "Sara McIntyre",
       title: "Instructor",
     },
 
     {
-      image: reza_e,
-      name: "Kevin McMillian",
-      title: "Instructor",
-    },
-    {
-      image: reza_e,
-      name: "Josué Menjivar",
-      title: "Instructor",
-    },
-    {
-      image: reza_e,
+      image: placeholder,
       name: "Jordan Miller",
       title: "Instructor",
     },
     {
-      image: reza_e,
+      image: placeholder,
       name: "Tomoko Okochi",
       title: "Instructor",
     },
     {
-      image: reza_e,
-      name: "Derek Tam",
-      title: "Instructor",
-    },
-    {
-      image: reza_e,
+      image: placeholder,
       name: "Jacob Tran",
       title: "Instructor",
     },
     {
-      image: reza_e,
+      image: placeholder,
+      name: "Ivan Wong",
+      title: "Instructor",
+    },
+    {
+      image: placeholder,
       name: "Marinela Poso",
       title: "Instructor",
     },
     {
-      image: reza_e,
-      name: "Peter Vysek",
+      image: placeholder,
+      name: "Jorge Puertovannetti",
       title: "Instructor",
     },
     {
-      image: reza_e,
-      name: "Richard Wong",
-      title: "Instructor",
-    },
-    {
-      image: reza_e,
-      name: "Lu Yu",
-      title: "Instructor",
-    },
-    {
-      image: reza_e,
-      name: "Ira Zhang",
-      title: "Instructor",
-    },
-
-    {
-      image: reza_e,
-      name: "Valentina Abanina",
-      title: "Instructional Assistant",
-    },
-    {
-      image: reza_e,
+      image: placeholder,
       name: "Karen Jeong",
       title: "Instructional Assistant",
     },
     {
-      image: reza_e,
+      image: placeholder,
       name: "Paul Lam",
       title: "Instructional Assistant",
     },
     {
-      image: reza_e,
+      image: placeholder,
       name: "Jean Nguyen",
       title: "Instructional Assistant",
     },
     {
-      image: reza_e,
-      name: "Merry Nguyen",
-      title: "Instructional Assistant",
-    },
-    {
-      image: reza_e,
+      image: placeholder,
       name: "Rodrigo Ornellas",
       title: "Instructional Assistant",
     },
     {
-      image: reza_e,
-      name: "Trista Townsend",
-      title: "Instructional Assistant",
-    },
-    {
-      image: reza_e,
-      name: "Amandeep Singh",
+      image: placeholder,
+      name: "Binazir Farokhi",
       title: "Instructional Assistant",
     },
   ],
