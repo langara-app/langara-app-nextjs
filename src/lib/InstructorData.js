@@ -28,7 +28,7 @@ export const InstructorData = {
     {
       image: jesica,
       name: "Jesica Ortega Nava",
-      title: "Instructor, Program Coordinator",
+      title: "Instructor, Assistant Coordinator",
     },
     {
       image: josue,

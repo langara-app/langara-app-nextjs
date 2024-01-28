@@ -24,18 +24,13 @@ const Card = styled.div`
 `;
 
 const ImageBlock = styled.div`
-  // border: 1px solid #000000;
-  background-color: #000000;
+  margin: 0 auto;
   border-radius: 16px;
   height: 300px;
-  width: 175px;
+  width: 100%;
   position: relative;
   margin-bottom: 1rem;
 
-  // @media only screen and (min-width: 768px) {
-  //   height: 300px;
-  //   width: 175px;
-  // }
 `;
 
 const ProfileImage = styled.img`
