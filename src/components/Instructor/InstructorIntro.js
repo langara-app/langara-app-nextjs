@@ -26,6 +26,7 @@ const Card = styled.div`
 const ImageBlock = styled.div`
   margin: 0 auto;
   border-radius: 16px;
+  border: 2px solid rgb(230, 230, 230);
   height: 300px;
   width: 100%;
   position: relative;
