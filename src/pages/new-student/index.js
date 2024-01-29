@@ -98,6 +98,7 @@ const NewStudent = () => {
           btnTxt="Book Now"
           imgSrc={bookingImg}
           link={booking.link}
+          imgPos="left"
         />
         <NewStudentSection
           title={campusMap.title}

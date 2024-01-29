@@ -10,6 +10,7 @@ const NewStudentSection = ({
   btnTxt,
   link,
   imgSrc,
+  imgPos
 }) => {
   return (
     <Container order={order}>
@@ -31,7 +32,7 @@ const NewStudentSection = ({
         </ButtonWrapper>
       </Left>
       <Right>
-        <RightImg src={imgSrc} alt={title} />
+        <RightImg src={imgSrc} alt={title} imgPos={imgPos} />
       </Right>
     </Container>
   );
@@ -87,6 +88,14 @@ const Right = styled.div`
 const RightImg = styled.img`
   border-radius: 16px;
   object-fit: cover;
+  @media screen and (min-width: 768px) and (max-width: 930px) {
+    object-position: ${props => props.imgPos == "left" ? "-200px"  : 'center'};
+  }
+
+  @media screen and (max-width: 350px) {
+    object-position: ${props => props.imgPos == "left" ? "-150px"  : 'center'};
+  }
+
   height: 100%;
   width: 100%;
 `;
