@@ -34,7 +34,6 @@ export async function getStaticProps() {
   });
   let filteredFaqLists = faqLists.filter((faq) => faq.length !== 0);
   let filteredCat = faqCats.filter((cat) => cat != undefined);
-  console.log(filteredCat);
 
   return {
     props: {

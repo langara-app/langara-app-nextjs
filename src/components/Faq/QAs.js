@@ -35,8 +35,14 @@ const QAs = ({ data, expanded, setExpanded }) => {
               }}
             ></p>
 
-            <a href={q.acf.link}>
-              {q.acf.link !== undefined ? "More details" : null}
+            <a
+              href={q.acf.link}
+              style={{
+                display:
+                  q.acf.link !== undefined && !!q.acf.link ? "inline" : "none",
+              }}
+            >
+              More details
             </a>
           </AccordionDetails>
         </Accordion>
