@@ -10,6 +10,7 @@ import { HomeData } from "../../lib/HomeData";
 import formatDate from "@/utils/dateFormatter";
 
 import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 const ReactPlayer = dynamic(() => import("react-player/lazy"), { ssr: false });
 
 export async function getStaticPaths() {
@@ -39,7 +40,38 @@ export async function getStaticProps({ params }) {
 }
 
 const NewsEventsInvidivual = ({ event }) => {
-  console.log(event);
+  
+  function renderTextOrLink(text) {
+    const urlRegex = /(https?:\/\/[^\s]+)/;
+    const matches = text.match(urlRegex);
+  
+    if (matches) {
+      const url = matches[0];
+      const parts = text.split(url);
+      return (
+        <>
+          {parts[0]}
+          <Link className="app-links" href={url}>{url}</Link>
+          {parts[1]}
+          <br />
+        </>
+      );
+    } else {
+      return <>{text}<br /></>;
+    }
+  }
+  // handle app names with links
+  const [appNames, setAppNames] = useState([]);
+  useEffect(() => {
+    const appNameArtcile = event.acf.section3_article
+    const detectUrls = appNameArtcile.split("<br />\r\n").map((line) => {
+      return renderTextOrLink(line)
+    });
+    setAppNames(() => detectUrls);
+  }, [])
+
+
+
   return (
     <SingleEventPageContainer>
       <Head>
@@ -103,10 +135,9 @@ const NewsEventsInvidivual = ({ event }) => {
           {event.acf.section3_article !== "" ? (
             <p
               className="article-para"
-              dangerouslySetInnerHTML={{
-                __html: event.acf.section3_article,
-              }}
-            ></p>
+            >
+              {appNames}
+            </p>
           ) : null}
         </article>
         <article>
@@ -197,6 +228,11 @@ const EventDetails = styled.section`
     font-size: 20px;
     line-height: 30px;
     cursor: pointer;
+  }
+
+  .app-links:hover {
+    color: #F15A22;
+    cursor: disabled;
   }
 
   .article-title {

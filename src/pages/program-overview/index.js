@@ -19,6 +19,7 @@ import mainBackgroundImage from "@/assets/news-and-events/mainBackgroundImage.pn
 import placeholder1 from "../../assets/img/placeholder1.jpg";
 import mobilePlaceholder from "../../assets/img/mobilePlaceholder.png";
 
+
 const ProgramOverview = () => {
   const width = useWindowWidth();
 
@@ -429,9 +430,10 @@ const MidBot = styled.div`
     padding-left: 1.15rem;
     list-style: disc;
     .common-mobile {
-      color: rgba(7, 7, 7, 0.2);
+      color: ${CommonStyling.contrastColor};
       font-size: ${CommonStyling.body3FontSize};
       line-height: ${CommonStyling.body3LineHeight};
+      margin-top: 26px;
     }
     .common-mobile::marker {
       color: ${CommonStyling.primaryColor};
@@ -474,7 +476,7 @@ const CurriculumList = styled.li`
 
 const CommonClass = styled.li`
   margin-top: 26px;
-  color: rgba(7, 7, 7, 0.2);
+  color: ${CommonStyling.contrastColor};
   font-size: ${CommonStyling.body3FontSize};
   line-height: ${CommonStyling.body3LineHeight};
   &::marker {
