@@ -40,37 +40,57 @@ export async function getStaticProps({ params }) {
 }
 
 const NewsEventsInvidivual = ({ event }) => {
-  
-  function renderTextOrLink(text) {
-    const urlRegex = /(https?:\/\/[^\s]+)/;
-    const matches = text.match(urlRegex);
-  
-    if (matches) {
-      const url = matches[0];
-      const parts = text.split(url);
-      return (
-        <>
-          {parts[0]}
-          <Link className="app-links" href={url}>{url}</Link>
-          {parts[1]}
-          <br />
-        </>
-      );
-    } else {
-      return <>{text}<br /></>;
-    }
+  function renderNameWithLinks(text) {
+    const splits = text.split("_");
+    console.log(splits);
+
+    const appName = splits[0];
+    const appLink = splits[1];
+    const appProposal = splits[2];
+
+    return (
+      <>
+        <span className="app-name">{appName}</span>
+        {appLink ? ": " : null}
+        {appLink ? (
+          <>
+            <Link className="app-link" href={appLink}>
+              {appLink}
+            </Link>
+          </>
+        ) : null}
+        {appProposal ? (
+          <span className="app-proposal">
+            <br />
+            {appProposal}
+          </span>
+        ) : null}
+        <br />
+      </>
+    );
   }
   // handle app names with links
   const [appNames, setAppNames] = useState([]);
   useEffect(() => {
-    const appNameArtcile = event.acf.section3_article
-    const detectUrls = appNameArtcile.split("<br />\r\n").map((line) => {
-      return renderTextOrLink(line)
+    const appNameArtcile = event.acf.section3_article;
+    const detectUrls = appNameArtcile.split("<br />\r\n").map((line, key) => {
+      if (line.includes("_")) {
+        return (
+          <span className="app-section" key={key}>
+            {renderNameWithLinks(line)}
+          </span>
+        );
+      } else {
+        return (
+          <span key={key} className="app-section">
+            {line}
+            <br />
+          </span>
+        );
+      }
     });
     setAppNames(() => detectUrls);
-  }, [])
-
-
+  }, []);
 
   return (
     <SingleEventPageContainer>
@@ -133,11 +153,7 @@ const NewsEventsInvidivual = ({ event }) => {
             <h3 className="article-title">{event.acf.section3_title}</h3>
           ) : null}
           {event.acf.section3_article !== "" ? (
-            <p
-              className="article-para"
-            >
-              {appNames}
-            </p>
+            <p className="article-para">{appNames}</p>
           ) : null}
         </article>
         <article>
@@ -230,9 +246,24 @@ const EventDetails = styled.section`
     cursor: pointer;
   }
 
-  .app-links:hover {
-    color: #F15A22;
+  .app-section {
+    margin-top: 0.5rem;
+    display: block;
+  }
+
+  .app-name {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+  }
+
+  .app-link {
+    color: #f15a22;
     cursor: disabled;
+  }
+
+  .app-link:hover {
+    text-decoration: underline;
   }
 
   .article-title {
