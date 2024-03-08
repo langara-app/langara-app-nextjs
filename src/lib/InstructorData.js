@@ -4,7 +4,7 @@ import jesica from "@/assets/img/instructors/jesica-ortega.png";
 import josue from "@/assets/img/instructors/josue-menjivar.png";
 import richard from "@/assets/img/instructors/richard-wong.jpg";
 import reza from "@/assets/img/instructors/reza-etemadi.png";
-import peter from "@/assets/img/instructors/peter-vysek.png";
+import peter from "@/assets/img/instructors/peter-vysek.jpg";
 import lu from "@/assets/img/instructors/lu-yu.png";
 import kevin from "@/assets/img/instructors/kevin-mcmillian.png";
 import tyler from "@/assets/img/instructors/typer-higgs.png";
