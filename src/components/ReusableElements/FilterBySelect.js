@@ -33,8 +33,7 @@ const CustomSelect = ({
 
   useEffect(() => {
     const listenToClickingOutside = (e) => {
-      
-      if ( !([...e.target.classList]).includes("select-btn")) {
+      if (![...e.target.classList].includes("select-btn")) {
         setOpen(false);
       }
     };
@@ -87,11 +86,11 @@ const CustomSelect = ({
                 key={option.value}
                 onClick={(e) => {
                   e.stopPropagation();
-                  onChange(option.value);
-                  setOpen(false);
+                  if (open) {
+                    onChange(option.value);
+                    setOpen(false);
+                  }
                 }}
-
-
                 value={option.value}
                 className={
                   option.label == (value || label)
