@@ -170,6 +170,19 @@ const NewsEventsInvidivual = ({ event }) => {
           ) : null}
         </article>
         <article>
+          {event.acf.section4_title !== "" ? (
+            <h3 className="article-title">{event.acf.section5_title}</h3>
+          ) : null}
+          {event.acf.section5_article !== "" ? (
+            <p
+              className="article-para"
+              dangerouslySetInnerHTML={{
+                __html: event.acf.section5_article,
+              }}
+            ></p>
+          ) : null}
+        </article>
+        <article>
           <h3 className="article-title">Event Details</h3>
           <div className="eventMeta">
             <div>
