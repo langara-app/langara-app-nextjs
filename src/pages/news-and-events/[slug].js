@@ -183,6 +183,18 @@ const NewsEventsInvidivual = ({ event }) => {
           ) : null}
         </article>
         <article>
+          {!!event.acf.event_link_title && event.acf.event_link_title !== "" ? (
+            <h3 className="article-title">{event.acf.event_link_title}</h3>
+          ) : null}
+          {!!event.acf.event_link && event.acf.event_link !== "" ? (
+            <p className="article-para">
+            <Link className="app-link" href={event.acf.event_link}>
+              {event.acf.event_link}
+            </Link>
+          </p>
+          ) : null}
+        </article>
+        <article>
           <h3 className="article-title">Event Details</h3>
           <div className="eventMeta">
             <div>
