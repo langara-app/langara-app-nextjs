@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
+import Link from "next/link";
 import Head from "next/head";
 import styled from "styled-components";
 import useWindowWidth from "../../components/Hooks/useWindowWidth";
@@ -7,7 +8,6 @@ import { WmddData } from "../../lib/WmddData";
 import { InstructorData } from "../../lib/InstructorData";
 import InstructorSlider from "../../components/Instructor/InstructorSlider";
 
-import placeholder from "../../assets/img/wmdd/placeholder.png";
 import Button from "../../components/ReusableElements/Button";
 import BottomBox from "../../components/ReusableElements/BottomBox";
 import { CustomSelect } from "../../components/ReusableElements/FilterBySelect";
@@ -17,21 +17,9 @@ import { HomeData } from "../../lib/HomeData";
 import ReactPlayer from "react-player/youtube";
 import mainBackgroundImage from "@/assets/news-and-events/mainBackgroundImage.png";
 import placeholder1 from "../../assets/img/placeholder1.jpg";
-import mobilePlaceholder from "../../assets/img/mobilePlaceholder.png";
-
 
 const ProgramOverview = () => {
   const width = useWindowWidth();
-
-  const profVidRef = useRef(null);
-  const profImageRef = useRef(null);
-
-  const handleImageClick = (event) => {
-    profVidRef.current.style = "visibility: visible";
-    console.log(profImageRef.current);
-    profImageRef.current.style = "visibility: hidden";
-    profVidRef.current.src = `${profVidRef.current.src}&autoplay=1&controls=1`;
-  };
 
   const [selectedOption, setSelectedOption] = useState("Term 1");
   const handleChange = (value) => {
@@ -106,6 +94,15 @@ const ProgramOverview = () => {
                 bcg="#F15A22"
                 hover={true}
               />
+              <p className="handbook-url-container">
+                <Link
+                  className="handbook-url"
+                  target="_blank"
+                  href={WmddData.handbook_url}
+                >
+                  Download Handbook Summer 24
+                </Link>
+              </p>
             </MidLeft>
             <MidRight>
               <CustomSelect
@@ -167,6 +164,15 @@ const ProgramOverview = () => {
                 color="#FFFFFF"
                 bcg="#F15A22"
               />
+              <p className="handbook-url-container">
+                <Link
+                  className="handbook-url"
+                  target="_blank"
+                  href={WmddData.handbook_url}
+                >
+                  Download Handbook Summer 24
+                </Link>
+              </p>
             </MidTop>
             <MidBot>
               <CustomSelect
@@ -231,7 +237,19 @@ const ProgramOverview = () => {
   );
 };
 
-const PageContainer = styled.div``;
+const PageContainer = styled.div`
+  .handbook-url-container {
+    margin-top: 2rem;
+  }
+  .handbook-url {
+    color: ${CommonStyling.primaryColor};
+    text-decoration: underline;
+    font-weight: bold;
+  }
+  .handbook-url:hover {
+    text-decoration: none;
+  }
+`;
 
 const TopSection = styled.section`
   background: url(${({ mainBackgroundImage }) => mainBackgroundImage});
@@ -394,6 +412,7 @@ const MidLeft = styled.div`
 
 const MidTop = styled.div`
   color: #000;
+  margin-bottom: 3rem;
   h1 {
     font-size: ${CommonStyling.h2FontSize};
     line-height: ${CommonStyling.h2LineHeight};
@@ -409,7 +428,6 @@ const MidTop = styled.div`
   }
   button {
     width: 100%;
-    margin-bottom: 64px;
   }
 `;
 const MidBot = styled.div`
