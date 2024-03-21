@@ -244,6 +244,7 @@ const PageContainer = styled.div`
   .handbook-url {
     color: ${CommonStyling.primaryColor};
     text-decoration: underline;
+    text-decoration-thickness: 2.5px;
     font-weight: bold;
   }
   .handbook-url:hover {
