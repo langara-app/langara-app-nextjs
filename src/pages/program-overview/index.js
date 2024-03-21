@@ -414,6 +414,9 @@ const MidLeft = styled.div`
 const MidTop = styled.div`
   color: #000;
   margin-bottom: 3rem;
+  .handbook-url-container {
+    text-align: center;
+  }
   h1 {
     font-size: ${CommonStyling.h2FontSize};
     line-height: ${CommonStyling.h2LineHeight};
