@@ -71,15 +71,18 @@ const Project = ({ project }) => {
       <ProjectContents>
         <p dangerouslySetInnerHTML={{ __html: data.acf.app_description }}></p>
       </ProjectContents>
-
-      <TeamMembers>
-        <h2>{ data.acf.team_name}&apos;s team members</h2>
-        <ul>
-          {data.project_member.map((memberName, idx) => {
-            return <li key={idx}>{memberName}</li>;
-          })}
-        </ul>
-      </TeamMembers>
+      {"project_member" in data && !!data.project_member.length && (
+        <>
+          <TeamMembers>
+            <h2>{data.acf.team_name}&apos;s team members</h2>
+            <ul>
+              {data.project_member.map((memberName, idx) => {
+                return <li key={idx}>{memberName}</li>;
+              })}
+            </ul>
+          </TeamMembers>
+        </>
+      )}
     </Container>
   );
 };
@@ -162,7 +165,7 @@ const TeamMembers = styled.div`
   font-size: ${CommonStyling.body1FontSize};
   font-weight: 400;
   line-height: ${CommonStyling.body1LineHeight};
-  
+
   h2 {
     font-weight: 700;
     font-size: ${CommonStyling.h2FontSize};
@@ -170,7 +173,7 @@ const TeamMembers = styled.div`
     margin-bottom: 1rem;
   }
   li {
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
   }
 `;
 
