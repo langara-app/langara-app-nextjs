@@ -26,7 +26,8 @@ const Project = ({ project }) => {
     return null;
   }
 
-  console.log(isProposalActive, data?.acf?.project_proposal_file);
+  // console.log(isProposalActive, data?.acf?.project_proposal_file);
+  console.log(data.project_member);
 
   return (
     <Container>
@@ -42,13 +43,14 @@ const Project = ({ project }) => {
           ) : data.categories_slugs == "hybrid" ? (
             <p className="singleTitle">{ProjectCategoryData[2].title}</p>
           ) : null}
-          <h1 className="projectTitle">{data.acf.name_of_the_project}</h1>
         </div>
       </Link>
 
+      <h1 className="projectTitle">{data.acf.name_of_the_project}</h1>
+
       <div className="actionContainer">
         {data.acf.project_proposal_file && isProposalActive ? (
-          <Link href={data.acf.project_proposal_file}  target="_blank">
+          <Link href={data.acf.project_proposal_file} target="_blank">
             <img src={ProjectData.ProjectDetails.downloadProposalIcon} />
             {ProjectData.ProjectDetails.downloadProposal}
           </Link>
@@ -69,6 +71,15 @@ const Project = ({ project }) => {
       <ProjectContents>
         <p dangerouslySetInnerHTML={{ __html: data.acf.app_description }}></p>
       </ProjectContents>
+
+      <TeamMembers>
+        <h2>{ data.acf.team_name}&apos;s team members</h2>
+        <ul>
+          {data.project_member.map((memberName, idx) => {
+            return <li key={idx}>{memberName}</li>;
+          })}
+        </ul>
+      </TeamMembers>
     </Container>
   );
 };
@@ -81,7 +92,9 @@ const Container = styled.div`
   padding: 4.9vh 4.1vw 9.7vh 4.1vw;
 
   .projectTitle {
-    font-size: 2.375rem;
+    line-height: 50px;
+    font-weight: 700;
+    font-size: ${CommonStyling.h1FontSize};
     text-align: left;
     margin: 0;
     padding-top: 1vh;
@@ -142,6 +155,22 @@ const ProjectContents = styled.div`
   }
 
   @media only screen and (min-width: 768px) {
+  }
+`;
+const TeamMembers = styled.div`
+  margin-top: 3rem;
+  font-size: ${CommonStyling.body1FontSize};
+  font-weight: 400;
+  line-height: ${CommonStyling.body1LineHeight};
+  
+  h2 {
+    font-weight: 700;
+    font-size: ${CommonStyling.h2FontSize};
+    line-height: ${CommonStyling.h2LineHeight};
+    margin-bottom: 1rem;
+  }
+  li {
+    margin-bottom: .5rem;
   }
 `;
 
