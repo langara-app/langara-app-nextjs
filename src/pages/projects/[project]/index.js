@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
-import useWindowWidth from "../../../components/Hooks/useWindowWidth";
 import Head from "next/head";
 
 import { ProjectData } from "../../../lib/ProjectData";
@@ -17,17 +16,12 @@ const Project = ({ project }) => {
 
   const data = project[0];
 
-  const width = useWindowWidth();
-
   const isSiteLinkActive = useEndpointStatus(data?.acf?.project_site_link);
   const isProposalActive = useEndpointStatus(data?.acf?.project_proposal_file);
 
   if (isSiteLinkActive === null || isProposalActive === null) {
     return null;
   }
-
-  // console.log(isProposalActive, data?.acf?.project_proposal_file);
-  console.log(data.project_member);
 
   return (
     <Container>

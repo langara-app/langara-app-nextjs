@@ -1,7 +1,7 @@
 import kickStart from "../assets/img/wmdd/kickStart.png";
 
 export const WmddData = {
-  handbook_url: "https://api.langara-app.ca/wp-content/uploads/2024/03/Handbook-2024.pdf",
+  handbook_url: "https://api.langara-app.ca/wp-content/uploads/2024/04/2024-20_WMDD_Handbook_v1.4.pdf",
   header: {
     title: "Program Overview",
     subtitle: "Web and Mobile App Design and Development",
