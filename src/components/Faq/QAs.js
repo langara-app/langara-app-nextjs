@@ -5,13 +5,20 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import { IoIosArrowDown } from "react-icons/io";
 import { CommonStyling } from "../../lib/CommonStyling";
-import useWindowWidth from "../../components/Hooks/useWindowWidth";
+import { useRouter } from "next/router";
 
 const QAs = ({ data, expanded, setExpanded }) => {
-  const width = useWindowWidth();
+  const router = useRouter();
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : null);
+  };
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    if (e.target.tagName == "A") {
+      router.push(e.target.href, undefined, { scroll: false });
+    }
   };
 
   return (
@@ -30,6 +37,7 @@ const QAs = ({ data, expanded, setExpanded }) => {
           </AccordionSummary>
           <AccordionDetails>
             <p
+              onClick={handleClick}
               dangerouslySetInnerHTML={{
                 __html: q.acf.answer,
               }}
@@ -104,6 +112,10 @@ const QAContainer = styled.div`
   p {
     padding: 0 2rem;
     padding-bottom: 2rem;
+  }
+
+  .answer-html-link {
+    padding: 0;
   }
 
   a {
