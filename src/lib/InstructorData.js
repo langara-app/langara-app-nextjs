@@ -13,6 +13,7 @@ import amandeep from "@/assets/img/instructors/amandeep-singh.png";
 import merry from "@/assets/img/instructors/merry-nguyen.png";
 import valentina from "@/assets/img/instructors/valentina-abanina.png";
 import binazir from "@/assets/img/instructors/binazir-farokhi.jpg";
+import tomoko from "@/assets/img/instructors/tomoko-okochi.jpg";
 
 export const InstructorData = {
   header: {
@@ -64,6 +65,11 @@ export const InstructorData = {
     {
       image: tyler,
       name: "Tyler Higgs",
+      title: "Instructor",
+    },
+    {
+      image: tomoko,
+      name: "Tomoko Okochi",
       title: "Instructor",
     },
     {
@@ -126,11 +132,6 @@ export const InstructorData = {
     {
       image: placeholder,
       name: "Jordan Miller",
-      title: "Instructor",
-    },
-    {
-      image: placeholder,
-      name: "Tomoko Okochi",
       title: "Instructor",
     },
     {
