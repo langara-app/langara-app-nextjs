@@ -1,52 +1,48 @@
 import React, { useState, useEffect } from "react";
-import Select from "react-dropdown-select";
-import useWindowWidth from "../Hooks/useWindowWidth";
 import styled from "styled-components";
 import { CommonStyling } from "../../lib/CommonStyling";
+import Link from "next/link";
 
 const Options = ({ data, onClick }) => {
-  const width = useWindowWidth();
-  const [questionCat, setQuestionCat] = useState(data[0].categorySlug);
-  const [checkedIndex, setCheckedIndex] = useState(1);
+  const [checkedIndex, setCheckedIndex] = useState(null);
+
+  useEffect(() => {
+    const hash = window.location.hash.slice(1);
+    if (!hash) {
+      onClick(data[0].categorySlug);
+      setCheckedIndex(1);
+    } else {
+      const chIdx = data.findIndex((obj) => obj.categorySlug == hash) + 1;
+      onClick(hash);
+      setCheckedIndex(chIdx);
+    }
+  }, []);
 
   const scrutinizer = (val) => {
     return parseInt(val.split(" ")[2]);
   };
 
   const setCat = (values) => {
-    width < 768
-      ? onClick(values[0].categorySlug)
-      : (onClick(values.id), setCheckedIndex(scrutinizer(values.className)));
+    onClick(values.id);
+    setCheckedIndex(scrutinizer(values.className));
   };
 
-  return width < 768 ? (
-    <Select
-      options={data}
-      onChange={setCat}
-      valueField={"categorySlug"}
-      labelField={"categoryName"}
-      color={"#C36448"}
-      values={[data[0]]}
-      style={{ padding: "1rem", marginBottom: "8.5vw" }}
-      searchable={false}
-      className="cursor-animate"
-    />
-  ) : (
+  return (
     <Container>
       {data.map((q, index) => (
-        <CategoryName
-          key={index}
-          onClick={(e) => {
-            setCat(e.target);
-          }}
-          id={q.categorySlug}
-          className={index + 1}
-          data-number={index + 1}
-          checked={checkedIndex}
-          data-haidren={q.categorySlug}
-        >
-          {q.categoryName}
-        </CategoryName>
+        <Link key={index} href={"#" + q.categorySlug}>
+          <CategoryName
+            onClick={(e) => {
+              setCat(e.target);
+            }}
+            id={q.categorySlug}
+            className={index + 1}
+            data-number={index + 1}
+            checked={checkedIndex}
+          >
+            {q.categoryName}
+          </CategoryName>
+        </Link>
       ))}
     </Container>
   );
@@ -60,7 +56,9 @@ const CategoryName = styled.p`
   font-weight: ${(allProps) =>
     allProps["data-number"] === allProps["checked"] ? 600 : 200};
   border-bottom: ${(allProps) =>
-    allProps["data-number"] === allProps["checked"] ? "3px solid #F15A22" : "none"};
+    allProps["data-number"] === allProps["checked"]
+      ? "3px solid #F15A22"
+      : "none"};
   padding: 0.8rem;
   cursor: pointer;
   margin-bottom: 2.8vh;

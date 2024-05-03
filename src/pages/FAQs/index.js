@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import Head from "next/head";
 import useWindowWidth from "../../components/Hooks/useWindowWidth";
@@ -8,6 +8,7 @@ import QAs from "../../components/Faq/QAs";
 import { Faq } from "../../lib/Faq";
 import { HomeData } from "../../lib/HomeData";
 import { CommonStyling } from "../../lib/CommonStyling";
+import Link from "next/link";
 
 export async function getStaticProps() {
   const cats = await fetch(
@@ -48,6 +49,14 @@ const FAQ = ({ faqLists, questionCat }) => {
   const [catSlug, setCatSlug] = useState(questionCat[0].categorySlug);
   const width = useWindowWidth();
   const [expanded, setExpanded] = useState(null);
+
+  useEffect(() => {
+    const hash = window.location.hash.slice(1);
+    if (!hash) {
+      window.location.hash = questionCat[0].categorySlug;
+    }
+  }, []);
+
   const onSlugSet = (value) => {
     setCatSlug(value);
     setExpanded(null);
@@ -70,7 +79,9 @@ const FAQ = ({ faqLists, questionCat }) => {
       {width < 768 ? (
         questionCat.map((qc) => (
           <div key={qc.categorySlug}>
-            <CategoryTitle>{qc.categoryName}</CategoryTitle>
+            <CategoryTitle>
+              <Link href={"#" + qc.categorySlug}>{qc.categoryName}</Link>
+            </CategoryTitle>
             <QAs
               data={getFilteredArr(qc.categorySlug)}
               expanded={expanded}
