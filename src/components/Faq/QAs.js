@@ -50,7 +50,7 @@ const QAs = ({ data, expanded, setExpanded }) => {
                   q.acf.link !== undefined && !!q.acf.link ? "inline" : "none",
               }}
             >
-              More details
+              More Details
             </a>
           </AccordionDetails>
         </Accordion>
@@ -125,6 +125,11 @@ const QAContainer = styled.div`
     color: #f15a22;
     padding: 0 2rem;
     padding-bottom: 2rem;
+    text-decoration: underline solid;
+    text-decoration-thickness: 2px;
+  }
+  a:hover {
+    text-decoration: none;
   }
 
   @media only screen and (min-width: 768px) {
