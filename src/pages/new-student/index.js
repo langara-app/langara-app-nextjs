@@ -54,9 +54,9 @@ const NewStudent = () => {
                   <div className="description">
                     {NewStudentData.header.description}
                   </div>
-                  <Link className="explore" href="#explore">
-                    Explore
-                  </Link>
+                  <div className="explore">
+                    <Link href="#explore">Explore</Link>
+                  </div>
                 </Greetings>
               </TopLeft>
               <TopVideo>
@@ -250,10 +250,15 @@ const Greetings = styled.div`
   .explore {
     display: flex;
     justify-content: flex-end;
+  }
+  .explore a {
     color: ${CommonStyling.primaryColor};
     text-decoration-line: underline;
     text-underline-offset: 4px;
     text-decoration-thickness: 2.5px;
+  }
+  .explore a:hover {
+    text-decoration: none;
   }
 
   @media only screen and (min-width: 1111px) {
@@ -261,7 +266,6 @@ const Greetings = styled.div`
     flex-flow: column;
     justify-content: space-evenly;
   }
-
 `;
 const TopVideo = styled.div`
   iframe {
