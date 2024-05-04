@@ -82,7 +82,7 @@ export const NewStudentData = {
     description2:
       "Subscribe to WMDD's YouTube for diverse content—alumni interviews, events, and student showcases. Explore creativity!",
     links: {
-      facebook: "https://www.facebook.com/search/top/?q=langara%20college",
+      facebook: "https://www.facebook.com/langaracollege/ ",
       instagram: "https://www.instagram.com/langaracollege/",
       twitterX: "https://twitter.com/langaracollege",
       youtube: "https://www.youtube.com/channel/UCMhljXPVbfDIr_9ks6BpTGw",
