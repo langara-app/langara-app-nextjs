@@ -1,10 +1,11 @@
-import valentina from "@/assets/img/new-student/valentina.png";
+import valentina from "@/assets/img/new-student/valentina.jpg";
 import aleksey from "@/assets/img/new-student/aleksey.png";
 import pablo from "@/assets/img/new-student/pablo.png";
 import katrina from "@/assets/img/new-student/katrina.png";
 import taras from "@/assets/img/new-student/taras.png";
 import monica from "@/assets/img/new-student/monica.png";
 import karan from "@/assets/img/new-student/karan.png";
+import don from "@/assets/img/new-student/don.jpg";
 
 export const NewStudentData = {
   header: {
@@ -48,6 +49,11 @@ export const NewStudentData = {
       message: "Innovate, adapt, develop and lead with agile mindset.",
       communityType: "Alumni",
       image: karan,
+    },
+    {
+      message: "Collaborate, empower, and drive innovation forward.",
+      communityType: "Alumni",
+      image: don
     }
   ],
   explore: {
