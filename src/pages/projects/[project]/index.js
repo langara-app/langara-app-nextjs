@@ -28,7 +28,7 @@ const Project = ({ project }) => {
       <Head>
         <title>{HomeData.tabName.title}</title>
       </Head>
-      <Link href="/projects">
+      <Link className="category-link" href="/projects">
         <div className="titleWrapper">
           {data.categories_slugs == "native-app" ? (
             <p className="singleTitle">{ProjectCategoryData[0].title}</p>
@@ -87,6 +87,10 @@ const Container = styled.div`
   align-items: flex-start;
   background-color: #ffffff;
   padding: 4.9vh 4.1vw 9.7vh 4.1vw;
+
+  .category-link:hover {
+    color: ${CommonStyling.primaryColor};
+  }
 
   .projectTitle {
     line-height: 50px;

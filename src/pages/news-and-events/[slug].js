@@ -97,7 +97,7 @@ const NewsEventsInvidivual = ({ event }) => {
       <Head>
         <title>{HomeData.tabName.title}</title>
       </Head>
-      <Link href={`/news-and-events/`}>
+      <Link className="category-link" href={`/news-and-events/`}>
         <span className="events-title">
           {NewsAndEvents.singleEventPage.title}
         </span>
@@ -188,10 +188,10 @@ const NewsEventsInvidivual = ({ event }) => {
           ) : null}
           {!!event.acf.event_link && event.acf.event_link !== "" ? (
             <p className="article-para">
-            <Link className="app-link" href={event.acf.event_link}>
-              {event.acf.event_link}
-            </Link>
-          </p>
+              <Link className="app-link" href={event.acf.event_link}>
+                {event.acf.event_link}
+              </Link>
+            </p>
           ) : null}
         </article>
         <article>
@@ -228,7 +228,7 @@ const SingleEventPageContainer = styled.div`
   padding: 4.2vh 5.4vw;
   color: #263238;
 
-  .events-title {
+  .category-link .events-title {
     font-family: ${CommonStyling.secondaryFontFamily};
     font-style: normal;
     font-weight: 400;
@@ -236,6 +236,10 @@ const SingleEventPageContainer = styled.div`
     line-height: 18px;
     color: #37474f;
     cursor: pointer;
+  }
+
+  .category-link .events-title:hover {
+    color: ${CommonStyling.primaryColor};
   }
 
   @media only screen and (min-width: 768px) {
