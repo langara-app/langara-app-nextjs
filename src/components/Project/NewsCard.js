@@ -35,18 +35,16 @@ const NewsCard = ({ cardData, showOutline, eventType }) => {
             <p className="eventDesc">{description}</p>
             {/* event meta info */}
             <div className="eventMeta">
-              <div>
+              <div className="eventMeta-labels">
                 <p className="date-label">Date: </p>
-                <p className="event-date">{formatDate(event_date)}</p>
-              </div>
-              <div>
                 <p className="time-label">Time: </p>
-                <p className="event-time">
-                  {event_start_time} - {event_end_time}
-                </p>
-              </div>
-              <div>
                 <p className="location-label">Location: </p>
+              </div>
+              <div  className="eventMeta-values">
+                <p className="event-date">{formatDate(event_date)}</p>
+                <p className="event-time">
+                  {event_start_time.toUpperCase()} - {event_end_time.toUpperCase()} PST
+                </p>
                 <p className="event-location">{event_location}</p>
               </div>
             </div>
@@ -91,15 +89,14 @@ const Container = styled.div`
     font-weight: 600;
   }
 
-  .eventMeta > div {
+  .eventMeta  {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     gap: 1rem;
   }
 
   .eventMeta p {
-    text-align: right;
+    margin-bottom: .3rem;
   }
 
   .eventTextWrap > .eventTitle {
