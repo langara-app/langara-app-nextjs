@@ -16,6 +16,35 @@ const ProjectCarousel = ({ carouselData, showCardOutline, carouselIdx }) => {
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(false);
 
+  const startDrag = (e) => {
+    const element = scrollContainer.current;
+    if (!element) return;
+
+    // Dragging state
+    element.isDown = true;
+    element.startX = e.pageX - element.offsetLeft;
+    element.scrollLeft = element.scrollLeft;
+    element.style.cursor = "grabbing";
+  };
+
+  const stopDrag = () => {
+    const element = scrollContainer.current;
+    if (!element || !element.isDown) return;
+
+    element.isDown = false;
+    element.style.cursor = "grab";
+  };
+
+  const handleDrag = (e) => {
+    const element = scrollContainer.current;
+    if (!element || !element.isDown) return;
+
+    e.preventDefault();
+    const x = e.pageX - element.offsetLeft;
+    const walk = (x - element.startX) * 2; // Multiply for faster movement
+    element.scrollLeft = element.scrollLeft - walk;
+  };
+
   const handleScroll = () => {
     const container = scrollContainer.current;
 
@@ -66,9 +95,9 @@ const ProjectCarousel = ({ carouselData, showCardOutline, carouselIdx }) => {
     const cardWidth = 300;
     const gap = 45;
     // const scrollAmount = cardWidth + gap;
-    
-    const scrollAmount = window.innerWidth < 768 ? cardWidth + gap : 2 * (cardWidth + gap);
 
+    const scrollAmount =
+      window.innerWidth < 768 ? cardWidth + gap : 2 * (cardWidth + gap);
 
     if (direction === "left") {
       container.scrollLeft -= scrollAmount;
@@ -103,6 +132,10 @@ const ProjectCarousel = ({ carouselData, showCardOutline, carouselIdx }) => {
             className="carousel"
             onScroll={handleScroll}
             ref={scrollContainer}
+            onMouseDown={startDrag}
+            // onMouseLeave={stopDrag}
+            onMouseUp={stopDrag}
+            onMouseMove={handleDrag}
           >
             {/* Initial set of cards */}
             {carouselData.map((projectData, idx) => {
@@ -202,6 +235,22 @@ const Container = styled.div`
       display: none;
     }
     touch-action: pan-x;
+
+    user-select: none; /* Prevents text selection in most browsers */
+    -webkit-user-select: none; /* Safari and Chrome */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer */
+
+    /* Prevents image dragging */
+    img {
+      pointer-events: none; /* Disables mouse events on images */
+      -webkit-user-drag: none; /* Prevents dragging in WebKit browsers */
+      user-drag: none; /* Standard way to prevent dragging */
+    }
+    * {
+      -webkit-user-drag: none;
+      user-drag: none;
+    }
   }
 
   /* Style the navigation buttons */
@@ -234,7 +283,6 @@ const Container = styled.div`
   }
 
   @media (max-width: 768px) {
-
     .nav-button-left {
       left: 2.75rem;
     }

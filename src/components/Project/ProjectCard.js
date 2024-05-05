@@ -33,6 +33,7 @@ const ProjectCard = ({ cardData, showOutline }) => {
 const Container = styled.div`
 width: 300px;
   .card {
+    user-select: none;
     width: 300px;
     height: 480px;
     border-radius: 1rem;
