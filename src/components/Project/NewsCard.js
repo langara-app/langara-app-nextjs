@@ -16,6 +16,8 @@ const NewsCard = ({ cardData, showOutline, eventType }) => {
   const {
     slug,
     name,
+    event_title,
+    term_indicator,
     description,
     event_date,
     event_start_time,
@@ -31,7 +33,10 @@ const NewsCard = ({ cardData, showOutline, eventType }) => {
             <img src={picture} alt="project image" />
           </div> */}
           <div className="eventTextWrap">
-            <h3 className="eventTitle">{name}</h3>
+            <div className="term-indicator">
+              <span>{term_indicator}</span>
+            </div>
+            <h3 className="eventTitle">{event_title}</h3>
             <p className="eventDesc">{description}</p>
             {/* event meta info */}
             <div className="eventMeta">
@@ -40,10 +45,11 @@ const NewsCard = ({ cardData, showOutline, eventType }) => {
                 <p className="time-label">Time: </p>
                 <p className="location-label">Location: </p>
               </div>
-              <div  className="eventMeta-values">
+              <div className="eventMeta-values">
                 <p className="event-date">{formatDate(event_date)}</p>
                 <p className="event-time">
-                  {event_start_time.toUpperCase()} - {event_end_time.toUpperCase()} PST
+                  {event_start_time.toUpperCase()} -{" "}
+                  {event_end_time.toUpperCase()} PST
                 </p>
                 <p className="event-location">{event_location}</p>
               </div>
@@ -63,7 +69,7 @@ const Container = styled.div`
   width: 300px;
   .card {
     width: 300px;
-    height: 450px;
+    height: 475px;
     border-radius: 1rem;
     background-color: ${CommonStyling.backgroundColor};
     border: ${(props) =>
@@ -89,14 +95,28 @@ const Container = styled.div`
     font-weight: 600;
   }
 
-  .eventMeta  {
+  .eventMeta {
     display: flex;
     flex-direction: row;
     gap: 1rem;
   }
 
   .eventMeta p {
-    margin-bottom: .3rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .term-indicator {
+    text-align: right;
+  }
+  .term-indicator span {
+    display: inline-block;
+    font-size: ${CommonStyling.body2FontSize};
+    border: 1px solid ${CommonStyling.primaryColor};
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem;
+    font-weight: 400;
+    color: ${CommonStyling.backgroundColor};
+    background-color: ${CommonStyling.primaryColor};
   }
 
   .eventTextWrap > .eventTitle {
@@ -106,7 +126,7 @@ const Container = styled.div`
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
   }
 
   p.eventDesc {

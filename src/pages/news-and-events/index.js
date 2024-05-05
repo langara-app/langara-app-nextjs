@@ -36,6 +36,8 @@ export async function getStaticProps() {
         event_start_time: news.acf.event_start_time,
         event_end_time: news.acf.event_end_time,
         event_location: news.acf.event_location,
+        event_title: news.acf.event_title,
+        term_indicator: news.acf.term_indicator,
         description: news.acf.excerpt,
         galleryLink: null,
       };
@@ -45,9 +47,7 @@ export async function getStaticProps() {
   const currentDateTime = new Date();
 
   // Separate events into past and current
-  const pastEvents = [
-    ...events,
-  ].filter((event) => {
+  const pastEvents = [...events].filter((event) => {
     const [day, month, year] = event.event_date.split("/");
     const eventDateTime = new Date(
       `${year}-${month}-${day} ${event.event_start_time}`,
