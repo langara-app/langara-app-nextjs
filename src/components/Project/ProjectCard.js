@@ -12,6 +12,7 @@ const ProjectCard = ({ cardData, showOutline }) => {
         <Link href={`/projects/${slug}`}>
           <div className="imgWrap">
             <Image
+              unoptimized
               loading="lazy"
               src={picture}
               width={280}
