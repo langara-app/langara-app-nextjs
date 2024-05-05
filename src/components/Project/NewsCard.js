@@ -6,6 +6,7 @@ import { CommonStyling } from "../../lib/CommonStyling";
 import EventCardButton from "./EventCardButton.js";
 
 import formatDate from "@/utils/dateFormatter";
+import Link from "next/link";
 
 // eventType is either Past or Current
 // showOutline is a boolean that determines whether or not to show the outline
@@ -24,39 +25,38 @@ const NewsCard = ({ cardData, showOutline, eventType }) => {
   } = cardData;
   return (
     <Container data-cardborder={showOutline}>
-      <div className="card">
-        {/* <div className="imgWrap">
+      <Link target={"_self"} href={`/news-and-events/${slug}`}>
+        <div className="card">
+          {/* <div className="imgWrap">
             <img src={picture} alt="project image" />
           </div> */}
-        <div className="eventTextWrap">
-          <h3 className="eventTitle">{name}</h3>
-          <p className="eventDesc">{description}</p>
-          {/* event meta info */}
-          <div className="eventMeta">
-            <div>
-              <p className="date-label">Date: </p>
-              <p className="event-date">{formatDate(event_date)}</p>
+          <div className="eventTextWrap">
+            <h3 className="eventTitle">{name}</h3>
+            <p className="eventDesc">{description}</p>
+            {/* event meta info */}
+            <div className="eventMeta">
+              <div>
+                <p className="date-label">Date: </p>
+                <p className="event-date">{formatDate(event_date)}</p>
+              </div>
+              <div>
+                <p className="time-label">Time: </p>
+                <p className="event-time">
+                  {event_start_time} - {event_end_time}
+                </p>
+              </div>
+              <div>
+                <p className="location-label">Location: </p>
+                <p className="event-location">{event_location}</p>
+              </div>
             </div>
-            <div>
-              <p className="time-label">Time: </p>
-              <p className="event-time">
-                {event_start_time} - {event_end_time}
-              </p>
+            {/* See Details Btn */}
+            <div className="btn-wrapper">
+              <EventCardButton />
             </div>
-            <div>
-              <p className="location-label">Location: </p>
-              <p className="event-location">{event_location}</p>
-            </div>
-          </div>
-          {/* See Details Btn */}
-          <div className="btn-wrapper">
-            <EventCardButton
-              to={`/news-and-events/${slug}`}
-              buttonText={"See Details"}
-            />
           </div>
         </div>
-      </div>
+      </Link>
     </Container>
   );
 };

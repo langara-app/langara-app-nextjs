@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Link from "next/link";
 import { CommonStyling } from "../../lib/CommonStyling";
 
 const EventCardButton = ({
@@ -8,17 +7,7 @@ const EventCardButton = ({
   to,
   openNew = false,
 }) => {
-  return (
-    <EventCardBtn>
-      {!to ? (
-        buttonText
-      ) : (
-        <Link target={openNew ? "_blank" : "_self"} href={to}>
-          {buttonText}
-        </Link>
-      )}
-    </EventCardBtn>
-  );
+  return <EventCardBtn>{buttonText}</EventCardBtn>;
 };
 
 const EventCardBtn = styled.button`
@@ -29,12 +18,12 @@ const EventCardBtn = styled.button`
   color: ${CommonStyling.primaryColor};
   font-size: ${CommonStyling.buttonFontSize};
   background-color: ${CommonStyling.backgroundColor};
-  border: 2px solid ${CommonStyling.primaryColor};
+  border: 1px solid ${CommonStyling.primaryColor};
   transition: background-color 0.3s;
 
   &:hover {
-    background-color: ${CommonStyling.backgroundColor};
-    color: ${CommonStyling.primaryColor};
+    color: ${CommonStyling.backgroundColor};
+    background-color: ${CommonStyling.primaryColor};
   }
 `;
 
