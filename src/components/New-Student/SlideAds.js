@@ -10,6 +10,7 @@ const SliderAds = ({ slides }) => {
         {[...slides, ...slides]?.map((slide, index) => (
           <div className="slide" key={index}>
             <Image
+              unoptimized
               src={slide.image}
               alt={slide.message}
               width={100}
