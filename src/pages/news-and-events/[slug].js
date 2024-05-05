@@ -35,7 +35,7 @@ export async function getStaticProps({ params }) {
     props: {
       event: news_events.find((event) => event.slug === params.slug),
     },
-    revalidate: 60 * 60 * 24 * 10,
+    revalidate: 60 * 60 * 24,
   };
 }
 

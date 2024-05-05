@@ -85,7 +85,7 @@ export async function getStaticProps() {
       allPastEvents: pastEvents,
       pastEventsUniqueYears,
     },
-    revalidate: 60 * 60 * 24 * 10,
+    revalidate: 60 * 60 * 24,
   };
 }
 

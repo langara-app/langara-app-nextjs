@@ -39,7 +39,7 @@ export async function getStaticProps() {
 
   return {
     props: { data, alumni, work, homeData },
-    revalidate: 60 * 60 * 24 * 10,
+    revalidate: 60 * 60 * 24,
   };
 }
 
