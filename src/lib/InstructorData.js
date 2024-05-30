@@ -7,6 +7,7 @@ import reza from "@/assets/img/instructors/reza-etemadi.png";
 import peter from "@/assets/img/instructors/peter-vysek.jpg";
 import lu from "@/assets/img/instructors/lu-yu.png";
 import kevin from "@/assets/img/instructors/kevin-mcmillian.png";
+import marinela from "@/assets/img/instructors/marinela-poso.jpg";
 import tyler from "@/assets/img/instructors/typer-higgs.png";
 import ira from "@/assets/img/instructors/ira-zhang.png";
 import amandeep from "@/assets/img/instructors/amandeep-singh.png";
@@ -78,6 +79,11 @@ export const InstructorData = {
       title: "Instructor",
     },
     {
+      image: marinela,
+      name: "Marinela Poso",
+      title: "Instructor",
+    },
+    {
       image: amandeep,
       name: "Amandeep Singh",
       title: "Instructor",
@@ -142,11 +148,6 @@ export const InstructorData = {
     {
       image: placeholder,
       name: "Ivan Wong",
-      title: "Instructor",
-    },
-    {
-      image: placeholder,
-      name: "Marinela Poso",
       title: "Instructor",
     },
     {
