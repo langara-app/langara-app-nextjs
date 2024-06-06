@@ -35,7 +35,8 @@ export async function getServerSideProps() {
         description: allData.acf.app_short_description,
         academic_year: allData.acf.academic_year ?? allData.date.split("-")[0],
       };
-    });
+    })
+    .sort((a, b) => Number(b.academic_year) - Number(a.academic_year));
 
   const nativeAppsUniqueYears = [
     ...new Set(nativeApps.map((item) => item.academic_year)),
@@ -51,8 +52,8 @@ export async function getServerSideProps() {
         description: allData.acf.app_short_description,
         academic_year: allData.acf.academic_year ?? allData.date.split("-")[0],
       };
-    });
-
+    })
+    .sort((a, b) => Number(b.academic_year) - Number(a.academic_year));
   const dataVisualizationUniqueYears = [
     ...new Set(dataVisualization.map((item) => item.academic_year)),
   ];
@@ -67,8 +68,8 @@ export async function getServerSideProps() {
         description: allData.acf.app_short_description,
         academic_year: allData.acf.academic_year ?? allData.date.split("-")[0],
       };
-    });
-
+    })
+    .sort((a, b) => Number(b.academic_year) - Number(a.academic_year));
   const hybridAppsUniqueYears = [
     ...new Set(hybridApps.map((item) => item.academic_year)),
   ];
