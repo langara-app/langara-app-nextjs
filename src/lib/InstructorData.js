@@ -15,6 +15,7 @@ import merry from "@/assets/img/instructors/merry-nguyen.png";
 import valentina from "@/assets/img/instructors/valentina-abanina.png";
 import binazir from "@/assets/img/instructors/binazir-farokhi.jpg";
 import tomoko from "@/assets/img/instructors/tomoko-okochi.jpg";
+import paul from "@/assets/img/instructors/paul-brassard.jpg"
 
 export const InstructorData = {
   header: {
@@ -74,6 +75,11 @@ export const InstructorData = {
       title: "Instructor",
     },
     {
+      image: paul,
+      name: "Paul Brassard",
+      title: "Instructor",
+    },
+    {
       image: ira,
       name: "Ira Zhang",
       title: "Instructor",
@@ -106,11 +112,6 @@ export const InstructorData = {
     {
       image: placeholder,
       name: "Denis Billette",
-      title: "Instructor",
-    },
-    {
-      image: placeholder,
-      name: "Paul Brassard",
       title: "Instructor",
     },
     {
