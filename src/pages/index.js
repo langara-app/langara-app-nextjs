@@ -25,7 +25,7 @@ export async function getStaticProps() {
   const data = await res.json();
 
   const alumniData = await fetch(
-    `${process.env.BASE_URL}/wp-json/acf/v3/alumni`,
+    `${process.env.BASE_URL}/wp-json/acf/v3/langara-alumni`,
   );
 
   const alumni = await alumniData.json();
@@ -49,8 +49,8 @@ const Home = ({ data, alumni, work, homeData }) => {
 
   const newAlumni = [];
 
-  newAlumni.push(alumni[2]);
   newAlumni.push(alumni[4]);
+  newAlumni.push(alumni[2]);
   newAlumni.push(alumni[3]);
   newAlumni.push(alumni[1]);
   newAlumni.push(alumni[0]);
