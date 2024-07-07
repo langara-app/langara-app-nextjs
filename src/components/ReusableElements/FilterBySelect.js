@@ -108,7 +108,7 @@ const CustomSelect = ({
   );
 };
 
-const FilterBy = ({ filterByYear, years, outlineColor }) => {
+const FilterBy = ({ filterByYear, years, outlineColor, filterByText = "Filter by Year" }) => {
   const [selectedOption, setSelectedOption] = React.useState("");
   // year options
   const yearsOption = years.map((year) => {
@@ -125,6 +125,7 @@ const FilterBy = ({ filterByYear, years, outlineColor }) => {
   return (
     <div>
       <CustomSelect
+        filterByText={filterByText}
         outlineColor={outlineColor}
         label="All"
         value={selectedOption}

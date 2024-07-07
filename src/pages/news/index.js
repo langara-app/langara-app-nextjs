@@ -9,102 +9,93 @@ import styled from "styled-components";
 import { HomeData } from "../../lib/HomeData";
 import FilterBy from "@/components/ReusableElements/FilterBySelect";
 import NewsCarousel from "@/components/Project/NewsCarousel";
-import PastEventCardList from "@/components/Project/PastEventCardList";
+import PastEventCardList from "@/components/News/RecentArticlesCard";
 import ArticleSubmissionCard from "@/components/News/ArticleSubmissionCard";
 
 // import assets
 import mainBackgroundImage from "@/assets/news-and-events/mainBackgroundImage.png";
 
 export async function getStaticProps() {
+  const cats = await fetch(
+    `${process.env.BASE_URL}/wp-json/wp/v2/categories?per_page=100&hide_empty=false`,
+  ).then((result) => result.json());
+
+  // blog categories has id 68, get it's children now, in {} id key and value name format
+  const blogSubCategories = cats
+    .filter((cat) => cat.parent === 68)
+    .reduce((acc, cat) => {
+      acc[cat.id] = cat.name;
+      return acc;
+    }, {});
+
+  console.log(blogSubCategories);
+
   const res = await fetch(
-    `${process.env.BASE_URL}/wp-json/wp/v2/news-and-events`,
+    `${process.env.BASE_URL}/wp-json/wp/v2/blogs?per_page=100&hide_empty=false`,
   );
-  const news_events = await res.json();
-  console.log(`${process.env.BASE_URL}/wp-json/wp/v2/news-and-events`);
+  const resData = await res.json();
+  console.log(
+    `${process.env.BASE_URL}/wp-json/wp/v2/blogs?per_page=100&hide_empty=false`,
+  );
 
-  const events = news_events
-    .filter((news) => {
-      return news.acf.event_date;
-    })
-    .map((news) => {
-      return {
-        id: news.id,
-        slug: news.slug,
-        name: news.title.rendered,
-        event_date: news.acf.event_date,
-        event_year: news.acf.event_date.split("/")[2],
-        event_start_time: news.acf.event_start_time,
-        event_end_time: news.acf.event_end_time,
-        event_location: news.acf.event_location,
-        event_title: news.acf.event_title,
-        term_indicator: news.acf.term_indicator,
-        description: news.acf.excerpt,
-        galleryLink: null,
-      };
-    });
+  const x = [resData[0], resData[0], resData[0], resData[0]];
 
-  // Get the current date and time
-  const currentDateTime = new Date();
-
-  // Separate events into past and current
-  const pastEvents = [...events].filter((event) => {
-    const [day, month, year] = event.event_date.split("/");
-    const eventDateTime = new Date(
-      `${year}-${month}-${day} ${event.event_start_time}`,
-    );
-    return eventDateTime < currentDateTime;
+  const articles = x.map((article) => {
+    return {
+      id: article.id,
+      slug: article.slug,
+      article_title: article.title.rendered,
+      description: article.acf.excerpt,
+      article_date: article.acf.publish_date,
+      article_feature_image: article.acf.blog_feature_image,
+      article_author: article.acf.author_name,
+      article_author_designation: article.acf.author_designation,
+      article_category: blogSubCategories[String(article.categories[0])],
+      isFeatured: article.tags.includes(65), // featured tag id is 65
+    };
   });
 
-  const futureEvents = events.filter((event) => {
-    const [day, month, year] = event.event_date.split("/");
-    const eventDateTime = new Date(
-      `${year}-${month}-${day} ${event.event_start_time}`,
-    );
-    return eventDateTime >= currentDateTime;
-  });
+  // Function to convert date strings to Date objects
+  function parseDate(dateString) {
+    const [day, month, year] = dateString.split("/").map(Number);
+    return new Date(year, month - 1, day);
+  }
+  // Sorting the array by article_date
+  articles.sort(
+    (a, b) => parseDate(a.article_date) - parseDate(b.article_date),
+  );
 
-  // Sort events based on date and time
-  const sortByDateTime = (a, b) => {
-    const [dayA, monthA, yearA] = a.event_date.split("/");
-    const [dayB, monthB, yearB] = b.event_date.split("/");
-    const dateA = new Date(`${yearA}-${monthA}-${dayA} ${a.event_start_time}`);
-    const dateB = new Date(`${yearB}-${monthB}-${dayB} ${b.event_start_time}`);
-    return dateA - dateB;
-  };
+  const featuredArticles = articles.filter((article) => article.isFeatured);
+  const nonFeaturedArticles = articles.filter((article) => article.isFeatured);
 
-  futureEvents.sort(sortByDateTime);
-  pastEvents.sort(sortByDateTime).reverse();
-
-  const pastEventsUniqueYears = [
-    ...new Set(pastEvents.map((event) => event.event_year)),
-  ];
-
+  const categoriesNames = Object.values(blogSubCategories);
   return {
     props: {
-      currentEvents: futureEvents,
-      allPastEvents: pastEvents,
-      pastEventsUniqueYears,
+      featuredBlogArticles: featuredArticles,
+      recentBlogArticles: nonFeaturedArticles,
+      categoriesNames,
     },
     revalidate: 60 * 60 * 24,
   };
 }
 
 const NewsEvents = ({
-  currentEvents,
-  allPastEvents,
-  pastEventsUniqueYears,
+  featuredBlogArticles,
+  recentBlogArticles,
+  categoriesNames,
 }) => {
-  const [pastEvents, setPastEvents] = React.useState(allPastEvents);
+  const [recentArticles, setRecentArticles] =
+    React.useState(recentBlogArticles);
 
-  function filterByYear(year) {
-    if (year === "All") {
-      setPastEvents(allPastEvents);
+  function filterByCategory(category) {
+    if (category === "All") {
+      setRecentArticles(recentBlogArticles);
       return;
     } else {
-      const filteredEvents = allPastEvents.filter(
-        (event) => event.event_year === year,
+      const filteredArticles = recentBlogArticles.filter(
+        (article) => article.article_category === category,
       );
-      setPastEvents(filteredEvents);
+      setRecentArticles(filteredArticles);
     }
   }
 
@@ -126,14 +117,14 @@ const NewsEvents = ({
               </div>
               <div className="filterWrapper">{/* <FilterBy /> */}</div>
             </div>
-            {currentEvents.length > 0 && (
+            {featuredBlogArticles.length > 0 && (
               <div className="event-card-wrapper">
-                <NewsCarousel carouselData={currentEvents} />
+                {/* <NewsCarousel carouselData={currentEvents} /> */}
               </div>
             )}
           </div>
           {/* No Upcoming Events */}
-          {!currentEvents.length && (
+          {!featuredBlogArticles.length && (
             <div className="no-info">
               <p>No Featured Articles</p>
             </div>
@@ -148,30 +139,31 @@ const NewsEvents = ({
                   <span>Recent Articles</span>
                 </h2>
 
-                {pastEvents.length > 0 && (
+                {recentBlogArticles.length > 0 && (
                   <div>
                     <FilterBy
+                      filterByText="Filter by Category"
                       outlineColor={CommonStyling.primaryColor}
                       filterByYear={(year) => {
-                        filterByYear(year);
+                        filterByCategory(year);
                       }}
-                      years={pastEventsUniqueYears}
+                      years={categoriesNames}
                     />
                   </div>
                 )}
               </div>
             </div>
 
-            {pastEvents.length > 0 && (
+            {recentArticles.length > 0 && (
               <div className="event-card-wrapper">
-                <PastEventCardList pastEvents={pastEvents} />
+                <PastEventCardList recentArticles={recentArticles} />
               </div>
             )}
           </div>
           {/* No Upcoming Events */}
-          {!pastEvents.length && (
+          {!recentArticles.length && (
             <div className="no-info">
-              <p>No Past Articles</p>
+              <p>No Recent Articles</p>
             </div>
           )}
         </section>
