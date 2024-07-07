@@ -12,7 +12,7 @@ import Link from "next/link";
 
 export async function getStaticProps() {
   const cats = await fetch(
-    `${process.env.BASE_URL}/wp-json/wp/v2/categories`,
+    `${process.env.BASE_URL}/wp-json/wp/v2/categories?per_page=100`,
   ).then((result) => result.json());
 
   const faqs = await fetch(
