@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import Image from "next/image";
-import ArticleSubmissionImage from "@/assets/img/news/ArticleSubmissionImg.png";
+import ArticleSubmissionImage from "@/assets/img/news-blog/ArticleSubmissionImg.png";
 import { CommonStyling } from "@/lib/CommonStyling";
 
 const ArticleSubmissionCard = ({ data }) => {
