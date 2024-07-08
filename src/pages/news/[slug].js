@@ -15,6 +15,8 @@ import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 const ReactPlayer = dynamic(() => import("react-player/lazy"), { ssr: false });
 
+import SocialShareBtn from "@/components/News/SocialShareBtn";
+
 export async function getStaticPaths() {
   const res = await fetch(`${process.env.BASE_URL}/wp-json/wp/v2/blogs`);
   const blogs = await res.json();
@@ -119,7 +121,10 @@ const NewsEventsInvidivual = ({ blog, categoryName, recentArticles }) => {
           <meta property="og:title" content={blog.title.rendered} />
           <meta property="og:description" content={blog.acf.excerpt} />
           <meta property="og:image" content={blog.acf.blog_feature_image} />
-          <meta property="og:url" content={"https://langara-app.ca/news/" + `${blog.slug}`} />
+          <meta
+            property="og:url"
+            content={"https://langara-app.ca/news/" + `${blog.slug}`}
+          />
           <meta property="og:type" content="website" />
 
           {/* Twitter Card Meta Tags */}
@@ -212,6 +217,18 @@ const NewsEventsInvidivual = ({ blog, categoryName, recentArticles }) => {
                 }}
               ></p>
             )}
+          </section>
+          <section className="author-info-share-btn">
+            <div>
+              <p className="author-info">{blog.acf.author_name}</p>
+              <p className="blog-meta">{formatDate(blog.acf.publish_date)}</p>
+            </div>
+            <div className="share-btn">
+              <SocialShareBtn
+                blogLink={`https://langara-app.ca/news/${blog.slug}`}
+                blogTitle={blog.title.rendered}
+              />
+            </div>
           </section>
         </ArticleDetails>
       </SingleEventPageContainer>
@@ -345,6 +362,12 @@ const ArticleDetails = styled.article`
     .blog-media video {
       width: 100%;
     }
+  }
+  .author-info-share-btn {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    gap: 1rem;
   }
 `;
 
