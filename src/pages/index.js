@@ -30,7 +30,7 @@ export async function getStaticProps() {
 
   const alumni = await alumniData.json();
 
-  const homeData = await HomeData;
+  const homeData = HomeData;
 
   return {
     props: { data, alumni, homeData },

@@ -116,7 +116,7 @@ const NewsEvents = ({
               <div className="filterWrapper">{/* <FilterBy /> */}</div>
             </div>
             {featuredBlogArticles.length > 0 && (
-              <div className="event-card-wrapper">
+              <div className="event-card-wrapper featured-wrapper">
                 <FeaturedArticlesCard featuredArticles={featuredBlogArticles} />
               </div>
             )}
@@ -235,6 +235,15 @@ const Container = styled.div`
   .event-card-wrapper {
     padding-left: 3rem;
     padding-right: 3rem;
+  }
+
+  @media only screen and (min-width: 1672px) {
+    .featured-wrapper {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
 
   .no-info {
