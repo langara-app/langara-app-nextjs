@@ -21,7 +21,7 @@ export async function getStaticPaths() {
 
   return {
     paths: blogs.map((blog) => ({ params: { slug: blog.slug } })),
-    fallback: true,
+    fallback: false,
   };
 }
 
@@ -127,7 +127,7 @@ const NewsEventsInvidivual = ({ blog, categoryName, recentArticles }) => {
           {/* <meta name="twitter:site" content="@YourTwitterHandle" /> */}
           <meta name="twitter:title" content={blog.title.rendered} />
           <meta name="twitter:description" content={blog.acf.excerpt} />
-          <meta name="twitter:image" content={blog.blog_feature_image} />
+          <meta name="twitter:image" content={blog.acf.blog_feature_image} />
         </Head>
         <Link className="category-link" href={`/news`}>
           <span className="events-title">{Articles.singleEventPage.title}</span>
