@@ -113,21 +113,21 @@ const NewsEventsInvidivual = ({ blog, categoryName, recentArticles }) => {
         <Head>
           <title>{HomeData.tabName.title}</title>
           {/* Basic Meta Tags */}
-          <meta name="description" content={blog.description} />
+          <meta name="description" content={blog.acf.excerpt} />
 
           {/* Open Graph Meta Tags */}
-          <meta property="og:title" content={blog.article_title} />
-          <meta property="og:description" content={blog.description} />
-          <meta property="og:image" content={blog.article_feature_image} />
+          <meta property="og:title" content={blog.title.rendered} />
+          <meta property="og:description" content={blog.acf.excerpt} />
+          <meta property="og:image" content={blog.acf.blog_feature_image} />
           <meta property="og:url" content={"https://langara-app.ca/news/" + `${blog.slug}`} />
           <meta property="og:type" content="website" />
 
           {/* Twitter Card Meta Tags */}
-          <meta name="twitter:card" content={blog.article_feature_image} />
+          <meta name="twitter:card" content={blog.acf.blog_feature_image} />
           {/* <meta name="twitter:site" content="@YourTwitterHandle" /> */}
-          <meta name="twitter:title" content={blog.article_title} />
-          <meta name="twitter:description" content={blog.description} />
-          <meta name="twitter:image" content={blog.article_feature_image} />
+          <meta name="twitter:title" content={blog.title.rendered} />
+          <meta name="twitter:description" content={blog.acf.excerpt} />
+          <meta name="twitter:image" content={blog.blog_feature_image} />
         </Head>
         <Link className="category-link" href={`/news`}>
           <span className="events-title">{Articles.singleEventPage.title}</span>
