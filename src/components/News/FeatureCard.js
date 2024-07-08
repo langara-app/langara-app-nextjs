@@ -10,21 +10,7 @@ import Link from "next/link";
 
 import Image from "next/image";
 
-// eventType is either Past or Current
-// showOutline is a boolean that determines whether or not to show the outline
-// cardData is an object that contains the data for the card
-
-const ArticlesCard = ({ cardData, showOutline }) => {
-  // id: article.id,
-  //     slug: article.slug,
-  //     article_title: article.title.rendered,
-  //     description: article.acf.excerpt,
-  //     article_date: article.acf.publish_date,
-  //     article_feature_image: article.acf.blog_feature_image,
-  //     article_author: article.acf.author_name,
-  //     article_author_designation: article.acf.author_designation,
-  //     article_category: blogSubCategories[String(article.categories[0])],
-  //     isFeatured: article.tags.includes(65),
+const FeatureCard = ({ cardData, showOutline }) => {
 
   const {
     id,
@@ -68,10 +54,10 @@ const ArticlesCard = ({ cardData, showOutline }) => {
 };
 
 const Container = styled.article`
-  width: 410px;
+  width: 100%;
 
   .card {
-    width: 410px;
+    width: 100%;
     height: 514px;
     border-radius: 1rem;
     background-color: ${CommonStyling.backgroundColor};
@@ -151,4 +137,4 @@ const Container = styled.article`
   }
 `;
 
-export default ArticlesCard;
+export default FeatureCard;

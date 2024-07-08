@@ -14,6 +14,7 @@ import ArticleSubmissionCard from "@/components/News/ArticleSubmissionCard";
 
 // import assets
 import mainBackgroundImage from "@/assets/news-and-events/mainBackgroundImage.png";
+import FeaturedArticlesCard from "@/components/News/FeaturedArticlesCard";
 
 export async function getStaticProps() {
   const cats = await fetch(
@@ -34,9 +35,6 @@ export async function getStaticProps() {
     `${process.env.BASE_URL}/wp-json/wp/v2/blogs?per_page=100&hide_empty=false`,
   );
   const resData = await res.json();
-  console.log(
-    `${process.env.BASE_URL}/wp-json/wp/v2/blogs?per_page=100&hide_empty=false`,
-  );
 
   const x = [resData[0], resData[0], resData[0], resData[0]];
 
@@ -119,7 +117,7 @@ const NewsEvents = ({
             </div>
             {featuredBlogArticles.length > 0 && (
               <div className="event-card-wrapper">
-                {/* <NewsCarousel carouselData={currentEvents} /> */}
+                <FeaturedArticlesCard featuredArticles={featuredBlogArticles} />
               </div>
             )}
           </div>

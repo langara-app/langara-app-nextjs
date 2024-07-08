@@ -3,28 +3,18 @@ import styled from "styled-components";
 import { CommonStyling } from "../../lib/CommonStyling.js";
 
 // import components
-import EventCardButton from "./EventCardButton.js";
+import SocialShareBtn from "./SocialShareBtn.js";
 
 import formatDate from "@/utils/dateFormatter";
 import Link from "next/link";
 
-import Image from "next/image";
-
-// eventType is either Past or Current
-// showOutline is a boolean that determines whether or not to show the outline
-// cardData is an object that contains the data for the card
-
-const ArticlesCard = ({ cardData, showOutline }) => {
-  // id: article.id,
-  //     slug: article.slug,
-  //     article_title: article.title.rendered,
-  //     description: article.acf.excerpt,
-  //     article_date: article.acf.publish_date,
-  //     article_feature_image: article.acf.blog_feature_image,
-  //     article_author: article.acf.author_name,
-  //     article_author_designation: article.acf.author_designation,
-  //     article_category: blogSubCategories[String(article.categories[0])],
-  //     isFeatured: article.tags.includes(65),
+const ArticlesCard = ({
+  cardData,
+  showOutline,
+  cardWidth,
+  cardHeight,
+  imageAlign,
+}) => {
 
   const {
     id,
@@ -38,7 +28,12 @@ const ArticlesCard = ({ cardData, showOutline }) => {
     article_category,
   } = cardData;
   return (
-    <Container data-cardborder={showOutline}>
+    <Container
+      data-imagealign={imageAlign}
+      data-cardheight={cardHeight}
+      data-cardwidth={cardWidth}
+      data-cardborder={showOutline}
+    >
       <Link target={"_self"} href={`/news/${slug}`}>
         <div className="card">
           <div class="imgWrap">
@@ -48,7 +43,7 @@ const ArticlesCard = ({ cardData, showOutline }) => {
             <div className="textWrap-container">
               <div className="header-wrap">
                 <h3>{article_title}</h3>
-                <div className="share-btn">share</div>
+                <div className="share-btn"><SocialShareBtn/></div>
               </div>
               {/* article info */}
               <p className="article-meta">
@@ -68,18 +63,22 @@ const ArticlesCard = ({ cardData, showOutline }) => {
 };
 
 const Container = styled.article`
-  width: 410px;
+  width: ${(props) =>
+    props["data-cardwidth"] ? props["data-cardwidth"] : "410px"};
 
   .card {
-    width: 410px;
-    height: 514px;
-    border-radius: 1rem;
+    width: ${(props) =>
+      props["data-cardwidth"] ? props["data-cardwidth"] : "410px"};
+    height: ${(props) =>
+      props["data-cardheight"] ? props["data-cardheight"] : "512px"};
+    
     background-color: ${CommonStyling.backgroundColor};
     border: ${(props) =>
       props["data-cardborder"] ? "2px solid #E6E6E6" : "none"};
     margin-bottom: 2rem;
     display: flex;
-    flex-direction: column;
+    flex-direction: ${(props) => (props["data-imagealign"] ? "row" : "column")};
+    border-radius: 1rem;
     overflow: hidden;
   }
 
@@ -130,6 +129,7 @@ const Container = styled.article`
   .header-wrap {
     display: flex;
     flex-direction: row;
+    gap: .5rem;
   }
 
   .header-wrap > h3 {
@@ -148,6 +148,44 @@ const Container = styled.article`
     -webkit-box-orient: vertical;
     overflow: hidden;
     -webkit-line-clamp: 3;
+  }
+
+  ${(props) =>
+    props["data-imagealign"] === "left" &&
+    `@media only screen and (max-width: 1050px) {
+    .imgWrap {
+      flex: 0 0 35%;
+    }
+    .textWrap {
+      flex: 1;
+    }
+  }`};
+
+  ${(props) =>
+    props["data-imagealign"] === "left" &&
+    `@media only screen and (max-width: 580px) {
+    .imgWrap {
+      flex: 1;
+    }
+    .textWrap {
+      flex: 1;
+    }
+  }`};
+
+  @media only screen and (max-width: 540px) {
+    .card {
+      flex-direction: column;
+      width: 410px;
+      height: 512px;
+    }
+  }
+
+  @media only screen and (max-width: 540px) {
+    .card {
+      flex-direction: column;
+      width: 330px;
+      height: 512px;
+    }
   }
 `;
 
