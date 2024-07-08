@@ -119,7 +119,7 @@ const NewsEventsInvidivual = ({ blog, categoryName, recentArticles }) => {
           <meta property="og:title" content={blog.article_title} />
           <meta property="og:description" content={blog.description} />
           <meta property="og:image" content={blog.article_feature_image} />
-          <meta property="og:url" content={location.href} />
+          <meta property="og:url" content={"https://langara-app.ca/news/" + `${blog.slug}`} />
           <meta property="og:type" content="website" />
 
           {/* Twitter Card Meta Tags */}
