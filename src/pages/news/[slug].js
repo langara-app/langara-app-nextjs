@@ -18,7 +18,7 @@ const ReactPlayer = dynamic(() => import("react-player/lazy"), { ssr: false });
 import SocialShareBtn from "@/components/News/SocialShareBtn";
 
 export async function getStaticPaths() {
-  const res = await fetch(`${process.env.BASE_URL}/wp-json/wp/v2/blogs`);
+  const res = await fetch(`${process.env.BASE_URL}/wp-json/wp/v2/blogs?per_page=100`);
   const blogs = await res.json();
 
   return {

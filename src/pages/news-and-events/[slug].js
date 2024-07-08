@@ -15,7 +15,7 @@ const ReactPlayer = dynamic(() => import("react-player/lazy"), { ssr: false });
 
 export async function getStaticPaths() {
   const res = await fetch(
-    `${process.env.BASE_URL}/wp-json/wp/v2/news-and-events`,
+    `${process.env.BASE_URL}/wp-json/wp/v2/news-and-events?per_page=100`,
   );
   const news_events = await res.json();
 
@@ -27,7 +27,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const res = await fetch(
-    `${process.env.BASE_URL}/wp-json/wp/v2/news-and-events`,
+    `${process.env.BASE_URL}/wp-json/wp/v2/news-and-events?per_page=100`,
   );
   const news_events = await res.json();
 

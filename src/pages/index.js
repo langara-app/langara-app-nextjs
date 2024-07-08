@@ -30,20 +30,15 @@ export async function getStaticProps() {
 
   const alumni = await alumniData.json();
 
-  const workData = await fetch(
-    `${process.env.BASE_URL}/wp-json/wp/v2/projects?per_page=5`,
-  );
-  const work = await workData.json();
-
   const homeData = await HomeData;
 
   return {
-    props: { data, alumni, work, homeData },
+    props: { data, alumni, homeData },
     revalidate: 60 * 60 * 24,
   };
 }
 
-const Home = ({ data, alumni, work, homeData }) => {
+const Home = ({ data, alumni, homeData }) => {
   const width = useWindowWidth();
   const [field, setField] = useState("developer");
 

@@ -17,10 +17,10 @@ import mainBackgroundImage from "@/assets/news-and-events/mainBackgroundImage.pn
 
 export async function getStaticProps() {
   const res = await fetch(
-    `${process.env.BASE_URL}/wp-json/wp/v2/news-and-events`,
+    `${process.env.BASE_URL}/wp-json/wp/v2/news-and-events?per_page=100`,
   );
   const news_events = await res.json();
-  console.log(`${process.env.BASE_URL}/wp-json/wp/v2/news-and-events`);
+  console.log(`${process.env.BASE_URL}/wp-json/wp/v2/news-and-events?per_page=100`);
 
   const events = news_events
     .filter((news) => {
