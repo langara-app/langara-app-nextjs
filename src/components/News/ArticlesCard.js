@@ -15,7 +15,6 @@ const ArticlesCard = ({
   cardHeight,
   imageAlign,
 }) => {
-
   const {
     id,
     slug,
@@ -43,7 +42,12 @@ const ArticlesCard = ({
             <div className="textWrap-container">
               <div className="header-wrap">
                 <h3>{article_title}</h3>
-                <div className="share-btn"><SocialShareBtn/></div>
+                <div className="share-btn">
+                  <SocialShareBtn
+                    blogLink={"https://langara-app.ca" + `/news/${slug}`}
+                    blogTitle={article_title}
+                  />
+                </div>
               </div>
               {/* article info */}
               <p className="article-meta">
@@ -71,7 +75,7 @@ const Container = styled.article`
       props["data-cardwidth"] ? props["data-cardwidth"] : "410px"};
     height: ${(props) =>
       props["data-cardheight"] ? props["data-cardheight"] : "512px"};
-    
+
     background-color: ${CommonStyling.backgroundColor};
     border: ${(props) =>
       props["data-cardborder"] ? "2px solid #E6E6E6" : "none"};
@@ -129,7 +133,7 @@ const Container = styled.article`
   .header-wrap {
     display: flex;
     flex-direction: row;
-    gap: .5rem;
+    gap: 0.5rem;
   }
 
   .header-wrap > h3 {

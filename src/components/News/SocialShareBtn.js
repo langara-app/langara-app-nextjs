@@ -15,9 +15,7 @@ import {
   LinkedinIcon,
 } from "next-share";
 
-const SocialShareBtn = () => {
-  const [open, setOpen] = React.useState(false);
-
+const SocialShareBtn = ({ blogLink, blogTitle }) => {
   function buttonClick(e) {
     e.preventDefault();
   }
@@ -33,10 +31,8 @@ const SocialShareBtn = () => {
           <ul>
             <li>
               <FacebookShareButton
-                url={"https://github.com/next-share"}
-                quote={
-                  "next-share is a social share buttons for your next React apps."
-                }
+                url={blogLink}
+                quote={blogTitle}
                 hashtag={"#langara"}
               >
                 <div className="socials">
@@ -46,10 +42,9 @@ const SocialShareBtn = () => {
             </li>
             <li>
               <TwitterShareButton
-                url={"https://github.com/next-share"}
-                title={
-                  "next-share is a social share buttons for your next React apps."
-                }
+                url={blogLink}
+                title={blogTitle}
+                hashtags={["#langara", "#wmdd", "#webandmobile"]}
               >
                 <div className="socials">
                   <TwitterIcon size={20} round /> Twitter
@@ -57,18 +52,14 @@ const SocialShareBtn = () => {
               </TwitterShareButton>
             </li>
             <li>
-              <EmailShareButton
-                url={"https://github.com/next-share"}
-                subject={"Next Share"}
-                body="body"
-              >
+              <EmailShareButton url={blogLink} subject={blogTitle}>
                 <div className="socials">
                   <EmailIcon size={20} round /> Email
                 </div>
               </EmailShareButton>
             </li>
             <li>
-              <LinkedinShareButton url={"https://github.com/next-share"}>
+              <LinkedinShareButton url={blogLink}>
                 <div className="socials">
                   <LinkedinIcon size={20} round /> Linkedin
                 </div>
