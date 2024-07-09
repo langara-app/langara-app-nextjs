@@ -92,9 +92,13 @@ const Container = styled.div`
     padding: 6rem;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 948px) {
     section {
       grid-template-columns: 1fr;
+    }
+
+    section img {
+      border-radius: 32px 32px 0 0;
     }
 
     .submission-info::before {

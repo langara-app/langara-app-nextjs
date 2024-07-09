@@ -29,7 +29,6 @@ export async function getStaticProps() {
       return acc;
     }, {});
 
-  console.log(blogSubCategories);
 
   const res = await fetch(
     `${process.env.BASE_URL}/wp-json/wp/v2/blogs?per_page=100&hide_empty=false`,

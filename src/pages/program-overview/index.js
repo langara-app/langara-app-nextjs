@@ -23,7 +23,6 @@ const ProgramOverview = () => {
 
   const [selectedOption, setSelectedOption] = useState("Term 1");
   const handleChange = (value) => {
-    console.log(value);
     setSelectedOption(value);
   };
 

@@ -18,7 +18,9 @@ const ReactPlayer = dynamic(() => import("react-player/lazy"), { ssr: false });
 import SocialShareBtn from "@/components/News/SocialShareBtn";
 
 export async function getStaticPaths() {
-  const res = await fetch(`${process.env.BASE_URL}/wp-json/wp/v2/blogs?per_page=100`);
+  const res = await fetch(
+    `${process.env.BASE_URL}/wp-json/wp/v2/blogs?per_page=100`,
+  );
   const blogs = await res.json();
 
   return {
@@ -165,8 +167,6 @@ const NewsEventsInvidivual = ({ blog, categoryName, recentArticles }) => {
               <Image
                 src={blog.acf.blog_feature_image}
                 alt={`${blog.title.rendered} Banner`}
-                width={1200}
-                height={600}
               />
             )}
           </div>
@@ -247,7 +247,7 @@ const ArticlePage = styled.div`
 `;
 
 const SingleEventPageContainer = styled.div`
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
   background-color: #ffffff;
   text-align: left;
@@ -273,10 +273,7 @@ const ArticleDetails = styled.article`
   section {
     margin-top: 3rem;
   }
-
   padding-bottom: 3rem;
-  margin-bottom: 3rem;
-  border-bottom: 1px solid #cfd8dc;
 
   .blog-meta-container {
     margin-bottom: 1rem;
@@ -374,6 +371,8 @@ const ArticleDetails = styled.article`
 const Image = styled.img`
   width: 100%;
   height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
 `;
 
 const Video = styled.div`

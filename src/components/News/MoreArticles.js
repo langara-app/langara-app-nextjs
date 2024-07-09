@@ -12,10 +12,16 @@ const MoreArticles = ({ recentArticles }) => {
 
 const MoreArticlesContainer = styled.div`
   .section-title {
+    margin: 0;
+    padding: 0;
+    max-width: 1600px;
+    margin: 0 auto;
     font-weight: 700;
     font-size: 2rem;
     line-height: 50px;
-    margin: 1rem 0 1rem 0;
+    margin-bottom: 2rem;
+    border-top: 1px solid #cfd8dc;
+    padding-top: 4rem;
   }
 `;
 

@@ -42,7 +42,7 @@ export async function getStaticProps({ params }) {
 const NewsEventsInvidivual = ({ event }) => {
   function renderNameWithLinks(text) {
     const splits = text.split("_");
-    console.log(splits);
+    
 
     const appName = splits[0];
     const appLink = splits[1];
