@@ -23,7 +23,7 @@ const SocialShareBtn = ({ blogLink, blogTitle }) => {
   return (
     <SocialBtn>
       <div className="parent-wrapper dropdown">
-        <button onClick={(e) => buttonClick(e)} className="share-button">
+        <button disabled className="share-button">
           <FaShareNodes size={20} color={CommonStyling.primaryColor} />
         </button>
 
@@ -83,9 +83,8 @@ const SocialBtn = styled.div`
     align-items: center;
     transition: background-color 0.5s ease; /* Smooth color transition */
   }
-  .share-button:hover {
+  .dropdown:hover .share-button {
     background-color: ${CommonStyling.primaryColor};
-    color: white;
   }
 
   .share-button svg {
@@ -98,7 +97,7 @@ const SocialBtn = styled.div`
     gap: 0.5rem;
   }
 
-  .share-button:hover svg {
+  .dropdown:hover .share-button svg {
     color: white !important;
   }
   // drop down styles
