@@ -15,9 +15,19 @@ export async function getStaticProps() {
     `${process.env.BASE_URL}/wp-json/wp/v2/categories?per_page=100`,
   ).then((result) => result.json());
 
-  const faqs = await fetch(
+  let faqs = await fetch(
     `${process.env.BASE_URL}/wp-json/wp/v2/faq?per_page=100`,
   ).then((result) => result.json());
+
+  // append default order if not set
+  if (faqs.length > 0) {
+    faqs = faqs.map((faq) => {
+      const cloneFaqs = {...faq}
+      const order = cloneFaqs?.acf?.order || '1';
+      cloneFaqs.acf.order = parseInt(order);
+      return {...cloneFaqs}
+    });
+  }
 
   const faqLists = cats.map((cat) =>
     faqs.filter((faq) =>
@@ -35,7 +45,6 @@ export async function getStaticProps() {
   });
   let filteredFaqLists = faqLists.filter((faq) => faq.length !== 0);
   let filteredCat = faqCats.filter((cat) => cat != undefined);
-
   return {
     props: {
       faqLists: filteredFaqLists.reverse(),
@@ -64,7 +73,7 @@ const FAQ = ({ faqLists, questionCat }) => {
 
   const filteredArr = faqLists.find(
     (list) => list[0].categories_slugs[0] === catSlug,
-  );
+  ).sort((a, b) => a.acf.order - b.acf.order);
 
   const getFilteredArr = (slug) => {
     return faqLists.find((list) => list[0].categories_slugs[0] === slug);

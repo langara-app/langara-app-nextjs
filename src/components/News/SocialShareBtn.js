@@ -27,7 +27,7 @@ const SocialShareBtn = ({ blogLink, blogTitle }) => {
           <FaShareNodes size={20} color={CommonStyling.primaryColor} />
         </button>
 
-        <div className={`dropdown-content`}>
+        <div className={`dropdown-content options-wrapper`}>
           <ul>
             <li>
               <FacebookShareButton
