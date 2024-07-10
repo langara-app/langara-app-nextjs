@@ -93,15 +93,6 @@ const ProgramOverview = () => {
                 bcg="#F15A22"
                 hover={true}
               />
-              <p className="handbook-url-container">
-                <Link
-                  className="handbook-url"
-                  target="_blank"
-                  href={WmddData.handbook_url}
-                >
-                  Download Handbook Summer 24
-                </Link>
-              </p>
             </MidLeft>
             <MidRight>
               <CustomSelect
@@ -163,15 +154,6 @@ const ProgramOverview = () => {
                 color="#FFFFFF"
                 bcg="#F15A22"
               />
-              <p className="handbook-url-container">
-                <Link
-                  className="handbook-url"
-                  target="_blank"
-                  href={WmddData.handbook_url}
-                >
-                  Download Handbook Summer 24
-                </Link>
-              </p>
             </MidTop>
             <MidBot>
               <CustomSelect
@@ -236,20 +218,7 @@ const ProgramOverview = () => {
   );
 };
 
-const PageContainer = styled.div`
-  .handbook-url-container {
-    margin-top: 2rem;
-  }
-  .handbook-url {
-    color: ${CommonStyling.primaryColor};
-    text-decoration: underline;
-    text-decoration-thickness: 2.5px;
-    font-weight: bold;
-  }
-  .handbook-url:hover {
-    text-decoration: none;
-  }
-`;
+const PageContainer = styled.div``;
 
 const TopSection = styled.section`
   background: url(${({ mainBackgroundImage }) => mainBackgroundImage});
@@ -413,9 +382,6 @@ const MidLeft = styled.div`
 const MidTop = styled.div`
   color: #000;
   margin-bottom: 3rem;
-  .handbook-url-container {
-    text-align: center;
-  }
   h1 {
     font-size: ${CommonStyling.h2FontSize};
     line-height: ${CommonStyling.h2LineHeight};

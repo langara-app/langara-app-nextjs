@@ -21,6 +21,8 @@ import instagram from "@/assets/instagram.svg";
 import twitterX from "@/assets/twitterX.svg";
 import youtube from "@/assets/youtube.svg";
 import SliderAds from "@/components/New-Student/SlideAds";
+import Button from "../../components/ReusableElements/Button";
+import { WmddData } from "@/lib/WmddData";
 
 const NewStudent = () => {
   const width = useWindowWidth();
@@ -56,6 +58,20 @@ const NewStudent = () => {
                   </div>
                   <div className="explore">
                     <Link href="#explore">Explore</Link>
+                    {/* <Button
+                      className="handbook-url"
+                      target="_blank"
+                      href={WmddData.handbook_url}
+                    >
+                      Download Handbook Summer 24
+                    </Button> */}
+                    <Button
+                      link={WmddData.handbook_url}
+                      text="Download Handbook"
+                      color="#FFFFFF"
+                      bcg="#F15A22"
+                      hover={true}
+                    />
                   </div>
                 </Greetings>
               </TopLeft>
@@ -247,17 +263,31 @@ const Greetings = styled.div`
     font-weight: 400;
   }
 
+  @media only screen and (min-width: 1083px) and (max-width: 1195px) {
+    .explore button a {
+      padding: 0.75rem 0.75rem;
+    }
+  }
+
+  @media only screen and (min-width: 768px) and (max-width: 1083px) {
+    .explore {
+      flex-direction: column;
+    }
+  }
+
   .explore {
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
   }
-  .explore a {
+  .explore > a {
     color: ${CommonStyling.primaryColor};
     text-decoration-line: underline;
     text-underline-offset: 4px;
     text-decoration-thickness: 2.5px;
   }
-  .explore a:hover {
+  .explore > a:hover {
     text-decoration: none;
   }
 
