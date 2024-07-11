@@ -15,8 +15,21 @@ import ArticleSubmissionCard from "@/components/News/ArticleSubmissionCard";
 // import assets
 import mainBackgroundImage from "@/assets/news-and-events/mainBackgroundImage.png";
 import FeaturedArticlesCard from "@/components/News/FeaturedArticlesCard";
+import YoutubeVideosCard from "@/components/News/YoutubeVideosCard";
 
 export async function getStaticProps() {
+  const apiKey = process.env.YOUTUBE_API_KEY;
+  const channelId = process.env.YOUTUBE_CHANNEL_ID;
+  let videos = Articles.youtubeData;
+
+  if (process.env.NODE_ENV === "production") {
+    const url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet&order=date&maxResults=3`;
+
+    const response = await fetch(url);
+    const youtubeResponse = await response.json();
+    videos = youtubeResponse.items;
+  }
+
   const cats = await fetch(
     `${process.env.BASE_URL}/wp-json/wp/v2/categories?per_page=100&hide_empty=false`,
   ).then((result) => result.json());
@@ -28,7 +41,6 @@ export async function getStaticProps() {
       acc[cat.id] = cat.name;
       return acc;
     }, {});
-
 
   const res = await fetch(
     `${process.env.BASE_URL}/wp-json/wp/v2/blogs?per_page=100&hide_empty=false`,
@@ -71,6 +83,7 @@ export async function getStaticProps() {
       featuredBlogArticles: featuredArticles,
       recentBlogArticles: nonFeaturedArticles,
       categoriesNames,
+      videos,
     },
     revalidate: 60 * 60 * 24,
   };
@@ -80,6 +93,7 @@ const NewsEvents = ({
   featuredBlogArticles,
   recentBlogArticles,
   categoriesNames,
+  videos,
 }) => {
   const [recentArticles, setRecentArticles] =
     React.useState(recentBlogArticles);
@@ -164,6 +178,24 @@ const NewsEvents = ({
             </div>
           )}
         </section>
+        {/* past events */}
+        <section className="events-wrapper youtube-wrapper">
+          <div className="section-info">
+            <div className="event-information past-events-title-container">
+              <div>
+                <h2>
+                  <span>Trending Videos</span>
+                </h2>
+              </div>
+            </div>
+
+            {recentArticles.length > 0 && (
+              <div className="event-card-wrapper">
+                <YoutubeVideosCard videos={videos} />
+              </div>
+            )}
+          </div>
+        </section>
       </Container>
       <ArticleSubmissionCard />
     </div>
@@ -210,6 +242,10 @@ const Container = styled.div`
     padding-top: 2.5rem;
     display: flex;
     flex-direction: column;
+  }
+
+  .youtube-wrapper {
+    min-height: unset;
   }
 
   .event-information {

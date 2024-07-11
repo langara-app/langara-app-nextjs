@@ -34,7 +34,7 @@ const ArticleSubmissionCard = ({ data }) => {
 const Container = styled.div`
   background-color: #d3d7d0;
   border-radius: 32px 32px 0 0;
-  margin-top: 4rem;
+  margin-top: 10rem;
   min-height: 70vh;
 
   section {

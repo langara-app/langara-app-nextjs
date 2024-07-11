@@ -58,13 +58,6 @@ const NewStudent = () => {
                   </div>
                   <div className="explore">
                     <Link href="#explore">Explore</Link>
-                    {/* <Button
-                      className="handbook-url"
-                      target="_blank"
-                      href={WmddData.handbook_url}
-                    >
-                      Download Handbook Summer 24
-                    </Button> */}
                     <Button
                       link={WmddData.handbook_url}
                       text="Download Handbook"
