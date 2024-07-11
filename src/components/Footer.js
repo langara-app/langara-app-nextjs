@@ -120,9 +120,10 @@ const LinkWrapper = styled.div`
     align-items: center;
   }
 
-  @media only screen and (max-width: 908px) {
+  @media only screen and (max-width: 975px) {
     .menu-items-wrapper {
       text-align: center;
+      gap: 1.25rem;
     }
   }
 

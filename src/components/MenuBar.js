@@ -70,11 +70,6 @@ const MenuBar = () => {
             />
           </Link>
         </div>
-        <Link href={"/"} legacyBehavior>
-          <MenuLink className="menu-item" onClick={openMenu}>
-            Home
-          </MenuLink>
-        </Link>
         {MenuData.map((menu, index) => (
           <Link href={menu.link} key={index} legacyBehavior>
             <MenuLink className="menu-item" onClick={openMenu}>
@@ -149,9 +144,10 @@ const LinkWrapper = styled.div`
     align-items: center;
   }
 
-  @media only screen and (max-width: 908px) {
+  @media only screen and (max-width: 975px) {
     .menu-items-wrapper {
       text-align: center;
+      gap: 1.25rem;
     }
   }
 

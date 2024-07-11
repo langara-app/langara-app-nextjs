@@ -1,15 +1,11 @@
 export const MenuData = [
-  // {
-  //   title: "Home",
-  //   link: "/",
-  // },
+  {
+    title: "Home",
+    link: "/",
+  },
   {
     title: "Program Overview",
     link: "/program-overview",
-  },
-  {
-    title: "New Student",
-    link: "/new-student",
   },
   // {
   //   title: "Alumni Voices",
@@ -26,5 +22,9 @@ export const MenuData = [
   {
     title: "FAQs",
     link: "/FAQs",
+  },
+  {
+    title: "New Student",
+    link: "/new-student",
   },
 ];
