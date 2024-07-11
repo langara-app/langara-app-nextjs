@@ -26,8 +26,17 @@ export async function getStaticProps() {
     const url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet&order=date&maxResults=3`;
 
     const response = await fetch(url);
-    const youtubeResponse = await response.json();
-    videos = youtubeResponse.items;
+
+    // if response not ok or quota exceeded then use the static data
+    if (!response.ok) {
+      console.error("Failed to fetch youtube videos");
+    } else if (response.status === 403) {
+      console.error("Quota exceeded");
+    } else {
+      console.log('fetched youtube videos')
+      const youtubeResponse = await response.json();
+      videos = youtubeResponse.items;
+    }
   }
 
   const cats = await fetch(

@@ -24,7 +24,9 @@ const YoutubeVideosCard = ({ videos }) => {
         ))}
       </div>
       <div className="youtube-channel-wrapper">
-        <Link href="#explore">Visit WMDD Youtube Channel</Link>
+        <Link href="https://www.youtube.com/@WMDDLangara" target="_blank">
+          Visit WMDD Youtube Channel
+        </Link>
       </div>
     </Container>
   );
