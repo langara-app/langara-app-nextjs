@@ -68,11 +68,11 @@ const ArticlesCard = ({
 
 const Container = styled.article`
   width: ${(props) =>
-    props["data-cardwidth"] ? props["data-cardwidth"] : "410px"};
+    props["data-cardwidth"] ? props["data-cardwidth"] : "380px"};
 
   .card {
     width: ${(props) =>
-      props["data-cardwidth"] ? props["data-cardwidth"] : "410px"};
+      props["data-cardwidth"] ? props["data-cardwidth"] : "380px"};
     height: ${(props) =>
       props["data-cardheight"] ? props["data-cardheight"] : "512px"};
 
@@ -179,7 +179,7 @@ const Container = styled.article`
   @media only screen and (max-width: 540px) {
     .card {
       flex-direction: column;
-      width: 410px;
+      width: 380px;
       height: 512px;
     }
   }
