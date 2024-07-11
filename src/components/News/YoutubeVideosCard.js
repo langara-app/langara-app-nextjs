@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Link from "next/link";
-import Image from "next/image";
-import useWindowWidth from "../Hooks/useWindowWidth";
 import { CommonStyling } from "../../lib/CommonStyling";
 
 // import cards
@@ -51,7 +49,6 @@ const Container = styled.div`
   margin: 0 auto;
 
   .recentArticles-wrapper {
-    height: 300px;
     display: flex;
     flex-direction: row-wrap;
     gap: 2rem;

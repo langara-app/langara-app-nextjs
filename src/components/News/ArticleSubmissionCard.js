@@ -34,7 +34,7 @@ const ArticleSubmissionCard = ({ data }) => {
 const Container = styled.div`
   background-color: #d3d7d0;
   border-radius: 32px 32px 0 0;
-  margin-top: 10rem;
+  margin-top: 5rem;
   min-height: 70vh;
 
   section {
@@ -56,6 +56,7 @@ const Container = styled.div`
     padding: 2rem;
     border-radius: 16px;
     max-width: 400px;
+    margin: 2rem;
   }
 
   .submission-info::before {
@@ -89,7 +90,7 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 6rem;
+    padding: 4rem;
   }
 
   @media (max-width: 948px) {
@@ -99,6 +100,10 @@ const Container = styled.div`
 
     section img {
       border-radius: 32px 32px 0 0;
+    }
+
+    .right {
+      padding: 0;
     }
 
     .submission-info::before {

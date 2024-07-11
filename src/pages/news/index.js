@@ -47,7 +47,14 @@ export async function getStaticProps() {
   );
   const resData = await res.json();
 
-  const x = [resData[0], resData[0], resData[0], resData[0]];
+  const x = [
+    resData[0],
+    resData[0],
+    resData[0],
+    resData[0],
+    resData[0],
+    resData[0],
+  ];
 
   const articles = x.map((article) => {
     return {
