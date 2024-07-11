@@ -15,7 +15,12 @@ const RecentArticlesCard = ({ recentArticles }) => {
       <div className="recentArticles-wrapper">
         {recentArticles.map((newsData, idx) => {
           return (
-            <ArticlesCard key={idx} cardData={newsData} showOutline={true} />
+            <ArticlesCard
+              cardWidth={"100%"}
+              key={idx}
+              cardData={newsData}
+              showOutline={true}
+            />
           );
         })}
       </div>
@@ -33,28 +38,33 @@ const Container = styled.div`
   .recentArticles-wrapper {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
   }
 
-  .recentArticles-wrapper > div {
-    margin: 0 auto;
-    width: fit-content;
-  }
-
-  
-
-  @media only screen and (max-width: 1288px) {
+  @media only screen and (max-width: 1280px) {
     .recentArticles-wrapper {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: space-evenly;
+      // max-width: 1650px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      align-items: center;
+      justify-content: center;
     }
+  }
 
-    .recentArticles-wrapper > div {
-      margin-bottom: unset;
+  @media only screen and (max-width: 680px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .recentArticles-wrapper {
+      max-width: 400px;
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 1.5rem;
+      align-items: center;
+      justify-content: center;
     }
-
   }
 `;
 

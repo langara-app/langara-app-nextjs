@@ -10,8 +10,6 @@ import { CommonStyling } from "../../lib/CommonStyling";
 import ArticlesCard from "./ArticlesCard";
 
 const FeaturedArticlesCard = ({ featuredArticles }) => {
-  
-
   const [featuredCards, setFeaturedCards] = useState([
     featuredArticles[0],
     featuredArticles[1],
@@ -21,7 +19,6 @@ const FeaturedArticlesCard = ({ featuredArticles }) => {
   return (
     <Container>
       <div className="recentArticles-wrapper">
-
         {/* feature left */}
         <div className="feature-left">
           <ArticlesCard
@@ -67,58 +64,21 @@ const Container = styled.div`
     grid-template-rows  repeat(2, 1fr);
   }
 
-  @media only screen and (max-width: 720px) {
-
-  }
-
   @media only screen and (max-width: 980px) {
 
-     display: flex;
+    display: flex;
     justify-content: center;
     align-items: center;
 
     .recentArticles-wrapper {
-    max-width: 650px;
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 1.5rem;
-    align-items: center;
-    justify-content: center;
+      max-width: 650px;
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 1.5rem;
+      align-items: center;
+      justify-content: center;
+    }
   }
-  }
-
-  // .recentArticles-wrapper {
-  //   display: grid;
-  //   grid-template-columns: repeat(3, 1fr);
-  //   //justify-items: center;
-  // }
-
-  // .recentArticles-wrapper > div {
-  //   // margin-bottom: 2rem;
-  //   margin: 0 auto;
-  //   width: fit-content;
-  // }
-
-  // @media only screen and (max-width: 1380px) {
-  //   .recentArticles-wrapper {
-  //     grid-template-columns: repeat(2, 1fr);
-  //   }
-  // }
-
-  // @media only screen and (max-width: 1080px) {
-  //   .recentArticles-wrapper {
-  //     display: flex;
-  //     flex-direction: row;
-  //     flex-wrap: wrap;
-  //     gap: 2rem;
-  //     justify-content: space-evenly;
-  //   }
-
-  //   .recentArticles-wrapper > div {
-  //     margin-bottom: unset;
-  //   }
-
-  // }
 `;
 
 export default FeaturedArticlesCard;
