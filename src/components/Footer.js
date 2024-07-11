@@ -55,7 +55,7 @@ const Footer = () => {
         <Logo>
           <Image src={logo2} width={87.9} height={41.65} alt="Logo" />
         </Logo>
-        <div style={{ display: "flex", gap: "1.5rem", alignItems: "center" }}>
+        <div className="menu-items-wrapper">
           {MenuData.map((menu, index) => {
             return (
               <Link href={menu.link} key={index} className="menu-item">
@@ -98,13 +98,33 @@ const Container = styled.div`
   padding: 16px 48px;
 `;
 
+const FlexContainer = styled.div`
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: 768px) {
+    padding: 1rem 3rem;
+  }
+`;
+
 const LinkWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 1rem;
-
+  gap: 4rem;
   padding: 1rem 0;
+  .menu-items-wrapper {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  @media only screen and (max-width: 908px) {
+    .menu-items-wrapper {
+      text-align: center;
+    }
+  }
 
   @media only screen and (min-width: 768px) {
     flex-direction: row;
@@ -116,16 +136,6 @@ const LinkWrapper = styled.div`
     &:hover {
       color: ${CommonStyling.primaryColor};
     }
-  }
-`;
-
-const FlexContainer = styled.div`
-  background-color: #ffffff;
-  display: flex;
-  flex-direction: column;
-
-  @media screen and (min-width: 768px) {
-    padding: 1rem 3rem;
   }
 `;
 

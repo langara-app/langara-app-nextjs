@@ -92,49 +92,81 @@ const MenuBar = () => {
       </Menu>
     </MobileMenuContainer>
   ) : (
-    <div className={styles.container}>
-      <div>
-        <Link href="/">
-          <Image
-            className={styles.langara_logo}
-            src={logo2}
-            alt="Langara College Logo"
-            width={32}
-            height={32}
-          />
-        </Link>
-      </div>
-      <div className={styles.menues}>
-        {MenuData.map((menu, index) => (
-          <Link href={menu.link} key={index} legacyBehavior>
-            <MenuLinkWeb
-              pathname={pathname}
-              className={index + 1}
-              color={
-                menu.link === firstPath && firstPath != "/"
-                  ? "#F15A22"
-                  : "#263238"
-              }
-              fontWeight={
-                menu.link === firstPath && firstPath != "/" ? 700 : 400
-              }
-            >
-              {menu.title}
-            </MenuLinkWeb>
+    <FlexContainer>
+      <LinkWrapper>
+        <div>
+          <Link href="/">
+            <Image
+              className={styles.langara_logo}
+              src={logo2}
+              alt="Langara College Logo"
+              width={32}
+              height={32}
+            />
           </Link>
-        ))}
-        <Button
-          link={"https://langara.ca/admissions/apply-to-langara/index.html"}
-          text="Apply"
-          bcg="#F15A22"
-          color="#FFFFFF"
-          hover={true}
-          font={CommonStyling.body2FontSize.split("r")[0]}
-        ></Button>
-      </div>
-    </div>
+        </div>
+        <div className="menu-items-wrapper">
+          {MenuData.map((menu, index) => {
+            return (
+              <Link href={menu.link} key={index} className="menu-item">
+                {menu.title}
+              </Link>
+            );
+          })}
+          <Button
+            link={"https://langara.ca/admissions/apply-to-langara/index.html"}
+            text="Apply"
+            color="#FFFFFF"
+            bcg="#F15A22"
+            font={CommonStyling.body2FontSize.split("r")[0]}
+            hover={true}
+          />
+        </div>
+      </LinkWrapper>
+    </FlexContainer>
   );
 };
+
+const FlexContainer = styled.div`
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: 768px) {
+    padding: 1rem 3rem;
+  }
+`;
+
+const LinkWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4rem;
+  padding: 1rem 0;
+  .menu-items-wrapper {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  @media only screen and (max-width: 908px) {
+    .menu-items-wrapper {
+      text-align: center;
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .menu-item {
+    &:hover {
+      color: ${CommonStyling.primaryColor};
+    }
+  }
+`;
 
 const MenuLink = styled.a`
   color: white;
