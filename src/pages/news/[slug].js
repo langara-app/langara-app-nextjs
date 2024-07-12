@@ -12,7 +12,6 @@ import { HomeData } from "../../lib/HomeData";
 import formatDate from "@/utils/dateFormatter";
 
 import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
 const ReactPlayer = dynamic(() => import("react-player/lazy"), { ssr: false });
 
 import SocialShareBtn from "@/components/News/SocialShareBtn";
@@ -25,7 +24,7 @@ export async function getStaticPaths() {
 
   return {
     paths: blogs.map((blog) => ({ params: { slug: blog.slug } })),
-    fallback: false,
+    fallback: "blocking",
   };
 }
 
@@ -33,7 +32,20 @@ export async function getStaticProps({ params }) {
   const res = await fetch(
     `${process.env.BASE_URL}/wp-json/wp/v2/blogs?slug=${params.slug}`,
   );
+
+  if (!res.ok) {
+    return {
+      notFound: true,
+    };
+  }
+
   const blog = await res.json();
+
+  if (blog.length === 0) {
+    return {
+      notFound: true,
+    };
+  }
 
   let categoryName = null;
 

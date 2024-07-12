@@ -21,19 +21,33 @@ export async function getStaticPaths() {
 
   return {
     paths: news_events.map((event) => ({ params: { slug: event.slug } })),
-    fallback: false,
+    fallback: "blocking",
   };
 }
 
 export async function getStaticProps({ params }) {
   const res = await fetch(
-    `${process.env.BASE_URL}/wp-json/wp/v2/news-and-events?per_page=100`,
+    `${process.env.BASE_URL}/wp-json/wp/v2/news-and-events?slug=${params.slug}`,
   );
+
+  // not ok
+  if (!res.ok) {
+    return {
+      notFound: true,
+    };
+  }
+
   const news_events = await res.json();
+
+  if (news_events.length === 0) {
+    return {
+      notFound: true,
+    };
+  }
 
   return {
     props: {
-      event: news_events.find((event) => event.slug === params.slug),
+      event: news_events[0],
     },
     revalidate: 60 * 60 * 24,
   };
@@ -42,7 +56,6 @@ export async function getStaticProps({ params }) {
 const NewsEventsInvidivual = ({ event }) => {
   function renderNameWithLinks(text) {
     const splits = text.split("_");
-    
 
     const appName = splits[0];
     const appLink = splits[1];

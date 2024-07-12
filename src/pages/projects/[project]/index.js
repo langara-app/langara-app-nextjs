@@ -187,21 +187,32 @@ export async function getStaticPaths() {
     paths: projects.map((project) => ({
       params: { category: project.categories_slugs[0], project: project.slug },
     })),
-    // paths: [],
     fallback: "blocking",
   };
 }
 
 export async function getStaticProps({ params }) {
-  const slug = params.project;
   const res = await fetch(
-    `${process.env.BASE_URL}/wp-json/wp/v2/projects?per_page=100`,
+    `${process.env.BASE_URL}/wp-json/wp/v2/projects?slug=${params.project}`,
   );
+
+  if (!res.ok) {
+    return {
+      notFound: true,
+    };
+  }
+
   const projects = await res.json();
+
+  if (projects.length === 0) {
+    return {
+      notFound: true,
+    };
+  }
 
   return {
     props: {
-      project: projects.filter((project) => project.slug === slug),
+      project: projects,
     },
     revalidate: 60 * 60 * 24,
   };
