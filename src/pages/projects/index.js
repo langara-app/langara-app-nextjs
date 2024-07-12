@@ -16,7 +16,7 @@ import mainBackgroundImage from "@/assets/projects/mainBackgroundImage.png";
 
 const ProjectCategoryData = ProjectData.ProjectCategoryData;
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const res = await fetch(
     `${process.env.BASE_URL}/wp-json/wp/v2/projects?per_page=100`,
   );
@@ -86,6 +86,7 @@ export async function getServerSideProps() {
       category2: category2,
       category3: category3,
     },
+    revalidate: 60 * 60 * 24,
   };
 }
 
