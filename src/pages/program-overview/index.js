@@ -85,7 +85,7 @@ const ProgramOverview = () => {
           <>
             <MidLeft>
               <h1>{WmddData.programDetails.title}</h1>
-              <p>{WmddData.programDetails.description}</p>
+              <p dangerouslySetInnerHTML={{ __html: WmddData.programDetails.description }}></p>
               <Button
                 link={WmddData.programDetails.seeAllLink}
                 text="See Details"

@@ -51,7 +51,7 @@ export const WmddData = {
   programDetails: {
     title: "What will you learn?",
     description:
-      "Be prepared to work on several projects during the courses, both individually and in teams. Our courses are structured to help you develop a digital portfolio and build industry connections.",
+      "Be prepared to work on individual and team projects. Our curriculum helps you develop a <strong>digital portfolio</strong> and build <strong>industry connections.</strong> Interested in <strong>artificial intelligence</strong>? Our courses include in-depth AI modules, equipping you with essential skills for this innovative field.",
     types: ["Developer", "Designer"],
     courses: [
       "Graphic Design for Web",
