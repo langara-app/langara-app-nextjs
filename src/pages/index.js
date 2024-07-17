@@ -208,12 +208,14 @@ const AlumniSectionArticle = styled.article`
 `;
 
 const AlumniTitle = styled.h2`
-  font-size: ${CommonStyling.h2FontSize};
-  margin: 0;
   padding-bottom: 1rem;
   @media screen and (min-width: 768px) {
     font-size: ${CommonStyling.h1FontSize};
   }
+  font-size: ${CommonStyling.h1FontSize};
+  color: ${CommonStyling.contrastColor};
+  font-weight: 700;
+  margin: 0;
 `;
 
 const AlumniDesc = styled.p`
@@ -336,11 +338,10 @@ const Graduate = styled.div`
   border-top-right-radius: 32px;
 
   @media screen and (min-width: 768px) {
+    max-height: 95vh;
     display: flex;
   }
-
   position: relative;
-
   margin-top: -32px;
 `;
 
