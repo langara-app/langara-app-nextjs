@@ -15,6 +15,7 @@ import AlumniSlider from "../components/Alumni/AlumniSlider";
 import AdminBox from "../components/AdminBox";
 import Button from "../components/ReusableElements/Button";
 import useWindowWidth from "../components/Hooks/useWindowWidth";
+import MarqueeCarousel from "@/components/ReusableElements/MarqueeCarousel";
 
 export async function getStaticProps() {
   // Instead of the file system,
@@ -143,6 +144,9 @@ const Home = ({ data, alumni, homeData }) => {
             />
           </ButtonWrapper>
         </EarnDiplomaDetails>
+        <MarqueeTextWrapper>
+          <MarqueeCarousel items={homeData.earnDiploma.marqueeText} />
+        </MarqueeTextWrapper>
       </EarnDiploma>
 
       <Graduate>
@@ -287,12 +291,8 @@ const CareerDesc = styled.p`
 
 const EarnDiploma = styled.div`
   background-color: ${CommonStyling.contrastColor};
-  padding: 4.9vh 5.4vw;
   text-align: center;
   color: ${CommonStyling.backgroundColor};
-  @media screen and (min-width: 768px) {
-    padding: 9.79vh 12.5vw;
-  }
   button {
     margin: 0 auto;
   }
@@ -305,7 +305,11 @@ const EarnDiploma = styled.div`
     font-weight: 700;
   }
 `;
-const EarnDiplomaDetails = styled.div``;
+const EarnDiplomaDetails = styled.div`
+  @media screen and (min-width: 768px) {
+    padding: 9.79vh 12.5vw;
+  }
+`;
 const EarnDiplomaTitle = styled.h2`
   font-size: ${CommonStyling.h1FontSize};
   color: ${CommonStyling.backgroundColor};
@@ -313,12 +317,18 @@ const EarnDiplomaTitle = styled.h2`
   margin: 0;
   padding-bottom: 1rem;
 `;
-const EarnDiplomaDesc = styled.p`
+const EarnDiplomaDesc = styled.div`
   font-size: ${CommonStyling.body1FontSize};
   line-height: ${CommonStyling.body1LineHeight}
   font-weight: 400;
   margin: 0;
   padding-top: 1rem;
+`;
+
+const MarqueeTextWrapper = styled.div`
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
 `;
 
 const Graduate = styled.div`
