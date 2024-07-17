@@ -268,6 +268,7 @@ const Graduate = styled.div`
 
   @media screen and (min-width: 768px) {
     display: flex;
+    height: 110vh;
   }
 
   position: relative;
