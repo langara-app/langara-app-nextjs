@@ -306,8 +306,9 @@ const EarnDiploma = styled.div`
   }
 `;
 const EarnDiplomaDetails = styled.div`
+padding: 9.79vh 12.5vw;
   @media screen and (min-width: 768px) {
-    padding: 9.79vh 12.5vw;
+    
   }
 `;
 const EarnDiplomaTitle = styled.h2`
@@ -327,8 +328,8 @@ const EarnDiplomaDesc = styled.div`
 
 const MarqueeTextWrapper = styled.div`
   width: 100%;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
 `;
 
 const Graduate = styled.div`

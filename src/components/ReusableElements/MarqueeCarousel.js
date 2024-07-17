@@ -11,12 +11,14 @@ import "swiper/css/navigation";
 import { Autoplay } from "swiper/modules";
 
 import styled from "styled-components";
+import { CommonStyling } from "@/lib/CommonStyling";
 
 const SwiperContainer = styled.div`
-  .swiper-container {
-    padding-left: 0;
-    padding-right: 0;
-    overflow: hidden;
+  .swiper-slide:nth-child(odd) {
+    color: ${CommonStyling.primaryColor};
+  }
+  .swiper-slide > * {
+    font-size: ${CommonStyling.h3FontSize};
   }
 `;
 
@@ -31,12 +33,12 @@ export default function MarqueeCarousel({ items }) {
       spaceBetween: 20,
       slidesPerGroup: 1,
     },
-    768: {
+    800: {
       slidesPerView: 3,
       spaceBetween: 30,
       slidesPerGroup: 2,
     },
-    1024: {
+    1200: {
       slidesPerView: 4,
       spaceBetween: 40,
       slidesPerGroup: 2,
