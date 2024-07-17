@@ -306,9 +306,8 @@ const EarnDiploma = styled.div`
   }
 `;
 const EarnDiplomaDetails = styled.div`
-padding: 9.79vh 12.5vw;
+  padding: 9.79vh 12.5vw;
   @media screen and (min-width: 768px) {
-    
   }
 `;
 const EarnDiplomaTitle = styled.h2`
@@ -328,22 +327,27 @@ const EarnDiplomaDesc = styled.div`
 
 const MarqueeTextWrapper = styled.div`
   width: 100%;
-  margin-top: 2rem;
-  margin-bottom: 3rem;
+  padding: 3rem 0;
+  margin-bottom: 6rem;
 `;
 
 const Graduate = styled.div`
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
+
   @media screen and (min-width: 768px) {
     display: flex;
-    height: 110vh;
   }
 
   position: relative;
+
+  margin-top: -32px;
 `;
 
 const Box = styled.div`
   height: 20px;
   width: 100%;
+  border-radius: 32px 32px 0 0;
   background-color: ${CommonStyling.backgroundColor};
   position: absolute;
   bottom: -1px;
@@ -353,6 +357,7 @@ const Box = styled.div`
 const ImageDiv = styled.div`
   line-height: 0%;
   width: 100%;
+  border-top-right-radius: 32px;
 
   @media only screen and (min-width: 768px) {
     max-width: 50vw;
@@ -367,16 +372,21 @@ const GraduateImg = styled.img`
   @media only screen and (min-width: 768px) {
     object-position: 70% 30%;
     max-width: 50vw;
+    border-top-right-radius: 32px;
     height: 100%;
   }
 `;
 
 const GradDescWrapper = styled.div`
   padding: 7.8vh 4.1vw 9.7vh;
+  border-top-right-radius: 32px;
+  border-top-left-radius: 32px;
+
   background-color: #f2f2f2;
   @media screen and (min-width: 768px) {
     padding: 19.79vh 5.5556vw;
     max-width: 50vw;
+    border-top-right-radius: 0;
 
     display: flex;
     flex-direction: column;
