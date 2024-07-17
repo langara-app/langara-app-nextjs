@@ -61,6 +61,20 @@ export const HomeData = {
       },
     ],
   },
+  earnDiploma: {
+    title: "Earn Your Diploma on Your Schedule",
+    description:
+      "Great news! Our program is now available for students who need a flexible schedule, with classes held online and in the evenings and weekends. This is especially convenient for working students. The first group will <span class='earn-diploma-highlight'>start in January 2025!</span>",
+    marqueeText: [
+      "2 year program",
+      "learn AI techo",
+      "web and mobile",
+      "IT profession",
+      "UX/UI design",
+      "full-stack development",
+      "industry skills",
+    ],
+  },
   graduate: {
     title: "Graduate with the skills the industry is looking for",
     image: graduate,

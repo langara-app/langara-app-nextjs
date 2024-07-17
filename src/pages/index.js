@@ -122,6 +122,29 @@ const Home = ({ data, alumni, homeData }) => {
         )}
       </CareerPath>
 
+      <EarnDiploma>
+        <EarnDiplomaDetails>
+          <EarnDiplomaTitle>{homeData.earnDiploma.title}</EarnDiplomaTitle>
+          <EarnDiplomaDesc>
+            <p
+              dangerouslySetInnerHTML={{
+                __html: homeData.earnDiploma.description,
+              }}
+            ></p>
+          </EarnDiplomaDesc>
+          <ButtonWrapper>
+            <Button
+              link={"https://langara.ca/admissions/apply-to-langara/index.html"}
+              text="Apply Now"
+              color="#FFFFFF"
+              bcg="#F15A22"
+              hover={true}
+              font={CommonStyling.body2FontSize.split("r")[0]}
+            />
+          </ButtonWrapper>
+        </EarnDiplomaDetails>
+      </EarnDiploma>
+
       <Graduate>
         <GradDescWrapper>
           <GradTitle>{HomeData.graduate.title}</GradTitle>
@@ -262,10 +285,43 @@ const CareerDesc = styled.p`
   }
 `;
 
-const Graduate = styled.div`
-  border-top-left-radius: 32px;
-  border-top-right-radius: 32px;
+const EarnDiploma = styled.div`
+  background-color: ${CommonStyling.contrastColor};
+  padding: 4.9vh 5.4vw;
+  text-align: center;
+  color: ${CommonStyling.backgroundColor};
+  @media screen and (min-width: 768px) {
+    padding: 9.79vh 12.5vw;
+  }
+  button {
+    margin: 0 auto;
+  }
+  display: flex;
+  flex-direction: column;
+  min-height: 60vh;
 
+  .earn-diploma-highlight {
+    color: ${CommonStyling.primaryColor};
+    font-weight: 700;
+  }
+`;
+const EarnDiplomaDetails = styled.div``;
+const EarnDiplomaTitle = styled.h2`
+  font-size: ${CommonStyling.h1FontSize};
+  color: ${CommonStyling.backgroundColor};
+  font-weight: 700;
+  margin: 0;
+  padding-bottom: 1rem;
+`;
+const EarnDiplomaDesc = styled.p`
+  font-size: ${CommonStyling.body1FontSize};
+  line-height: ${CommonStyling.body1LineHeight}
+  font-weight: 400;
+  margin: 0;
+  padding-top: 1rem;
+`;
+
+const Graduate = styled.div`
   @media screen and (min-width: 768px) {
     display: flex;
     height: 110vh;
@@ -277,7 +333,6 @@ const Graduate = styled.div`
 const Box = styled.div`
   height: 20px;
   width: 100%;
-  border-radius: 32px 32px 0 0;
   background-color: ${CommonStyling.backgroundColor};
   position: absolute;
   bottom: -1px;
@@ -287,7 +342,6 @@ const Box = styled.div`
 const ImageDiv = styled.div`
   line-height: 0%;
   width: 100%;
-  border-top-right-radius: 32px;
 
   @media only screen and (min-width: 768px) {
     max-width: 50vw;
@@ -302,21 +356,16 @@ const GraduateImg = styled.img`
   @media only screen and (min-width: 768px) {
     object-position: 70% 30%;
     max-width: 50vw;
-    border-top-right-radius: 32px;
     height: 100%;
   }
 `;
 
 const GradDescWrapper = styled.div`
   padding: 7.8vh 4.1vw 9.7vh;
-  border-top-right-radius: 32px;
-  border-top-left-radius: 32px;
-
   background-color: #f2f2f2;
   @media screen and (min-width: 768px) {
     padding: 19.79vh 5.5556vw;
     max-width: 50vw;
-    border-top-right-radius: 0;
 
     display: flex;
     flex-direction: column;
