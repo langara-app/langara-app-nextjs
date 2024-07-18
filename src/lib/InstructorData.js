@@ -16,6 +16,7 @@ import valentina from "@/assets/img/instructors/valentina-abanina.png";
 import binazir from "@/assets/img/instructors/binazir-farokhi.jpg";
 import tomoko from "@/assets/img/instructors/tomoko-okochi.jpg";
 import paul from "@/assets/img/instructors/paul-brassard.jpg";
+import sebastian from "@/assets/img/instructors/sebastian-r.jpg";
 
 export const InstructorData = {
   header: {
@@ -110,6 +111,11 @@ export const InstructorData = {
       title: "Instructional Assistant",
     },
     {
+      image: sebastian,
+      name: "Sebastian Richardson",
+      title: "Instructional Assistant",
+    },
+    {
       image: placeholder,
       name: "Denis Billette",
       title: "Instructor",
@@ -157,11 +163,6 @@ export const InstructorData = {
     {
       image: placeholder,
       name: "Rodrigo Ornellas",
-      title: "Instructional Assistant",
-    },
-    {
-      image: placeholder,
-      name: "Sebastian Richardson",
       title: "Instructional Assistant",
     },
   ],
