@@ -104,7 +104,5 @@ export const HomeData = {
   },
   footer: {
     contactDesc: "Want to ask something? Click here",
-    contactLink:
-      "https://langara.ca/programs-and-courses/programs/web-and-mobile-app/contact.html",
   },
 };

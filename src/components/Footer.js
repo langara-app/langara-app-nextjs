@@ -13,7 +13,7 @@ import Button from "../components/ReusableElements/Button";
 const Footer = () => {
   const width = useWindowWidth();
 
-  return width < 768 ? (
+  return width < 850 ? (
     <Container>
       <LinkWrapper>
         <Logo>
@@ -40,7 +40,10 @@ const Footer = () => {
         />
       </LinkWrapper>
       <CopyRight>
-        <span>&copy; {(new Date()).getFullYear()} Langara College. All rights reserved.</span>
+        <span>
+          &copy; {new Date().getFullYear()} Langara College. All rights
+          reserved.
+        </span>
         <a
           href="https://langara.ca/about-langara/records-management-and-privacy/privacy/privacy-statement.html"
           target="_blank"
@@ -63,9 +66,6 @@ const Footer = () => {
               </Link>
             );
           })}
-          <a className="menu-item" href={HomeData.footer.contactLink} target="_blank">
-            Contact
-          </a>
           <Button
             link={"https://langara.ca/admissions/apply-to-langara/index.html"}
             text="Apply"
@@ -77,7 +77,10 @@ const Footer = () => {
         </div>
       </LinkWrapper>
       <CopyRight>
-        <span>&copy; {(new Date()).getFullYear()} Langara College. All rights reserved.</span>
+        <span>
+          &copy; {new Date().getFullYear()} Langara College. All rights
+          reserved.
+        </span>
         <a
           href="https://langara.ca/about-langara/records-management-and-privacy/privacy/privacy-statement.html"
           target="_blank"

@@ -37,7 +37,7 @@ const MenuBar = () => {
     setFirstPath(removeHash);
   }, [router]);
 
-  return width < 768 ? (
+  return width < 850 ? (
     <MobileMenuContainer>
       <div>
         <Link href="/">

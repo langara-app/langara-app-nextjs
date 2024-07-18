@@ -27,4 +27,8 @@ export const MenuData = [
     title: "New Student",
     link: "/new-student",
   },
+  {
+    title: "Contact",
+    link: "https://langara.ca/programs-and-courses/programs/web-and-mobile-app/contact.html"
+  }
 ];
