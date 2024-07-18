@@ -231,13 +231,13 @@ const CareerPath = styled.section`
   align-items: center;
   overflow: hidden;
   background-color: ${CommonStyling.backgroundColor};
-  padding-bottom: 8.33vh;
+  padding-bottom: 16.33vh;
 
   @media screen and (min-width: 768px) {
     // padding: 2vh 13.5vw;
     max-width: 80vw;
     margin: auto;
-    padding-bottom: 8.75vh;
+    padding-bottom: 16.75vh;
   }
 `;
 
@@ -254,7 +254,7 @@ const CareerHeader = styled.div`
 
   @media screen and (min-width: 769px) {
     flex-direction: row;
-    margin-top: 24.75vh;
+    margin-top: 12.75vh;
     margin-bottom: 3.5vh;
   }
 `;
@@ -297,6 +297,7 @@ const EarnDiploma = styled.div`
   color: ${CommonStyling.backgroundColor};
   button {
     margin: 0 auto;
+    margin-top: 2rem;
   }
   display: flex;
   flex-direction: column;
@@ -323,14 +324,15 @@ const EarnDiplomaDesc = styled.div`
   font-size: ${CommonStyling.body1FontSize};
   line-height: ${CommonStyling.body1LineHeight}
   font-weight: 400;
-  margin: 0;
+  margin: 0 auto;
   padding-top: 1rem;
+  width: 690px;
+  text-align: left;
 `;
 
 const MarqueeTextWrapper = styled.div`
   width: 100%;
-  padding: 3rem 0;
-  margin-bottom: 6rem;
+  padding-bottom: calc(10.79vh + 32px);
 `;
 
 const Graduate = styled.div`
