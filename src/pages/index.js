@@ -133,7 +133,7 @@ const Home = ({ data, alumni, homeData }) => {
               }}
             ></p>
           </EarnDiplomaDesc>
-          <ButtonWrapper>
+          <EarnDiplomaBtnWrapper>
             <Button
               link={"https://langara.ca/admissions/apply-to-langara/index.html"}
               text="Apply Now"
@@ -142,7 +142,7 @@ const Home = ({ data, alumni, homeData }) => {
               hover={true}
               font={CommonStyling.body2FontSize.split("r")[0]}
             />
-          </ButtonWrapper>
+          </EarnDiplomaBtnWrapper>
         </EarnDiplomaDetails>
         <MarqueeTextWrapper>
           <MarqueeCarousel items={homeData.earnDiploma.marqueeText} />
@@ -291,13 +291,20 @@ const CareerDesc = styled.p`
   }
 `;
 
+const EarnDiplomaBtnWrapper = styled.div`
+  padding-top: 2rem;
+  max-width: 690px;
+  margin: 0 auto;
+`;
+
 const EarnDiploma = styled.div`
   background-color: ${CommonStyling.contrastColor};
   text-align: center;
   color: ${CommonStyling.backgroundColor};
   button {
-    margin: 0 auto;
-    margin-top: 2rem;
+    @media screen and (max-width: 426px) {
+      width: 100%;
+    }
   }
   display: flex;
   flex-direction: column;
@@ -310,7 +317,8 @@ const EarnDiploma = styled.div`
 `;
 const EarnDiplomaDetails = styled.div`
   padding: 9.79vh 12.5vw;
-  @media screen and (min-width: 768px) {
+  @media screen and (max-width: 767px) {
+    padding: 7.8vh 4.1vw;
   }
 `;
 const EarnDiplomaTitle = styled.h2`
@@ -326,7 +334,7 @@ const EarnDiplomaDesc = styled.div`
   font-weight: 400;
   margin: 0 auto;
   padding-top: 1rem;
-  width: 690px;
+  max-width: 690px;
   text-align: left;
 `;
 
