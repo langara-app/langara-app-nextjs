@@ -295,6 +295,9 @@ const EarnDiplomaBtnWrapper = styled.div`
   padding-top: 2rem;
   max-width: 690px;
   margin: 0 auto;
+  button:hover {
+    box-shadow: 0px 0px 0px 2px #f15a22 inset;
+  }
 `;
 
 const EarnDiploma = styled.div`

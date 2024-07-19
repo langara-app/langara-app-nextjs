@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { CommonStyling } from "../../lib/CommonStyling";
 
 const Button = ({
@@ -57,11 +57,18 @@ const BtnElement = styled.button`
 
   margin: ${({ margin }) => margin}rem auto;
   font-family: ${CommonStyling.primaryFontFamily};
-  border: 2px solid
-    ${(allProps) =>
-      allProps["data-bordercolor"]
-        ? allProps["data-bordercolor"]
-        : ({ color }) => color};
+
+  ${(allProps) =>
+    allProps["data-bordercolor"]
+      ? css`
+          border: 2px solid
+            ${(allProps) =>
+              allProps["data-bordercolor"]
+                ? allProps["data-bordercolor"]
+                : ({ color }) => color};
+        `
+      : ""}
+
   background-color: ${(allProps) => allProps["data-bcg"]};
   color: ${({ color }) => color};
 
