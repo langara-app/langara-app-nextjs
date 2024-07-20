@@ -58,16 +58,11 @@ const BtnElement = styled.button`
   margin: ${({ margin }) => margin}rem auto;
   font-family: ${CommonStyling.primaryFontFamily};
 
-  ${(allProps) =>
-    allProps["data-bordercolor"]
-      ? css`
-          border: 2px solid
-            ${(allProps) =>
-              allProps["data-bordercolor"]
-                ? allProps["data-bordercolor"]
-                : ({ color }) => color};
-        `
-      : ""}
+  border: 2px solid
+    ${(allProps) =>
+      allProps["data-bordercolor"]
+        ? allProps["data-bordercolor"]
+        : ({ color }) => color};
 
   background-color: ${(allProps) => allProps["data-bcg"]};
   color: ${({ color }) => color};
