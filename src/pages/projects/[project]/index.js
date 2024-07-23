@@ -27,6 +27,38 @@ const Project = ({ project }) => {
     <Container>
       <Head>
         <title>{HomeData.tabName.title}</title>
+        {/* Basic Meta Tags */}
+        <meta
+          name="description"
+          content={data.acf?.app_short_description || data.acf?.app_description}
+        />
+
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content={data.acf.name_of_the_project} />
+
+        <meta
+          property="og:description"
+          content={data.acf?.app_short_description || data.acf?.app_description}
+        />
+
+        <meta property="og:image" content={data.acf.app_picture} />
+
+        <meta
+          property="og:url"
+          content={"https://langara-app.ca/projects/" + `${data.slug}`}
+        />
+
+        <meta property="og:type" content="website" />
+
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content={data.acf.app_picture} />
+        <meta name="twitter:site" content="@langaracollege" />
+        <meta name="twitter:title" content={data.acf.name_of_the_project} />
+        <meta
+          name="twitter:description"
+          content={data.acf?.app_short_description || data.acf?.app_description}
+        />
+        <meta name="twitter:image" content={data.acf.app_picture} />
       </Head>
       <Link className="category-link" href="/projects">
         <div className="titleWrapper">
