@@ -21,8 +21,6 @@ import { useEffect } from "react";
 const MenuBar = () => {
   const width = useWindowWidth();
   const [open, setOpen] = useState(false);
-  const pathname = usePathname();
-
   const router = useRouter();
 
   const openMenu = () => {
@@ -180,18 +178,6 @@ const MenuLink = styled.a`
   }
 `;
 
-const MenuLinkWeb = styled.a`
-  margin-left: 3.5vw;
-  font-weight: ${({ fontWeight }) => fontWeight};
-  font-size: ${CommonStyling.body2FontSize};
-  color: ${({ color }) => color};
-  cursor: pointer;
-
-  &:hover {
-    color: ${CommonStyling.primaryColor};
-  }
-`;
-
 const MobileMenuContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -201,6 +187,13 @@ const MobileMenuContainer = styled.div`
   background-color: #ffffff;
   border-bottom: 1px solid #cfd8dc;
 
+  .menu-item {
+    &:hover {
+      color: white;
+      text-decoration: underline;
+      text-underline-offset: 0.2rem;
+    }
+  }
   /* Position and sizing of burger button */
   .bm-burger-button {
     position: absolute;
