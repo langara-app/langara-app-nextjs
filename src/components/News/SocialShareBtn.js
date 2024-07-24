@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { CommonStyling } from "@/lib/CommonStyling";
 
-import { FaShareNodes } from "react-icons/fa6";
+import { FaShareNodes, FaRegCopy, FaCopy } from "react-icons/fa6";
 
 import {
   FacebookShareButton,
@@ -16,13 +16,34 @@ import {
 } from "next-share";
 
 const SocialShareBtn = ({ blogLink, blogTitle }) => {
+  const [copy, setCopy] = React.useState(false);
+
   function buttonClick(e) {
     e.preventDefault();
+    e.stopPropagation();
+  }
+
+  function copyToClipboard(text) {
+    if (typeof window === "undefined" || !navigator.clipboard) {
+      return;
+    }
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        console.log("Text successfully copied to clipboard");
+      })
+      .catch((err) => {
+        console.error("Could not copy text: ", err);
+      });
   }
 
   return (
-    <SocialBtn>
-      <div className="parent-wrapper dropdown">
+    <SocialBtn onClick={buttonClick}>
+      <div
+        className="parent-wrapper dropdown"
+        onMouseLeave={() => setCopy(false)}
+        onTouchEnd={() => setCopy(false)}
+      >
         <button disabled className="share-button">
           <FaShareNodes size={20} color={CommonStyling.primaryColor} />
         </button>
@@ -52,11 +73,18 @@ const SocialShareBtn = ({ blogLink, blogTitle }) => {
               </TwitterShareButton>
             </li>
             <li>
-              <EmailShareButton url={blogLink} subject={blogTitle}>
+              <div
+                onClick={() => {
+                  navigator.clipboard.writeText(blogLink);
+                  setCopy(true);
+                }}
+              >
                 <div className="socials">
-                  <EmailIcon size={20} round /> Email
+                  {copy && <FaCopy color={CommonStyling.primaryColor} />}
+                  {!copy && <FaRegCopy />}
+                  Copy
                 </div>
-              </EmailShareButton>
+              </div>
             </li>
             <li>
               <LinkedinShareButton url={blogLink}>
