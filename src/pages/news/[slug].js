@@ -127,17 +127,16 @@ const NewsEventsInvidivual = ({ blog, categoryName, recentArticles }) => {
   return (
     <ArticlePage>
       <SingleEventPageContainer>
-        <Head>
-          <Meta
-            pageTitle={HomeData.tabName.title}
-            title={blog.title.rendered}
-            description={blog.acf.excerpt}
-            url={`https://langara-app.ca/news/${blog.slug}`}
-            image={blog.acf.blog_feature_image}
-            keywords={"langara article, app development, web and mobile app"}
-            type={"article"}
-          />
-        </Head>
+        <Meta
+          pageTitle={HomeData.tabName.title}
+          title={blog.title.rendered}
+          description={blog.acf.excerpt}
+          url={`https://langara-app.ca/news/${blog.slug}`}
+          image={blog.acf.blog_feature_image}
+          keywords={"langara article, app development, web and mobile app"}
+          type={"article"}
+        />
+
         <Link className="category-link" href={`/news`}>
           <span className="events-title">{Articles.singleEventPage.title}</span>
         </Link>

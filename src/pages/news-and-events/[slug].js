@@ -108,17 +108,16 @@ const NewsEventsInvidivual = ({ event }) => {
 
   return (
     <SingleEventPageContainer>
-      <Head>
-        <Meta
-          pageTitle={HomeData.tabName.title}
-          title={event.title.rendered}
-          description={event.acf.excerpt || event.acf.section1_article}
-          url={`https://langara-app.ca/events/${event.slug}`}
-          type="website"
-          image={event?.acf?.article_image}
-          keywords={"langara college event, web and mobile app"}
-        />
-      </Head>
+      <Meta
+        pageTitle={HomeData.tabName.title}
+        title={event.title.rendered}
+        description={event.acf.excerpt || event.acf.section1_article}
+        url={`https://langara-app.ca/events/${event.slug}`}
+        type="website"
+        image={event?.acf?.article_image}
+        keywords={"langara college event, web and mobile app"}
+      />
+
       <Link className="category-link" href={`/news-and-events/`}>
         <span className="events-title">
           {NewsAndEvents.singleEventPage.title}

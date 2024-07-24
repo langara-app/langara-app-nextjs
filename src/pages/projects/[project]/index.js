@@ -26,22 +26,21 @@ const Project = ({ project }) => {
 
   return (
     <Container>
-      <Head>
-        <Meta
-          pageTitle={HomeData.tabName.title}
-          title={data.acf.name_of_the_project}
-          description={
-            data.acf?.app_short_description || data.acf?.app_description
-          }
-          url={`https://langara-app.ca/projects/${data.slug}`}
-          type="website"
-          image={data.acf.app_picture}
-          keywords={
-            ("langara application, app development, web and mobile app",
-            "coding project")
-          }
-        />
-      </Head>
+      <Meta
+        pageTitle={HomeData.tabName.title}
+        title={data.acf.name_of_the_project}
+        description={
+          data.acf?.app_short_description || data.acf?.app_description
+        }
+        url={`https://langara-app.ca/projects/${data.slug}`}
+        type="website"
+        image={data.acf.app_picture}
+        keywords={
+          ("langara application, app development, web and mobile app",
+          "coding project")
+        }
+      />
+
       <Link className="category-link" href="/projects">
         <div className="titleWrapper">
           {data.categories_slugs == "native-app" ? (
