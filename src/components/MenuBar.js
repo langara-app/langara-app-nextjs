@@ -125,7 +125,7 @@ const FlexContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 850px) {
     padding: 1rem 3rem;
   }
 `;
@@ -149,7 +149,7 @@ const LinkWrapper = styled.div`
     }
   }
 
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 850px) {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -169,7 +169,7 @@ const MenuLink = styled.a`
   cursor: pointer;
   font-size: 1rem;
 
-  @media only screen and (min-width: 768px) {
+  @media only screen and (min-width: 850px) {
     color: #6b6156;
   }
 
@@ -192,6 +192,7 @@ const MobileMenuContainer = styled.div`
       color: white;
       text-decoration: underline;
       text-underline-offset: 0.2rem;
+      text-decoration-thickness: 2px;
     }
   }
   /* Position and sizing of burger button */
