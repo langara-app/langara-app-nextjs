@@ -15,6 +15,7 @@ import dynamic from "next/dynamic";
 const ReactPlayer = dynamic(() => import("react-player/lazy"), { ssr: false });
 
 import SocialShareBtn from "@/components/News/SocialShareBtn";
+import Meta from "@/components/ReusableElements/Meta";
 
 export async function getStaticPaths() {
   const res = await fetch(
@@ -127,26 +128,15 @@ const NewsEventsInvidivual = ({ blog, categoryName, recentArticles }) => {
     <ArticlePage>
       <SingleEventPageContainer>
         <Head>
-          <title>{HomeData.tabName.title}</title>
-          {/* Basic Meta Tags */}
-          <meta name="description" content={blog.acf.excerpt} />
-
-          {/* Open Graph Meta Tags */}
-          <meta property="og:title" content={blog.title.rendered} />
-          <meta property="og:description" content={blog.acf.excerpt} />
-          <meta property="og:image" content={blog.acf.blog_feature_image} />
-          <meta
-            property="og:url"
-            content={"https://langara-app.ca/news/" + `${blog.slug}`}
+          <Meta
+            pageTitle={HomeData.tabName.title}
+            title={blog.title.rendered}
+            description={blog.acf.excerpt}
+            url={`https://langara-app.ca/news/${blog.slug}`}
+            image={blog.acf.blog_feature_image}
+            keywords={"langara article, app development, web and mobile app"}
+            type={"article"}
           />
-          <meta property="og:type" content="website" />
-
-          {/* Twitter Card Meta Tags */}
-          <meta name="twitter:card" content={blog.acf.blog_feature_image} />
-          {/* <meta name="twitter:site" content="@YourTwitterHandle" /> */}
-          <meta name="twitter:title" content={blog.title.rendered} />
-          <meta name="twitter:description" content={blog.acf.excerpt} />
-          <meta name="twitter:image" content={blog.acf.blog_feature_image} />
         </Head>
         <Link className="category-link" href={`/news`}>
           <span className="events-title">{Articles.singleEventPage.title}</span>
