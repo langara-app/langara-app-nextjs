@@ -12,17 +12,9 @@ import { HomeData } from "../../../lib/HomeData";
 import useEndpointStatus from "@/components/Hooks/useEndpointStatus";
 import Meta from "@/components/ReusableElements/Meta";
 
-const Project = ({ project }) => {
+const Project = ({ project, isSiteLinkActive, isProposalActive }) => {
   const ProjectCategoryData = ProjectData.ProjectCategoryData;
-
   const data = project[0];
-
-  const isSiteLinkActive = useEndpointStatus(data?.acf?.project_site_link);
-  const isProposalActive = useEndpointStatus(data?.acf?.project_proposal_file);
-
-  if (isSiteLinkActive === null || isProposalActive === null) {
-    return null;
-  }
 
   return (
     <Container>
@@ -56,19 +48,19 @@ const Project = ({ project }) => {
       <h1 className="projectTitle">{data.acf.name_of_the_project}</h1>
 
       <div className="actionContainer">
-        {data.acf.project_proposal_file && isProposalActive ? (
-          <Link href={data.acf.project_proposal_file} target="_blank">
+        {isProposalActive && (
+          <Link href={data.acf?.project_proposal_file} target="_blank">
             <img src={ProjectData.ProjectDetails.downloadProposalIcon} />
             {ProjectData.ProjectDetails.downloadProposal}
           </Link>
-        ) : null}
+        )}
 
-        {data.acf.project_site_link && isSiteLinkActive ? (
-          <Link href={data.acf.project_site_link} target="_blank">
+        {isSiteLinkActive && (
+          <Link href={data.acf?.project_site_link} target="_blank">
             <img src={ProjectData.ProjectDetails.seeLiveProjectIcon} />
             {ProjectData.ProjectDetails.seeLiveProject}
           </Link>
-        ) : null}
+        )}
       </div>
 
       <ImageContainer>
@@ -223,9 +215,35 @@ export async function getStaticProps({ params }) {
     };
   }
 
+  const project = projects[0];
+
+  const checkEndpointStatus = async (url) => {
+    if (!url) return false;
+    try {
+      const response = await fetch(url, { method: "HEAD" });
+      return response.ok;
+    } catch {
+      return false;
+    }
+  };
+
+  let isSiteLinkActive = false;
+  if (project?.acf?.project_site_link) {
+    isSiteLinkActive = await checkEndpointStatus(project.acf.project_site_link);
+  }
+
+  let isProposalActive = false;
+  if (project?.acf?.project_proposal_file) {
+    isProposalActive = await checkEndpointStatus(
+      project.acf.project_proposal_file,
+    );
+  }
+
   return {
     props: {
       project: projects,
+      isSiteLinkActive,
+      isProposalActive,
     },
     revalidate: 60 * 60 * 24,
   };
