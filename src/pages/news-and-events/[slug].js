@@ -11,6 +11,7 @@ import formatDate from "@/utils/dateFormatter";
 
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
+import Meta from "@/components/ReusableElements/Meta";
 const ReactPlayer = dynamic(() => import("react-player/lazy"), { ssr: false });
 
 export async function getStaticPaths() {
@@ -108,7 +109,15 @@ const NewsEventsInvidivual = ({ event }) => {
   return (
     <SingleEventPageContainer>
       <Head>
-        <title>{HomeData.tabName.title}</title>
+        <Meta
+          pageTitle={HomeData.tabName.title}
+          title={event.title.rendered}
+          description={event.acf.excerpt || event.acf.section1_article}
+          url={`https://langara-app.ca/events/${event.slug}`}
+          type="website"
+          image={event?.acf?.article_image}
+          keywords={"langara college event, web and mobile app"}
+        />
       </Head>
       <Link className="category-link" href={`/news-and-events/`}>
         <span className="events-title">
