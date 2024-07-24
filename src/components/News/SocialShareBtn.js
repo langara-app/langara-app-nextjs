@@ -51,6 +51,13 @@ const SocialShareBtn = ({ blogLink, blogTitle }) => {
         <div className={`dropdown-content options-wrapper`}>
           <ul>
             <li>
+              <LinkedinShareButton url={blogLink}>
+                <div className="socials">
+                  <LinkedinIcon size={20} round /> Linkedin
+                </div>
+              </LinkedinShareButton>
+            </li>
+            <li>
               <FacebookShareButton
                 url={blogLink}
                 quote={blogTitle}
@@ -73,7 +80,7 @@ const SocialShareBtn = ({ blogLink, blogTitle }) => {
               </TwitterShareButton>
             </li>
             <li>
-              <div
+              <button
                 onClick={() => {
                   navigator.clipboard.writeText(blogLink);
                   setCopy(true);
@@ -84,14 +91,7 @@ const SocialShareBtn = ({ blogLink, blogTitle }) => {
                   {!copy && <FaRegCopy />}
                   Copy
                 </div>
-              </div>
-            </li>
-            <li>
-              <LinkedinShareButton url={blogLink}>
-                <div className="socials">
-                  <LinkedinIcon size={20} round /> Linkedin
-                </div>
-              </LinkedinShareButton>
+              </button>
             </li>
           </ul>
         </div>
@@ -135,10 +135,12 @@ const SocialBtn = styled.div`
 
   .options-wrapper li {
     list-style: none;
-    padding: 0.5rem 1rem;
     cursor: pointer;
   }
-
+  .options-wrapper li button {
+    width: 100%;
+    padding: 0.5rem 1rem !important;
+  }
   .options-wrapper li:hover {
     background-color: ${CommonStyling.outlineColor};
   }
@@ -192,7 +194,7 @@ const SocialBtn = styled.div`
 
   .dropdown-content li {
     color: black;
-    padding: .5rem 16px;
+    // padding: .5rem 16px;
     text-decoration: none;
     display: block;
   }
