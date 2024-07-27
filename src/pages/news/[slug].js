@@ -173,50 +173,55 @@ const NewsEventsInvidivual = ({ blog, categoryName, recentArticles }) => {
           </div>
           <section>
             {blog.acf.blog_text_area_one !== "" ? (
-              <p
+              <div
                 className="section-para"
                 dangerouslySetInnerHTML={{
                   __html: blog.acf.blog_text_area_one,
                 }}
-              ></p>
+              ></div>
             ) : null}
           </section>
           {/* Blog Media Group One */}
-          <section className="blog-media">
-            {blog.acf.media_one_1_2 && renderMedia(blog.acf.media_one_1_2)}
-            {blog.acf.media_one_2_2 && renderMedia(blog.acf.media_one_2_2)}
-          </section>
-          <section>
-            {blog.acf.blog_text_area_two_title && (
-              <h3 className="section-title">
-                {blog.acf.blog_text_area_two_title}
-              </h3>
-            )}
-            {blog.acf.blog_text_area_two && (
-              <p
-                className="section-para"
-                dangerouslySetInnerHTML={{
-                  __html: blog.acf.blog_text_area_two,
-                }}
-              ></p>
-            )}
-          </section>
+          {blog.acf.media_one_1_2 ||
+            (blog.acf.media_one_2_2 && (
+              <section className="blog-media">
+                {blog.acf.media_one_1_2 && renderMedia(blog.acf.media_one_1_2)}
+                {blog.acf.media_one_2_2 && renderMedia(blog.acf.media_one_2_2)}
+              </section>
+            ))}
+
+          {/* Blog Text Area Two conditional load */}
+
+          {blog.acf.blog_text_area_two && (
+            <section>
+              {blog.acf.blog_text_area_two && (
+                <div
+                  className="section-para"
+                  dangerouslySetInnerHTML={{
+                    __html: blog.acf.blog_text_area_two,
+                  }}
+                ></div>
+              )}
+            </section>
+          )}
+
           {/* Blog Media Group Two */}
-          <section className="blog-media">
-            {blog.acf.media_two_1_2 && renderMedia(blog.acf.media_two_1_2)}
-            {blog.acf.media_two_2_2 && renderMedia(blog.acf.media_two_2_2)}
-          </section>
+          {(blog.acf.media_two_1_2 || blog.acf.media_two_1_2) && (
+            <section className="blog-media">
+              {blog.acf.media_two_1_2 && renderMedia(blog.acf.media_two_1_2)}
+              {blog.acf.media_two_2_2 && renderMedia(blog.acf.media_two_2_2)}
+            </section>
+          )}
+
           <section>
+            {blog.acf.references && <h2>References</h2>}
             {blog.acf.references && (
-              <h3 className="section-title">References</h3>
-            )}
-            {blog.acf.references && (
-              <p
+              <div
                 className="section-para"
                 dangerouslySetInnerHTML={{
                   __html: blog.acf.references,
                 }}
-              ></p>
+              ></div>
             )}
           </section>
           <section className="author-info-share-btn">
@@ -271,6 +276,50 @@ const SingleEventPageContainer = styled.div`
 `;
 
 const ArticleDetails = styled.article`
+  // ======> styles for wordpress content
+
+  h1,
+  h2,
+  h3 {
+    font-weight: 700;
+    margin: 1rem 0 1rem 0;
+    font-size: ${CommonStyling.h1FontSize};
+    line-height: 48px;
+  }
+
+  h2 {
+    font-size: ${CommonStyling.h2FontSize};
+  }
+
+  h3 {
+    font-size: ${CommonStyling.h3FontSize};
+  }
+
+  ol,
+  ul {
+    margin: 1rem 0 1rem 0;
+    padding-left: 2rem;
+  }
+
+  ol li {
+    list-style-type: decimal;
+  }
+
+  ul li {
+    list-style-type: disc;
+  }
+
+  a {
+    color: ${CommonStyling.primaryColor};
+    cursor: disabled !important;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  // ======> styles for wordpress content end
+
   section {
     margin-top: 3rem;
   }
@@ -291,9 +340,9 @@ const ArticleDetails = styled.article`
 
   .section-title {
     font-weight: 700;
-    font-size: 38px;
-    line-height: 50px;
     margin: 1rem 0 1rem 0;
+    font-size: ${CommonStyling.h1FontSize};
+    line-height: 48px;
   }
 
   .section-para {
@@ -328,12 +377,6 @@ const ArticleDetails = styled.article`
 
   .app-link:hover {
     text-decoration: underline;
-  }
-
-  .section-title {
-    font-weight: 700;
-    font-size: 32px;
-    line-height: 48px;
   }
 
   .blog-media {

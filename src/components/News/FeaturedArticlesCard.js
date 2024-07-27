@@ -10,6 +10,8 @@ import { CommonStyling } from "../../lib/CommonStyling";
 import ArticlesCard from "./ArticlesCard";
 
 const FeaturedArticlesCard = ({ featuredArticles }) => {
+  // if feature is less than 3, set the featured cards to the first 3 articles
+
   const [featuredCards, setFeaturedCards] = useState([
     featuredArticles[0],
     featuredArticles[1],
@@ -31,20 +33,25 @@ const FeaturedArticlesCard = ({ featuredArticles }) => {
         </div>
         {/* feature right */}
         <div className="feature-right">
-          <ArticlesCard
-            cardWidth={"100%"}
-            cardHeight={"257px"}
-            imageAlign={"left"}
-            cardData={featuredArticles[1]}
-            showOutline={false}
-          />
-          <ArticlesCard
-            cardWidth={"100%"}
-            cardHeight={"257px"}
-            imageAlign={"left"}
-            cardData={featuredArticles[2]}
-            showOutline={false}
-          />
+          {featuredArticles[1] && (
+            <ArticlesCard
+              cardWidth={"100%"}
+              cardHeight={"257px"}
+              imageAlign={"left"}
+              cardData={featuredArticles[1]}
+              showOutline={false}
+            />
+          )}
+
+          {featuredArticles[2] && (
+            <ArticlesCard
+              cardWidth={"100%"}
+              cardHeight={"257px"}
+              imageAlign={"left"}
+              cardData={featuredArticles[2]}
+              showOutline={false}
+            />
+          )}
         </div>
       </div>
     </Container>

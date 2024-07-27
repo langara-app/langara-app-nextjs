@@ -55,17 +55,8 @@ export async function getStaticProps() {
     `${process.env.BASE_URL}/wp-json/wp/v2/blogs?per_page=100&hide_empty=false`,
   );
   const resData = await res.json();
-
-  const x = [
-    resData[0],
-    resData[0],
-    resData[0],
-    resData[0],
-    resData[0],
-    resData[0],
-  ];
-
-  const articles = x.map((article) => {
+  
+  const articles = resData.map((article) => {
     return {
       id: article.id,
       slug: article.slug,
@@ -91,7 +82,7 @@ export async function getStaticProps() {
   );
 
   const featuredArticles = articles.filter((article) => article.isFeatured);
-  const nonFeaturedArticles = articles.filter((article) => article.isFeatured);
+  const nonFeaturedArticles = articles.filter((article) => !article.isFeatured);
 
   const categoriesNames = Object.values(blogSubCategories);
   return {
