@@ -33,7 +33,7 @@ export async function getStaticProps() {
     } else if (response.status === 403) {
       console.error("Quota exceeded");
     } else {
-      console.log('fetched youtube videos')
+      console.log("fetched youtube videos");
       const youtubeResponse = await response.json();
       videos = youtubeResponse.items;
     }
@@ -55,7 +55,7 @@ export async function getStaticProps() {
     `${process.env.BASE_URL}/wp-json/wp/v2/blogs?per_page=100&hide_empty=false`,
   );
   const resData = await res.json();
-  
+
   const articles = resData.map((article) => {
     return {
       id: article.id,
@@ -196,11 +196,9 @@ const NewsEvents = ({
               </div>
             </div>
 
-            {recentArticles.length > 0 && (
-              <div className="event-card-wrapper">
-                <YoutubeVideosCard videos={videos} />
-              </div>
-            )}
+            <div className="event-card-wrapper">
+              <YoutubeVideosCard videos={videos} />
+            </div>
           </div>
         </section>
       </Container>
