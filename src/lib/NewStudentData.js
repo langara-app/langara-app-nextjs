@@ -84,13 +84,13 @@ export const NewStudentData = {
   },
   social: {
     description1:
-      "Follow @LangaraCollege on Facebook, X (Twitter), and Instagram for the latest updates, photos, giveaways, and more.",
+      "Follow WMDD Langara on Facebook, LinkedIn, and Instagram for the latest updates, photos, giveaways, and more.",
     description2:
       "Subscribe to WMDD's YouTube for diverse content—alumni interviews, events, and student showcases. Explore creativity!",
     links: {
-      facebook: "https://www.facebook.com/langaracollege/ ",
-      instagram: "https://www.instagram.com/langaracollege/",
-      twitterX: "https://twitter.com/langaracollege",
+      facebook: "https://www.facebook.com/wmddlangara ",
+      instagram: "https://www.instagram.com/wmdd.langara",
+      linkedIn: "http://linkedin.com/company/wmddlangara",
       youtube: "https://www.youtube.com/channel/UCMhljXPVbfDIr_9ks6BpTGw",
     },
   },

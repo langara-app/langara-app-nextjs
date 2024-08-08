@@ -18,7 +18,7 @@ import socialBgImg from "@/assets/new-student/socialBgImg.png";
 import NewStudentSection from "@/components/New-Student/NewStudentSection";
 import facebook from "@/assets/facebook.svg";
 import instagram from "@/assets/instagram.svg";
-import twitterX from "@/assets/twitterX.svg";
+import linkedIn from "@/assets/linkedIn.png";
 import youtube from "@/assets/youtube.svg";
 import SliderAds from "@/components/New-Student/SlideAds";
 import Button from "../../components/ReusableElements/Button";
@@ -139,14 +139,14 @@ const NewStudent = () => {
                 />
               </Link>
               <Link
-                href={links.twitterX}
+                href={links.linkedIn}
                 rel="noopener noreferrer"
                 target="_blank"
               >
                 <Image
                   className="social-icon"
-                  src={twitterX}
-                  alt="twitterX"
+                  src={linkedIn}
+                  alt="linkedIn"
                   width={40}
                   height={40}
                 />
